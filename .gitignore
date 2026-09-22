@@ -26,12 +26,15 @@ __pycache__/
 #   images_leadtime_blind10/   결함당 10 에피소드
 #   images_leadtime_chunk/     --chunk 3 --stride 10
 #   images_leadtime_adaptive/  4단계 (adaptive_probe.py 가 읽는 세트)
+#   images_leadtime_adaptive_wrist/  같은 320개 상태의 손목 시점 (union 용)
 # 작은 세트(images_leadtime/, images_leadtime_wrist/ 및 1·2단계 세트)는 그대로 추적한다.
 failure_prediction/images_leadtime_blind30/*.png
 failure_prediction/images_leadtime_blind10/*.png
 failure_prediction/images_leadtime_chunk/*.png
 failure_prediction/images_leadtime_adaptive/*.png
+failure_prediction/images_leadtime_adaptive_wrist/*.png
 
 # --- 기타 ---
 *.mp4
 .DS_Store
+montage/

@@ -1,0 +1,31 @@
+wrist set aligned: 320/320 frames, identical timesteps
+run UNION: mode=union frames=320 -> 320 calls
+  [ 20/320] succ_p02_s02_lead10_t0039.png                truth=SUCCESS -> SUCCESS      
+  [ 40/320] succ_p04_s04_lead01_t0047.png                truth=SUCCESS -> FAILURE      
+  [ 60/320] succ_p07_s07_lead10_t0071.png                truth=SUCCESS -> SUCCESS      
+  [ 80/320] succ_p09_s09_lead01_t0047.png                truth=SUCCESS -> FAILURE      
+  [100/320] succ_p12_s12_lead10_t0037.png                truth=SUCCESS -> SUCCESS      
+  [120/320] succ_p14_s14_lead01_t0044.png                truth=SUCCESS -> FAILURE      
+  [140/320] succ_p17_s17_lead10_t0076.png                truth=SUCCESS -> SUCCESS      
+  [160/320] succ_p19_s19_lead01_t0044.png                truth=SUCCESS -> SUCCESS      
+  [180/320] succ_p22_s22_lead10_t0027.png                truth=SUCCESS -> SUCCESS      
+  [200/320] succ_p24_s24_lead01_t0037.png                truth=SUCCESS -> SUCCESS      
+  [220/320] succ_p27_s27_lead10_t0025.png                truth=SUCCESS -> FAILURE      
+  [240/320] succ_p29_s29_lead01_t0036.png                truth=SUCCESS -> SUCCESS      
+  [260/320] succ_p32_s32_lead10_t0011.png                truth=SUCCESS -> UNAVAILABLE  
+  [280/320] succ_p34_s34_lead01_t0017.png                truth=SUCCESS -> UNAVAILABLE  
+  [300/320] succ_p37_s37_lead10_t0010.png                truth=SUCCESS -> UNAVAILABLE  
+  [320/320] succ_p39_s39_lead01_t0017.png                truth=SUCCESS -> UNAVAILABLE  
+
+=== union: 320/320 성공한 기록 ===
+  agentview 3장 + 손목 1장 (총 4장), 불가 72
+  정확도 82%  recall 128/138  FPR 35/110
+
+  결함                               맞힌 수
+  close_too_high                  29/30
+  gripper_closed_early            19/28
+  lateral_offset_y_neg            40/40
+  lateral_offset_y_pos            40/40
+  nominal                        75/110
+
+results -> /home/nuri5/yuna_ws/failure_prediction/results/adaptive_union_UNION.jsonl

@@ -62,3 +62,26 @@ run ARME: mode=placebo frames=320 -> 960 calls
   [100/320] succ_p12_s12_lead10_t0037.png                truth=SUCCESS -> FAILURE      
   [120/320] succ_p14_s14_lead01_t0044.png                truth=SUCCESS -> FAILURE      
   [140/320] succ_p17_s17_lead10_t0076.png                truth=SUCCESS -> SUCCESS      
+  [160/320] succ_p19_s19_lead01_t0044.png                truth=SUCCESS -> SUCCESS      
+  [180/320] succ_p22_s22_lead10_t0027.png                truth=SUCCESS -> SUCCESS      
+  [200/320] succ_p24_s24_lead01_t0037.png                truth=SUCCESS -> SUCCESS      
+  [220/320] succ_p27_s27_lead10_t0025.png                truth=SUCCESS -> SUCCESS      
+  [240/320] succ_p29_s29_lead01_t0036.png                truth=SUCCESS -> SUCCESS      
+  [260/320] succ_p32_s32_lead10_t0011.png                truth=SUCCESS -> SUCCESS      
+  [280/320] succ_p34_s34_lead01_t0017.png                truth=SUCCESS -> SUCCESS      
+  [300/320] succ_p37_s37_lead10_t0010.png                truth=SUCCESS -> SUCCESS      
+  [320/320] succ_p39_s39_lead01_t0017.png                truth=SUCCESS -> SUCCESS      
+
+=== placebo: 320/320 성공한 기록 ===
+  선택 분포: {'add_t20': 56, 'current_only': 113, 'add_t10': 78, 'add_t5': 73}
+  대체된 기록: 20  (defaultdict(<class 'int'>, {'UNAVAILABLE': 1}))
+  정확도 66%  recall 99/160  FPR 47/160
+
+  결함                                                          선택 분포
+  close_too_high           {'add_t10': 13, 'add_t5': 8, 'add_t20': 8, 'current_only': 11}
+  gripper_closed_early     {'add_t10': 13, 'add_t20': 8, 'add_t5': 6, 'current_only': 13}
+  lateral_offset_y_neg     {'add_t20': 10, 'current_only': 13, 'add_t10': 7, 'add_t5': 10}
+  lateral_offset_y_pos     {'add_t20': 7, 'current_only': 10, 'add_t10': 15, 'add_t5': 8}
+  nominal                  {'add_t20': 23, 'add_t10': 30, 'add_t5': 41, 'current_only': 66}
+
+results -> /home/nuri5/yuna_ws/failure_prediction/results/adaptive_placebo_ARME.jsonl

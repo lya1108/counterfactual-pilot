@@ -30,7 +30,11 @@ fact_probe.py         --probe text (이미지 없이 기하만 문장으로 = �
                       --probe fact (참인 상태 문장을 덧붙여 결과 예측)
 adaptive_probe.py     --mode self    현재 프레임만 주고 "이 한 장으로 되는가" (자기 불확실성)
                       --mode oracle  네 후보 설정 전수 = 선택의 천장 + 후보별 정답 라벨
-                      --mode adaptive/placebo/fixed  선택 조건들
+                      --mode adaptive / placebo   시점 선택 (placebo 는 무작위 선택 대조군)
+                      --mode fixed --settings fixed3,fixed4  밀도 스윕
+                      --mode union   agentview 3장 + 같은 순간의 손목 1장
+make_montage.py       조건이 실제로 무엇을 보여줬는지 프레임 띠로 렌더 (라벨은 ASCII — PIL 기본
+                      폰트에 한글 글리프가 없다)
 ```
 
 이미지 세트:
@@ -42,6 +46,8 @@ images_leadtime_chunk/    같은 80개 상태 × 3프레임 청크 (stride 10)
 images_leadtime_blind10/  blind 결함 2종 × 10 에피소드 (실패 80 + 성공 80)
 images_leadtime_blind30/  같은 설계 × 30 에피소드 (실패 240 + 성공 240)
 images_leadtime_adaptive/ 4결함 × 10 에피소드 × 5프레임 (stride 5) — 후보 t-5/-10/-20 용
+images_leadtime_adaptive_wrist/ 같은 320개 상태를 손목 시점으로 (union 용, timestep 일치 검증됨)
+montage/                  make_montage.py 산출물 (git 추적 안 함)
 ```
 
 ## 환경
@@ -100,6 +106,17 @@ python collect_leadtime.py --verify --seeds 0,1,2,3,4,5,6,7,8,9 --max-failures 4
     --chunk 5 --stride 5 --images-dir images_leadtime_adaptive
 python -u adaptive_probe.py --mode self      # 게이트 2: 자기 불확실성이 있나 (640콜)
 python -u adaptive_probe.py --mode oracle    # 게이트 1: 고를 게 있나 (1280콜)
+python -u adaptive_probe.py --mode fixed --settings fixed3   # 조건 C
+python -u adaptive_probe.py --mode adaptive                  # 조건 D (3콜/프레임)
+python -u adaptive_probe.py --mode placebo                   # 조건 E — D 의 대조군, 필수
+python -u adaptive_probe.py --mode fixed --settings fixed4   # 밀도 스윕 (fixed5 는 서버가 거부)
+python collect_leadtime.py --verify --camera robot0_eye_in_hand --seeds 0,1,2,3,4,5,6,7,8,9 \
+    --max-failures 40 --n-success 40 --chunk 5 --stride 5 --images-dir images_leadtime_adaptive_wrist
+python -u adaptive_probe.py --mode union                     # agentview 3 + 손목 1
+
+# 조건이 무엇을 보여줬는지 눈으로
+python make_montage.py --setting fixed3 --per-fault 1
+python make_montage.py --setting fixed3 --only-disagree
 ```
 
 결과는 run id(기본 timestamp)로 분리되어 `results/`에 떨어지고 덮어쓰지 않는다. 사고 전문은
@@ -114,3 +131,9 @@ jsonl에만 들어가고 csv에서는 빠진다.
   (본 README의 정정 18·19번).
 - **이진 과제의 Oracle@N은 구조적으로 부풀려진다.** 후보 4개가 독립 동전이면 "하나라도 맞음"이
   93.75%다. 천장은 프레임별 오라클이 아니라 **결함별 최적 고정**으로 잡는다.
+- **이 서버는 프롬프트당 이미지 4장까지만 받는다** (`At most 4 image(s) may be provided in one
+  prompt`). 컨텍스트 길이 문제가 아니다. 5장 이상이 필요하면 몽타주로 합쳐 한 장으로 만든다.
+- **여러 호출을 한 `try` 블록에 묶지 말 것.** 밀도 스윕에서 5장 요청이 400을 받자 같은 블록의
+  4장 결과까지 error 로 집계됐다(데이터는 들어 있었다).
+- **`fixed3` 가 최고라는 것은 이 세트의 클래스 비율에 의존한다.** 실패 138 / 성공 110 이라 정확도가
+  그쪽을 편애한다. 프레임 수는 정확도 손잡이가 아니라 **recall–FPR 작동점 손잡이**로 읽는다.

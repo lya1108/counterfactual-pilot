@@ -67,8 +67,18 @@ from pathlib import Path
 
 from leadtime_probe import CHOICES, SYSTEM_PROMPT, data_url, load_frames
 
+# The window is held at 20 steps and only the density changes, because span is already known to
+# matter (a window clipped to 13-16 steps gave zero gain on both blind faults, three sample sizes
+# running). add_t20 is the 2-frame member of the same family, so the density sweep reads
+# 2 -> 3 -> 4 -> 5 frames over one fixed span.
 OFFSETS = {"current_only": (0,), "add_t5": (-5, 0), "add_t10": (-10, 0), "add_t20": (-20, 0),
-           "fixed3": (-20, -10, 0)}
+           "fixed3": (-20, -10, 0), "fixed4": (-20, -10, -5, 0),
+           "fixed5": (-20, -15, -10, -5, 0)}
+# This server caps a prompt at FOUR images ("At most 4 image(s) may be provided in one prompt"), so
+# `fixed5` cannot be sent and the density sweep over a 20-step window ends at 4 frames. Measured
+# 2026-09-22; it is a server limit, not a context-length one (4 frames at 256 px is ~1k tokens
+# against a 16k window).
+MAX_IMAGES = 4
 CANDIDATES = ["current_only", "add_t5", "add_t10", "add_t20"]
 SEL_LABELS = {"current_only": "CURRENT_ONLY", "add_t5": "ADD_T5",
               "add_t10": "ADD_T10", "add_t20": "ADD_T20"}
@@ -83,6 +93,27 @@ SCENE_MANY = ("You are shown {n} frames from a Franka Panda robot attempting to 
               "Viewpoint: a fixed camera in front of the table, looking down at it. The camera does "
               "not move, so anything that changes between the frames is the robot moving.\n\n")
 OUTCOME_Q = "Question: will this grasp attempt succeed or fail?"
+
+# ARM A of the "more, not selected" pair. The two axes needed different observations and no single
+# fixed one covered both: the vertical fault needs a window (fixed3 19/30 vs current_only 5/30) and
+# the gripper fault needs the wrist view (aperture perception 6-8/12 there vs 2/12 on agentview,
+# paired p=0.0018) -- yet the gripper fault is still the weakest cell under any agentview-only
+# setting (22/28 at four frames). So instead of asking the model to choose, hand it both: the
+# agentview window AND the wrist frame at the same instant. Four images is exactly this server's
+# cap, and `fixed4` (four agentview frames) is the paired control that holds the image count fixed.
+UNION_SCENE = (
+    "You are shown 4 images of a single attempt by a Franka Panda robot to grasp the small cube on "
+    "the table and lift it off the table surface.\n\n"
+    "FRAME 1, FRAME 2 and FRAME 3 come from a fixed camera in front of the table, looking down at "
+    "it, in time order: FRAME 1 is the oldest and FRAME 3 is the most recent. That camera does not "
+    "move, so anything that changes between them is the robot moving.\n\n"
+    "FRAME 4 is a different camera, mounted on the robot's wrist and looking down between the two "
+    "gripper fingers. It shows the same instant as FRAME 3, from close range.\n\n"
+)
+
+
+def union_prompt() -> str:
+    return UNION_SCENE + OUTCOME_Q
 
 # GATE 2. Bare binary, no menu in the text: restating options inside the prompt measurably biases
 # this server toward the first one listed (stage-1 ablation).
@@ -154,12 +185,19 @@ def free_form(client, model: str, urls: list[str], prompt: str, max_tokens: int)
 def main() -> None:
     here = Path(__file__).resolve().parent
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--mode", required=True, choices=["self", "oracle", "adaptive", "placebo", "fixed"])
+    ap.add_argument("--mode", required=True,
+                    choices=["self", "oracle", "adaptive", "placebo", "fixed", "union"])
     ap.add_argument("--images-dir", default=str(here / "images_leadtime_adaptive"))
+    ap.add_argument("--wrist-dir", default=str(here / "images_leadtime_adaptive_wrist"),
+                    help="--mode union: the same states rendered from the wrist camera. Must line "
+                         "up frame-for-frame with --images-dir (same seeds, same controller, so "
+                         "the timesteps are identical -- checked before use)")
     ap.add_argument("--results-dir", default=str(here / "results"))
     ap.add_argument("--faults", default=None)
     ap.add_argument("--leads", default=None)
     ap.add_argument("--limit", type=int, default=None)
+    ap.add_argument("--settings", default="fixed3",
+                    help="--mode fixed: comma-separated observation settings to run")
     ap.add_argument("--seed", type=int, default=0, help="--mode placebo: the random choice seed")
     ap.add_argument("--base-url", default=os.environ.get("GEMMA_BASE_URL", "http://localhost:18007/v1"))
     ap.add_argument("--model", default=os.environ.get("GEMMA_MODEL", "gemma4"))
@@ -183,9 +221,13 @@ def main() -> None:
     if not frames:
         raise SystemExit("no frames after filtering")
 
-    avail = {c: sum(1 for f in frames if obs_files(f, c)[0]) for c in CANDIDATES + ["fixed3"]}
+    avail = {c: sum(1 for f in frames if obs_files(f, c)[0]) for c in OFFSETS}
+    fixed_keys = [x.strip() for x in args.settings.split(",") if x.strip()]
+    bad = [k for k in fixed_keys if k not in OFFSETS]
+    if bad:
+        ap.error(f"unknown setting(s) {bad}; available: {sorted(OFFSETS)}")
     per_call = {"self": 1 * len(SELF_VARIANTS), "oracle": len(CANDIDATES),
-                "adaptive": 3, "placebo": 3, "fixed": 1}[args.mode]
+                "adaptive": 3, "placebo": 3, "fixed": len(fixed_keys), "union": 1}[args.mode]
     if args.dry_run:
         print(f"[dry-run] mode       : {args.mode}")
         print(f"[dry-run] images_dir : {images_dir}")
@@ -205,6 +247,18 @@ def main() -> None:
         print("[dry-run] OK — nothing sent.")
         return
 
+    wrist_dir = Path(args.wrist_dir)
+    if args.mode == "union":
+        wmeta = {json.loads(l)["image_file"]: json.loads(l)
+                 for l in (wrist_dir / "metadata.jsonl").read_text().splitlines() if l.strip()}
+        bad = [f["image_file"] for f in frames
+               if f["image_file"] not in wmeta
+               or wmeta[f["image_file"]]["timestep"] != f["timestep"]]
+        if bad:
+            raise SystemExit(f"wrist set does not line up with the agentview set "
+                             f"({len(bad)} mismatched, e.g. {bad[:2]}) — recollect with the same seeds")
+        print(f"wrist set aligned: {len(frames)}/{len(frames)} frames, identical timesteps")
+
     from openai import OpenAI
     client = OpenAI(base_url=args.base_url, api_key=args.api_key, timeout=600)
     run_id = args.run_id or datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -222,16 +276,35 @@ def main() -> None:
                     a = ask(client, args.model, [data_url(f["path"])], SCENE_ONE + q, SELF_CHOICES)
                     rec[f"self_{vname}"] = a if a in SELF_CHOICES else "INVALID"
             elif args.mode in ("oracle", "fixed"):
-                keys = CANDIDATES if args.mode == "oracle" else ["fixed3"]
+                keys = CANDIDATES if args.mode == "oracle" else fixed_keys
                 for c in keys:
                     fl, offs = obs_files(f, c)
                     if fl is None:
                         rec[f"ans_{c}"] = "UNAVAILABLE"
                         continue
                     urls = [data_url(images_dir / fn) for fn in fl]
-                    a = ask(client, args.model, urls, outcome_prompt(len(urls)), CHOICES)
-                    rec[f"ans_{c}"] = a if a in CHOICES else "INVALID"
-                    rec[f"offsets_{c}"] = offs
+                    # one setting per try: a 5-image request is rejected outright by this server
+                    # ("At most 4 image(s) may be provided in one prompt"), and a shared try block
+                    # let that failure mark the whole record errored even though the other
+                    # settings had already answered.
+                    try:
+                        a = ask(client, args.model, urls, outcome_prompt(len(urls)), CHOICES)
+                        rec[f"ans_{c}"] = a if a in CHOICES else "INVALID"
+                        rec[f"offsets_{c}"] = offs
+                    except Exception as e:
+                        rec[f"ans_{c}"] = "CALL_ERROR"
+                        rec[f"err_{c}"] = f"{type(e).__name__}: {e}"[:200]
+            elif args.mode == "union":
+                fl, offs = obs_files(f, "fixed3")
+                if fl is None:
+                    rec["answer"] = "UNAVAILABLE"
+                else:
+                    urls = [data_url(images_dir / fn) for fn in fl]
+                    urls.append(data_url(wrist_dir / f["image_file"]))
+                    rec["answer_raw"] = ask(client, args.model, urls, union_prompt(), CHOICES)
+                    rec["answer"] = (rec["answer_raw"] if rec["answer_raw"] in CHOICES else "INVALID")
+                    rec["offsets"] = offs
+                    rec["n_images"] = len(urls)
             else:  # adaptive / placebo
                 reason, hist = free_form(client, args.model, [data_url(f["path"])],
                                          SCENE_ONE + SELECT_Q, args.max_reason_tokens)
@@ -318,7 +391,9 @@ def summarize(rows: list[dict], mode: str) -> None:
         return
 
     if mode in ("oracle", "fixed"):
-        keys = CANDIDATES if mode == "oracle" else ["fixed3"]
+        keys = CANDIDATES if mode == "oracle" else [k.replace("ans_", "") for k in
+                (kk for r in rows for kk in r if kk.startswith("ans_"))]
+        keys = list(dict.fromkeys(keys))
         print(f"  {'설정':14s} {'정확도':>8s} {'recall':>10s} {'FPR':>10s} {'불가':>6s}")
         for c in keys:
             rs = [r for r in ok if r.get(f"ans_{c}") in CHOICES]
@@ -344,6 +419,23 @@ def summarize(rows: list[dict], mode: str) -> None:
                 c1 = sum(1 for r in rs if r.get("ans_current_only") == r["truth"])
                 o4 = sum(1 for r in rs if any(r.get(f"ans_{c}") == r["truth"] for c in CANDIDATES))
                 print(f"  {ft:24s} {f'{c1}/{len(rs)}':>10s} {f'{o4}/{len(rs)}':>10s}")
+        return
+
+    if mode == "union":
+        rs = [r for r in ok if r.get("answer") in CHOICES]
+        un = sum(1 for r in ok if r.get("answer") == "UNAVAILABLE")
+        fa = [r for r in rs if r["truth"] == "FAILURE"]
+        su = [r for r in rs if r["truth"] == "SUCCESS"]
+        tp = sum(1 for r in fa if r["answer"] == "FAILURE")
+        fp = sum(1 for r in su if r["answer"] == "FAILURE")
+        nimg = rs[0].get("n_images") if rs else "-"
+        print(f"  agentview 3장 + 손목 1장 (총 {nimg}장), 불가 {un}")
+        print(f"  정확도 {(tp + len(su) - fp) / len(rs):.0%}  recall {tp}/{len(fa)}  FPR {fp}/{len(su)}")
+        print(f"\n  {'결함':24s} {'맞힌 수':>12s}")
+        for ft in sorted({r["failure_type"] for r in rs}):
+            g = [r for r in rs if r["failure_type"] == ft]
+            hit = sum(1 for r in g if r["answer"] == r["truth"])
+            print(f"  {ft:24s} {f'{hit}/{len(g)}':>12s}")
         return
 
     # adaptive / placebo

@@ -1,0 +1,17 @@
+{
+ "mode": "union",
+ "images_dir": "/home/nuri5/yuna_ws/failure_prediction/images_leadtime_adaptive",
+ "wrist_dir": "/home/nuri5/yuna_ws/failure_prediction/images_leadtime_adaptive_wrist",
+ "results_dir": "/home/nuri5/yuna_ws/failure_prediction/results",
+ "faults": null,
+ "leads": null,
+ "limit": null,
+ "settings": "fixed3",
+ "seed": 0,
+ "base_url": "http://localhost:18007/v1",
+ "model": "gemma4",
+ "api_key": "EMPTY",
+ "max_reason_tokens": 300,
+ "run_id": "UNION",
+ "dry_run": false
+}
