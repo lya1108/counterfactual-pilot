@@ -401,6 +401,12 @@ left. To center the gripper over the cube, the robot needs to move to the right.
 
 # 3단계 — 실패 예측 lead time, 그리고 못 보는 축
 
+> **코드와 데이터는 2026-09-22에 `~/yuna_ws/failure_prediction/`으로 옮겼다.** 서술과 해석은
+> 계속 이 문서에 둔다(두 군데로 나누면 갈라진다). 실행 방법은
+> [../failure_prediction/README.md](../failure_prediction/README.md)에 있다. 1·2단계 도구
+> (`collect_failures.py`, `prompts.py`, `gemma_action_choice.py`)는 이 폴더에 남아 있고, 3단계
+> 스크립트가 그것을 import해서 쓴다 — 복사하지 않는다.
+
 **2026-09-18.** 질문은 "실패하기 몇 스텝 전부터 VLM이 실패를 알아보는가"였다. 답은 **lead time이
 거의 상관없고, 어느 결함이냐가 거의 전부**였다. 그래서 절의 절반은 "못 보는 축"을 파는 데 쓴다.
 
@@ -822,9 +828,7 @@ counterfactual_pilot/
 ├── oracle_branch.py        분기 오라클 (restore → 행동 → close+lift → _check_success)
 ├── make_mirror_set.py      좌우 반전 대조 세트 생성
 ├── reasoning_probe.py      2단계 reasoning 실험 (direct / nothink 대조군 / think)
-├── collect_leadtime.py     [3단계] lead-time 프레임 세트 (실패 4거리 + 진행률 짝지은 성공)
-├── leadtime_probe.py       [3단계] SUCCESS/FAILURE 이진 예측 3조건 + 지표
-├── fact_probe.py           [3단계] 물리(텍스트만) / 사실 주입 후 결과 예측
+│   (3단계 스크립트는 ../failure_prediction/ 로 이동했다)
 ├── prompts.py              프롬프트·8개 라벨·변형 생성기
 ├── images/                 [1단계] agentview 10장 — 재현 불가(hard_reset=False)
 ├── images_wrist/           [1단계] 손목 뷰 10장
@@ -832,11 +836,7 @@ counterfactual_pilot/
 ├── images_r2_mirror/       [2단계] 좌우 반전 10장
 ├── images_ypos/ , images_ypos_mirror/    [2단계] lateral_y_pos 6장 + 반전 (균형용)
 ├── images_yneg/ , images_yneg_mirror/    [2단계] lateral_y_neg 6장 + 반전 (균형용)
-├── images_leadtime/        [3단계] agentview 80장 (실패 40 + 성공 40), lead별 10+10
-├── images_leadtime_wrist/  [3단계] 같은 80개 상태를 손목 시점으로
-├── images_leadtime_chunk/  [3단계] 같은 80개 상태 × 3프레임 청크 (stride 10)
-├── images_leadtime_blind10/ [3단계] blind 결함 2종 × 10 에피소드 재현 (실패 80 + 성공 80)
-├── images_leadtime_blind30/ [3단계] 같은 설계 × 30 에피소드 (실패 240 + 성공 240)
+│   (3단계 이미지 세트 6종도 ../failure_prediction/ 로 이동했다)
 ├── results/                run_*.{jsonl,csv,args.json}, oracle_*.jsonl
 └── logs/
 ```
@@ -846,11 +846,14 @@ counterfactual_pilot/
 `oracle_ORACLE3.jsonl`(전수 오라클 3994 rollout),
 `run_YPOS_{orig,mirror}_action.*`·`run_YNEG_{orig,mirror}_action.*`(좌우 비대칭 균형 설계),
 `run_L6_*_action.*`(6-어휘 대조), `run_P_side_*_side.*`·`run_P_lateral_*_lateral.*`(분해 프로브),
-`reasoning_REASON{1,2}.{jsonl,csv}`(reasoning 3조건 × 문구 3종; 사고 전문은 jsonl에만),
-`leadtime_20260918_135728.*`(3단계 본 결과 400 호출), `run_HEIGHT_height.*`(높이 지각),
-`run_20260918_145807_gripper_state.*`·`run_WRIST_gripper_state.*`(개폐 지각, agentview vs 손목),
-`fact_text_TEXT2.*`(물리; `fact_text_TEXT.*`는 어휘 불일치로 폐기된 1차),
-`fact_fact_FACT.*`(사실 주입 후 결과 예측), `leadtime_CHUNK.*`(청크 3프레임), `leadtime_B10{SINGLE,CHUNK}.*`·`leadtime_B30{SINGLE,CHUNK}.*`(blind 결함 10·30 에피소드 재현).
+`reasoning_REASON{1,2}.{jsonl,csv}`(reasoning 3조건 × 문구 3종; 사고 전문은 jsonl에만).
+
+**3단계 결과는 `../failure_prediction/results/` 로 옮겼다** — `leadtime_20260918_135728.*`(본 결과
+400 호출), `run_HEIGHT_height.*`(높이 지각), `run_20260918_145807_gripper_state.*`·
+`run_WRIST_gripper_state.*`(개폐 지각, agentview vs 손목), `fact_text_TEXT2.*`(물리;
+`fact_text_TEXT.*`는 어휘 불일치로 폐기된 1차), `fact_fact_FACT.*`(사실 주입),
+`leadtime_CHUNK.*`(청크 3프레임), `leadtime_B10{SINGLE,CHUNK}.*`·`leadtime_B30{SINGLE,CHUNK}.*`
+(blind 결함 10·30 에피소드 재현), `adaptive_self_G2.*`·`adaptive_oracle_G1.*`(적응적 선택 게이트).
 
 ## 재현
 
@@ -887,41 +890,8 @@ python reasoning_probe.py --dry-run
 python -u reasoning_probe.py                                      # canonical
 python -u reasoning_probe.py --variants labels_reversed,paraphrase  # 문구 민감성 확인
 
-# 3단계 — lead-time 세트 (--verify가 t_commit을 collect_failures와 교차검증)
-python collect_leadtime.py --dry-run
-python collect_leadtime.py --verify
-python collect_leadtime.py --camera robot0_eye_in_hand --images-dir images_leadtime_wrist
-
-# 3단계 — 결과 예측 (--limit 8로 서버 확인 후 본 실행)
-python leadtime_probe.py --limit 8 --conditions direct
-python -u leadtime_probe.py
-
-# 3단계 — 분해: 물리 / 높이 지각 / 개폐 지각(두 카메라)
-python fact_probe.py --probe text
-python gemma_action_choice.py --task height        --images-dir images_leadtime       --limit 80 --robustness
-python gemma_action_choice.py --task gripper_state --images-dir images_leadtime       --limit 80 --robustness
-python gemma_action_choice.py --task gripper_state --images-dir images_leadtime_wrist --limit 80 --robustness
-
-# 3단계 — 사실을 건네면 되살아나는가 (결함별 recall 행만 읽을 것)
-python fact_probe.py --probe fact --baseline results/leadtime_20260918_135728.jsonl
-
-# 3단계 — 청크 (창 길이는 재서 고름: --chunk 3 --stride 10)
-python collect_leadtime.py --verify --chunk 3 --stride 10 --images-dir images_leadtime_chunk
-python -u leadtime_probe.py --chunk --images-dir images_leadtime_chunk --conditions direct,twostage_think
-
-# 3단계 — blind 결함만 에피소드 10개씩으로 재현 (단일 vs 청크 짝지음)
-python collect_leadtime.py --verify --types close_too_high,gripper_closed_early \
-    --seeds 0,1,2,3,4,5,6,7,8,9 --max-failures 20 --n-success 20 \
-    --chunk 3 --stride 10 --images-dir images_leadtime_blind10
-python -u leadtime_probe.py         --images-dir images_leadtime_blind10 --conditions direct
-python -u leadtime_probe.py --chunk --images-dir images_leadtime_blind10 --conditions direct
-
-# 3단계 — 같은 설계를 30 에피소드로 (여기서 recall 개선이 유의해진다)
-python collect_leadtime.py --verify --types close_too_high,gripper_closed_early \
-    --seeds $(seq -s, 0 29) --max-failures 60 --n-success 60 \
-    --chunk 3 --stride 10 --images-dir images_leadtime_blind30
-python -u leadtime_probe.py         --images-dir images_leadtime_blind30 --conditions direct
-python -u leadtime_probe.py --chunk --images-dir images_leadtime_blind30 --conditions direct
+# 3단계 — ../failure_prediction/ 로 이동했다. 그쪽 README 의 "재현" 절을 쓴다.
+#   cd ~/yuna_ws/failure_prediction && python collect_leadtime.py --dry-run
 ```
 
 접속 설정은 하드코딩하지 않았다: `GEMMA_BASE_URL` / `GEMMA_MODEL` / `GEMMA_API_KEY` 또는

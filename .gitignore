@@ -1,21 +1,36 @@
+# 저장소 뿌리는 ~/yuna_ws 이지만, 추적하는 것은 아래 두 폴더뿐이다.
+# 두 폴더는 반드시 형제로 있어야 한다 — failure_prediction 의 스크립트가
+# parent.parent / "counterfactual_pilot" 로 1·2단계 도구를 import 하고,
+# README 본문 링크도 ../counterfactual_pilot/README.md 이기 때문이다.
+# 그래서 한 저장소에 함께 둔다.
+/*
+!/.gitignore
+!/counterfactual_pilot/
+!/failure_prediction/
+
+# 제외되는 것: Dreamerv3_study(별도 git 저장소, 3.3G), new_project, counterfactual_task,
+# data, models, results, videos, 2026-08 BC/world-model 스크립트, stack0.mp4, 스크린샷.
+# 필요해지면 위에 ! 줄을 추가하면 된다.
+
 # --- Python ---
 __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
 
 # --- 대용량 프레임 세트 (PNG만 제외, 재생성 가능) ---
-# 아래 네 세트의 PNG는 총 255M / ~4,650장이라 저장소에서 제외한다.
-# 각 폴더의 metadata.jsonl은 프레임별 ground truth(t_commit, finger_gap_m, eef_pos,
-# action_discrete ...)이고 results/ 집계의 근거이므로 PNG가 없어도 반드시 추적한다.
-# 재생성 명령은 README "재현" 절에 세트별로 그대로 있다.
-#   images_leadtime_blind30/   collect_leadtime.py (결함당 30 에피소드) — 최종 수치의 근거
-#   images_leadtime_blind10/   collect_leadtime.py (결함당 10 에피소드)
-#   images_leadtime_chunk/     collect_leadtime.py --chunk 3 --stride 10
-#   images_leadtime_adaptive/  4단계 진행 중 (adaptive_probe.py가 읽는 세트)
-images_leadtime_blind30/*.png
-images_leadtime_blind10/*.png
-images_leadtime_chunk/*.png
-images_leadtime_adaptive/*.png
+# 네 세트의 PNG 4,650장(255M)은 저장소에서 뺀다.
+# 각 폴더의 metadata.jsonl 은 프레임별 ground truth(t_commit, finger_gap_m, eef_pos,
+# action_discrete ...)이고 results/ 집계의 근거이므로 PNG 없이도 반드시 추적한다.
+# 재생성 명령은 failure_prediction/README.md "재현" 절에 세트별로 있다.
+#   images_leadtime_blind30/   결함당 30 에피소드 — 최종 수치의 근거
+#   images_leadtime_blind10/   결함당 10 에피소드
+#   images_leadtime_chunk/     --chunk 3 --stride 10
+#   images_leadtime_adaptive/  4단계 (adaptive_probe.py 가 읽는 세트)
+# 작은 세트(images_leadtime/, images_leadtime_wrist/ 및 1·2단계 세트)는 그대로 추적한다.
+failure_prediction/images_leadtime_blind30/*.png
+failure_prediction/images_leadtime_blind10/*.png
+failure_prediction/images_leadtime_chunk/*.png
+failure_prediction/images_leadtime_adaptive/*.png
 
 # --- 기타 ---
 *.mp4

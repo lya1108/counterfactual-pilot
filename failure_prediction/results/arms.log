@@ -1,0 +1,64 @@
+run ARMC: mode=fixed frames=320 -> 320 calls
+  [ 20/320] succ_p02_s02_lead10_t0039.png                truth=SUCCESS -> None         
+  [ 40/320] succ_p04_s04_lead01_t0047.png                truth=SUCCESS -> None         
+  [ 60/320] succ_p07_s07_lead10_t0071.png                truth=SUCCESS -> None         
+  [ 80/320] succ_p09_s09_lead01_t0047.png                truth=SUCCESS -> None         
+  [100/320] succ_p12_s12_lead10_t0037.png                truth=SUCCESS -> None         
+  [120/320] succ_p14_s14_lead01_t0044.png                truth=SUCCESS -> None         
+  [140/320] succ_p17_s17_lead10_t0076.png                truth=SUCCESS -> None         
+  [160/320] succ_p19_s19_lead01_t0044.png                truth=SUCCESS -> None         
+  [180/320] succ_p22_s22_lead10_t0027.png                truth=SUCCESS -> None         
+  [200/320] succ_p24_s24_lead01_t0037.png                truth=SUCCESS -> None         
+  [220/320] succ_p27_s27_lead10_t0025.png                truth=SUCCESS -> None         
+  [240/320] succ_p29_s29_lead01_t0036.png                truth=SUCCESS -> None         
+  [260/320] succ_p32_s32_lead10_t0011.png                truth=SUCCESS -> None         
+  [280/320] succ_p34_s34_lead01_t0017.png                truth=SUCCESS -> None         
+  [300/320] succ_p37_s37_lead10_t0010.png                truth=SUCCESS -> None         
+  [320/320] succ_p39_s39_lead01_t0017.png                truth=SUCCESS -> None         
+
+=== fixed: 320/320 성공한 기록 ===
+  설정                  정확도     recall        FPR     불가
+  fixed3             85%    111/138     11/110     72
+
+results -> /home/nuri5/yuna_ws/failure_prediction/results/adaptive_fixed_ARMC.jsonl
+############ ADAPTIVE ############
+run ARMD: mode=adaptive frames=320 -> 960 calls
+  [ 20/320] succ_p02_s02_lead10_t0039.png                truth=SUCCESS -> SUCCESS      
+  [ 40/320] succ_p04_s04_lead01_t0047.png                truth=SUCCESS -> FAILURE      
+  [ 60/320] succ_p07_s07_lead10_t0071.png                truth=SUCCESS -> SUCCESS      
+  [ 80/320] succ_p09_s09_lead01_t0047.png                truth=SUCCESS -> SUCCESS      
+  [100/320] succ_p12_s12_lead10_t0037.png                truth=SUCCESS -> FAILURE      
+  [120/320] succ_p14_s14_lead01_t0044.png                truth=SUCCESS -> FAILURE      
+  [140/320] succ_p17_s17_lead10_t0076.png                truth=SUCCESS -> SUCCESS      
+  [160/320] succ_p19_s19_lead01_t0044.png                truth=SUCCESS -> FAILURE      
+  [180/320] succ_p22_s22_lead10_t0027.png                truth=SUCCESS -> SUCCESS      
+  [200/320] succ_p24_s24_lead01_t0037.png                truth=SUCCESS -> SUCCESS      
+  [220/320] succ_p27_s27_lead10_t0025.png                truth=SUCCESS -> SUCCESS      
+  [240/320] succ_p29_s29_lead01_t0036.png                truth=SUCCESS -> SUCCESS      
+  [260/320] succ_p32_s32_lead10_t0011.png                truth=SUCCESS -> SUCCESS      
+  [280/320] succ_p34_s34_lead01_t0017.png                truth=SUCCESS -> SUCCESS      
+  [300/320] succ_p37_s37_lead10_t0010.png                truth=SUCCESS -> SUCCESS      
+  [320/320] succ_p39_s39_lead01_t0017.png                truth=SUCCESS -> SUCCESS      
+
+=== adaptive: 320/320 성공한 기록 ===
+  선택 분포: {'add_t10': 288, 'current_only': 25, 'add_t5': 2, 'add_t20': 5}
+  대체된 기록: 15  (defaultdict(<class 'int'>, {'UNAVAILABLE': 1}))
+  정확도 67%  recall 102/160  FPR 49/160
+
+  결함                                                          선택 분포
+  close_too_high                                    {'add_t10': 40}
+  gripper_closed_early     {'add_t10': 35, 'current_only': 4, 'add_t20': 1}
+  lateral_offset_y_neg                {'add_t10': 39, 'add_t20': 1}
+  lateral_offset_y_pos                {'add_t10': 37, 'add_t20': 3}
+  nominal                  {'add_t10': 137, 'current_only': 21, 'add_t5': 2}
+
+results -> /home/nuri5/yuna_ws/failure_prediction/results/adaptive_adaptive_ARMD.jsonl
+############ PLACEBO ############
+run ARME: mode=placebo frames=320 -> 960 calls
+  [ 20/320] succ_p02_s02_lead10_t0039.png                truth=SUCCESS -> SUCCESS      
+  [ 40/320] succ_p04_s04_lead01_t0047.png                truth=SUCCESS -> FAILURE      
+  [ 60/320] succ_p07_s07_lead10_t0071.png                truth=SUCCESS -> SUCCESS      
+  [ 80/320] succ_p09_s09_lead01_t0047.png                truth=SUCCESS -> SUCCESS      
+  [100/320] succ_p12_s12_lead10_t0037.png                truth=SUCCESS -> FAILURE      
+  [120/320] succ_p14_s14_lead01_t0044.png                truth=SUCCESS -> FAILURE      
+  [140/320] succ_p17_s17_lead10_t0076.png                truth=SUCCESS -> SUCCESS      

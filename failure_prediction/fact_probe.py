@@ -56,6 +56,15 @@ from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
 
+# The stage 1-2 pilot lives next door and owns the scripted controller, the env kwargs and the
+# prompt vocabulary. Importing rather than restating keeps one source of truth for the physics
+# constants -- the same reason collect_leadtime imports collect_failures instead of copying its
+# control loop. Only this path line is needed; nothing in ../counterfactual_pilot is modified.
+import sys as _sys
+_PILOT = str(Path(__file__).resolve().parent.parent / "counterfactual_pilot")
+if _PILOT not in _sys.path:
+    _sys.path.insert(0, _PILOT)
+
 import prompts as P
 from leadtime_probe import CONDITIONS, data_url, load_frames, run_one
 

@@ -64,6 +64,15 @@ os.environ.setdefault("MUJOCO_GL", "egl")
 
 import numpy as np  # noqa: E402
 
+# The stage 1-2 pilot lives next door and owns the scripted controller, the env kwargs and the
+# prompt vocabulary. Importing rather than restating keeps one source of truth for the physics
+# constants -- the same reason collect_leadtime imports collect_failures instead of copying its
+# control loop. Only this path line is needed; nothing in ../counterfactual_pilot is modified.
+import sys as _sys
+_PILOT = str(Path(__file__).resolve().parent.parent / "counterfactual_pilot")
+if _PILOT not in _sys.path:
+    _sys.path.insert(0, _PILOT)
+
 import collect_failures as cf  # noqa: E402
 
 LEAD_TIMES = (20, 10, 5, 1)
