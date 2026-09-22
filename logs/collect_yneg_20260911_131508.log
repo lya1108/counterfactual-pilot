@@ -1,0 +1,11 @@
+nominal control check: 3/3 lifted the cube (final_cube_z=[1.0569, 1.0559, 1.0574], threshold=0.8400000000000001)
+  OK   ep00 seed=2 lateral_offset_y_neg: t_commit=48 capture_t=47 orig=OPEN_GRIPPER   cube_z=0.8210 -> ep00_lateral_offset_y_neg_t0047.png
+  OK   ep01 seed=3 lateral_offset_y_neg: t_commit=53 capture_t=52 orig=OPEN_GRIPPER   cube_z=0.8205 -> ep01_lateral_offset_y_neg_t0052.png
+  OK   ep02 seed=4 lateral_offset_y_neg: t_commit=47 capture_t=46 orig=OPEN_GRIPPER   cube_z=0.8218 -> ep02_lateral_offset_y_neg_t0046.png
+  OK   ep03 seed=5 lateral_offset_y_neg: t_commit=45 capture_t=44 orig=OPEN_GRIPPER   cube_z=0.8203 -> ep03_lateral_offset_y_neg_t0044.png
+  OK   ep04 seed=6 lateral_offset_y_neg: t_commit=44 capture_t=43 orig=OPEN_GRIPPER   cube_z=0.8215 -> ep04_lateral_offset_y_neg_t0043.png
+  OK   ep05 seed=7 lateral_offset_y_neg: t_commit=144 capture_t=143 orig=OPEN_GRIPPER   cube_z=0.8208 -> ep05_lateral_offset_y_neg_t0143.png
+
+saved 6 images -> images_yneg
+metadata -> images_yneg/metadata.jsonl
+per failure_type: {'lateral_offset_y_neg': 6}

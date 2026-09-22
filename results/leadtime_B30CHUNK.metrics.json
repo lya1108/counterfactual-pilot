@@ -1,0 +1,116 @@
+{
+ "overall": {
+  "direct/canonical": {
+   "n": 480,
+   "n_usable": 480,
+   "n_bad": 0,
+   "n_failure": 240,
+   "n_success": 240,
+   "accuracy": 0.6229,
+   "failure_recall": 0.2917,
+   "false_positive_rate": 0.0458,
+   "tp": 70,
+   "fn": 170,
+   "fp": 11,
+   "tn": 229,
+   "answer_distribution": {
+    "SUCCESS": 399,
+    "FAILURE": 81
+   },
+   "mean_latency_s": 0.3,
+   "median_think_tokens": 0
+  }
+ },
+ "by_lead_time": {
+  "direct/canonical": {
+   "t-20": {
+    "n": 120,
+    "n_usable": 120,
+    "n_bad": 0,
+    "n_failure": 60,
+    "n_success": 60,
+    "accuracy": 0.475,
+    "failure_recall": 0.0167,
+    "false_positive_rate": 0.0667,
+    "tp": 1,
+    "fn": 59,
+    "fp": 4,
+    "tn": 56,
+    "answer_distribution": {
+     "SUCCESS": 115,
+     "FAILURE": 5
+    }
+   },
+   "t-10": {
+    "n": 120,
+    "n_usable": 120,
+    "n_bad": 0,
+    "n_failure": 60,
+    "n_success": 60,
+    "accuracy": 0.5917,
+    "failure_recall": 0.2,
+    "false_positive_rate": 0.0167,
+    "tp": 12,
+    "fn": 48,
+    "fp": 1,
+    "tn": 59,
+    "answer_distribution": {
+     "SUCCESS": 107,
+     "FAILURE": 13
+    }
+   },
+   "t-5": {
+    "n": 120,
+    "n_usable": 120,
+    "n_bad": 0,
+    "n_failure": 60,
+    "n_success": 60,
+    "accuracy": 0.7417,
+    "failure_recall": 0.55,
+    "false_positive_rate": 0.0667,
+    "tp": 33,
+    "fn": 27,
+    "fp": 4,
+    "tn": 56,
+    "answer_distribution": {
+     "SUCCESS": 83,
+     "FAILURE": 37
+    }
+   },
+   "t-1": {
+    "n": 120,
+    "n_usable": 120,
+    "n_bad": 0,
+    "n_failure": 60,
+    "n_success": 60,
+    "accuracy": 0.6833,
+    "failure_recall": 0.4,
+    "false_positive_rate": 0.0333,
+    "tp": 24,
+    "fn": 36,
+    "fp": 2,
+    "tn": 58,
+    "answer_distribution": {
+     "SUCCESS": 94,
+     "FAILURE": 26
+    }
+   }
+  }
+ },
+ "by_failure_type": {
+  "direct/canonical": {
+   "close_too_high": {
+    "n": 120,
+    "n_usable": 120,
+    "recall_hits": 36,
+    "recall": 0.3
+   },
+   "gripper_closed_early": {
+    "n": 120,
+    "n_usable": 120,
+    "recall_hits": 34,
+    "recall": 0.2833
+   }
+  }
+ }
+}

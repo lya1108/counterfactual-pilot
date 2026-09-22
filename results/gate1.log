@@ -1,0 +1,37 @@
+run G1: mode=oracle frames=320 -> 1280 calls
+  [ 20/320] succ_p02_s02_lead10_t0039.png                truth=SUCCESS -> SUCCESS      
+  [ 40/320] succ_p04_s04_lead01_t0047.png                truth=SUCCESS -> SUCCESS      
+  [ 60/320] succ_p07_s07_lead10_t0071.png                truth=SUCCESS -> FAILURE      
+  [ 80/320] succ_p09_s09_lead01_t0047.png                truth=SUCCESS -> SUCCESS      
+  [100/320] succ_p12_s12_lead10_t0037.png                truth=SUCCESS -> FAILURE      
+  [120/320] succ_p14_s14_lead01_t0044.png                truth=SUCCESS -> FAILURE      
+  [140/320] succ_p17_s17_lead10_t0076.png                truth=SUCCESS -> FAILURE      
+  [160/320] succ_p19_s19_lead01_t0044.png                truth=SUCCESS -> SUCCESS      
+  [180/320] succ_p22_s22_lead10_t0027.png                truth=SUCCESS -> SUCCESS      
+  [200/320] succ_p24_s24_lead01_t0037.png                truth=SUCCESS -> SUCCESS      
+  [220/320] succ_p27_s27_lead10_t0025.png                truth=SUCCESS -> SUCCESS      
+  [240/320] succ_p29_s29_lead01_t0036.png                truth=SUCCESS -> SUCCESS      
+  [260/320] succ_p32_s32_lead10_t0011.png                truth=SUCCESS -> SUCCESS      
+  [280/320] succ_p34_s34_lead01_t0017.png                truth=SUCCESS -> FAILURE      
+  [300/320] succ_p37_s37_lead10_t0010.png                truth=SUCCESS -> SUCCESS      
+  [320/320] succ_p39_s39_lead01_t0017.png                truth=SUCCESS -> SUCCESS      
+
+=== oracle: 320/320 성공한 기록 ===
+  설정                  정확도     recall        FPR     불가
+  current_only       64%     98/160     53/160      0
+  add_t5             56%    113/160     95/160      0
+  add_t10            68%    104/158     44/150     12
+  add_t20            75%     79/138      3/110     72
+
+  Oracle@4 (네 후보 중 하나라도 맞음): 293/320 (92%)
+  current_only 로만: 205/320
+  맞힌 후보 중 가장 이른 것의 분포: {'add_t5': 46, 'add_t20': 15, 'current_only': 205, 'add_t10': 27}
+
+  결함                          current   oracle@4
+  close_too_high                10/40      30/40
+  gripper_closed_early          11/40      26/40
+  lateral_offset_y_neg          39/40      40/40
+  lateral_offset_y_pos          38/40      40/40
+  nominal                     107/160    157/160
+
+results -> /home/nuri5/yuna_ws/counterfactual_pilot/results/adaptive_oracle_G1.jsonl

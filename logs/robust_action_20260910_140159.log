@@ -1,0 +1,48 @@
+run_id=ROB_action  task=action  images_dir=/home/nuri5/yuna_ws/counterfactual_pilot/images  found=10  metadata_rows=10
+model=gemma4  base_url=http://localhost:18007/v1  structured=True  mock=False  choices=['MOVE_LEFT', 'MOVE_RIGHT', 'MOVE_FORWARD', 'MOVE_BACKWARD', 'MOVE_UP', 'MOVE_DOWN', 'OPEN_GRIPPER', 'CLOSE_GRIPPER']
+prompt variants: ['canonical', 'labels_reversed', 'labels_shuffled', 'labels_omitted', 'paraphrase']  ->  50 calls
+  [1/10] ep00_lateral_offset_y_pos_t0044.png      MOVE_LEFT      agree=1.00= ['MOVE_LEFT', 'MOVE_LEFT', 'MOVE_LEFT', 'MOVE_LEFT', 'MOVE_LEFT']
+  [2/10] ep01_lateral_offset_y_pos_t0043.png      MOVE_LEFT      agree=1.00= ['MOVE_LEFT', 'MOVE_LEFT', 'MOVE_LEFT', 'MOVE_LEFT', 'MOVE_LEFT']
+  [3/10] ep02_lateral_offset_y_neg_t0049.png      MOVE_RIGHT     agree=1.00= ['MOVE_RIGHT', 'MOVE_RIGHT', 'MOVE_RIGHT', 'MOVE_RIGHT', 'MOVE_RIGHT']
+  [4/10] ep03_lateral_offset_y_neg_t0042.png      MOVE_RIGHT     agree=0.60  ['MOVE_FORWARD', 'MOVE_RIGHT', 'MOVE_FORWARD', 'MOVE_RIGHT', 'MOVE_RIGHT']
+  [5/10] ep04_close_too_high_t0035.png            MOVE_DOWN      agree=0.60  ['MOVE_DOWN', 'MOVE_DOWN', 'MOVE_DOWN', 'MOVE_FORWARD', 'MOVE_FORWARD']
+  [6/10] ep05_close_too_high_t0034.png            MOVE_FORWARD   agree=1.00= ['MOVE_FORWARD', 'MOVE_FORWARD', 'MOVE_FORWARD', 'MOVE_FORWARD', 'MOVE_FORWARD']
+  [7/10] ep06_close_too_high_t0034.png            MOVE_DOWN      agree=0.60  ['MOVE_DOWN', 'MOVE_DOWN', 'MOVE_DOWN', 'MOVE_FORWARD', 'MOVE_FORWARD']
+  [8/10] ep07_gripper_closed_early_t0030.png      CLOSE_GRIPPER  agree=1.00= ['CLOSE_GRIPPER', 'CLOSE_GRIPPER', 'CLOSE_GRIPPER', 'CLOSE_GRIPPER', 'CLOSE_GRIPPER']
+  [9/10] ep08_gripper_closed_early_t0029.png      CLOSE_GRIPPER  agree=0.80  ['CLOSE_GRIPPER', 'MOVE_DOWN', 'CLOSE_GRIPPER', 'CLOSE_GRIPPER', 'CLOSE_GRIPPER']
+  [10/10] ep09_gripper_closed_early_t0029.png      CLOSE_GRIPPER  agree=0.60  ['CLOSE_GRIPPER', 'MOVE_DOWN', 'MOVE_DOWN', 'CLOSE_GRIPPER', 'CLOSE_GRIPPER']
+
+--- action distribution ---
+  CLOSE_GRIPPER  12/50  ############
+  MOVE_FORWARD   11/50  ###########
+  MOVE_LEFT      10/50  ##########
+  MOVE_DOWN       9/50  #########
+  MOVE_RIGHT      8/50  ########
+distinct valid answers  : 5 of 8  (1 = always the same answer)
+invalid / error         : 0/50 (0%)
+echoed original action  : 3/50  (high = not proposing an alternative)
+
+--- prompt robustness over 5 variants ---
+mean agreement          : 0.82  (1.00 = every phrasing gave the same answer)
+unanimous images        : 5/10
+  ep00_lateral_offset_y_pos_t0044.png          MOVE_LEFT
+  ep01_lateral_offset_y_pos_t0043.png          MOVE_LEFT
+  ep02_lateral_offset_y_neg_t0049.png          MOVE_RIGHT
+  ep05_close_too_high_t0034.png                MOVE_FORWARD
+  ep07_gripper_closed_early_t0030.png          CLOSE_GRIPPER
+per-variant distribution (an outlier row means that phrasing drives the answer):
+  canonical        {'MOVE_LEFT': 2, 'MOVE_RIGHT': 1, 'MOVE_FORWARD': 2, 'MOVE_DOWN': 2, 'CLOSE_GRIPPER': 3}
+  labels_omitted   {'MOVE_LEFT': 2, 'MOVE_RIGHT': 2, 'MOVE_FORWARD': 3, 'CLOSE_GRIPPER': 3}
+  labels_reversed  {'MOVE_LEFT': 2, 'MOVE_RIGHT': 2, 'MOVE_DOWN': 4, 'MOVE_FORWARD': 1, 'CLOSE_GRIPPER': 1}
+  labels_shuffled  {'MOVE_LEFT': 2, 'MOVE_RIGHT': 1, 'MOVE_FORWARD': 2, 'MOVE_DOWN': 3, 'CLOSE_GRIPPER': 2}
+  paraphrase       {'MOVE_LEFT': 2, 'MOVE_RIGHT': 2, 'MOVE_FORWARD': 3, 'CLOSE_GRIPPER': 3}
+
+--- modal choice by failure_type (does the image change the answer?) ---
+  close_too_high           {'MOVE_DOWN': 2, 'MOVE_FORWARD': 1}   [reference: MOVE_DOWN]
+  gripper_closed_early     {'CLOSE_GRIPPER': 3}   [reference: OPEN_GRIPPER]
+  lateral_offset_y_neg     {'MOVE_RIGHT': 2}   [reference: MOVE_RIGHT]
+  lateral_offset_y_pos     {'MOVE_LEFT': 2}   [reference: MOVE_LEFT]
+
+results -> /home/nuri5/yuna_ws/counterfactual_pilot/results/run_ROB_action_action.jsonl
+            /home/nuri5/yuna_ws/counterfactual_pilot/results/run_ROB_action_action.csv
+            /home/nuri5/yuna_ws/counterfactual_pilot/results/run_ROB_action_action.args.json

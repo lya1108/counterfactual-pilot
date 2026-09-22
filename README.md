@@ -1,0 +1,947 @@
+# Counterfactual correction 파일럿
+
+**1단계** 2026-09-10 종료 · **2단계** 2026-09-11 종료 · **3단계** 2026-09-21 종료
+
+실패 직전 장면을 보고 Gemma가 "원래 행동 대신 어떻게 했어야 했나"를 8개 행동 중 하나로
+제안할 수 있는지, 그리고 그 제안이 **실제로 더 나은 행동인지** 확인한 소규모 파일럿.
+본 실험이 아니며 성능 평가가 아니다.
+
+- **1단계** — Gemma의 출력 패턴 관찰. 정답 없음, 사람이 붙인 참조 라벨과만 대조
+- **2단계** — 시뮬레이터로 정답을 전수 조사해서 1단계의 제안을 실제로 채점
+
+붙이지 않은 것: Diffusion guidance 연결, 다중 스텝 계획, memory·재사용.
+
+---
+
+## 핵심 결과 먼저
+
+1. **오라클이 애매하지 않다.** 프레임마다 복구를 만드는 첫 행동이 **정확히 하나씩**이고,
+   1단계에서 사람이 추측으로 붙였던 `reference_correction`과 **10/10 일치**했다. 무개입
+   대조군은 10/10 실패.
+2. **Gemma는 우연보다 낫지만 절반이다.** 다수결 기준 **5/10** (호출 단위 26/50, 우연 기준 12.5%).
+3. **좌우 부호를 틀린 적은 160회 중 0회지만, 방향에 따라 확신이 다르다.** 균형 설계(32 프레임-
+   인스턴스)에서 정답이 `MOVE_LEFT`일 때 98%, `MOVE_RIGHT`일 때 72%. 실패는 좌우 혼동이 아니라
+   가로축을 포기하고 과제 사전지식(`MOVE_DOWN` 계열)으로 되돌아가는 형태다. 어휘를 8→6개로
+   줄여도 정확도는 그대로다(75%→77%).
+4. **`OPEN_GRIPPER`는 100회 호출 중 0회.** 오라클이 3개 프레임에서 **유일한 정답**으로 지목한
+   행동인데 한 번도 산출되지 않는다. 프롬프트·카메라·반전 어느 조건에서도.
+5. **라벨만으로는 실행할 수 없다.** 같은 정답 라벨이 크기(지속 스텝)에 따라 성공/실패가 갈리고,
+   그 창이 좁으며 프레임마다 다르다.
+6. **질문을 분해하면 좌우 비대칭이 사라진다.** 지각(어느 쪽에 있나) 99%, 방향(어디로 가야 하나)
+   **100%**, 둘 다 좌우 대칭. 잃는 지점은 지각도 방향 변환도 아니라 **8개 중 축을 고르는 단계**다.
+7. **reasoning을 켜면 좌우가 71/72가 된다** (문구 3종 × 24장, `direct`는 58/72). 2단계 구조만 쓴
+   대조군은 72 인스턴스 전부 기준선과 답이 동일하므로 개선은 thinking 자체의 효과이고, 회귀는
+   0이며, 문구 민감성도 같이 눌린다(`direct` 21/18/19 → `think` 24/23/24). 토큰 비용 약 75배.
+   6·7번이 이 파일럿에서 처방으로 이어지는 유일한 결과다 — 단, 둘 다 lateral 축에 한한다.
+   `gripper_closed_early`는 어느 쪽으로도 풀리지 않았다.
+8. **실패 예측은 lead time이 아니라 축의 문제다** (3단계). 실패 직전 -20/-10/-5/-1 스텝에서 결과를
+   예측하게 하면 `close_too_high`가 세 조건 합쳐 **0/36**, `gripper_closed_early`가 5/36, lateral이
+   41/48이다. reasoning 조건의 참양성 13개가 **전부 lateral**이라 recall이 축 하나의 상한에 묶인다.
+9. **그 두 축의 원인이 서로 다르다.** 물리는 둘 다 안다(이미지 없이 문장으로 물으면 12/12).
+   그리퍼축은 **지각 문제**다 — agentview 2/12 vs 손목 6~8/12(짝지어 p=0.0018)이고, 값을 말로
+   건네도 0→8/12로 회복된다. 두 경로가 같은 구멍을 독립적으로 메운다.
+   수직축은 **한 프레임으로 결정되지 않는 라벨**이다. 높이를 읽고(12/12 ABOVE) 물리도 아는데
+   사실을 쥐여줘도 0/12다. 실패 프레임(8.5 cm)이 짝지은 성공 프레임(10.5 cm)보다 **더 낮아서**,
+   상태만으로는 구별이 원리적으로 불가능하다. 필요한 건 프롬프트나 카메라가 아니라 **시간 정보**다.
+10. **청크로 주면 나아지는데, 나아지는 쪽이 예상과 다르다.** 3프레임(stride 10, 창 20步)을
+    시간순으로 주면 전체 정확도가 오르고 단조 lead-time 곡선이 나온다. 결함당 30 에피소드로
+    재현하면 **둘 다 확립된다**: `close_too_high` recall 10/120 → 36/120(프레임 p=2.4e-5,
+    에피소드 7/30 → 22/30 p=7.3e-4)이고 오경보 53/240 → 11/240(전체 짝지어 109 고침 /
+    32 깨뜨림, p=5.0e-11). 이득은 **창이 20步일 때만** 나오고(세 표본 크기에서 재현), 창이 잘린
+    t-20에서는 정확히 0이다. `gripper_closed_early`는 미해결(p=0.21) — 그건 한 프레임으로도
+    식별되는 결함이라 일관된다. 사고 과정이 "세 프레임 사이에 움직임이 거의 없다"를 근거로 든다.
+    상태 문장 주입과 성능은 비슷하지만 그쪽은 시뮬레이터 참값이 필요하고 청크는 카메라만 있으면
+    된다 — **배포 가능한 쪽은 청크다.**
+
+---
+
+# 1단계 — 출력 패턴 관찰
+
+## 설정
+
+| 항목 | 값 | 근거 |
+|---|---|---|
+| 환경 | robosuite `Lift` / Panda / `OSC_POSE` | 중범님 `fasi/envs/robosuite_env.py:92-107` kwargs 재작성 |
+| action | 7-D `[dx,dy,dz,drx,dry,drz,grip]`, `control_delta=true` | `robosuite/controllers/config/osc_pose.json` |
+| 정책 | 자체 scripted 4단계 P 제어기 (hover → descend → close → lift) | 이번 파일럿 전용 |
+| 카메라 | `agentview` 256px | `table_arena.xml:47` |
+| 모델 | 원격 `gemma4` = `google/gemma-4-31b-it`, vLLM 0.23.0 | `/v1/models`, `/version` 조회 |
+| 출력 제약 | `structured_outputs.choice` | 아래 참고 |
+
+실행: conda `fasi` (robosuite 1.4.1 / mujoco 3.8.1), `export MUJOCO_GL=egl`.
+
+### 카메라 축 매핑 (카메라 포즈에서 계산)
+
+pos `(0.5, 0, 1.35)`, 시선 `(-0.708, 0, -0.706)`.
+
+```
+world +y → 이미지 오른쪽 (계수 1.000)   world +z → 위쪽 (0.708)
+world +x → 아래(-0.706) + 카메라 쪽 깊이(+0.708)
+```
+
+**lateral 실패를 X가 아니라 Y축으로 주입한 이유.** X축은 이 카메라에서 UP/DOWN과 시각적으로
+뒤섞여, 오답인지 이미지가 그 정보를 못 담는지 구분할 수 없다.
+
+## 실패 장면 생성
+
+교정 방향이 **서로 다른 축**(수평 / 수직 / 그리퍼)을 요구하도록 유형을 골랐다. 셋 다 MOVE_DOWN을
+요구하면 "이미지가 다르면 선택도 달라지는가"를 관찰할 수 없다.
+
+| failure_type | 주입 | capture 시점 원래 행동 | 참조 correction | 장수 |
+|---|---|---|---|---|
+| `lateral_offset_y_pos` | 접근 목표 `y += +0.08` | OPEN_GRIPPER | MOVE_LEFT | 2 |
+| `lateral_offset_y_neg` | 접근 목표 `y += -0.08` | OPEN_GRIPPER | MOVE_RIGHT | 2 |
+| `close_too_high` | 큐브 위 0.08 m에서 하강 중단 후 닫음 | OPEN_GRIPPER | MOVE_DOWN | 3 |
+| `gripper_closed_early` | 그리퍼를 닫은 채 하강 → 큐브를 침 | MOVE_DOWN | OPEN_GRIPPER | 3 |
+
+**"실패 직전"** = `t_commit − 1`. `t_commit`은 되돌릴 수 없게 되는 스텝.
+
+**실패는 가정하지 않는다.** 끝까지 돌려 robosuite 원본 `Lift._check_success()`가 False일 때만
+저장한다. **인과성도 매 실행 확인한다** — 같은 컨트롤러에서 결함만 빼면 3/3 성공. 0/3이면
+수집한 건 "주입한 실패"가 아니라 망가진 컨트롤러이므로 스크립트가 경고한다.
+
+## 결과
+
+### 출력 제약 — `guided_choice`는 조용히 무시된다
+
+| 방식 | 결과 |
+|---|---|
+| `{"structured_outputs": {"choice": [...]}}` | 정확히 1개 라벨, `finish_reason=stop` |
+| `{"guided_choice": [...]}` | **무시됨** → 자유문장 |
+
+400을 내지 않으므로 제약이 걸린 줄 알고 자유문장을 받게 된다. 코드는 전자를 쓰고, 그럼에도
+응답을 후보 목록과 대조해 `INVALID`/`PARSE_ERROR`로 기록한다.
+
+vision 입력 검증: 이미지를 준 요청은 좌상단 원 색을 맞혔고(`'Red'`), 대조군(이미지 없이 같은
+질문)은 "이미지를 달라"고 답했다 — 추측이 아니라 실제로 보고 있다.
+
+### 프롬프트 민감성 (결과가 아니라 계측기 보정)
+
+| 조작 | 답이 바뀐 이미지 |
+|---|---|
+| 프롬프트 **본문**의 라벨 나열 순서 | **5/10** |
+| `structured_outputs.choice`의 순서 | **0/10** |
+
+앵커는 API 제약이 아니라 프롬프트 텍스트다. 그리고 **본문에 후보를 다시 나열하면 나빠진다**
+(지각 프로브 ablation, 손목 6장):
+
+| 프롬프트 | 정답 |
+|---|---|
+| 맨 질문만 | 6/6 |
+| 맨 질문 + 시스템 프롬프트 | 6/6 |
+| 서두 문장 + 질문 | 5/6 |
+| 서두 + 질문 + `"Answer with exactly one word: OPEN or CLOSED"` | **3/6** (전부 OPEN) |
+
+### 결론이 안 난 것: 지각 vs 추론
+
+맨 프롬프트로 그리퍼 개폐를 물으면 **손목 10/10, agentview 9/10**이다(상수 답으로는 최대 7/10).
+그런데 3변형 robustness에서는 **19/30, 만장일치 0/10**이고, 한 변형은 10장 전부 OPEN, 다른 변형은
+전부 CLOSED로 붕괴한다. → "정렬된 문구에서는 읽을 수 있다"까지만 말할 수 있다.
+
+**정정 2026-09-18.** 이 절은 원래 "두 카메라 모두 10/10"이라고 적혀 있었다. 결과 파일을 다시
+집계하니 agentview(`run_D_agentview_v2`)는 **9/10**이고 닫힌 프레임 **2/3**이다 — ep07을 OPEN이라고
+답했다. 10/10은 손목(`run_E_wrist_v2`)뿐이고 거기서만 닫힌 프레임 3/3이다. 3단계에서 닫힌 프레임을
+3장에서 12장으로 늘려 다시 재니 **agentview 2/12, 손목 6~8/12**로 갈렸다. n=3은 그냥 작았다.
+
+### 손목 카메라는 action 태스크를 무너뜨린다 (지각에는 필요하다)
+
+action 태스크는 손목에서 오히려 무너진다(`CLOSE_GRIPPER` 8/10, 구분되는 라벨 2개). **답은 world
+frame이 아니라 image frame으로 나온다** — 같은 실패가 agentview에서 `MOVE_LEFT`, 손목에서
+`MOVE_RIGHT`.
+
+**정정 2026-09-18.** 이 절의 제목은 원래 "손목 카메라는 도움이 안 된다"였고 근거로 "지각에는
+불필요했고(agentview로 이미 10/10)"를 들었다. 그 전제가 틀렸다(위 정정 참고). 3단계에서 같은 80개
+상태를 두 시점으로 렌더링해 짝지어 재니 **그리퍼 개폐 지각은 손목에서만 된다**: 정렬된 두 문구를
+합쳐 손목이 고친 것 16 / 깨뜨린 것 1, p=0.0003. 진짜 맞붙은 12장만 보면 손목만 맞춘 것 13 /
+agentview만 맞춘 것 1, p=0.0018. action 태스크에 대한 위 결론은 그대로 유효하다 — **카메라 선택은
+태스크별로 갈린다.**
+
+## 1단계 한계
+
+이미지 10장, 유형당 2~3장, temperature 0. 방향을 보는 용도이지 보고할 통계가 아니다.
+`reference_correction`은 이 시점에서 ground truth가 아니었다(2단계에서 사후 검증됨).
+
+**1단계 프레임(`images/`, `images_wrist/`)은 재현되지 않는다.** `hard_reset=False`로 수집돼
+결과가 그 env에서 앞서 무엇이 돌았는지에 의존한다 — 아래 2단계 정정 이력 참고.
+
+---
+
+# 2단계 — 시뮬레이터 오라클
+
+## 질문
+
+1단계는 사람이 붙인 참조 라벨과만 대조했다. 해법은 더 나은 정답 라벨을 만드는 게 아니라,
+**행동이 8개뿐이고 시뮬레이터가 결정적이니 전수 조사**하는 것이다.
+
+## 분기 프로토콜
+
+```
+t_commit-1 상태 복원  (Gemma가 본 이미지의 바로 그 상태)
+→ 이산 행동 하나를 k스텝 실행
+→ 그리퍼 닫기 (CLOSE_HOLD=30)
+→ 들어올리기 (LIFT_STEPS=60)
+→ robosuite 원본 _check_success()
+```
+
+**분기 후 nominal 컨트롤러에 넘기는 설계는 기각했다.** 처음부터 다시 접근하므로 `lateral`에서는
+어떤 행동을 넣든 성공해서 8개가 구분되지 않는다. 곧바로 close+lift가 행동을 분리시키고, 원래
+질문("이 순간 이 한 수를 넣었으면")과도 맞는다.
+
+**`NO_CHANGE` 대조군**(교정 없이 바로 close+lift)이 필수다. 이게 실패해야 분기가 원래 실패를
+재현한 것이고 restore 정확성 검증도 겸한다. → **모든 실행에서 0/10 성공.**
+
+## 전제 조건: 결정적 재현
+
+`hard_reset`을 확인하는 데서 갈렸다. 같은 (spec, seed)를 서로 다른 이력 뒤에 실행:
+
+| | 이력 없음 | nominal 3회 먼저 | 다른 결함 먼저 |
+|---|---|---|---|
+| `hard_reset=False` | t=45, z=0.82019 | t=46, z=0.82174 | t=46, z=0.82174 |
+| `hard_reset=True` | **t=48, z=0.82110** | **t=48, z=0.82110** | **t=48, z=0.82110** |
+
+soft reset은 solver 상태를 에피소드 사이로 넘긴다. **기본값을 True로 바꾸고** `images_r2/`에
+재수집했다. 검증: 수집 때와 **반대 순서로, nominal 체크 없이** 재생 → `timestep`·`eef_pos`·
+`cube_pos`·`original_action`·`cube_z` 전부 10/10 일치.
+
+## 오라클 결과 (ORACLE3, 3994 rollout)
+
+**프레임마다 유효한 첫 행동이 정확히 하나씩이다.**
+
+| 프레임 | 유효한 첫 행동 (전수) | 복구 시퀀스 예 |
+|---|---|---|
+| ep00·01 `lateral_y_pos` | `MOVE_LEFT` | MOVE_LEFT(k=14) → MOVE_DOWN(k=3) |
+| ep02·03 `lateral_y_neg` | `MOVE_RIGHT` | MOVE_RIGHT(k=14) → MOVE_DOWN(k=3) |
+| ep04·05·06 `close_too_high` | `MOVE_DOWN` | MOVE_DOWN(k=5) 단독 |
+| ep07·08·09 `gripper_closed_early` | `OPEN_GRIPPER` | OPEN_GRIPPER(k=10) → MOVE_DOWN(k=3) |
+
+`reference_correction`이 **10/10 프레임에서 실제로 복구시킨다.** 1단계의 사람 추측이 사후에
+전부 맞았다 — 다만 이건 확인이지, 처음부터 신뢰할 근거가 있었던 건 아니다.
+
+**한 수로 되는 건 3/10뿐이다.** 나머지는 2단계 시퀀스가 필요하다. 한 축을 고치면 다른 축이
+틀어지기 때문이다 — `MOVE_LEFT`로 lateral 오차를 교정하는 동안 eef가 z로 0.019 m 떠올라
+잡을 수 없는 높이가 된다.
+
+**크기가 결정적이다.** 같은 정답 라벨이 k에 따라 갈리고 창이 좁다:
+
+```
+ep00  k1=12 실패 · 14 성공
+ep01  k1=16 실패 · 18~24 성공 · 28 실패
+ep03  k1=12 실패 · 14~18 성공 · 20 실패
+```
+
+Gemma는 라벨만 내놓으므로, 그대로 guidance에 넘기면 **미결정 상태**로 남는다.
+
+## Gemma 대조 (`images_r2`, 5변형 × 10장)
+
+| ep | 오라클 | Gemma 다수결 | 5변형 중 정답 |
+|---|---|---|---|
+| 00·01 `lateral_y_pos` | MOVE_LEFT | **MOVE_LEFT** ✓ | 5/5, 5/5 |
+| 02·03 `lateral_y_neg` | MOVE_RIGHT | MOVE_FORWARD ✗ | 1/5, 2/5 |
+| 04·05·06 `close_too_high` | MOVE_DOWN | **MOVE_DOWN** ✓ | 4/5, 5/5, 4/5 |
+| 07·08 `gripper_closed_early` | OPEN_GRIPPER | CLOSE_GRIPPER ✗ | 0/5 |
+| 09 `gripper_closed_early` | OPEN_GRIPPER | MOVE_DOWN ✗ | 0/5 |
+
+**다수결 5/10, 호출 단위 26/50 (52%), 우연 기준 12.5%.**
+
+## 좌우 비대칭 (균형 설계, 32 프레임-인스턴스 / 160 호출)
+
+r2의 10장에서 `lateral_y_pos`는 다 맞고 `lateral_y_neg`는 거의 틀렸다. 좌우 반전이 이걸 가른다 —
+**반전은 손대칭 말고는 아무것도 바꾸지 않기** 때문이다(가림, 팔 자세, 오프셋 크기, 조명 전부 보존.
+큐브 빨강 픽셀 수가 원본과 반전에서 정확히 같은 것으로 확인: 448/448, 215/215, 347/347, 247/247).
+
+먼저 기하를 재보면 lateral 네 장이 사실상 동일하다 — gripper→cube 오프셋의 가로 성분이 ±0.083 m로
+세로의 8~11배다. **부호만 다르다.** 어느 쪽도 기하적으로 더 어렵지 않다. 큐브 가림도 설명이
+안 된다(성공한 프레임이 빨강 픽셀 215개로 가장 적고, 실패한 프레임이 347개다).
+
+`lateral_y_pos` / `lateral_y_neg`를 각 8장씩 모아 원본·반전 양쪽을 돌린 균형 설계:
+
+| 그리퍼 위치 | 이미지 | 프레임 | 다수결 | 호출 |
+|---|---|---|---|---|
+| 이미지 **왼쪽** (정답 MOVE_RIGHT) | 원본 | 8 | 4/8 | 25/40 (62%) |
+| 이미지 **왼쪽** (정답 MOVE_RIGHT) | 반전 | 8 | 6/8 | 33/40 (82%) |
+| 이미지 **오른쪽** (정답 MOVE_LEFT) | 원본 | 8 | 8/8 | 40/40 (100%) |
+| 이미지 **오른쪽** (정답 MOVE_LEFT) | 반전 | 8 | 8/8 | 38/40 (95%) |
+
+주변합: **그리퍼 왼쪽 72% vs 오른쪽 98% (26%p 차)**, 원본 81% vs 반전 89% (8%p, 그나마 칸마다
+부호가 반대라 일관된 주효과가 아니다). **가른 것은 그리퍼가 이미지의 어느 쪽에 있느냐다.**
+
+### 다만 좌우를 혼동하는 것은 아니다
+
+오답이 어디로 가는지가 해석을 바꾼다.
+
+| 정답 | 정답률 | 오답 행선지 |
+|---|---|---|
+| `MOVE_RIGHT` (그리퍼 왼쪽) | 58/80 (72%) | MOVE_FORWARD 16, MOVE_DOWN 4, MOVE_BACKWARD 1, CLOSE_GRIPPER 1 |
+| `MOVE_LEFT` (그리퍼 오른쪽) | 78/80 (98%) | MOVE_FORWARD 2 |
+
+**정답이 RIGHT일 때 `MOVE_LEFT`로 답한 경우가 160회 중 0회다.** 좌우 부호를 틀린 적이 한 번도
+없다. 출력 토큰이 LEFT로 쏠리는 편향이라면 오답이 LEFT로 갔어야 하는데 그렇지 않다. 실제로는
+**가로축 판단 자체를 포기한다.**
+
+정리하면: **공간 grounding은 작동할 때는 정확하고, 한 방향에서 덜 자주 작동한다.** 좌우를 헷갈리는
+게 아니라 한쪽에서 확신을 덜 갖는다.
+
+### 물러나는 곳은 깊이축이 아니다 (6-어휘 대조)
+
+오답이 `MOVE_FORWARD`로 간 것을 보고, 이 카메라에서 깊이축이 UP/DOWN과 뒤섞인다는 1단계 메모와
+엮어 "깊이축이 애매해서 그쪽으로 도피한다"고 해석했다. **틀렸다.** `MOVE_FORWARD`/`MOVE_BACKWARD`를
+뺀 6-어휘로 같은 24장을 다시 돌리면:
+
+| 라벨 | 8-어휘 | 6-어휘 |
+|---|---|---|
+| `MOVE_RIGHT` (정답) | 45/60 (75%) | **46/60 (77%)** |
+| `MOVE_DOWN` | 2 (3%) | **14 (23%)** |
+| `MOVE_FORWARD` | 11 (18%) | 사용 불가 |
+
+도피처였다면 FORWARD를 막았을 때 정답으로 돌아왔어야 하는데, 표가 **그대로 `MOVE_DOWN`으로
+옮겨갔고 정확도는 불변이다**(75% → 77%). 정답이 `MOVE_LEFT`인 쪽도 97% → 97%로 변화 없다.
+
+즉 `MOVE_FORWARD`는 "깊이 방향으로 보인다"가 아니라 **"가로축이 아닌 아무 라벨"**이었다. 남는
+해석은 이 프레임들의 1/4에서 모델이 가로 오프셋을 문제로 인식하지 못하고 **과제 사전지식(잡으려면
+내려간다)으로 되돌아간다**는 것이다. `close_too_high`에서 `MOVE_DOWN`이 잘 나온 것도 같은 사전지식이
+정답과 겹쳤기 때문일 수 있다.
+
+**어휘를 줄여도 정확도는 개선되지 않는다.** 실패가 어휘 문제가 아니므로 후보 목록을 손보는
+방식으로는 해결되지 않는다.
+
+### 그럼 어디서 잃는가 — 지각 / 방향 / 축 선택 분해
+
+같은 24장에 대해 질문을 둘로 쪼개 물었다. 좌우 프레임이 12:12로 균형이라 **상수 답으로 붕괴하면
+정확히 50%**가 나오므로, 1단계 그리퍼 프로브에서 겪은 붕괴를 여기서는 바로 잡아낼 수 있다.
+
+| 질문 | 전체 | 그리퍼 왼쪽 | 그리퍼 오른쪽 | 응답 분포 |
+|---|---|---|---|---|
+| **[지각]** 그리퍼가 큐브의 어느 쪽인가 | 71/72 (99%) | 36/36 (100%) | 35/36 (97%) | LEFT 37 / RIGHT 35 |
+| **[행동]** 정렬하려면 어느 쪽으로 가야 하나 | **72/72 (100%)** | 36/36 (100%) | 36/36 (100%) | 36 / 36 |
+| [참고] 8-어휘 본 과제 | — | **72%** | 98% | — |
+
+- **지각은 온전하다** — 좌우 대칭으로 99%
+- **관계를 방향으로 바꾸는 것도 온전하다** — 좌우 대칭으로 100%
+- **비대칭은 8-어휘 과제에서만 나타난다**
+
+따라서 잃는 지점은 **축 선택**이다. "지금 문제가 가로축인가"를 여덟 후보 중에서 판단하는 단계이고,
+그 단계만 방향에 따라 흔들린다. **정보는 모델 안에 있는데 한 번에 하나를 고르라는 형식이 그것을
+버린다.**
+
+이 파일럿에서 처음으로 나온 처방 가능한 결과다: 8개 중 하나를 묻는 대신 질문을 분해하면(어느 축인가
+→ 그 축에서 어느 방향인가) 좌우 성분은 100%로 복구된다. `gripper_closed_early`의 확정적 오답도
+같은 방식으로 분해했을 때 살아나는지는 **아직 확인하지 않았다.**
+
+### reasoning을 켜면 좌우가 100%가 된다 (대조군 포함, 24장 × 3조건)
+
+축 선택이 병목이라면 추론 패스가 그 단계를 대신할 수 있다. 서버에서 두 가지가 걸린다.
+
+* **`structured_outputs`와 thinking은 공존하지 않는다.** 둘 다 보내면 사고 과정이 전혀 나오지
+  않는데 답은 바뀐다(probe에서 제약만: `MOVE_LEFT` → 제약+thinking: `OPEN_GRIPPER`). 유효한 라벨이
+  돌아오므로 켠 줄 알기 쉽다 — `guided_choice` 무시, 본문 라벨 앵커링에 이은 세 번째 조용한 함정.
+  그래서 2단계가 필요하다: ① 제약 없이 thinking → ② 그 사고를 문맥으로 주고 제약된 선택.
+* **2단계 자체가 교란이다.** 턴이 늘고 어시스턴트 메시지가 붙고 최종 질문이 달라진다. thinking을
+  끈 채로 같은 2단계를 돌리는 `twostage_nothink`가 대조군이다.
+
+좌우 균형 24장(왼쪽 12 / 오른쪽 12) × 3조건 × 문구 3종 = 216 조합. 문구는 `direct`가 **가장 많이
+틀린 두 개**(`labels_reversed`, `paraphrase`)를 골랐다 — `labels_omitted`/`labels_shuffled`는
+`direct`도 만점이라 개선 여지를 보여주지 못한다.
+
+| 조건 | canonical | labels_reversed | paraphrase | 합계 |
+|---|---|---|---|---|
+| `direct` (제약만) | 21/24 | 18/24 | 19/24 | **58/72** |
+| `twostage_nothink` (대조군) | 21/24 | 18/24 | 19/24 | **58/72** |
+| `twostage_think` | **24/24** | 23/24 | **24/24** | **71/72** |
+
+어려운 쪽(그리퍼 왼쪽, 정답 `MOVE_RIGHT`)만 떼면 `direct` 23/36 (64%) → `twostage_think`
+**35/36 (97%)**. 쉬운 쪽은 35/36 → **36/36**으로, 깎이기는커녕 하나 회복된다.
+
+- **대조군이 세 문구 모두에서 `direct`와 답이 글자 그대로 같다** (72 인스턴스 전부). 2단계 구조
+  자체는 아무 효과가 없으므로 개선은 thinking의 효과다.
+- **회귀 0.** 이미 맞던 프레임이 하나도 깨지지 않았다 — 실패한 프레임만 보고 판정하면 놓쳤을 부분.
+- **문구 민감성까지 눌린다.** `direct`는 문구에 따라 21/18/19로 흔들리는데 `think`는 24/23/24다.
+- 어려운 쪽 오답 분포: `{MOVE_RIGHT 14, MOVE_FORWARD 7, MOVE_DOWN 2, MOVE_BACKWARD 1}` →
+  `{MOVE_RIGHT 23, MOVE_FORWARD 1}`.
+- thinking이 실제로 켜진 것도 확인했다 — 72/72 응답이 `thought` 접두로 시작하고 75~998토큰.
+
+사고 과정에 기제가 그대로 보인다 — *"the gripper is not centered over the cube; it's too far to the
+left. To center the gripper over the cube, the robot needs to move to the right."* 위치를 먼저
+말로 확정한 뒤 방향을 끌어낸다. 분해 프로브가 손으로 시킨 그 단계를 모델이 스스로 밟는 셈이다.
+
+**비용은 토큰 기준 약 75배**다(사고 중앙값 226~371토큰 vs `direct` 4토큰). 벽시계 시간으로 재면
+같은 토큰 수인데도 실행마다 프레임당 5초~31초로 갈렸다 — 서버 부하에 좌우되므로 시간 수치는
+근거로 쓰지 않는 게 낫다.
+
+**남은 한계는 lateral 축에 한정된다는 것뿐이다.** `gripper_closed_early`는 4장 예비에서 reasoning을
+켜도 여전히 오답이었다(`CLOSE_GRIPPER` → `MOVE_DOWN`, 둘 다 틀림). 축 선택은 추론으로 풀리는데
+그리퍼 축의 확정적 오답은 풀리지 않는다.
+
+프롬프트 일치율도 같은 축을 따른다 — 그리퍼가 오른쪽인 세트는 0.93~1.00, 왼쪽인 세트는 0.77~0.87.
+초기에 "반전 이미지가 유난히 안정적"으로 보였던 것은 반전 때문이 아니라 그 세트의 그리퍼가
+오른쪽에 있었기 때문이다.
+
+---
+
+## 공동연구 관점
+
+신호가 세 등급으로 갈린다.
+
+1. **믿을 만함** — 수직 교정(`close_too_high` → MOVE_DOWN, 다수결 3/3)과 좌우 교정 중 한쪽 방향
+2. **약함** — 그리퍼가 왼쪽에 있을 때의 좌우 교정 (2/4)
+3. **일관되게 틀림** — 그리퍼가 이미 닫힌 경우. 오라클의 유일한 정답 `OPEN_GRIPPER`가
+   **100회 호출 중 0회**
+
+3번이 Diffusion 쪽 병목과 같은 모양이다 — "후보 집합에 복구 가능한 trajectory가 없으면 아무리
+잘 골라도 복구 못 한다." VLM 제안 분포에도 같은 coverage 구멍이 있고, 하필 정답과 겹친다.
+
+그리고 라벨은 **필요조건이지 충분조건이 아니다.** 크기까지 정해주지 않으면 실행할 수 없다.
+
+## 하지 말 것
+
+**self-consistency로 개입 여부를 게이팅하는 것.** 가장 위험한 오답(`CLOSE_GRIPPER`)이 일치율이
+제일 높아서 어떤 신뢰도 게이트든 통과한다. "불필요한 개입이 성공하던 episode를 망친다"는 기존
+관찰과 겹치면 역효과다.
+
+---
+
+# 3단계 — 실패 예측 lead time, 그리고 못 보는 축
+
+**2026-09-18.** 질문은 "실패하기 몇 스텝 전부터 VLM이 실패를 알아보는가"였다. 답은 **lead time이
+거의 상관없고, 어느 결함이냐가 거의 전부**였다. 그래서 절의 절반은 "못 보는 축"을 파는 데 쓴다.
+
+## 프레임 세트 (`collect_leadtime.py`)
+
+실패 rollout 10개 + 성공 rollout 10개(nominal 컨트롤러, seed 0~9, 10/10 성공). 실패 rollout은
+`t_fail`에서 -20 / -10 / -5 / -1 스텝의 관측 이미지를, 성공 rollout은 **진행률이 같은 시점**을
+짝지어 저장한다. 실패 40 + 성공 40 = 80장이고 lead별로 10+10이라 **상수 답은 정확히 50%**가 된다.
+
+`t_fail = t_commit`으로 잡았다. 결함이 되돌릴 수 없게 되는 스텝이고, 2단계가 분기한 지점이다.
+"리프트가 빈 채로 끝나는 스텝"을 쓰면 t_commit보다 ~90스텝 뒤라 -1 프레임이 *그리퍼는 공중, 큐브는
+테이블*이 되어 문제가 자명해진다.
+
+컨트롤러·환경 kwargs·상수는 `collect_failures`에서 import한다. `--verify`가 같은 (spec, seed)로
+`collect_failures.run_episode`를 다시 돌려 `t_commit` 일치를 확인하고, 10/10 일치했다(f00이 48로
+1단계 기록과 같다).
+
+## 결과 (`leadtime_probe.py`, 80장 × 3조건 = 400 호출)
+
+| 조건 | TP | FN | FP | TN | 정확도 | recall | FPR | 정밀도 |
+|---|---|---|---|---|---|---|---|---|
+| 항상 SUCCESS | 0 | 40 | 0 | 40 | 50% | 0% | 0% | — |
+| `direct` | 17 | 23 | 10 | 30 | 59% | 42% | 25% | 63% |
+| `twostage_nothink` | 18 | 22 | 21 | 19 | **46%** | 45% | 52% | 46% |
+| `twostage_think` | 13 | 27 | **0** | 40 | 66% | 32% | **0%** | **100%** |
+
+- **`twostage_think`는 오경보가 0이다.** FAILURE라고 13번 말했고 13번 다 맞았다. 개입 게이트로는
+  이쪽이 안전하다 — `direct`를 게이트로 쓰면 성공하던 40개 중 10개에 불필요하게 개입한다.
+- 다만 66%를 성능으로 읽으면 안 된다. TN 40개는 "항상 SUCCESS"라도 얻고, 기준선 위로 얻은 건 TP
+  13개뿐이다. FP 0과 recall 32%는 같은 원인의 양면이다(답 분포 SUCCESS 67 / FAILURE 13).
+- **대조군이 이번에는 `direct`와 다르다.** 2단계 reasoning 실험에서는 `twostage_nothink`가 72
+  인스턴스 전부 `direct`와 글자 그대로 같아서 개선을 thinking에 귀속할 수 있었다. 여기서는 2단계
+  구조만으로 59% → 46%로 **유의하게 악화**된다(McNemar 1 개선 / 11 악화, p=0.006). 그래서
+  `think` vs `direct`는 +7pt에 **p=0.180 — 미해결**이다. 지난번 귀속 논리를 그대로 쓸 수 없다.
+
+## lead time이 아니라 결함 유형이다
+
+| 조건 | lateral_y_pos | lateral_y_neg | close_too_high | gripper_closed_early |
+|---|---|---|---|---|
+| `direct` | 7/8 | 8/8 | **0/12** | 2/12 |
+| `twostage_nothink` | 7/8 | 8/8 | **0/12** | 3/12 |
+| `twostage_think` | 7/8 | 6/8 | **0/12** | 0/12 |
+
+`close_too_high`는 세 조건 합쳐 **0/36**, `gripper_closed_early`는 5/36, lateral은 41/48이다.
+그리고 `twostage_think`의 **TP 13개가 전부 lateral 프레임**이다.
+
+| lead | 검출가능(lateral) | `direct` | `nothink` | `think` |
+|---|---|---|---|---|
+| t-20 | 4/10 | 3/10 | 3/10 | 2/10 |
+| t-10 | 4/10 | 4/10 | 5/10 | 3/10 |
+| t-5 | 4/10 | 4/10 | 4/10 | **4/10** |
+| t-1 | 4/10 | 6/10 | 6/10 | **4/10** |
+
+lateral만 보이니 **recall 상한이 lead마다 4/10**이고, `think`는 t-5·t-1에서 정확히 거기에 닿는다.
+recall이 32%에서 멈추는 건 판단력이 아니라 **볼 수 있는 축이 하나**이기 때문이다. 정확도의 lead
+기울기(`think` 60→65→70→70%)도 대부분 lateral이 t-10부터 4/4로 포화하는 것이다. 나머지 두 축은
+어느 거리에서도 0이므로 lead time과 무관하다. **"몇 스텝 전부터 보이나"의 답은 축마다 다르다.**
+
+thinking이 기제를 그대로 보여준다. 8.5 cm 떠 있는 프레임에서 *"the gripper is very close to the
+cube, ready to close"*, 손가락이 맞붙은 프레임에서 *"the fingers are open"*, lateral 프레임에서는
+*"the center of the gripper is not aligned with the center of the cube"*. **틀린 판단이 아니라 틀린
+사실 단언이다.**
+
+## 왜 못 보는가 — 물리 / 지각 / 불러오기 분해
+
+살아남는 설명이 셋이고 처방이 다르다. A 물리를 모른다 / B 이미지에서 안 보인다 / C 보이는데 안
+불러온다. (미리 적어둔다: 이 셋으로 수직축을 설명하려던 시도는 다음 절에서 기각된다. 네 번째가
+있었다 — 라벨이 애초에 한 프레임의 함수가 아닌 경우.)
+
+**A는 기각됐다** (`fact_probe.py --probe text`, 이미지 없이 기하만 문장으로, 6문항 × 2조건).
+
+| | too_high_fail | too_high_ok | closed_fail | closed_ok | lateral_fail | lateral_ok |
+|---|---|---|---|---|---|---|
+| `direct` | FAILURE | SUCCESS | FAILURE | SUCCESS | FAILURE | SUCCESS |
+| `twostage_think` | FAILURE | SUCCESS | FAILURE | SUCCESS | FAILURE | SUCCESS |
+
+**12/12, 세 결함 모두 fail/control 짝이 다 맞았다.** 8 cm 위에서 닫으면 실패하는 것, 닫은 채로
+내려가면 잡을 수 없는 것을 정확히 안다.
+
+**높이는 직접 물으면 읽는다** (`--task height`, 여유대 채점: ≤0.025 m LEVEL, ≥0.06 m ABOVE, 사이는
+채점 제외).
+
+| 문구 | ABOVE | LEVEL | 정확도 | 항상ABOVE | 이득 |
+|---|---|---|---|---|---|
+| canonical | 40/40 | 8/31 | 68% | 56% | +11% |
+| swapped | 40/40 | 11/31 | 72% | 56% | +15% |
+| paraphrase | 0/40 | 31/31 | 44% | 56% | −13% |
+
+답이 진짜 높이에 의존한다(canonical Fisher 양측 p=0.00074, swapped p=0.000033). 결과 라벨이 상수인
+nominal만 떼도 69% vs 기준선 51%다. 그리고 **`close_too_high` 12장을 canonical·swapped 모두 12/12로
+ABOVE라고 읽는다** — 본 과제에서 0/36이었던 그 프레임들이다. 단 ABOVE 쪽으로 크게 편향돼 있어
+(진짜 LEVEL 31장 중 23장을 ABOVE라고 한다) "높이를 잘 본다"가 아니라 "높이가 답에 반영된다"까지다.
+
+**그리퍼 개폐는 카메라에 달렸다** (`--task gripper_state`, 같은 80개 상태를 두 시점으로).
+
+| 카메라 | 문구 | CLOSED | OPEN | 정확도 | 항상OPEN | 이득 |
+|---|---|---|---|---|---|---|
+| agentview | canonical | 2/12 | 67/68 | 86% | 85% | +1% |
+| agentview | swapped | 0/12 | 66/68 | 82% | 85% | −3% |
+| 손목 | canonical | 6/12 | 68/68 | 92% | 85% | +8% |
+| 손목 | swapped | 8/12 | 68/68 | 95% | 85% | +10% |
+| (둘 다) | paraphrase | 12/12 | 0/68 | 15% | 85% | −70% |
+
+agentview는 항상-OPEN과 구분되지 않는다(canonical Fisher p=0.057). 손목은 구분되고
+(p=0.0000031) **오경보가 0이라 정밀도 100%**다. 짝지어 보면 정렬된 두 문구 합쳐 손목이 고친 것 16 /
+깨뜨린 것 1 (p=0.0003), 진짜 맞붙은 12장만 보면 13 / 1 (p=0.0018). 거리 효과도 손목에서만 나온다:
+
+| 카메라 | t-20 | t-10 | t-5 | t-1 |
+|---|---|---|---|---|
+| agentview | 0/3 | 1/3 | 1/3 | 0/3 |
+| 손목 | 0/3 | 1/3 | 2/3 | **3/3** |
+
+**손목 뷰는 커밋 순간에 완벽하게 읽고 agentview는 같은 순간에 0/3이다.** 만장일치 프레임도 손목
+6/80이 전부 정답(전부 `gripper_closed_early`)이고, agentview는 1/80이며 그 하나가 오답이다.
+
+## 사실을 건네면 어떻게 되는가 (`--probe fact`, 240 호출)
+
+같은 80 프레임에 기록된 수치로 만든 참인 문장 한 줄을 덧붙이고 결과를 물었다. 문장은 결과를 절대
+명시하지 않는다. 예: *"Measured state of the gripper in this frame: its fingertips are 8.5 cm above
+the top of the cube, and the two fingers are 7.9 cm apart."*
+
+| 조건 | 정확도 | recall | FPR | 짝지은 이동 |
+|---|---|---|---|---|
+| `direct` | 59% → **76%** | 17/40 → 22/40 | 25% → **3%** | 15 고침 / 1 깨뜨림, p=0.001 |
+| `twostage_think` | 66% → **79%** | 13/40 → 23/40 | 0% → **0%** | 11 고침 / 1 깨뜨림, p=0.006 |
+
+결함별 recall(읽어야 하는 행)이 두 축으로 갈린다.
+
+| 결함 | 기준선 → 사실주입 (`direct`) | (`think`) |
+|---|---|---|
+| `gripper_closed_early` | 2/12 → **8/12** | 0/12 → **8/12** |
+| `close_too_high` | 0/12 → **0/12** | 0/12 → **0/12** |
+| lateral (합) | 15/16 → 14/16 | 13/16 → 15/16 |
+
+lateral은 깨지지 않았고(각 조건 1장), 오경보도 늘지 않았다.
+
+**그리퍼축은 회복된다.** lead별로 0/3 → 2/3 → 3/3 → 3/3(t-20/-10/-5/-1)로 거리에 따라 깔끔하게
+오른다. 놓치는 t-20도 변명이 된다 — 11.6 cm 떨어져 있으면 내려가기 전에 손가락을 펼 수 있고,
+사고 전문이 정확히 그렇게 말한다. 이로써 같은 구멍을 **두 경로가 독립적으로 메운다**: 손목 카메라로
+보게 하거나(6~8/12), 값을 말로 건네거나(8/12). 가설 B가 두 번 확인된 셈이다.
+
+**수직축은 회복되지 않는다. 0/12 그대로다.** 그리고 이유가 모델 결함이 아니다.
+
+| 프레임 | 주입된 사실 | 진짜 결과 | 답 |
+|---|---|---|---|
+| `close_too_high` t-1 | 8.5 cm 위, 손가락 7.9 cm 벌어짐 | **실패** | SUCCESS |
+| 짝지은 nominal t-1 | **10.5 cm** 위, 손가락 7.9 cm 벌어짐 | **성공** | SUCCESS |
+
+**실패하는 프레임이 성공하는 프레임보다 더 낮다.** 상태만 놓고 보면 둘은 구별되지 않고, 구별하려면
+"8.5 cm는 실패, 10.5 cm는 성공"을 배워야 하는데 이건 물리와 정반대다. 사고 전문이 그대로 말한다 —
+*"To succeed, the gripper must move down, center itself over the cube, close the fingers, and lift.
+In this specific frame, the gripper is well-aligned vertically..."* 정상적인 하강 중이라고 읽은
+것이고, **그게 맞는 추론이다.** 이 프레임이 실패인 유일한 이유는 컨트롤러가 거기서 멈추고 닫기
+때문이고, 한 장의 이미지는 멈췄다는 것을 담지 못한다.
+
+## 판정
+
+| 축 | 물리 | 지각 | 사실 주입 | 판정 |
+|---|---|---|---|---|
+| lateral | 안다 | 99~100% | 유지 | 정상 |
+| 그리퍼 | 안다 (2/2) | agentview 2/12 / 손목 6~8/12 | **0→8/12** | **지각(카메라) 문제 — 두 경로로 해결됨** |
+| 수직 | 안다 (2/2) | ABOVE 12/12 | **0→0/12** | **한 프레임으로 결정되지 않는 라벨** |
+
+**수직축에 대한 이전 판정("불러오기 실패")은 이 실험이 기각했다.** 모델은 높이를 읽고 물리도 아는데
+사실을 손에 쥐여줘도 못 맞힌다. 남는 설명은 하나다 — **입력이 라벨을 결정하지 않는다.** 그러니
+`close_too_high`의 0/36은 모델의 맹점이 아니라 **답이 없는 질문을 물은 것**이다.
+
+처방도 달라진다. 더 나은 프롬프트나 카메라가 아니라 **시간 정보**가 필요하다: 하강이 멈췄다는 것을
+보이려면 최소 두 프레임이 있어야 하고, 아니면 정책의 의도(지금 닫으려 한다)를 함께 줘야 한다.
+**다음 절이 그 예측을 시험하고 확인한다.**
+그리퍼축은 반대로 한 프레임으로 충분하다 — 맞붙은 손가락은 다음에 무슨 일이 일어나든 4 cm 큐브를
+감쌀 수 없다.
+
+## 한 프레임이 아니라 청크로 주면 (2026-09-21)
+
+위 진단이 맞다면 수직축에 필요한 것은 프롬프트도 카메라도 아니고 **시간**이다. 먼저 서버가 시퀀스를
+읽기는 하는지 쟀다 — `guided_choice`처럼 조용히 무시될 수 있으므로.
+
+| 제시 방식 | 2.3 cm 차이 | 9 cm 차이 |
+|---|---|---|
+| 이미지 2장 | 1/2 | **4/4** |
+| 몽타주 1장 | — | **4/4** |
+
+9 cm 쌍에서는 선택지 순서를 바꿔도 흔들리지 않는다. 다중 이미지는 정상 동작하고, 첫 시도가
+"Nothing changed between the two frames"로 나온 것은 그 쌍의 차이가 2.3 cm였기 때문이다. 능력
+한계이지 배관 문제가 아니다.
+
+창 길이는 재서 골랐다. `close_too_high` 짝의 t-1 이동량:
+
+| 창 | 실패(멈춰 있음) | 성공(하강 중) |
+|---|---|---|
+| 5步 | 0.6 cm | 1.3~2.0 cm |
+| 10步 | 1.7 cm | 4.1~6.2 cm |
+| **20步** | **2.9 cm** | **8.3~8.7 cm** |
+| 30步 | 10.2 cm | 11.6~13.0 cm |
+
+20步에서 두 클래스가 가장 갈리고, 성공 쪽 8.4 cm가 위에서 4/4로 읽힌 크기다. 30步는 창이 하강
+구간까지 닿아 다시 붙는다. 그래서 **3프레임 × stride 10**이다.
+
+### 결과 (`leadtime_probe.py --chunk`, 같은 80개 상태)
+
+| 입력 (`direct`) | 정확도 | recall | FPR |
+|---|---|---|---|
+| 단일 프레임 | 59% | 17/40 | 10/40 |
+| 단일 + 상태 문장 | 76% | 22/40 | 1/40 |
+| **청크 3프레임** | **78%** | **25/40** | 3/40 |
+
+짝지어 보면 청크 vs 단일 프레임은 **19 고침 / 4 깨뜨림, p=0.0026**이고, 청크 vs 상태 문장은
+6 고침 / 5 깨뜨림으로 **p=1.0, 구별되지 않는다.**
+
+| 결함 | `direct` 단일→청크 | `think` 단일→청크 |
+|---|---|---|
+| `close_too_high` | **0/12 → 5/12** | 0/12 → 3/12 |
+| `gripper_closed_early` | 2/12 → 6/12 | 0/12 → 2/12 |
+| `lateral_offset_y_neg` | 8/8 → **6/8** | 6/8 → 6/8 |
+| `lateral_offset_y_pos` | 7/8 → 8/8 | 7/8 → 7/8 |
+
+**사실을 쥐여줘도 0/12였던 `close_too_high`가 5/12가 된다.** 그리고 이 파일럿에서 처음으로 진짜
+lead-time 곡선이 나온다(`direct` recall): t-20 3/10 → t-10 5/10 → t-5 8/10 → t-1 9/10, 정확도로는
+60 → 75 → 85 → 90%. 이전의 기울기는 lateral이 t-10부터 포화하는 것의 그림자였고, 이번에는 실패가
+가까울수록 실제로 잘 보인다.
+
+사고 과정이 설계한 신호를 그대로 쓴다. 맞힌 경우 — *"There is virtually no movement between the
+three frames. The gripper is hovering above the cube but not descending to grasp it."* 틀린 경우는
+같은 2.9 cm를 다르게 읽는다 — *"perhaps slightly lower ... it is moving straight down towards the
+cube."* **틀리는 방식이 해상도 한계와 일치하지 개념 오류가 아니다.** `close_too_high`의 t-20이
+0/3인 것도 그 칸만 창이 15~16步로 잘린 것과 맞물린다(나머지 lead는 전부 20步).
+
+### 에피소드를 3 → 10 → 30개로 늘리며 (같은 날, 두 번 재현)
+
+위 표의 결함별 숫자는 유형당 에피소드 3개에서 나왔다. `close_too_high` 0/12 → 5/12는
+McNemar p=0.0625로 유의하지 않았으므로, 두 blind 결함만 seed 0~9로 10 에피소드씩 다시 모아
+(`images_leadtime_blind10/`, 실패 80 + 성공 80) 단일과 청크를 같은 세트에서 돌렸다.
+
+| 결함 | 단일 | 청크 | McNemar |
+|---|---|---|---|
+| `close_too_high` (프레임 40) | 6/40 | 12/40 | 12 고침 / 6 깨뜨림, **p=0.238** |
+| `close_too_high` (에피소드 10) | 3/10 | 8/10 | 7 고침 / 2 깨뜨림, **p=0.180** |
+| `gripper_closed_early` (프레임 40) | 9/40 | 13/40 | 7 / 3, p=0.344 |
+| `gripper_closed_early` (에피소드 10) | 8/10 | 8/10 | 2 / 2, p=1.0 |
+
+**3 에피소드 결과가 두 방향으로 과대추정이었다.** 단일 프레임의 `close_too_high` 0/12은 우연이고
+(10 에피소드에서 6/40), 청크의 이득도 12 고침에 6 깨뜨림이 붙는다(3 에피소드에서는 5/0이었다).
+방향은 일관되지만 10 에피소드로는 recall 개선을 주장할 수 없었다 — **그래서 30개까지 늘렸고,
+거기서 뒤집힌다(아래).**
+
+**10 에피소드에서 이미 확립된 것.**
+
+| | 단일 | 청크 |
+|---|---|---|
+| 오경보 (성공 80장) | **19/80** | **2/80** |
+| 전체 정확도 (160장) | 48% | 64% |
+| 짝지은 비교 | — | 38 고침 / 11 깨뜨림, **p=0.000142** |
+
+**청크의 확립된 효과는 실패를 더 잡는 것이 아니라 성공을 실패라고 부르지 않는 것이다.** 단일
+프레임은 성공 프레임 넷 중 하나를 실패로 오판하고, 청크는 40장에 1장이다. 기존 관찰("불필요한
+개입이 성공하던 episode를 망친다")과 겹쳐 읽으면 개입 게이트로서 의미가 여기에 있다.
+
+창 길이 가설은 n=10에서도 살아남았다 — 두 결함 모두 **창이 잘린 t-20에서는 이득이 0**이고 창 20步
+칸에서만 오른다.
+
+| | t-20 | t-10 | t-5 | t-1 |
+|---|---|---|---|---|
+| `close_too_high` 창 | 13~16步 | 20步 | 20步 | 20步 |
+| 단일 → 청크 | 1→0/10 | 2→4/10 | 1→2/10 | 2→6/10 |
+| `gripper_closed_early` 창 | 8~11步 | 18~20步 | 20步 | 20步 |
+| 단일 → 청크 | 0→0/10 | 0→0/10 | **1→6/10** | 8→7/10 |
+
+### 30 에피소드: recall도 확립된다
+
+같은 설계로 seed 0~29, 결함당 30 에피소드(`images_leadtime_blind30/`, 실패 240 + 성공 240, SKIP 0).
+
+| 결함 | 단위 | 단일 | 청크 | McNemar |
+|---|---|---|---|---|
+| `close_too_high` | 프레임 120 | 10/120 | **36/120** | 32 고침 / 6 깨뜨림, **p=0.000024** |
+| `close_too_high` | 에피소드 30 | 7/30 | **22/30** | 17 고침 / 2 깨뜨림, **p=0.00073** |
+| `gripper_closed_early` | 프레임 120 | 25/120 | 34/120 | 25 / 16, p=0.211 |
+| `gripper_closed_early` | 에피소드 30 | 22/30 | 25/30 | 8 / 5, p=0.581 |
+
+**프레임 단위와 에피소드 단위가 둘 다 유의하다.** 프레임 4장을 독립으로 센 것이 아니라는 뜻이고,
+n=10의 p=0.238은 표본 부족이었다. `gripper_closed_early`가 여전히 미해결인 것은 일관된다 — 그
+결함은 한 프레임으로 식별 가능해서(손목 뷰로 6~8/12, 상태 문장으로 0→8/12) 청크가 더할 것이 적다.
+
+| 전체 480장 | 단일 | 청크 |
+|---|---|---|
+| 정확도 | 46% | **62%** |
+| recall | 35/240 | 70/240 |
+| 오경보 | 53/240 (22%) | **11/240 (5%)** |
+| 짝지은 비교 | — | 109 고침 / 32 깨뜨림, **p=5.0e-11** |
+
+창 길이 가설은 세 번째 재현이다. **창이 잘린 t-20에서는 두 결함 모두 이득이 정확히 0**이고 창
+20步 칸에서만 오른다.
+
+| | t-20 | t-10 | t-5 | t-1 |
+|---|---|---|---|---|
+| `close_too_high` 창 | 13~16步 | 20步 | 20步 | 20步 |
+| 단일 → 청크 | 1→1/30 | 2→9/30 | 1→11/30 | 6→15/30 |
+| `gripper_closed_early` 창 | 8~11步 | 18~20步 | 20步 | 20步 |
+| 단일 → 청크 | 0→0/30 | 1→3/30 | **3→22/30** | **21→9/30** |
+
+마지막 칸이 이득이 균일하지 않다는 증거다. `gripper_closed_early`의 t-1은 단일 프레임이 이미
+잘하던 곳인데(닫힌 손가락이 큐브에 닿아 있다) 청크가 앞의 두 프레임을 함께 보이면서 "내려가는
+중"으로 읽게 만든다. **국소 손해가 있다.**
+
+### 공짜는 아니다
+
+- **lateral이 깎인다** (`y_neg` 8/8 → 6/8). 순이득은 크지만 회귀가 있다.
+- **`twostage_think`는 청크에서 오히려 나빠진다** (71% vs `direct` 78%, `close_too_high` 3/12 vs
+  5/12; 상태 문장 대비 3 고침 / 9 깨뜨림). 단일 프레임에서 think가 FPR 0으로 가장 안전했던 것과
+  반대다. **thinking과 청크는 더해지지 않는다.**
+- **청크와 상태 문장은 통계적으로 같지만 실용적으로 다르다.** 상태 문장은 시뮬레이터의 참값
+  (eef·cube 좌표)을 요구해서 실제 로봇에서는 쓸 수 없고, 청크는 카메라가 이미 주는 것만 쓴다.
+  같은 성능이면 **배포 가능한 쪽은 청크다.**
+
+## 3단계 한계
+
+**표본이 두 층으로 나뉜다.** 청크의 두 주장(`close_too_high` recall, 오경보 감소)은 결함당
+30 에피소드 재현본에서 나왔으니 그건 읽을 수 있다. 그 외 전부 — 네 결함의 lead-time 표, 세 조건
+비교, 지각·물리 프로브, lateral 회귀 8/8 → 6/8 — 는 **유형당 2~3 에피소드**이고 방향 이상으로
+읽으면 안 된다. 30 에피소드 재현에서 3 에피소드 셀이 두 번 뒤집힌 전례가 있다(정정 18·19).
+
+에피소드가 유형당 2~3개다. `close_too_high` 0/12는 사실 "3 에피소드 × 4 lead"이고, 세 조건을 합친
+0/36이라 그건 강하다. 반면 lead별 정확도 차이(60% vs 70%)는 칸당 20장이라 **잡음 수준이고 순위를
+주장할 수 없다.** 진행률 매칭도 phase를 완전히 정렬하지 못한다(lead-5에서 실패는 10/10 descend인데
+성공은 descend 4 / close 3 / hover 3). 그래서 정확도·FPR에는 교란이 있고, recall과 지각 프로브 수치
+에는 없다.
+
+---
+
+## 진행 중 정정한 것 (기록용)
+
+숫자만 보고 "처음부터 잘 돌았구나"로 읽히면 곤란해서 남긴다.
+
+**1단계**
+
+1. **첫 실행 10/10 SKIP** — capture용 deque(maxlen=4)가 에피소드 끝 4스텝만 보관해서 중간
+   지점의 `t_commit` 프레임이 밀려났다. 커밋 순간 즉시 capture로 수정.
+2. **두 번째 실행은 이미지가 나왔지만 잘못된 데이터였다** — nominal 컨트롤러가 애초에 큐브를
+   못 들었다. 즉 "주입한 실패"가 아니었다. 원인 3개: 닫힘 유지 15→**30스텝**, 큐브 좌표를
+   낙하·안정화 **후**에 latch(reset 시점은 z가 1 cm 과대), lateral offset 0.05→**0.08 m**
+   (그리퍼 개방 반폭 0.04 + 큐브 반폭 0.0204 ≈ 0.061 미만이면 손가락이 큐브 위에 얹힌다).
+   → 이후 nominal 체크를 매 실행 상설화.
+3. **잘못 내린 결론** — 순서와 문구를 동시에 바꾼 대조로 "선택지 순서가 원인"이라 판단했다.
+   분리해보니 순서는 무관(0/10), 문구가 전부(5/10)였다.
+4. **과했던 주장** — "Gemma는 그리퍼 상태를 10/10 읽는다"고 했으나 그 10/10은 특정 문구에서만
+   성립했다.
+
+**2단계**
+
+5. **"재생이면 충분하고 snapshot은 필요 없다"고 한 것이 틀렸다** — `hard_reset=False` 때문에
+   에피소드가 단독으로 재현되지 않았다. 1단계 프레임 10장은 이 이유로 재현 불가.
+6. **미터 환산이 틀렸다** — `±1 = 0.05 m/step`은 **명령 상한**이지 실제 이동이 아니다. OSC
+   `ramp_ratio=0.2` 때문에 k=1은 실제 0.0038 m, k=5는 0.028~0.047 m. 출력 표기를 고쳤다.
+7. **"3/10만 복구 가능"이 1-행동 프로토콜의 한계였다** — 2단계 시퀀스를 열자 10/10 복구 가능.
+   "복구 불가능한 프레임"과 "한 수로는 표현 불가"는 완전히 다른 결론인데 처음엔 전자로 보고할
+   뻔했다.
+8. **ep01·ep03이 "복구 불가"로 나온 것은 k 격자가 좁아서였다** — k1을 18~24까지 넓히자 복구됐다.
+9. **검증 코드 오류** — metadata에 `cube_z`를 소수 5자리로 저장해놓고 1e-9로 비교해 10/10
+   불일치로 오보고했다.
+10. **"LEFT 편향 기각"과 "장면 비대칭" 둘 다 틀렸다** — r2 10장만 보고 (a) 반전에서 RIGHT가
+    나왔으니 편향이 아니고 (b) 원본에서 팔에 가려 읽기 어려웠을 것이라고 적었다. 가림·팔 자세는
+    **반전에 보존되므로** (b)는 애초에 성립할 수 없는 설명이었다(빨강 픽셀 수가 원본·반전에서
+    동일한 것으로 확인). y_pos/y_neg를 8장씩 모아 균형을 맞추자 진짜 요인은 그리퍼가 이미지의
+    어느 쪽에 있느냐(72% vs 98%)였고, 반전 여부는 부차적이었다(81% vs 89%).
+11. **"깊이축이 애매해서 도피한다"도 틀렸다** — 오답이 `MOVE_FORWARD`로 간 것을 1단계의 깊이축
+    메모와 엮어 해석했다. FORWARD/BACKWARD를 뺀 6-어휘로 다시 돌리자 표가 정답이 아니라
+    `MOVE_DOWN`으로 옮겨갔고 정확도는 불변이었다(75%→77%). FORWARD는 깊이 방향이 아니라 그냥
+    "가로축이 아닌 라벨"이었다.
+12. **작은 칸에 속을 뻔했다** — 처음 만든 2×2는 두 칸이 프레임 2장씩뿐이었고 둘 다 100%였다.
+    그 2장이 하필 원본에서도 만점이던 가장 쉬운 프레임이라 정보가 없었다. 8장씩으로 균형을
+    맞추기 전에는 어떤 결론도 낼 수 없었다.
+13. **운영 메모** — 2단계 중 SSH 터널이 끊겨 Gemma 호출 50건이 전부 실패했다. 에러 처리는
+    정상 동작해 `REQUEST_ERROR`로 기록됐고 조용히 넘어가지 않았다. 터널 복구 후 재실행.
+
+**3단계**
+
+14. **그리퍼 프로브의 ground truth를 명령값으로 잡은 것이 틀렸다** — 성공 궤적은 "닫아라" 명령을
+    받지만 큐브가 끼어 손가락이 벌어진 채다. 측정하니 nominal close 단계는 손가락 간격 0.041~
+    0.074 m이고 진짜 맞붙은 것은 0.001 m, 완전 개방이 0.079 m다. 80장 중 **9장이 잘못 채점됐고 그
+    9장에서는 모델이 맞고 라벨이 틀렸다.** `collect_leadtime.py`가 `finger_gap_m`을 기록하게 고치고
+    `gripper_truth`가 간격을 우선하게 바꿔 재채점했다(이미지가 결정론적이라 호출 0회). 진짜 라벨은
+    CLOSED 12 / OPEN 68이다. `prompts.state_fact()`도 같은 오류로 그 9장에 **거짓 사실을 주입할
+    참이었고** `--probe fact`를 돌리기 전에 잡았다.
+15. **텍스트 프로브 1차 결과는 계측 오류였다** — 12/12 전부 SUCCESS가 나와 "물리를 모른다"로 읽힐
+    뻔했다. thinking을 읽으니 추론은 완벽했다: *"since the gripper never touched the cube, the cube
+    remains on the table ... No."* 문항 끝을 "Does the attempt end with the cube held above the
+    table?"로 써서 Yes/No 어휘를 유도했는데 라벨은 SUCCESS/FAILURE였고, **"No"가 FAILURE로
+    매핑되지 않았다.** 1단계에서 이미 기록한 교훈("라벨 어휘와 맞는 문구만 판별한다")을 어긴
+    것이다. 문항을 "Will this attempt succeed or fail?"로 고치자 12/12 정답이 됐다.
+16. **`--limit`을 쓴 표의 머리글이 칸 크기를 하드코딩하고 있었다** — 8장으로 서버 확인을 하는데
+    "10 failure + 10 success per cell"로 찍혀서 1장짜리 칸을 결과처럼 읽게 만들었다. 칸별 실제 표본
+    수를 찍도록 고쳤다.
+17. **"수직축은 불러오기 실패"라고 내린 판정이 틀렸다** — 높이를 직접 물으면 `close_too_high`를
+    12/12 ABOVE로 읽으니 결과 질문이 그걸 안 불러오는 것이라고 적었다. 사실 주입 팔을 돌리자
+    **0→0/12**로 꿈쩍도 하지 않았고, 짝지은 nominal 성공 프레임이 실패 프레임보다 **더 높다**는
+    것(10.5 cm 성공 vs 8.5 cm 실패)을 그때야 봤다. 상태가 라벨을 결정하지 않으므로 애초에 답할 수
+    없는 질문이었다. 지각 프로브 세 개가 다 정상이어도 "그러니 불러오기 문제"로 건너뛰면 안 된다 —
+    **라벨이 입력의 함수인지를 먼저 확인해야 했다.** 같은 팔에서 그리퍼축은 0→8/12로 회복됐으니
+    실험 자체는 두 축을 정확히 갈랐다.
+18. **"청크가 `close_too_high`를 살렸다"고 쓸 뻔했다** — 3 에피소드에서 0/12 → 5/12였다. 유의
+    검정을 붙이니 p=0.0625로 0.05를 못 넘었고, 10 에피소드로 다시 모으자 단일이 6/40(0이 아니었다),
+    청크가 12/40에 깨뜨린 것 6개가 붙었다(p=0.238). **양쪽 끝이 다 우연이었다.** 같은 재현에서
+    오경보 감소(19/80 → 2/80, p=0.000142)가 드러났으니, 애초에 recall만 보고 있었던 것이 문제였다.
+    n=3 결함별 셀은 앞으로도 방향 이상으로 읽지 말 것.
+19. **그런데 18번의 "주장할 수 없다"도 반만 맞았다** — n=10에서 p=0.238이라 recall 개선을 접었는데,
+    같은 설계로 n=30까지 늘리자 **p=0.000024**가 됐다(에피소드 단위 p=0.00073). 효과는 처음부터
+    있었고 검정력이 없었다. **"유의하지 않다"를 "효과가 없다"로 바꿔 읽지 말 것** — 필요 표본을
+    먼저 계산했으면 n=10에서 멈추지 않았다. 다만 18번의 다른 절반(n=3의 0/12과 5/0이 둘 다
+    우연이었다는 것)은 그대로 맞다.
+
+---
+
+## 파일
+
+```
+counterfactual_pilot/
+├── collect_failures.py     실패 장면 수집 (환경·scripted 컨트롤러·결함 주입·nominal 체크)
+├── gemma_action_choice.py  Gemma 질의·결과 저장·요약 (--task, --robustness, --mock)
+├── oracle_branch.py        분기 오라클 (restore → 행동 → close+lift → _check_success)
+├── make_mirror_set.py      좌우 반전 대조 세트 생성
+├── reasoning_probe.py      2단계 reasoning 실험 (direct / nothink 대조군 / think)
+├── collect_leadtime.py     [3단계] lead-time 프레임 세트 (실패 4거리 + 진행률 짝지은 성공)
+├── leadtime_probe.py       [3단계] SUCCESS/FAILURE 이진 예측 3조건 + 지표
+├── fact_probe.py           [3단계] 물리(텍스트만) / 사실 주입 후 결과 예측
+├── prompts.py              프롬프트·8개 라벨·변형 생성기
+├── images/                 [1단계] agentview 10장 — 재현 불가(hard_reset=False)
+├── images_wrist/           [1단계] 손목 뷰 10장
+├── images_r2/              [2단계] 재현 가능한 10장 + sim state
+├── images_r2_mirror/       [2단계] 좌우 반전 10장
+├── images_ypos/ , images_ypos_mirror/    [2단계] lateral_y_pos 6장 + 반전 (균형용)
+├── images_yneg/ , images_yneg_mirror/    [2단계] lateral_y_neg 6장 + 반전 (균형용)
+├── images_leadtime/        [3단계] agentview 80장 (실패 40 + 성공 40), lead별 10+10
+├── images_leadtime_wrist/  [3단계] 같은 80개 상태를 손목 시점으로
+├── images_leadtime_chunk/  [3단계] 같은 80개 상태 × 3프레임 청크 (stride 10)
+├── images_leadtime_blind10/ [3단계] blind 결함 2종 × 10 에피소드 재현 (실패 80 + 성공 80)
+├── images_leadtime_blind30/ [3단계] 같은 설계 × 30 에피소드 (실패 240 + 성공 240)
+├── results/                run_*.{jsonl,csv,args.json}, oracle_*.jsonl
+└── logs/
+```
+
+주요 결과: `run_20260910_124400_*`(1단계 단일 프롬프트), `run_ROB_action_action.*`(1단계 견고성),
+`run_R2_action_action.*`(2단계 Gemma), `run_R2_mirror_action.*`(좌우 반전),
+`oracle_ORACLE3.jsonl`(전수 오라클 3994 rollout),
+`run_YPOS_{orig,mirror}_action.*`·`run_YNEG_{orig,mirror}_action.*`(좌우 비대칭 균형 설계),
+`run_L6_*_action.*`(6-어휘 대조), `run_P_side_*_side.*`·`run_P_lateral_*_lateral.*`(분해 프로브),
+`reasoning_REASON{1,2}.{jsonl,csv}`(reasoning 3조건 × 문구 3종; 사고 전문은 jsonl에만),
+`leadtime_20260918_135728.*`(3단계 본 결과 400 호출), `run_HEIGHT_height.*`(높이 지각),
+`run_20260918_145807_gripper_state.*`·`run_WRIST_gripper_state.*`(개폐 지각, agentview vs 손목),
+`fact_text_TEXT2.*`(물리; `fact_text_TEXT.*`는 어휘 불일치로 폐기된 1차),
+`fact_fact_FACT.*`(사실 주입 후 결과 예측), `leadtime_CHUNK.*`(청크 3프레임), `leadtime_B10{SINGLE,CHUNK}.*`·`leadtime_B30{SINGLE,CHUNK}.*`(blind 결함 10·30 에피소드 재현).
+
+## 재현
+
+```bash
+conda activate fasi && export MUJOCO_GL=egl && cd ~/yuna_ws/counterfactual_pilot
+
+# 1단계
+python collect_failures.py --dry-run                              # 계획만, MuJoCo 미생성
+python collect_failures.py --images-dir images_r2 --save-sim-state
+python gemma_action_choice.py --mock                              # 서버 없이 배관 검증
+python gemma_action_choice.py --task action --robustness --images-dir images_r2
+
+# 2단계
+python oracle_branch.py --dry-run
+python oracle_branch.py --pairs --k1 10,14,18,24 --k2 3,5
+python make_mirror_set.py
+python gemma_action_choice.py --task action --robustness --images-dir images_r2_mirror
+
+# 좌우 비대칭 균형 설계 (유형당 8장 × 원본/반전)
+python collect_failures.py --types lateral_offset_y_neg --seeds 2,3,4,5,6,7 --max-images 6 \
+    --images-dir images_yneg --save-sim-state
+python make_mirror_set.py --src images_yneg --dst images_yneg_mirror
+python gemma_action_choice.py --task action --robustness --images-dir images_yneg
+
+# 6-어휘 대조 (MOVE_FORWARD/BACKWARD 제거)
+python gemma_action_choice.py --task action --robustness --actions 6 --images-dir images_yneg
+
+# 지각 / 방향 분해 프로브 (좌우 균형 세트에서 상수 답이면 50%로 드러남)
+python gemma_action_choice.py --task side    --robustness --images-dir images_yneg
+python gemma_action_choice.py --task lateral --robustness --images-dir images_yneg
+
+# reasoning 3조건 (structured_outputs와 thinking이 공존하지 않아 2단계로 호출)
+python reasoning_probe.py --dry-run
+python -u reasoning_probe.py                                      # canonical
+python -u reasoning_probe.py --variants labels_reversed,paraphrase  # 문구 민감성 확인
+
+# 3단계 — lead-time 세트 (--verify가 t_commit을 collect_failures와 교차검증)
+python collect_leadtime.py --dry-run
+python collect_leadtime.py --verify
+python collect_leadtime.py --camera robot0_eye_in_hand --images-dir images_leadtime_wrist
+
+# 3단계 — 결과 예측 (--limit 8로 서버 확인 후 본 실행)
+python leadtime_probe.py --limit 8 --conditions direct
+python -u leadtime_probe.py
+
+# 3단계 — 분해: 물리 / 높이 지각 / 개폐 지각(두 카메라)
+python fact_probe.py --probe text
+python gemma_action_choice.py --task height        --images-dir images_leadtime       --limit 80 --robustness
+python gemma_action_choice.py --task gripper_state --images-dir images_leadtime       --limit 80 --robustness
+python gemma_action_choice.py --task gripper_state --images-dir images_leadtime_wrist --limit 80 --robustness
+
+# 3단계 — 사실을 건네면 되살아나는가 (결함별 recall 행만 읽을 것)
+python fact_probe.py --probe fact --baseline results/leadtime_20260918_135728.jsonl
+
+# 3단계 — 청크 (창 길이는 재서 고름: --chunk 3 --stride 10)
+python collect_leadtime.py --verify --chunk 3 --stride 10 --images-dir images_leadtime_chunk
+python -u leadtime_probe.py --chunk --images-dir images_leadtime_chunk --conditions direct,twostage_think
+
+# 3단계 — blind 결함만 에피소드 10개씩으로 재현 (단일 vs 청크 짝지음)
+python collect_leadtime.py --verify --types close_too_high,gripper_closed_early \
+    --seeds 0,1,2,3,4,5,6,7,8,9 --max-failures 20 --n-success 20 \
+    --chunk 3 --stride 10 --images-dir images_leadtime_blind10
+python -u leadtime_probe.py         --images-dir images_leadtime_blind10 --conditions direct
+python -u leadtime_probe.py --chunk --images-dir images_leadtime_blind10 --conditions direct
+
+# 3단계 — 같은 설계를 30 에피소드로 (여기서 recall 개선이 유의해진다)
+python collect_leadtime.py --verify --types close_too_high,gripper_closed_early \
+    --seeds $(seq -s, 0 29) --max-failures 60 --n-success 60 \
+    --chunk 3 --stride 10 --images-dir images_leadtime_blind30
+python -u leadtime_probe.py         --images-dir images_leadtime_blind30 --conditions direct
+python -u leadtime_probe.py --chunk --images-dir images_leadtime_blind30 --conditions direct
+```
+
+접속 설정은 하드코딩하지 않았다: `GEMMA_BASE_URL` / `GEMMA_MODEL` / `GEMMA_API_KEY` 또는
+`--base-url` / `--model` / `--api-key`. 결과는 run id(기본 timestamp)로 분리되어 덮어쓰지 않는다.
+
+## 참고한 중범님 코드 (읽기만, import·수정 없음)
+
+`~/바탕화면/jungbeom`의 아래 부분을 참고해 새 파일에 명시적으로 재작성했다.
+
+| 위치 | 가져온 것 |
+|---|---|
+| `fasi/envs/robosuite_env.py:92-107` | `suite.make()` kwargs (`hard_reset`만 다름 — 위 참고) |
+| `fasi/envs/robosuite_env.py:132-139` | 이미지 `[::-1]` 상하반전 규약 |
+| `fasi/envs/robosuite_env.py:142-147` | 전역 `np.random` 시드 후 reset |
+| `fasi/envs/robosuite_env.py:163-185`, `docs/environment.md:41-43` | 4종 snapshot/restore 레시피 |
+| `fasi/llm/client.py:38-45,101-103` | base64 data URL · `image_url` 메시지 블록 |
+| `fasi/detect/heuristics.py:25-96` | 실패 판정 개념 |
+| `fasi/io/results.py` | JSONL 저장 패턴 |
+| `scripts/run_episodes.py:141-142` | policy 해상도와 분리해 프레임을 렌더하는 발상 |
+| `CLAUDE.md:5`, `docs/environment.md:44` | conda `fasi` + `MUJOCO_GL=egl` |
+
+`~/yuna_ws/new_project/serve_gemma.sh`(본인 파일)에서 포트 18007 / `served-model-name=gemma4`.
+

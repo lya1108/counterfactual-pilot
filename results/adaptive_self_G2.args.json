@@ -1,0 +1,15 @@
+{
+ "mode": "self",
+ "images_dir": "/home/nuri5/yuna_ws/counterfactual_pilot/images_leadtime_adaptive",
+ "results_dir": "/home/nuri5/yuna_ws/counterfactual_pilot/results",
+ "faults": null,
+ "leads": null,
+ "limit": null,
+ "seed": 0,
+ "base_url": "http://localhost:18007/v1",
+ "model": "gemma4",
+ "api_key": "EMPTY",
+ "max_reason_tokens": 300,
+ "run_id": "G2",
+ "dry_run": false
+}

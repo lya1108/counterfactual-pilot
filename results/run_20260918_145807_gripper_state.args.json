@@ -1,0 +1,17 @@
+{
+  "images_dir": "images_leadtime",
+  "results_dir": "/home/nuri5/yuna_ws/counterfactual_pilot/results",
+  "task": "gripper_state",
+  "base_url": "http://localhost:18007/v1",
+  "model": "gemma4",
+  "api_key": "EMPTY",
+  "limit": 80,
+  "temperature": 0.0,
+  "max_tokens": 12,
+  "timeout": 120.0,
+  "actions": null,
+  "robustness": true,
+  "free_form": false,
+  "mock": false,
+  "run_id": null
+}

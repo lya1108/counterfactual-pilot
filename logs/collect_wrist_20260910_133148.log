@@ -1,0 +1,15 @@
+nominal control check: 3/3 lifted the cube (final_cube_z=[1.0567, 1.0568, 1.0569], threshold=0.8400000000000001)
+  OK   ep00 seed=0 lateral_offset_y_pos: t_commit=44 capture_t=43 orig=OPEN_GRIPPER   cube_z=0.8207 -> ep00_lateral_offset_y_pos_t0043.png
+  OK   ep01 seed=1 lateral_offset_y_pos: t_commit=45 capture_t=44 orig=OPEN_GRIPPER   cube_z=0.8207 -> ep01_lateral_offset_y_pos_t0044.png
+  OK   ep02 seed=0 lateral_offset_y_neg: t_commit=50 capture_t=49 orig=OPEN_GRIPPER   cube_z=0.8207 -> ep02_lateral_offset_y_neg_t0049.png
+  OK   ep03 seed=1 lateral_offset_y_neg: t_commit=45 capture_t=44 orig=OPEN_GRIPPER   cube_z=0.8207 -> ep03_lateral_offset_y_neg_t0044.png
+  OK   ep04 seed=0 close_too_high: t_commit=36 capture_t=35 orig=OPEN_GRIPPER   cube_z=0.8207 -> ep04_close_too_high_t0035.png
+  OK   ep05 seed=1 close_too_high: t_commit=34 capture_t=33 orig=OPEN_GRIPPER   cube_z=0.8207 -> ep05_close_too_high_t0033.png
+  OK   ep06 seed=2 close_too_high: t_commit=35 capture_t=34 orig=OPEN_GRIPPER   cube_z=0.8207 -> ep06_close_too_high_t0034.png
+  OK   ep07 seed=0 gripper_closed_early: t_commit=31 capture_t=30 orig=MOVE_DOWN      cube_z=0.8207 -> ep07_gripper_closed_early_t0030.png
+  OK   ep08 seed=1 gripper_closed_early: t_commit=29 capture_t=28 orig=MOVE_DOWN      cube_z=0.8207 -> ep08_gripper_closed_early_t0028.png
+  OK   ep09 seed=2 gripper_closed_early: t_commit=30 capture_t=29 orig=MOVE_DOWN      cube_z=0.8207 -> ep09_gripper_closed_early_t0029.png
+
+saved 10 images -> images_wrist
+metadata -> images_wrist/metadata.jsonl
+per failure_type: {'lateral_offset_y_pos': 2, 'lateral_offset_y_neg': 2, 'close_too_high': 3, 'gripper_closed_early': 3}

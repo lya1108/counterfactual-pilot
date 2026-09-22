@@ -1,0 +1,38 @@
+run G2: mode=self frames=320 -> 640 calls
+  [ 20/320] succ_p02_s02_lead10_t0039.png                truth=SUCCESS -> ENOUGH       
+  [ 40/320] succ_p04_s04_lead01_t0047.png                truth=SUCCESS -> ENOUGH       
+  [ 60/320] succ_p07_s07_lead10_t0071.png                truth=SUCCESS -> ENOUGH       
+  [ 80/320] succ_p09_s09_lead01_t0047.png                truth=SUCCESS -> ENOUGH       
+  [100/320] succ_p12_s12_lead10_t0037.png                truth=SUCCESS -> ENOUGH       
+  [120/320] succ_p14_s14_lead01_t0044.png                truth=SUCCESS -> ENOUGH       
+  [140/320] succ_p17_s17_lead10_t0076.png                truth=SUCCESS -> ENOUGH       
+  [160/320] succ_p19_s19_lead01_t0044.png                truth=SUCCESS -> ENOUGH       
+  [180/320] succ_p22_s22_lead10_t0027.png                truth=SUCCESS -> ENOUGH       
+  [200/320] succ_p24_s24_lead01_t0037.png                truth=SUCCESS -> NEED_EARLIER 
+  [220/320] succ_p27_s27_lead10_t0025.png                truth=SUCCESS -> ENOUGH       
+  [240/320] succ_p29_s29_lead01_t0036.png                truth=SUCCESS -> ENOUGH       
+  [260/320] succ_p32_s32_lead10_t0011.png                truth=SUCCESS -> ENOUGH       
+  [280/320] succ_p34_s34_lead01_t0017.png                truth=SUCCESS -> ENOUGH       
+  [300/320] succ_p37_s37_lead10_t0010.png                truth=SUCCESS -> ENOUGH       
+  [320/320] succ_p39_s39_lead01_t0017.png                truth=SUCCESS -> ENOUGH       
+
+=== self: 320/320 성공한 기록 ===
+  [canonical] 전체 분포 {'ENOUGH': 302, 'NEED_EARLIER': 18}
+  [swapped] 전체 분포 {'ENOUGH': 320}
+
+  결함                           canonical NEED      swapped NEED
+  close_too_high                         1/40              0/40
+  gripper_closed_early                   4/40              0/40
+  lateral_offset_y_neg                   1/40              0/40
+  lateral_offset_y_pos                   0/40              0/40
+  nominal                              12/160             0/160
+
+    lead     canonical NEED      swapped NEED
+  t-20                 8/80              0/80
+  t-10                 3/80              0/80
+  t-5                  2/80              0/80
+  t-1                  5/80              0/80
+
+  두 문구 일치: 302/320  (낮으면 문구가 답을 지배한다)
+
+results -> /home/nuri5/yuna_ws/counterfactual_pilot/results/adaptive_self_G2.jsonl

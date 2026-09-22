@@ -1,0 +1,15 @@
+  SKIP ep00 seed=0 lateral_offset_y_pos: never reached a commit step
+  SKIP ep01 seed=1 lateral_offset_y_pos: never reached a commit step
+  SKIP ep02 seed=0 lateral_offset_y_neg: never reached a commit step
+  SKIP ep03 seed=1 lateral_offset_y_neg: never reached a commit step
+  SKIP ep04 seed=0 close_too_high: never reached a commit step
+  SKIP ep05 seed=1 close_too_high: never reached a commit step
+  SKIP ep06 seed=2 close_too_high: never reached a commit step
+  SKIP ep07 seed=0 gripper_closed_early: never reached a commit step
+  SKIP ep08 seed=1 gripper_closed_early: never reached a commit step
+  SKIP ep09 seed=2 gripper_closed_early: never reached a commit step
+
+saved 0 images -> /home/nuri5/yuna_ws/counterfactual_pilot/images
+metadata -> /home/nuri5/yuna_ws/counterfactual_pilot/images/metadata.jsonl
+per failure_type: {}
+skipped 10: [{'episode_id': 0, 'failure_type': 'lateral_offset_y_pos', 'seed': 0, 'why': 'no commit step reached'}, {'episode_id': 1, 'failure_type': 'lateral_offset_y_pos', 'seed': 1, 'why': 'no commit step reached'}, {'episode_id': 2, 'failure_type': 'lateral_offset_y_neg', 'seed': 0, 'why': 'no commit step reached'}, {'episode_id': 3, 'failure_type': 'lateral_offset_y_neg', 'seed': 1, 'why': 'no commit step reached'}, {'episode_id': 4, 'failure_type': 'close_too_high', 'seed': 0, 'why': 'no commit step reached'}, {'episode_id': 5, 'failure_type': 'close_too_high', 'seed': 1, 'why': 'no commit step reached'}, {'episode_id': 6, 'failure_type': 'close_too_high', 'seed': 2, 'why': 'no commit step reached'}, {'episode_id': 7, 'failure_type': 'gripper_closed_early', 'seed': 0, 'why': 'no commit step reached'}, {'episode_id': 8, 'failure_type': 'gripper_closed_early', 'seed': 1, 'why': 'no commit step reached'}, {'episode_id': 9, 'failure_type': 'gripper_closed_early', 'seed': 2, 'why': 'no commit step reached'}]

@@ -1,0 +1,32 @@
+run_id=20260910_124400  images_dir=/home/nuri5/yuna_ws/counterfactual_pilot/images  found=10  metadata_rows=10
+model=gemma4  base_url=http://localhost:18007/v1  structured=True  mock=False
+  [1/10] ep00_lateral_offset_y_pos_t0044.png          -> MOVE_LEFT      (OK)
+  [2/10] ep01_lateral_offset_y_pos_t0043.png          -> MOVE_LEFT      (OK)
+  [3/10] ep02_lateral_offset_y_neg_t0049.png          -> MOVE_RIGHT     (OK)
+  [4/10] ep03_lateral_offset_y_neg_t0042.png          -> MOVE_FORWARD   (OK)
+  [5/10] ep04_close_too_high_t0035.png                -> MOVE_DOWN      (OK)
+  [6/10] ep05_close_too_high_t0034.png                -> MOVE_FORWARD   (OK)
+  [7/10] ep06_close_too_high_t0034.png                -> MOVE_DOWN      (OK)
+  [8/10] ep07_gripper_closed_early_t0030.png          -> CLOSE_GRIPPER  (OK)
+  [9/10] ep08_gripper_closed_early_t0029.png          -> CLOSE_GRIPPER  (OK)
+  [10/10] ep09_gripper_closed_early_t0029.png          -> CLOSE_GRIPPER  (OK)
+
+--- action distribution ---
+  CLOSE_GRIPPER   3/10  ###
+  MOVE_LEFT       2/10  ##
+  MOVE_FORWARD    2/10  ##
+  MOVE_DOWN       2/10  ##
+  MOVE_RIGHT      1/10  #
+distinct valid actions  : 5 of 8  (1 = always the same answer)
+invalid / error         : 0/10 (0%)
+echoed original action  : 0/10  (high = not proposing an alternative)
+
+--- choice by failure_type (does the image change the answer?) ---
+  close_too_high           {'MOVE_DOWN': 2, 'MOVE_FORWARD': 1}   [reference: MOVE_DOWN]
+  gripper_closed_early     {'CLOSE_GRIPPER': 3}   [reference: OPEN_GRIPPER]
+  lateral_offset_y_neg     {'MOVE_RIGHT': 1, 'MOVE_FORWARD': 1}   [reference: MOVE_RIGHT]
+  lateral_offset_y_pos     {'MOVE_LEFT': 2}   [reference: MOVE_LEFT]
+
+results -> /home/nuri5/yuna_ws/counterfactual_pilot/results/run_20260910_124400.jsonl
+            /home/nuri5/yuna_ws/counterfactual_pilot/results/run_20260910_124400.csv
+            /home/nuri5/yuna_ws/counterfactual_pilot/results/run_20260910_124400.args.json

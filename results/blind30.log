@@ -1,0 +1,137 @@
+run B30SINGLE: 480 frames x 1 conditions x 1 variants = 480 API calls  model=gemma4
+
+--- direct / canonical ---
+  [10/480] succ_p01_s01_lead20_t0017.png                  truth=SUCCESS -> SUCCESS       O
+  [20/480] succ_p02_s02_lead10_t0027.png                  truth=SUCCESS -> FAILURE       X
+  [30/480] succ_p03_s03_lead05_t0032.png                  truth=SUCCESS -> FAILURE       X
+  [40/480] succ_p04_s04_lead01_t0037.png                  truth=SUCCESS -> FAILURE       X
+  [50/480] succ_p06_s06_lead20_t0016.png                  truth=SUCCESS -> SUCCESS       O
+  [60/480] succ_p07_s07_lead10_t0024.png                  truth=SUCCESS -> FAILURE       X
+  [70/480] succ_p08_s08_lead05_t0032.png                  truth=SUCCESS -> FAILURE       X
+  [80/480] succ_p09_s09_lead01_t0036.png                  truth=SUCCESS -> SUCCESS       O
+  [90/480] succ_p11_s11_lead20_t0015.png                  truth=SUCCESS -> SUCCESS       O
+  [100/480] succ_p12_s12_lead10_t0027.png                  truth=SUCCESS -> SUCCESS       O
+  [110/480] succ_p13_s13_lead05_t0033.png                  truth=SUCCESS -> FAILURE       X
+  [120/480] succ_p14_s14_lead01_t0035.png                  truth=SUCCESS -> SUCCESS       O
+  [130/480] succ_p16_s16_lead20_t0016.png                  truth=SUCCESS -> SUCCESS       O
+  [140/480] succ_p17_s17_lead10_t0027.png                  truth=SUCCESS -> SUCCESS       O
+  [150/480] succ_p18_s18_lead05_t0032.png                  truth=SUCCESS -> FAILURE       X
+  [160/480] succ_p19_s19_lead01_t0036.png                  truth=SUCCESS -> FAILURE       X
+  [170/480] succ_p21_s21_lead20_t0017.png                  truth=SUCCESS -> SUCCESS       O
+  [180/480] succ_p22_s22_lead10_t0027.png                  truth=SUCCESS -> SUCCESS       O
+  [190/480] succ_p23_s23_lead05_t0033.png                  truth=SUCCESS -> SUCCESS       O
+  [200/480] succ_p24_s24_lead01_t0037.png                  truth=SUCCESS -> SUCCESS       O
+  [210/480] succ_p26_s26_lead20_t0016.png                  truth=SUCCESS -> SUCCESS       O
+  [220/480] succ_p27_s27_lead10_t0028.png                  truth=SUCCESS -> FAILURE       X
+  [230/480] succ_p28_s28_lead05_t0032.png                  truth=SUCCESS -> FAILURE       X
+  [240/480] succ_p29_s29_lead01_t0036.png                  truth=SUCCESS -> SUCCESS       O
+  [250/480] succ_p31_s31_lead20_t0006.png                  truth=SUCCESS -> SUCCESS       O
+  [260/480] succ_p32_s32_lead10_t0011.png                  truth=SUCCESS -> SUCCESS       O
+  [270/480] succ_p33_s33_lead05_t0014.png                  truth=SUCCESS -> SUCCESS       O
+  [280/480] succ_p34_s34_lead01_t0017.png                  truth=SUCCESS -> FAILURE       X
+  [290/480] succ_p36_s36_lead20_t0006.png                  truth=SUCCESS -> SUCCESS       O
+  [300/480] succ_p37_s37_lead10_t0010.png                  truth=SUCCESS -> SUCCESS       O
+  [310/480] succ_p38_s38_lead05_t0014.png                  truth=SUCCESS -> SUCCESS       O
+  [320/480] succ_p39_s39_lead01_t0017.png                  truth=SUCCESS -> SUCCESS       O
+  [330/480] succ_p41_s41_lead20_t0005.png                  truth=SUCCESS -> SUCCESS       O
+  [340/480] succ_p42_s42_lead10_t0011.png                  truth=SUCCESS -> SUCCESS       O
+  [350/480] succ_p43_s43_lead05_t0015.png                  truth=SUCCESS -> SUCCESS       O
+  [360/480] succ_p44_s44_lead01_t0016.png                  truth=SUCCESS -> SUCCESS       O
+  [370/480] succ_p46_s46_lead20_t0006.png                  truth=SUCCESS -> SUCCESS       O
+  [380/480] succ_p47_s47_lead10_t0012.png                  truth=SUCCESS -> FAILURE       X
+  [390/480] succ_p48_s48_lead05_t0014.png                  truth=SUCCESS -> SUCCESS       O
+  [400/480] succ_p49_s49_lead01_t0016.png                  truth=SUCCESS -> SUCCESS       O
+  [410/480] succ_p51_s51_lead20_t0006.png                  truth=SUCCESS -> SUCCESS       O
+  [420/480] succ_p52_s52_lead10_t0011.png                  truth=SUCCESS -> SUCCESS       O
+  [430/480] succ_p53_s53_lead05_t0015.png                  truth=SUCCESS -> SUCCESS       O
+  [440/480] succ_p54_s54_lead01_t0017.png                  truth=SUCCESS -> SUCCESS       O
+  [450/480] succ_p56_s56_lead20_t0006.png                  truth=SUCCESS -> SUCCESS       O
+  [460/480] succ_p57_s57_lead10_t0012.png                  truth=SUCCESS -> SUCCESS       O
+  [470/480] succ_p58_s58_lead05_t0014.png                  truth=SUCCESS -> SUCCESS       O
+  [480/480] succ_p59_s59_lead01_t0016.png                  truth=SUCCESS -> SUCCESS       O
+
+=== overall (FAILURE is the positive class) ===
+condition/variant                      acc    recall       FPR   bad    tok      s  answers
+direct/canonical                       46%       15%       22%     0      0    0.2  {'SUCCESS': 392, 'FAILURE': 88}
+
+=== accuracy by steps remaining to failure (t-20: 60F+60S / t-10: 60F+60S / t-5: 60F+60S / t-1: 60F+60S) ===
+condition/variant                             t-20              t-10               t-5               t-1
+direct/canonical                       48% r2% f5%      40% r5% f25%      34% r7% f38%     62% r45% f20%
+  (acc = accuracy on that cell, r = failure recall, f = false-positive rate)
+
+=== failure recall by injected fault (failure frames only, all lead times) ===
+condition/variant                       close_too_high  gripper_closed_early
+direct/canonical                                10/120                25/120
+
+results -> /home/nuri5/yuna_ws/counterfactual_pilot/results/leadtime_B30SINGLE.jsonl
+            /home/nuri5/yuna_ws/counterfactual_pilot/results/leadtime_B30SINGLE.csv
+            /home/nuri5/yuna_ws/counterfactual_pilot/results/leadtime_B30SINGLE.metrics.json
+=============== CHUNK ===============
+run B30CHUNK: 480 frames x 1 conditions x 1 variants = 480 API calls  model=gemma4
+
+--- direct / canonical ---
+  [10/480] succ_p01_s01_lead20_t0017.png                  truth=SUCCESS -> SUCCESS       O
+  [20/480] succ_p02_s02_lead10_t0027.png                  truth=SUCCESS -> SUCCESS       O
+  [30/480] succ_p03_s03_lead05_t0032.png                  truth=SUCCESS -> SUCCESS       O
+  [40/480] succ_p04_s04_lead01_t0037.png                  truth=SUCCESS -> SUCCESS       O
+  [50/480] succ_p06_s06_lead20_t0016.png                  truth=SUCCESS -> SUCCESS       O
+  [60/480] succ_p07_s07_lead10_t0024.png                  truth=SUCCESS -> SUCCESS       O
+  [70/480] succ_p08_s08_lead05_t0032.png                  truth=SUCCESS -> SUCCESS       O
+  [80/480] succ_p09_s09_lead01_t0036.png                  truth=SUCCESS -> SUCCESS       O
+  [90/480] succ_p11_s11_lead20_t0015.png                  truth=SUCCESS -> SUCCESS       O
+  [100/480] succ_p12_s12_lead10_t0027.png                  truth=SUCCESS -> SUCCESS       O
+  [110/480] succ_p13_s13_lead05_t0033.png                  truth=SUCCESS -> SUCCESS       O
+  [120/480] succ_p14_s14_lead01_t0035.png                  truth=SUCCESS -> SUCCESS       O
+  [130/480] succ_p16_s16_lead20_t0016.png                  truth=SUCCESS -> SUCCESS       O
+  [140/480] succ_p17_s17_lead10_t0027.png                  truth=SUCCESS -> SUCCESS       O
+  [150/480] succ_p18_s18_lead05_t0032.png                  truth=SUCCESS -> SUCCESS       O
+  [160/480] succ_p19_s19_lead01_t0036.png                  truth=SUCCESS -> SUCCESS       O
+  [170/480] succ_p21_s21_lead20_t0017.png                  truth=SUCCESS -> SUCCESS       O
+  [180/480] succ_p22_s22_lead10_t0027.png                  truth=SUCCESS -> SUCCESS       O
+  [190/480] succ_p23_s23_lead05_t0033.png                  truth=SUCCESS -> SUCCESS       O
+  [200/480] succ_p24_s24_lead01_t0037.png                  truth=SUCCESS -> SUCCESS       O
+  [210/480] succ_p26_s26_lead20_t0016.png                  truth=SUCCESS -> SUCCESS       O
+  [220/480] succ_p27_s27_lead10_t0028.png                  truth=SUCCESS -> SUCCESS       O
+  [230/480] succ_p28_s28_lead05_t0032.png                  truth=SUCCESS -> SUCCESS       O
+  [240/480] succ_p29_s29_lead01_t0036.png                  truth=SUCCESS -> SUCCESS       O
+  [250/480] succ_p31_s31_lead20_t0006.png                  truth=SUCCESS -> SUCCESS       O
+  [260/480] succ_p32_s32_lead10_t0011.png                  truth=SUCCESS -> SUCCESS       O
+  [270/480] succ_p33_s33_lead05_t0014.png                  truth=SUCCESS -> SUCCESS       O
+  [280/480] succ_p34_s34_lead01_t0017.png                  truth=SUCCESS -> SUCCESS       O
+  [290/480] succ_p36_s36_lead20_t0006.png                  truth=SUCCESS -> SUCCESS       O
+  [300/480] succ_p37_s37_lead10_t0010.png                  truth=SUCCESS -> SUCCESS       O
+  [310/480] succ_p38_s38_lead05_t0014.png                  truth=SUCCESS -> SUCCESS       O
+  [320/480] succ_p39_s39_lead01_t0017.png                  truth=SUCCESS -> SUCCESS       O
+  [330/480] succ_p41_s41_lead20_t0005.png                  truth=SUCCESS -> SUCCESS       O
+  [340/480] succ_p42_s42_lead10_t0011.png                  truth=SUCCESS -> SUCCESS       O
+  [350/480] succ_p43_s43_lead05_t0015.png                  truth=SUCCESS -> SUCCESS       O
+  [360/480] succ_p44_s44_lead01_t0016.png                  truth=SUCCESS -> SUCCESS       O
+  [370/480] succ_p46_s46_lead20_t0006.png                  truth=SUCCESS -> SUCCESS       O
+  [380/480] succ_p47_s47_lead10_t0012.png                  truth=SUCCESS -> SUCCESS       O
+  [390/480] succ_p48_s48_lead05_t0014.png                  truth=SUCCESS -> SUCCESS       O
+  [400/480] succ_p49_s49_lead01_t0016.png                  truth=SUCCESS -> SUCCESS       O
+  [410/480] succ_p51_s51_lead20_t0006.png                  truth=SUCCESS -> SUCCESS       O
+  [420/480] succ_p52_s52_lead10_t0011.png                  truth=SUCCESS -> SUCCESS       O
+  [430/480] succ_p53_s53_lead05_t0015.png                  truth=SUCCESS -> SUCCESS       O
+  [440/480] succ_p54_s54_lead01_t0017.png                  truth=SUCCESS -> SUCCESS       O
+  [450/480] succ_p56_s56_lead20_t0006.png                  truth=SUCCESS -> SUCCESS       O
+  [460/480] succ_p57_s57_lead10_t0012.png                  truth=SUCCESS -> SUCCESS       O
+  [470/480] succ_p58_s58_lead05_t0014.png                  truth=SUCCESS -> SUCCESS       O
+  [480/480] succ_p59_s59_lead01_t0016.png                  truth=SUCCESS -> SUCCESS       O
+
+=== overall (FAILURE is the positive class) ===
+condition/variant                      acc    recall       FPR   bad    tok      s  answers
+direct/canonical                       62%       29%        5%     0      0    0.3  {'SUCCESS': 399, 'FAILURE': 81}
+
+=== accuracy by steps remaining to failure (t-20: 60F+60S / t-10: 60F+60S / t-5: 60F+60S / t-1: 60F+60S) ===
+condition/variant                             t-20              t-10               t-5               t-1
+direct/canonical                       48% r2% f7%      59% r20% f2%      74% r55% f7%      68% r40% f3%
+  (acc = accuracy on that cell, r = failure recall, f = false-positive rate)
+
+=== failure recall by injected fault (failure frames only, all lead times) ===
+condition/variant                       close_too_high  gripper_closed_early
+direct/canonical                                36/120                34/120
+
+results -> /home/nuri5/yuna_ws/counterfactual_pilot/results/leadtime_B30CHUNK.jsonl
+            /home/nuri5/yuna_ws/counterfactual_pilot/results/leadtime_B30CHUNK.csv
+            /home/nuri5/yuna_ws/counterfactual_pilot/results/leadtime_B30CHUNK.metrics.json

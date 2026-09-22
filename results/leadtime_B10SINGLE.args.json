@@ -1,0 +1,16 @@
+{
+ "images_dir": "images_leadtime_blind10",
+ "results_dir": "/home/nuri5/yuna_ws/counterfactual_pilot/results",
+ "conditions": "direct",
+ "variants": "canonical",
+ "robustness": false,
+ "chunk": false,
+ "base_url": "http://localhost:18007/v1",
+ "model": "gemma4",
+ "api_key": "EMPTY",
+ "max_think_tokens": 1200,
+ "run_id": "B10SINGLE",
+ "limit": null,
+ "mock": false,
+ "dry_run": false
+}

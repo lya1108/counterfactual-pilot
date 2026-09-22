@@ -1,0 +1,9 @@
+image_file,truth,kind,lead_time,failure_type,pair_id,episode_id,reset_seed,timestep,progress,phase,gripper_closed_cmd,condition,prompt_variant,prompt_version,correct,error,run_id,model_name,answer,raw_answer,think_tokens,think_truncated,latency_s
+fail_p00_lateral_offset_y_pos_lead20_t0028.png,FAILURE,failure,20,lateral_offset_y_pos,0,f00,0,28,0.2029,descend,False,direct,canonical,leadtime_v1,False,,20260918_135301,gemma4,SUCCESS,SUCCESS,0,False,0.4
+succ_p00_s00_lead20_t0027.png,SUCCESS,success,20,nominal,0,s00,0,27,0.203,descend,False,direct,canonical,leadtime_v1,False,,20260918_135301,gemma4,FAILURE,FAILURE,0,False,0.2
+fail_p00_lateral_offset_y_pos_lead10_t0038.png,FAILURE,failure,10,lateral_offset_y_pos,0,f00,0,38,0.2754,descend,False,direct,canonical,leadtime_v1,True,,20260918_135301,gemma4,FAILURE,FAILURE,0,False,0.3
+succ_p00_s00_lead10_t0037.png,SUCCESS,success,10,nominal,0,s00,0,37,0.2782,descend,False,direct,canonical,leadtime_v1,True,,20260918_135301,gemma4,SUCCESS,SUCCESS,0,False,0.2
+fail_p00_lateral_offset_y_pos_lead05_t0043.png,FAILURE,failure,5,lateral_offset_y_pos,0,f00,0,43,0.3116,descend,False,direct,canonical,leadtime_v1,True,,20260918_135301,gemma4,FAILURE,FAILURE,0,False,0.2
+succ_p00_s00_lead05_t0041.png,SUCCESS,success,5,nominal,0,s00,0,41,0.3083,descend,False,direct,canonical,leadtime_v1,True,,20260918_135301,gemma4,SUCCESS,SUCCESS,0,False,0.2
+fail_p00_lateral_offset_y_pos_lead01_t0047.png,FAILURE,failure,1,lateral_offset_y_pos,0,f00,0,47,0.3406,close,False,direct,canonical,leadtime_v1,True,,20260918_135301,gemma4,FAILURE,FAILURE,0,False,0.2
+succ_p00_s00_lead01_t0045.png,SUCCESS,success,1,nominal,0,s00,0,45,0.3383,close,True,direct,canonical,leadtime_v1,True,,20260918_135301,gemma4,SUCCESS,SUCCESS,0,False,0.2

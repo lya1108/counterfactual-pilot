@@ -1,0 +1,92 @@
+
+--- direct ---
+  [ 1/24] ep00_lateral_offset_y_pos_t0050.png      right -> MOVE_LEFT      O     0tok 0.6s
+  [ 2/24] ep01_lateral_offset_y_pos_t0044.png      right -> MOVE_LEFT      O     0tok 0.6s
+  [ 3/24] ep02_lateral_offset_y_pos_t0049.png      right -> MOVE_LEFT      O     0tok 0.6s
+  [ 4/24] ep03_lateral_offset_y_pos_t0048.png      right -> MOVE_LEFT      O     0tok 0.6s
+  [ 5/24] ep04_lateral_offset_y_pos_t0043.png      right -> MOVE_LEFT      O     0tok 0.6s
+  [ 6/24] ep05_lateral_offset_y_pos_t0129.png      right -> MOVE_LEFT      O     0tok 0.6s
+  [ 7/24] ep00_lateral_offset_y_neg_t0047.png      left  -> MOVE_RIGHT     O     0tok 0.6s
+  [ 8/24] ep01_lateral_offset_y_neg_t0052.png      left  -> MOVE_FORWARD   X     0tok 0.6s
+  [ 9/24] ep02_lateral_offset_y_neg_t0046.png      left  -> MOVE_RIGHT     O     0tok 0.6s
+  [10/24] ep03_lateral_offset_y_neg_t0044.png      left  -> MOVE_RIGHT     O     0tok 0.6s
+  [11/24] ep04_lateral_offset_y_neg_t0043.png      left  -> MOVE_RIGHT     O     0tok 0.6s
+  [12/24] ep05_lateral_offset_y_neg_t0143.png      left  -> MOVE_FORWARD   X     0tok 0.6s
+  [13/24] ep00_lateral_offset_y_pos_t0050_mirror   left  -> MOVE_RIGHT     O     0tok 0.6s
+  [14/24] ep01_lateral_offset_y_pos_t0044_mirror   left  -> MOVE_RIGHT     O     0tok 0.6s
+  [15/24] ep02_lateral_offset_y_pos_t0049_mirror   left  -> MOVE_RIGHT     O     0tok 0.6s
+  [16/24] ep03_lateral_offset_y_pos_t0048_mirror   left  -> MOVE_FORWARD   X     0tok 0.6s
+  [17/24] ep04_lateral_offset_y_pos_t0043_mirror   left  -> MOVE_RIGHT     O     0tok 0.6s
+  [18/24] ep05_lateral_offset_y_pos_t0129_mirror   left  -> MOVE_RIGHT     O     0tok 0.6s
+  [19/24] ep00_lateral_offset_y_neg_t0047_mirror   right -> MOVE_LEFT      O     0tok 0.6s
+  [20/24] ep01_lateral_offset_y_neg_t0052_mirror   right -> MOVE_LEFT      O     0tok 0.6s
+  [21/24] ep02_lateral_offset_y_neg_t0046_mirror   right -> MOVE_LEFT      O     0tok 0.6s
+  [22/24] ep03_lateral_offset_y_neg_t0044_mirror   right -> MOVE_LEFT      O     0tok 0.6s
+  [23/24] ep04_lateral_offset_y_neg_t0043_mirror   right -> MOVE_LEFT      O     0tok 0.6s
+  [24/24] ep05_lateral_offset_y_neg_t0143_mirror   right -> MOVE_LEFT      O     0tok 0.6s
+
+--- twostage_nothink ---
+  [ 1/24] ep00_lateral_offset_y_pos_t0050.png      right -> MOVE_LEFT      O     4tok 1.1s
+  [ 2/24] ep01_lateral_offset_y_pos_t0044.png      right -> MOVE_LEFT      O     4tok 1.1s
+  [ 3/24] ep02_lateral_offset_y_pos_t0049.png      right -> MOVE_LEFT      O     4tok 1.1s
+  [ 4/24] ep03_lateral_offset_y_pos_t0048.png      right -> MOVE_LEFT      O     4tok 1.1s
+  [ 5/24] ep04_lateral_offset_y_pos_t0043.png      right -> MOVE_LEFT      O     4tok 1.1s
+  [ 6/24] ep05_lateral_offset_y_pos_t0129.png      right -> MOVE_LEFT      O     4tok 1.1s
+  [ 7/24] ep00_lateral_offset_y_neg_t0047.png      left  -> MOVE_RIGHT     O     4tok 1.1s
+  [ 8/24] ep01_lateral_offset_y_neg_t0052.png      left  -> MOVE_FORWARD   X     4tok 1.1s
+  [ 9/24] ep02_lateral_offset_y_neg_t0046.png      left  -> MOVE_RIGHT     O     4tok 1.1s
+  [10/24] ep03_lateral_offset_y_neg_t0044.png      left  -> MOVE_RIGHT     O     4tok 1.1s
+  [11/24] ep04_lateral_offset_y_neg_t0043.png      left  -> MOVE_RIGHT     O     4tok 1.1s
+  [12/24] ep05_lateral_offset_y_neg_t0143.png      left  -> MOVE_FORWARD   X     4tok 1.1s
+  [13/24] ep00_lateral_offset_y_pos_t0050_mirror   left  -> MOVE_RIGHT     O     4tok 1.1s
+  [14/24] ep01_lateral_offset_y_pos_t0044_mirror   left  -> MOVE_RIGHT     O     4tok 1.1s
+  [15/24] ep02_lateral_offset_y_pos_t0049_mirror   left  -> MOVE_RIGHT     O     4tok 1.1s
+  [16/24] ep03_lateral_offset_y_pos_t0048_mirror   left  -> MOVE_FORWARD   X     4tok 1.1s
+  [17/24] ep04_lateral_offset_y_pos_t0043_mirror   left  -> MOVE_RIGHT     O     4tok 1.1s
+  [18/24] ep05_lateral_offset_y_pos_t0129_mirror   left  -> MOVE_RIGHT     O     4tok 1.1s
+  [19/24] ep00_lateral_offset_y_neg_t0047_mirror   right -> MOVE_LEFT      O     4tok 1.1s
+  [20/24] ep01_lateral_offset_y_neg_t0052_mirror   right -> MOVE_LEFT      O     4tok 1.1s
+  [21/24] ep02_lateral_offset_y_neg_t0046_mirror   right -> MOVE_LEFT      O     4tok 1.1s
+  [22/24] ep03_lateral_offset_y_neg_t0044_mirror   right -> MOVE_LEFT      O     4tok 1.1s
+  [23/24] ep04_lateral_offset_y_neg_t0043_mirror   right -> MOVE_LEFT      O     4tok 1.1s
+  [24/24] ep05_lateral_offset_y_neg_t0143_mirror   right -> MOVE_LEFT      O     4tok 1.1s
+
+--- twostage_think ---
+  [ 1/24] ep00_lateral_offset_y_pos_t0050.png      right -> MOVE_LEFT      O   150tok 17.1s
+  [ 2/24] ep01_lateral_offset_y_pos_t0044.png      right -> MOVE_LEFT      O    88tok 10.4s
+  [ 3/24] ep02_lateral_offset_y_pos_t0049.png      right -> MOVE_LEFT      O   382tok 42.5s
+  [ 4/24] ep03_lateral_offset_y_pos_t0048.png      right -> MOVE_LEFT      O   352tok 39.2s
+  [ 5/24] ep04_lateral_offset_y_pos_t0043.png      right -> MOVE_LEFT      O    83tok 9.8s
+  [ 6/24] ep05_lateral_offset_y_pos_t0129.png      right -> MOVE_LEFT      O   230tok 25.9s
+  [ 7/24] ep00_lateral_offset_y_neg_t0047.png      left  -> MOVE_RIGHT     O   113tok 13.1s
+  [ 8/24] ep01_lateral_offset_y_neg_t0052.png      left  -> MOVE_RIGHT     O   548tok 56.2s
+  [ 9/24] ep02_lateral_offset_y_neg_t0046.png      left  -> MOVE_RIGHT     O   424tok 41.3s
+  [10/24] ep03_lateral_offset_y_neg_t0044.png      left  -> MOVE_RIGHT     O    91tok 9.4s
+  [11/24] ep04_lateral_offset_y_neg_t0043.png      left  -> MOVE_RIGHT     O   409tok 39.9s
+  [12/24] ep05_lateral_offset_y_neg_t0143.png      left  -> MOVE_RIGHT     O   329tok 32.1s
+  [13/24] ep00_lateral_offset_y_pos_t0050_mirror   left  -> MOVE_RIGHT     O   930tok 90.2s
+  [14/24] ep01_lateral_offset_y_pos_t0044_mirror   left  -> MOVE_RIGHT     O   118tok 12.0s
+  [15/24] ep02_lateral_offset_y_pos_t0049_mirror   left  -> MOVE_RIGHT     O   531tok 51.7s
+  [16/24] ep03_lateral_offset_y_pos_t0048_mirror   left  -> MOVE_RIGHT     O   163tok 16.4s
+  [17/24] ep04_lateral_offset_y_pos_t0043_mirror   left  -> MOVE_RIGHT     O   144tok 14.5s
+  [18/24] ep05_lateral_offset_y_pos_t0129_mirror   left  -> MOVE_RIGHT     O   352tok 34.3s
+  [19/24] ep00_lateral_offset_y_neg_t0047_mirror   right -> MOVE_LEFT      O   303tok 26.2s
+  [20/24] ep01_lateral_offset_y_neg_t0052_mirror   right -> MOVE_LEFT      O   379tok 32.7s
+  [21/24] ep02_lateral_offset_y_neg_t0046_mirror   right -> MOVE_LEFT      O   347tok 30.2s
+  [22/24] ep03_lateral_offset_y_neg_t0044_mirror   right -> MOVE_LEFT      O   299tok 25.9s
+  [23/24] ep04_lateral_offset_y_neg_t0043_mirror   right -> MOVE_LEFT      O   369tok 31.7s
+  [24/24] ep05_lateral_offset_y_neg_t0143_mirror   right -> MOVE_LEFT      O   358tok 31.0s
+
+--- accuracy vs the verified lateral answer ---
+condition            gripper left  gripper right    overall   mean s
+direct                 9/12 (75%)   12/12 (100%)      21/24      0.6
+twostage_nothink       9/12 (75%)   12/12 (100%)      21/24      1.1
+twostage_think       12/12 (100%)   12/12 (100%)      24/24     30.6
+
+--- answer distribution (where the truth is MOVE_RIGHT, i.e. the hard side) ---
+  direct             {'MOVE_RIGHT': 9, 'MOVE_FORWARD': 3}
+  twostage_nothink   {'MOVE_RIGHT': 9, 'MOVE_FORWARD': 3}
+  twostage_think     {'MOVE_RIGHT': 12}
+
+results -> /home/nuri5/yuna_ws/counterfactual_pilot/results/reasoning_REASON1.jsonl
+            /home/nuri5/yuna_ws/counterfactual_pilot/results/reasoning_REASON1.csv

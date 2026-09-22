@@ -1,0 +1,56 @@
+{
+ "overall": {
+  "twostage_think/canonical": {
+   "n": 60,
+   "n_usable": 60,
+   "n_bad": 0,
+   "n_failure": 30,
+   "n_success": 30,
+   "accuracy": 0.65,
+   "failure_recall": 0.3,
+   "false_positive_rate": 0.0,
+   "tp": 9,
+   "fn": 21,
+   "fp": 0,
+   "tn": 30,
+   "answer_distribution": {
+    "SUCCESS": 51,
+    "FAILURE": 9
+   },
+   "mean_latency_s": 5.1,
+   "median_think_tokens": 221
+  }
+ },
+ "by_lead_time": {
+  "twostage_think/canonical": {
+   "t-1": {
+    "n": 60,
+    "n_usable": 60,
+    "n_bad": 0,
+    "n_failure": 30,
+    "n_success": 30,
+    "accuracy": 0.65,
+    "failure_recall": 0.3,
+    "false_positive_rate": 0.0,
+    "tp": 9,
+    "fn": 21,
+    "fp": 0,
+    "tn": 30,
+    "answer_distribution": {
+     "SUCCESS": 51,
+     "FAILURE": 9
+    }
+   }
+  }
+ },
+ "by_failure_type": {
+  "twostage_think/canonical": {
+   "gripper_closed_early": {
+    "n": 30,
+    "n_usable": 30,
+    "recall_hits": 9,
+    "recall": 0.3
+   }
+  }
+ }
+}

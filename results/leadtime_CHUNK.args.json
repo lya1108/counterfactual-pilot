@@ -1,0 +1,16 @@
+{
+ "images_dir": "images_leadtime_chunk",
+ "results_dir": "/home/nuri5/yuna_ws/counterfactual_pilot/results",
+ "conditions": "direct,twostage_think",
+ "variants": "canonical",
+ "robustness": false,
+ "chunk": true,
+ "base_url": "http://localhost:18007/v1",
+ "model": "gemma4",
+ "api_key": "EMPTY",
+ "max_think_tokens": 1200,
+ "run_id": "CHUNK",
+ "limit": null,
+ "mock": false,
+ "dry_run": false
+}

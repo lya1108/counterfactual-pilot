@@ -1,0 +1,374 @@
+--- failure episodes (60) ---
+  OK   f00 seed=0 close_too_high: t_commit=35 len=125 cube_z=0.8211  [verified]
+  OK   f01 seed=1 close_too_high: t_commit=36 len=126 cube_z=0.8199  [verified]
+  OK   f02 seed=2 close_too_high: t_commit=35 len=125 cube_z=0.8210  [verified]
+  OK   f03 seed=3 close_too_high: t_commit=35 len=125 cube_z=0.8205  [verified]
+  OK   f04 seed=4 close_too_high: t_commit=36 len=126 cube_z=0.8218  [verified]
+  OK   f05 seed=5 close_too_high: t_commit=34 len=124 cube_z=0.8203  [verified]
+  OK   f06 seed=6 close_too_high: t_commit=35 len=125 cube_z=0.8215  [verified]
+  OK   f07 seed=7 close_too_high: t_commit=33 len=123 cube_z=0.8208  [verified]
+  OK   f08 seed=8 close_too_high: t_commit=35 len=125 cube_z=0.8216  [verified]
+  OK   f09 seed=9 close_too_high: t_commit=35 len=125 cube_z=0.8209  [verified]
+  OK   f10 seed=10 close_too_high: t_commit=36 len=126 cube_z=0.8212  [verified]
+  OK   f11 seed=11 close_too_high: t_commit=34 len=124 cube_z=0.8208  [verified]
+  OK   f12 seed=12 close_too_high: t_commit=35 len=125 cube_z=0.8204  [verified]
+  OK   f13 seed=13 close_too_high: t_commit=36 len=126 cube_z=0.8215  [verified]
+  OK   f14 seed=14 close_too_high: t_commit=34 len=124 cube_z=0.8216  [verified]
+  OK   f15 seed=15 close_too_high: t_commit=36 len=126 cube_z=0.8200  [verified]
+  OK   f16 seed=16 close_too_high: t_commit=35 len=125 cube_z=0.8210  [verified]
+  OK   f17 seed=17 close_too_high: t_commit=35 len=125 cube_z=0.8203  [verified]
+  OK   f18 seed=18 close_too_high: t_commit=35 len=125 cube_z=0.8216  [verified]
+  OK   f19 seed=19 close_too_high: t_commit=35 len=125 cube_z=0.8204  [verified]
+  OK   f20 seed=20 close_too_high: t_commit=35 len=125 cube_z=0.8217  [verified]
+  OK   f21 seed=21 close_too_high: t_commit=36 len=126 cube_z=0.8213  [verified]
+  OK   f22 seed=22 close_too_high: t_commit=35 len=125 cube_z=0.8207  [verified]
+  OK   f23 seed=23 close_too_high: t_commit=36 len=126 cube_z=0.8214  [verified]
+  OK   f24 seed=24 close_too_high: t_commit=36 len=126 cube_z=0.8219  [verified]
+  OK   f25 seed=25 close_too_high: t_commit=35 len=125 cube_z=0.8204  [verified]
+  OK   f26 seed=26 close_too_high: t_commit=35 len=125 cube_z=0.8214  [verified]
+  OK   f27 seed=27 close_too_high: t_commit=36 len=126 cube_z=0.8214  [verified]
+  OK   f28 seed=28 close_too_high: t_commit=35 len=125 cube_z=0.8201  [verified]
+  OK   f29 seed=29 close_too_high: t_commit=35 len=125 cube_z=0.8200  [verified]
+  OK   f30 seed=0 gripper_closed_early: t_commit=30 len=234 cube_z=0.8211  [verified]
+  OK   f31 seed=1 gripper_closed_early: t_commit=31 len=235 cube_z=0.8199  [verified]
+  OK   f32 seed=2 gripper_closed_early: t_commit=30 len=234 cube_z=0.8210  [verified]
+  OK   f33 seed=3 gripper_closed_early: t_commit=30 len=234 cube_z=0.8205  [verified]
+  OK   f34 seed=4 gripper_closed_early: t_commit=31 len=235 cube_z=0.8218  [verified]
+  OK   f35 seed=5 gripper_closed_early: t_commit=29 len=233 cube_z=0.8203  [verified]
+  OK   f36 seed=6 gripper_closed_early: t_commit=30 len=234 cube_z=0.8215  [verified]
+  OK   f37 seed=7 gripper_closed_early: t_commit=28 len=232 cube_z=0.8208  [verified]
+  OK   f38 seed=8 gripper_closed_early: t_commit=30 len=234 cube_z=0.8216  [verified]
+  OK   f39 seed=9 gripper_closed_early: t_commit=30 len=234 cube_z=0.8209  [verified]
+  OK   f40 seed=10 gripper_closed_early: t_commit=31 len=235 cube_z=0.8212  [verified]
+  OK   f41 seed=11 gripper_closed_early: t_commit=29 len=233 cube_z=0.8208  [verified]
+  OK   f42 seed=12 gripper_closed_early: t_commit=30 len=234 cube_z=0.8204  [verified]
+  OK   f43 seed=13 gripper_closed_early: t_commit=31 len=235 cube_z=0.8215  [verified]
+  OK   f44 seed=14 gripper_closed_early: t_commit=29 len=233 cube_z=0.8216  [verified]
+  OK   f45 seed=15 gripper_closed_early: t_commit=31 len=235 cube_z=0.8200  [verified]
+  OK   f46 seed=16 gripper_closed_early: t_commit=30 len=234 cube_z=0.8210  [verified]
+  OK   f47 seed=17 gripper_closed_early: t_commit=30 len=234 cube_z=0.8203  [verified]
+  OK   f48 seed=18 gripper_closed_early: t_commit=30 len=234 cube_z=0.8216  [verified]
+  OK   f49 seed=19 gripper_closed_early: t_commit=30 len=234 cube_z=0.8204  [verified]
+  OK   f50 seed=20 gripper_closed_early: t_commit=30 len=234 cube_z=0.8217  [verified]
+  OK   f51 seed=21 gripper_closed_early: t_commit=31 len=235 cube_z=0.8213  [verified]
+  OK   f52 seed=22 gripper_closed_early: t_commit=30 len=234 cube_z=0.8207  [verified]
+  OK   f53 seed=23 gripper_closed_early: t_commit=31 len=235 cube_z=0.8214  [verified]
+  OK   f54 seed=24 gripper_closed_early: t_commit=31 len=235 cube_z=0.8219  [verified]
+  OK   f55 seed=25 gripper_closed_early: t_commit=30 len=234 cube_z=0.8204  [verified]
+  OK   f56 seed=26 gripper_closed_early: t_commit=30 len=234 cube_z=0.8214  [verified]
+  OK   f57 seed=27 gripper_closed_early: t_commit=31 len=235 cube_z=0.8214  [verified]
+  OK   f58 seed=28 gripper_closed_early: t_commit=30 len=234 cube_z=0.8201  [verified]
+  OK   f59 seed=29 gripper_closed_early: t_commit=30 len=234 cube_z=0.8200  [verified]
+
+--- success episodes (60, nominal controller) ---
+  OK   s00 seed=0 nominal: t_commit=43 len=133 cube_z=1.0569
+  OK   s01 seed=1 nominal: t_commit=44 len=134 cube_z=1.0559
+  OK   s02 seed=2 nominal: t_commit=43 len=133 cube_z=1.0574
+  OK   s03 seed=3 nominal: t_commit=43 len=133 cube_z=1.0566
+  OK   s04 seed=4 nominal: t_commit=44 len=134 cube_z=1.0575
+  OK   s05 seed=5 nominal: t_commit=42 len=132 cube_z=1.0565
+  OK   s06 seed=6 nominal: t_commit=43 len=133 cube_z=1.0574
+  OK   s07 seed=7 nominal: t_commit=41 len=131 cube_z=1.0568
+  OK   s08 seed=8 nominal: t_commit=43 len=133 cube_z=1.0574
+  OK   s09 seed=9 nominal: t_commit=43 len=133 cube_z=1.0568
+  OK   s10 seed=10 nominal: t_commit=44 len=134 cube_z=1.0569
+  OK   s11 seed=11 nominal: t_commit=42 len=132 cube_z=1.0570
+  OK   s12 seed=12 nominal: t_commit=43 len=133 cube_z=1.0566
+  OK   s13 seed=13 nominal: t_commit=44 len=134 cube_z=1.0579
+  OK   s14 seed=14 nominal: t_commit=42 len=132 cube_z=1.0576
+  OK   s15 seed=15 nominal: t_commit=44 len=134 cube_z=1.0564
+  OK   s16 seed=16 nominal: t_commit=43 len=133 cube_z=1.0575
+  OK   s17 seed=17 nominal: t_commit=43 len=133 cube_z=1.0561
+  OK   s18 seed=18 nominal: t_commit=43 len=133 cube_z=1.0582
+  OK   s19 seed=19 nominal: t_commit=43 len=133 cube_z=1.0569
+  OK   s20 seed=20 nominal: t_commit=43 len=133 cube_z=1.0573
+  OK   s21 seed=21 nominal: t_commit=44 len=134 cube_z=1.0575
+  OK   s22 seed=22 nominal: t_commit=43 len=133 cube_z=1.0567
+  OK   s23 seed=23 nominal: t_commit=44 len=134 cube_z=1.0572
+  OK   s24 seed=24 nominal: t_commit=44 len=134 cube_z=1.0576
+  OK   s25 seed=25 nominal: t_commit=43 len=133 cube_z=1.0567
+  OK   s26 seed=26 nominal: t_commit=43 len=133 cube_z=1.0573
+  OK   s27 seed=27 nominal: t_commit=44 len=134 cube_z=1.0570
+  OK   s28 seed=28 nominal: t_commit=43 len=133 cube_z=1.0563
+  OK   s29 seed=29 nominal: t_commit=43 len=133 cube_z=1.0561
+  OK   s30 seed=30 nominal: t_commit=44 len=134 cube_z=1.0575
+  OK   s31 seed=31 nominal: t_commit=42 len=132 cube_z=1.0576
+  OK   s32 seed=32 nominal: t_commit=43 len=133 cube_z=1.0568
+  OK   s33 seed=33 nominal: t_commit=43 len=133 cube_z=1.0569
+  OK   s34 seed=34 nominal: t_commit=43 len=133 cube_z=1.0560
+  OK   s35 seed=35 nominal: t_commit=42 len=132 cube_z=1.0568
+  OK   s36 seed=36 nominal: t_commit=42 len=132 cube_z=1.0579
+  OK   s37 seed=37 nominal: t_commit=43 len=133 cube_z=1.0561
+  OK   s38 seed=38 nominal: t_commit=42 len=132 cube_z=1.0577
+  OK   s39 seed=39 nominal: t_commit=44 len=134 cube_z=1.0574
+  OK   s40 seed=40 nominal: t_commit=44 len=134 cube_z=1.0575
+  OK   s41 seed=41 nominal: t_commit=42 len=132 cube_z=1.0573
+  OK   s42 seed=42 nominal: t_commit=43 len=133 cube_z=1.0576
+  OK   s43 seed=43 nominal: t_commit=44 len=134 cube_z=1.0562
+  OK   s44 seed=44 nominal: t_commit=43 len=133 cube_z=1.0577
+  OK   s45 seed=45 nominal: t_commit=43 len=133 cube_z=1.0568
+  OK   s46 seed=46 nominal: t_commit=43 len=133 cube_z=1.0558
+  OK   s47 seed=47 nominal: t_commit=46 len=136 cube_z=1.0582
+  OK   s48 seed=48 nominal: t_commit=42 len=132 cube_z=1.0566
+  OK   s49 seed=49 nominal: t_commit=43 len=133 cube_z=1.0580
+  OK   s50 seed=50 nominal: t_commit=44 len=134 cube_z=1.0562
+  OK   s51 seed=51 nominal: t_commit=42 len=132 cube_z=1.0566
+  OK   s52 seed=52 nominal: t_commit=43 len=133 cube_z=1.0565
+  OK   s53 seed=53 nominal: t_commit=44 len=134 cube_z=1.0571
+  OK   s54 seed=54 nominal: t_commit=43 len=133 cube_z=1.0564
+  OK   s55 seed=55 nominal: t_commit=44 len=134 cube_z=1.0568
+  OK   s56 seed=56 nominal: t_commit=43 len=133 cube_z=1.0579
+  OK   s57 seed=57 nominal: t_commit=44 len=134 cube_z=1.0571
+  OK   s58 seed=58 nominal: t_commit=43 len=133 cube_z=1.0568
+  OK   s59 seed=59 nominal: t_commit=43 len=133 cube_z=1.0576
+
+--- saving frames ---
+  f00 lead-20 t= 15 p=0.120 [hover  ]  <->  s00 t= 16 [hover  ]
+  f00 lead-10 t= 25 p=0.200 [descend]  <->  s00 t= 27 [descend]
+  f00 lead-5  t= 30 p=0.240 [descend]  <->  s00 t= 32 [descend]
+  f00 lead-1  t= 34 p=0.272 [close  ]  <->  s00 t= 36 [descend]
+  f01 lead-20 t= 16 p=0.127 [hover  ]  <->  s01 t= 17 [hover  ]
+  f01 lead-10 t= 26 p=0.206 [descend]  <->  s01 t= 28 [descend]
+  f01 lead-5  t= 31 p=0.246 [descend]  <->  s01 t= 33 [descend]
+  f01 lead-1  t= 35 p=0.278 [close  ]  <->  s01 t= 37 [descend]
+  f02 lead-20 t= 15 p=0.120 [hover  ]  <->  s02 t= 16 [hover  ]
+  f02 lead-10 t= 25 p=0.200 [descend]  <->  s02 t= 27 [descend]
+  f02 lead-5  t= 30 p=0.240 [descend]  <->  s02 t= 32 [descend]
+  f02 lead-1  t= 34 p=0.272 [close  ]  <->  s02 t= 36 [descend]
+  f03 lead-20 t= 15 p=0.120 [hover  ]  <->  s03 t= 16 [hover  ]
+  f03 lead-10 t= 25 p=0.200 [descend]  <->  s03 t= 27 [descend]
+  f03 lead-5  t= 30 p=0.240 [descend]  <->  s03 t= 32 [descend]
+  f03 lead-1  t= 34 p=0.272 [close  ]  <->  s03 t= 36 [descend]
+  f04 lead-20 t= 16 p=0.127 [hover  ]  <->  s04 t= 17 [hover  ]
+  f04 lead-10 t= 26 p=0.206 [descend]  <->  s04 t= 28 [descend]
+  f04 lead-5  t= 31 p=0.246 [descend]  <->  s04 t= 33 [descend]
+  f04 lead-1  t= 35 p=0.278 [close  ]  <->  s04 t= 37 [descend]
+  f05 lead-20 t= 14 p=0.113 [hover  ]  <->  s05 t= 15 [hover  ]
+  f05 lead-10 t= 24 p=0.194 [descend]  <->  s05 t= 26 [descend]
+  f05 lead-5  t= 29 p=0.234 [descend]  <->  s05 t= 31 [descend]
+  f05 lead-1  t= 33 p=0.266 [close  ]  <->  s05 t= 35 [descend]
+  f06 lead-20 t= 15 p=0.120 [hover  ]  <->  s06 t= 16 [hover  ]
+  f06 lead-10 t= 25 p=0.200 [descend]  <->  s06 t= 27 [descend]
+  f06 lead-5  t= 30 p=0.240 [descend]  <->  s06 t= 32 [descend]
+  f06 lead-1  t= 34 p=0.272 [close  ]  <->  s06 t= 36 [descend]
+  f07 lead-20 t= 13 p=0.106 [hover  ]  <->  s07 t= 14 [hover  ]
+  f07 lead-10 t= 23 p=0.187 [descend]  <->  s07 t= 24 [descend]
+  f07 lead-5  t= 28 p=0.228 [descend]  <->  s07 t= 30 [descend]
+  f07 lead-1  t= 32 p=0.260 [close  ]  <->  s07 t= 34 [descend]
+  f08 lead-20 t= 15 p=0.120 [hover  ]  <->  s08 t= 16 [hover  ]
+  f08 lead-10 t= 25 p=0.200 [descend]  <->  s08 t= 27 [descend]
+  f08 lead-5  t= 30 p=0.240 [descend]  <->  s08 t= 32 [descend]
+  f08 lead-1  t= 34 p=0.272 [close  ]  <->  s08 t= 36 [descend]
+  f09 lead-20 t= 15 p=0.120 [hover  ]  <->  s09 t= 16 [hover  ]
+  f09 lead-10 t= 25 p=0.200 [descend]  <->  s09 t= 27 [descend]
+  f09 lead-5  t= 30 p=0.240 [descend]  <->  s09 t= 32 [descend]
+  f09 lead-1  t= 34 p=0.272 [close  ]  <->  s09 t= 36 [descend]
+  f10 lead-20 t= 16 p=0.127 [hover  ]  <->  s10 t= 17 [hover  ]
+  f10 lead-10 t= 26 p=0.206 [descend]  <->  s10 t= 28 [descend]
+  f10 lead-5  t= 31 p=0.246 [descend]  <->  s10 t= 33 [descend]
+  f10 lead-1  t= 35 p=0.278 [close  ]  <->  s10 t= 37 [descend]
+  f11 lead-20 t= 14 p=0.113 [hover  ]  <->  s11 t= 15 [hover  ]
+  f11 lead-10 t= 24 p=0.194 [descend]  <->  s11 t= 26 [descend]
+  f11 lead-5  t= 29 p=0.234 [descend]  <->  s11 t= 31 [descend]
+  f11 lead-1  t= 33 p=0.266 [close  ]  <->  s11 t= 35 [descend]
+  f12 lead-20 t= 15 p=0.120 [hover  ]  <->  s12 t= 16 [hover  ]
+  f12 lead-10 t= 25 p=0.200 [descend]  <->  s12 t= 27 [descend]
+  f12 lead-5  t= 30 p=0.240 [descend]  <->  s12 t= 32 [descend]
+  f12 lead-1  t= 34 p=0.272 [close  ]  <->  s12 t= 36 [descend]
+  f13 lead-20 t= 16 p=0.127 [hover  ]  <->  s13 t= 17 [hover  ]
+  f13 lead-10 t= 26 p=0.206 [descend]  <->  s13 t= 28 [descend]
+  f13 lead-5  t= 31 p=0.246 [descend]  <->  s13 t= 33 [descend]
+  f13 lead-1  t= 35 p=0.278 [close  ]  <->  s13 t= 37 [descend]
+  f14 lead-20 t= 14 p=0.113 [hover  ]  <->  s14 t= 15 [hover  ]
+  f14 lead-10 t= 24 p=0.194 [descend]  <->  s14 t= 26 [descend]
+  f14 lead-5  t= 29 p=0.234 [descend]  <->  s14 t= 31 [descend]
+  f14 lead-1  t= 33 p=0.266 [close  ]  <->  s14 t= 35 [descend]
+  f15 lead-20 t= 16 p=0.127 [hover  ]  <->  s15 t= 17 [hover  ]
+  f15 lead-10 t= 26 p=0.206 [descend]  <->  s15 t= 28 [descend]
+  f15 lead-5  t= 31 p=0.246 [descend]  <->  s15 t= 33 [descend]
+  f15 lead-1  t= 35 p=0.278 [close  ]  <->  s15 t= 37 [descend]
+  f16 lead-20 t= 15 p=0.120 [hover  ]  <->  s16 t= 16 [hover  ]
+  f16 lead-10 t= 25 p=0.200 [descend]  <->  s16 t= 27 [descend]
+  f16 lead-5  t= 30 p=0.240 [descend]  <->  s16 t= 32 [descend]
+  f16 lead-1  t= 34 p=0.272 [close  ]  <->  s16 t= 36 [descend]
+  f17 lead-20 t= 15 p=0.120 [hover  ]  <->  s17 t= 16 [hover  ]
+  f17 lead-10 t= 25 p=0.200 [descend]  <->  s17 t= 27 [descend]
+  f17 lead-5  t= 30 p=0.240 [descend]  <->  s17 t= 32 [descend]
+  f17 lead-1  t= 34 p=0.272 [close  ]  <->  s17 t= 36 [descend]
+  f18 lead-20 t= 15 p=0.120 [hover  ]  <->  s18 t= 16 [hover  ]
+  f18 lead-10 t= 25 p=0.200 [descend]  <->  s18 t= 27 [descend]
+  f18 lead-5  t= 30 p=0.240 [descend]  <->  s18 t= 32 [descend]
+  f18 lead-1  t= 34 p=0.272 [close  ]  <->  s18 t= 36 [descend]
+  f19 lead-20 t= 15 p=0.120 [hover  ]  <->  s19 t= 16 [hover  ]
+  f19 lead-10 t= 25 p=0.200 [descend]  <->  s19 t= 27 [descend]
+  f19 lead-5  t= 30 p=0.240 [descend]  <->  s19 t= 32 [descend]
+  f19 lead-1  t= 34 p=0.272 [close  ]  <->  s19 t= 36 [descend]
+  f20 lead-20 t= 15 p=0.120 [hover  ]  <->  s20 t= 16 [hover  ]
+  f20 lead-10 t= 25 p=0.200 [descend]  <->  s20 t= 27 [descend]
+  f20 lead-5  t= 30 p=0.240 [descend]  <->  s20 t= 32 [descend]
+  f20 lead-1  t= 34 p=0.272 [close  ]  <->  s20 t= 36 [descend]
+  f21 lead-20 t= 16 p=0.127 [hover  ]  <->  s21 t= 17 [hover  ]
+  f21 lead-10 t= 26 p=0.206 [descend]  <->  s21 t= 28 [descend]
+  f21 lead-5  t= 31 p=0.246 [descend]  <->  s21 t= 33 [descend]
+  f21 lead-1  t= 35 p=0.278 [close  ]  <->  s21 t= 37 [descend]
+  f22 lead-20 t= 15 p=0.120 [hover  ]  <->  s22 t= 16 [hover  ]
+  f22 lead-10 t= 25 p=0.200 [descend]  <->  s22 t= 27 [descend]
+  f22 lead-5  t= 30 p=0.240 [descend]  <->  s22 t= 32 [descend]
+  f22 lead-1  t= 34 p=0.272 [close  ]  <->  s22 t= 36 [descend]
+  f23 lead-20 t= 16 p=0.127 [hover  ]  <->  s23 t= 17 [hover  ]
+  f23 lead-10 t= 26 p=0.206 [descend]  <->  s23 t= 28 [descend]
+  f23 lead-5  t= 31 p=0.246 [descend]  <->  s23 t= 33 [descend]
+  f23 lead-1  t= 35 p=0.278 [close  ]  <->  s23 t= 37 [descend]
+  f24 lead-20 t= 16 p=0.127 [hover  ]  <->  s24 t= 17 [hover  ]
+  f24 lead-10 t= 26 p=0.206 [descend]  <->  s24 t= 28 [descend]
+  f24 lead-5  t= 31 p=0.246 [descend]  <->  s24 t= 33 [descend]
+  f24 lead-1  t= 35 p=0.278 [close  ]  <->  s24 t= 37 [descend]
+  f25 lead-20 t= 15 p=0.120 [hover  ]  <->  s25 t= 16 [hover  ]
+  f25 lead-10 t= 25 p=0.200 [descend]  <->  s25 t= 27 [descend]
+  f25 lead-5  t= 30 p=0.240 [descend]  <->  s25 t= 32 [descend]
+  f25 lead-1  t= 34 p=0.272 [close  ]  <->  s25 t= 36 [descend]
+  f26 lead-20 t= 15 p=0.120 [hover  ]  <->  s26 t= 16 [hover  ]
+  f26 lead-10 t= 25 p=0.200 [descend]  <->  s26 t= 27 [descend]
+  f26 lead-5  t= 30 p=0.240 [descend]  <->  s26 t= 32 [descend]
+  f26 lead-1  t= 34 p=0.272 [close  ]  <->  s26 t= 36 [descend]
+  f27 lead-20 t= 16 p=0.127 [hover  ]  <->  s27 t= 17 [hover  ]
+  f27 lead-10 t= 26 p=0.206 [descend]  <->  s27 t= 28 [descend]
+  f27 lead-5  t= 31 p=0.246 [descend]  <->  s27 t= 33 [descend]
+  f27 lead-1  t= 35 p=0.278 [close  ]  <->  s27 t= 37 [descend]
+  f28 lead-20 t= 15 p=0.120 [hover  ]  <->  s28 t= 16 [hover  ]
+  f28 lead-10 t= 25 p=0.200 [descend]  <->  s28 t= 27 [descend]
+  f28 lead-5  t= 30 p=0.240 [descend]  <->  s28 t= 32 [descend]
+  f28 lead-1  t= 34 p=0.272 [close  ]  <->  s28 t= 36 [descend]
+  f29 lead-20 t= 15 p=0.120 [hover  ]  <->  s29 t= 16 [hover  ]
+  f29 lead-10 t= 25 p=0.200 [descend]  <->  s29 t= 27 [descend]
+  f29 lead-5  t= 30 p=0.240 [descend]  <->  s29 t= 32 [descend]
+  f29 lead-1  t= 34 p=0.272 [close  ]  <->  s29 t= 36 [descend]
+  f30 lead-20 t= 10 p=0.043 [hover  ]  <->  s30 t=  6 [hover  ]
+  f30 lead-10 t= 20 p=0.085 [hover  ]  <->  s30 t= 11 [hover  ]
+  f30 lead-5  t= 25 p=0.107 [descend]  <->  s30 t= 14 [hover  ]
+  f30 lead-1  t= 29 p=0.124 [descend]  <->  s30 t= 17 [hover  ]
+  f31 lead-20 t= 11 p=0.047 [hover  ]  <->  s31 t=  6 [hover  ]
+  f31 lead-10 t= 21 p=0.089 [hover  ]  <->  s31 t= 12 [hover  ]
+  f31 lead-5  t= 26 p=0.111 [descend]  <->  s31 t= 15 [hover  ]
+  f31 lead-1  t= 30 p=0.128 [descend]  <->  s31 t= 17 [hover  ]
+  f32 lead-20 t= 10 p=0.043 [hover  ]  <->  s32 t=  6 [hover  ]
+  f32 lead-10 t= 20 p=0.085 [hover  ]  <->  s32 t= 11 [hover  ]
+  f32 lead-5  t= 25 p=0.107 [descend]  <->  s32 t= 14 [hover  ]
+  f32 lead-1  t= 29 p=0.124 [descend]  <->  s32 t= 16 [hover  ]
+  f33 lead-20 t= 10 p=0.043 [hover  ]  <->  s33 t=  6 [hover  ]
+  f33 lead-10 t= 20 p=0.085 [hover  ]  <->  s33 t= 11 [hover  ]
+  f33 lead-5  t= 25 p=0.107 [descend]  <->  s33 t= 14 [hover  ]
+  f33 lead-1  t= 29 p=0.124 [descend]  <->  s33 t= 16 [hover  ]
+  f34 lead-20 t= 11 p=0.047 [hover  ]  <->  s34 t=  6 [hover  ]
+  f34 lead-10 t= 21 p=0.089 [hover  ]  <->  s34 t= 12 [hover  ]
+  f34 lead-5  t= 26 p=0.111 [descend]  <->  s34 t= 15 [hover  ]
+  f34 lead-1  t= 30 p=0.128 [descend]  <->  s34 t= 17 [hover  ]
+  f35 lead-20 t=  9 p=0.039 [hover  ]  <->  s35 t=  5 [hover  ]
+  f35 lead-10 t= 19 p=0.082 [hover  ]  <->  s35 t= 11 [hover  ]
+  f35 lead-5  t= 24 p=0.103 [descend]  <->  s35 t= 14 [hover  ]
+  f35 lead-1  t= 28 p=0.120 [descend]  <->  s35 t= 16 [hover  ]
+  f36 lead-20 t= 10 p=0.043 [hover  ]  <->  s36 t=  6 [hover  ]
+  f36 lead-10 t= 20 p=0.085 [hover  ]  <->  s36 t= 11 [hover  ]
+  f36 lead-5  t= 25 p=0.107 [descend]  <->  s36 t= 14 [hover  ]
+  f36 lead-1  t= 29 p=0.124 [descend]  <->  s36 t= 16 [hover  ]
+  f37 lead-20 t=  8 p=0.034 [hover  ]  <->  s37 t=  5 [hover  ]
+  f37 lead-10 t= 18 p=0.078 [hover  ]  <->  s37 t= 10 [hover  ]
+  f37 lead-5  t= 23 p=0.099 [descend]  <->  s37 t= 13 [hover  ]
+  f37 lead-1  t= 27 p=0.116 [descend]  <->  s37 t= 15 [hover  ]
+  f38 lead-20 t= 10 p=0.043 [hover  ]  <->  s38 t=  6 [hover  ]
+  f38 lead-10 t= 20 p=0.085 [hover  ]  <->  s38 t= 11 [hover  ]
+  f38 lead-5  t= 25 p=0.107 [descend]  <->  s38 t= 14 [hover  ]
+  f38 lead-1  t= 29 p=0.124 [descend]  <->  s38 t= 16 [hover  ]
+  f39 lead-20 t= 10 p=0.043 [hover  ]  <->  s39 t=  6 [hover  ]
+  f39 lead-10 t= 20 p=0.085 [hover  ]  <->  s39 t= 11 [hover  ]
+  f39 lead-5  t= 25 p=0.107 [descend]  <->  s39 t= 14 [hover  ]
+  f39 lead-1  t= 29 p=0.124 [descend]  <->  s39 t= 17 [hover  ]
+  f40 lead-20 t= 11 p=0.047 [hover  ]  <->  s40 t=  6 [hover  ]
+  f40 lead-10 t= 21 p=0.089 [hover  ]  <->  s40 t= 12 [hover  ]
+  f40 lead-5  t= 26 p=0.111 [descend]  <->  s40 t= 15 [hover  ]
+  f40 lead-1  t= 30 p=0.128 [descend]  <->  s40 t= 17 [hover  ]
+  f41 lead-20 t=  9 p=0.039 [hover  ]  <->  s41 t=  5 [hover  ]
+  f41 lead-10 t= 19 p=0.082 [hover  ]  <->  s41 t= 11 [hover  ]
+  f41 lead-5  t= 24 p=0.103 [descend]  <->  s41 t= 14 [hover  ]
+  f41 lead-1  t= 28 p=0.120 [descend]  <->  s41 t= 16 [hover  ]
+  f42 lead-20 t= 10 p=0.043 [hover  ]  <->  s42 t=  6 [hover  ]
+  f42 lead-10 t= 20 p=0.085 [hover  ]  <->  s42 t= 11 [hover  ]
+  f42 lead-5  t= 25 p=0.107 [descend]  <->  s42 t= 14 [hover  ]
+  f42 lead-1  t= 29 p=0.124 [descend]  <->  s42 t= 16 [hover  ]
+  f43 lead-20 t= 11 p=0.047 [hover  ]  <->  s43 t=  6 [hover  ]
+  f43 lead-10 t= 21 p=0.089 [hover  ]  <->  s43 t= 12 [hover  ]
+  f43 lead-5  t= 26 p=0.111 [descend]  <->  s43 t= 15 [hover  ]
+  f43 lead-1  t= 30 p=0.128 [descend]  <->  s43 t= 17 [hover  ]
+  f44 lead-20 t=  9 p=0.039 [hover  ]  <->  s44 t=  5 [hover  ]
+  f44 lead-10 t= 19 p=0.082 [hover  ]  <->  s44 t= 11 [hover  ]
+  f44 lead-5  t= 24 p=0.103 [descend]  <->  s44 t= 14 [hover  ]
+  f44 lead-1  t= 28 p=0.120 [descend]  <->  s44 t= 16 [hover  ]
+  f45 lead-20 t= 11 p=0.047 [hover  ]  <->  s45 t=  6 [hover  ]
+  f45 lead-10 t= 21 p=0.089 [hover  ]  <->  s45 t= 12 [hover  ]
+  f45 lead-5  t= 26 p=0.111 [descend]  <->  s45 t= 15 [hover  ]
+  f45 lead-1  t= 30 p=0.128 [descend]  <->  s45 t= 17 [hover  ]
+  f46 lead-20 t= 10 p=0.043 [hover  ]  <->  s46 t=  6 [hover  ]
+  f46 lead-10 t= 20 p=0.085 [hover  ]  <->  s46 t= 11 [hover  ]
+  f46 lead-5  t= 25 p=0.107 [descend]  <->  s46 t= 14 [hover  ]
+  f46 lead-1  t= 29 p=0.124 [descend]  <->  s46 t= 16 [hover  ]
+  f47 lead-20 t= 10 p=0.043 [hover  ]  <->  s47 t=  6 [hover  ]
+  f47 lead-10 t= 20 p=0.085 [hover  ]  <->  s47 t= 12 [hover  ]
+  f47 lead-5  t= 25 p=0.107 [descend]  <->  s47 t= 15 [hover  ]
+  f47 lead-1  t= 29 p=0.124 [descend]  <->  s47 t= 17 [hover  ]
+  f48 lead-20 t= 10 p=0.043 [hover  ]  <->  s48 t=  6 [hover  ]
+  f48 lead-10 t= 20 p=0.085 [hover  ]  <->  s48 t= 11 [hover  ]
+  f48 lead-5  t= 25 p=0.107 [descend]  <->  s48 t= 14 [hover  ]
+  f48 lead-1  t= 29 p=0.124 [descend]  <->  s48 t= 16 [hover  ]
+  f49 lead-20 t= 10 p=0.043 [hover  ]  <->  s49 t=  6 [hover  ]
+  f49 lead-10 t= 20 p=0.085 [hover  ]  <->  s49 t= 11 [hover  ]
+  f49 lead-5  t= 25 p=0.107 [descend]  <->  s49 t= 14 [hover  ]
+  f49 lead-1  t= 29 p=0.124 [descend]  <->  s49 t= 16 [hover  ]
+  f50 lead-20 t= 10 p=0.043 [hover  ]  <->  s50 t=  6 [hover  ]
+  f50 lead-10 t= 20 p=0.085 [hover  ]  <->  s50 t= 11 [hover  ]
+  f50 lead-5  t= 25 p=0.107 [descend]  <->  s50 t= 14 [hover  ]
+  f50 lead-1  t= 29 p=0.124 [descend]  <->  s50 t= 17 [hover  ]
+  f51 lead-20 t= 11 p=0.047 [hover  ]  <->  s51 t=  6 [hover  ]
+  f51 lead-10 t= 21 p=0.089 [hover  ]  <->  s51 t= 12 [hover  ]
+  f51 lead-5  t= 26 p=0.111 [descend]  <->  s51 t= 15 [hover  ]
+  f51 lead-1  t= 30 p=0.128 [descend]  <->  s51 t= 17 [hover  ]
+  f52 lead-20 t= 10 p=0.043 [hover  ]  <->  s52 t=  6 [hover  ]
+  f52 lead-10 t= 20 p=0.085 [hover  ]  <->  s52 t= 11 [hover  ]
+  f52 lead-5  t= 25 p=0.107 [descend]  <->  s52 t= 14 [hover  ]
+  f52 lead-1  t= 29 p=0.124 [descend]  <->  s52 t= 16 [hover  ]
+  f53 lead-20 t= 11 p=0.047 [hover  ]  <->  s53 t=  6 [hover  ]
+  f53 lead-10 t= 21 p=0.089 [hover  ]  <->  s53 t= 12 [hover  ]
+  f53 lead-5  t= 26 p=0.111 [descend]  <->  s53 t= 15 [hover  ]
+  f53 lead-1  t= 30 p=0.128 [descend]  <->  s53 t= 17 [hover  ]
+  f54 lead-20 t= 11 p=0.047 [hover  ]  <->  s54 t=  6 [hover  ]
+  f54 lead-10 t= 21 p=0.089 [hover  ]  <->  s54 t= 12 [hover  ]
+  f54 lead-5  t= 26 p=0.111 [descend]  <->  s54 t= 15 [hover  ]
+  f54 lead-1  t= 30 p=0.128 [descend]  <->  s54 t= 17 [hover  ]
+  f55 lead-20 t= 10 p=0.043 [hover  ]  <->  s55 t=  6 [hover  ]
+  f55 lead-10 t= 20 p=0.085 [hover  ]  <->  s55 t= 11 [hover  ]
+  f55 lead-5  t= 25 p=0.107 [descend]  <->  s55 t= 14 [hover  ]
+  f55 lead-1  t= 29 p=0.124 [descend]  <->  s55 t= 17 [hover  ]
+  f56 lead-20 t= 10 p=0.043 [hover  ]  <->  s56 t=  6 [hover  ]
+  f56 lead-10 t= 20 p=0.085 [hover  ]  <->  s56 t= 11 [hover  ]
+  f56 lead-5  t= 25 p=0.107 [descend]  <->  s56 t= 14 [hover  ]
+  f56 lead-1  t= 29 p=0.124 [descend]  <->  s56 t= 16 [hover  ]
+  f57 lead-20 t= 11 p=0.047 [hover  ]  <->  s57 t=  6 [hover  ]
+  f57 lead-10 t= 21 p=0.089 [hover  ]  <->  s57 t= 12 [hover  ]
+  f57 lead-5  t= 26 p=0.111 [descend]  <->  s57 t= 15 [hover  ]
+  f57 lead-1  t= 30 p=0.128 [descend]  <->  s57 t= 17 [hover  ]
+  f58 lead-20 t= 10 p=0.043 [hover  ]  <->  s58 t=  6 [hover  ]
+  f58 lead-10 t= 20 p=0.085 [hover  ]  <->  s58 t= 11 [hover  ]
+  f58 lead-5  t= 25 p=0.107 [descend]  <->  s58 t= 14 [hover  ]
+  f58 lead-1  t= 29 p=0.124 [descend]  <->  s58 t= 16 [hover  ]
+  f59 lead-20 t= 10 p=0.043 [hover  ]  <->  s59 t=  6 [hover  ]
+  f59 lead-10 t= 20 p=0.085 [hover  ]  <->  s59 t= 11 [hover  ]
+  f59 lead-5  t= 25 p=0.107 [descend]  <->  s59 t= 14 [hover  ]
+  f59 lead-1  t= 29 p=0.124 [descend]  <->  s59 t= 16 [hover  ]
+
+saved 480 images (240 failure / 240 success) -> images_leadtime_blind30
+metadata -> images_leadtime_blind30/metadata.jsonl
+  lead   failure   success   failure phases / success phases
+    20        60        60   {'hover': 60} / {'hover': 60}
+    10        60        60   {'descend': 30, 'hover': 30} / {'descend': 30, 'hover': 30}
+     5        60        60   {'descend': 60} / {'descend': 30, 'hover': 30}
+     1        60        60   {'close': 30, 'descend': 30} / {'descend': 30, 'hover': 30}
+chunk: 3 frames x stride 10; realised spans [5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]; 52 record(s) clipped short by the episode start

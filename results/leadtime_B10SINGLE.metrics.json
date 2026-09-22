@@ -1,0 +1,116 @@
+{
+ "overall": {
+  "direct/canonical": {
+   "n": 160,
+   "n_usable": 160,
+   "n_bad": 0,
+   "n_failure": 80,
+   "n_success": 80,
+   "accuracy": 0.475,
+   "failure_recall": 0.1875,
+   "false_positive_rate": 0.2375,
+   "tp": 15,
+   "fn": 65,
+   "fp": 19,
+   "tn": 61,
+   "answer_distribution": {
+    "SUCCESS": 126,
+    "FAILURE": 34
+   },
+   "mean_latency_s": 0.2,
+   "median_think_tokens": 0
+  }
+ },
+ "by_lead_time": {
+  "direct/canonical": {
+   "t-20": {
+    "n": 40,
+    "n_usable": 40,
+    "n_bad": 0,
+    "n_failure": 20,
+    "n_success": 20,
+    "accuracy": 0.5,
+    "failure_recall": 0.05,
+    "false_positive_rate": 0.05,
+    "tp": 1,
+    "fn": 19,
+    "fp": 1,
+    "tn": 19,
+    "answer_distribution": {
+     "SUCCESS": 38,
+     "FAILURE": 2
+    }
+   },
+   "t-10": {
+    "n": 40,
+    "n_usable": 40,
+    "n_bad": 0,
+    "n_failure": 20,
+    "n_success": 20,
+    "accuracy": 0.4,
+    "failure_recall": 0.1,
+    "false_positive_rate": 0.3,
+    "tp": 2,
+    "fn": 18,
+    "fp": 6,
+    "tn": 14,
+    "answer_distribution": {
+     "SUCCESS": 32,
+     "FAILURE": 8
+    }
+   },
+   "t-5": {
+    "n": 40,
+    "n_usable": 40,
+    "n_bad": 0,
+    "n_failure": 20,
+    "n_success": 20,
+    "accuracy": 0.325,
+    "failure_recall": 0.1,
+    "false_positive_rate": 0.45,
+    "tp": 2,
+    "fn": 18,
+    "fp": 9,
+    "tn": 11,
+    "answer_distribution": {
+     "SUCCESS": 29,
+     "FAILURE": 11
+    }
+   },
+   "t-1": {
+    "n": 40,
+    "n_usable": 40,
+    "n_bad": 0,
+    "n_failure": 20,
+    "n_success": 20,
+    "accuracy": 0.675,
+    "failure_recall": 0.5,
+    "false_positive_rate": 0.15,
+    "tp": 10,
+    "fn": 10,
+    "fp": 3,
+    "tn": 17,
+    "answer_distribution": {
+     "SUCCESS": 27,
+     "FAILURE": 13
+    }
+   }
+  }
+ },
+ "by_failure_type": {
+  "direct/canonical": {
+   "close_too_high": {
+    "n": 40,
+    "n_usable": 40,
+    "recall_hits": 6,
+    "recall": 0.15
+   },
+   "gripper_closed_early": {
+    "n": 40,
+    "n_usable": 40,
+    "recall_hits": 9,
+    "recall": 0.225
+   }
+  }
+ }
+}

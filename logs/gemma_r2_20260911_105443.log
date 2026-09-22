@@ -1,0 +1,49 @@
+run_id=R2_action  task=action  images_dir=images_r2  found=10  metadata_rows=10
+model=gemma4  base_url=http://localhost:18007/v1  structured=True  mock=False  choices=['MOVE_LEFT', 'MOVE_RIGHT', 'MOVE_FORWARD', 'MOVE_BACKWARD', 'MOVE_UP', 'MOVE_DOWN', 'OPEN_GRIPPER', 'CLOSE_GRIPPER']
+prompt variants: ['canonical', 'labels_reversed', 'labels_shuffled', 'labels_omitted', 'paraphrase']  ->  50 calls
+  [1/10] ep00_lateral_offset_y_pos_t0047.png      REQUEST_ERROR  agree=1.00= ['REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR']
+  [2/10] ep01_lateral_offset_y_pos_t0071.png      REQUEST_ERROR  agree=1.00= ['REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR']
+  [3/10] ep02_lateral_offset_y_neg_t0062.png      REQUEST_ERROR  agree=1.00= ['REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR']
+  [4/10] ep03_lateral_offset_y_neg_t0053.png      REQUEST_ERROR  agree=1.00= ['REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR']
+  [5/10] ep04_close_too_high_t0034.png            REQUEST_ERROR  agree=1.00= ['REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR']
+  [6/10] ep05_close_too_high_t0035.png            REQUEST_ERROR  agree=1.00= ['REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR']
+  [7/10] ep06_close_too_high_t0034.png            REQUEST_ERROR  agree=1.00= ['REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR']
+  [8/10] ep07_gripper_closed_early_t0029.png      REQUEST_ERROR  agree=1.00= ['REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR']
+  [9/10] ep08_gripper_closed_early_t0030.png      REQUEST_ERROR  agree=1.00= ['REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR']
+  [10/10] ep09_gripper_closed_early_t0029.png      REQUEST_ERROR  agree=1.00= ['REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR', 'REQUEST_ERROR']
+
+--- action distribution ---
+  REQUEST_ERROR  50/50  ##################################################
+distinct valid answers  : 0 of 8  (1 = always the same answer)
+invalid / error         : 50/50 (100%)
+echoed original action  : 0/50  (high = not proposing an alternative)
+
+--- prompt robustness over 5 variants ---
+mean agreement          : 1.00  (1.00 = every phrasing gave the same answer)
+unanimous images        : 10/10
+  ep00_lateral_offset_y_pos_t0047.png          REQUEST_ERROR
+  ep01_lateral_offset_y_pos_t0071.png          REQUEST_ERROR
+  ep02_lateral_offset_y_neg_t0062.png          REQUEST_ERROR
+  ep03_lateral_offset_y_neg_t0053.png          REQUEST_ERROR
+  ep04_close_too_high_t0034.png                REQUEST_ERROR
+  ep05_close_too_high_t0035.png                REQUEST_ERROR
+  ep06_close_too_high_t0034.png                REQUEST_ERROR
+  ep07_gripper_closed_early_t0029.png          REQUEST_ERROR
+  ep08_gripper_closed_early_t0030.png          REQUEST_ERROR
+  ep09_gripper_closed_early_t0029.png          REQUEST_ERROR
+per-variant distribution (an outlier row means that phrasing drives the answer):
+  canonical        {'REQUEST_ERROR': 10}
+  labels_omitted   {'REQUEST_ERROR': 10}
+  labels_reversed  {'REQUEST_ERROR': 10}
+  labels_shuffled  {'REQUEST_ERROR': 10}
+  paraphrase       {'REQUEST_ERROR': 10}
+
+--- modal choice by failure_type (does the image change the answer?) ---
+  close_too_high           {'REQUEST_ERROR': 3}   [reference: MOVE_DOWN]
+  gripper_closed_early     {'REQUEST_ERROR': 3}   [reference: OPEN_GRIPPER]
+  lateral_offset_y_neg     {'REQUEST_ERROR': 2}   [reference: MOVE_RIGHT]
+  lateral_offset_y_pos     {'REQUEST_ERROR': 2}   [reference: MOVE_LEFT]
+
+results -> /home/nuri5/yuna_ws/counterfactual_pilot/results/run_R2_action_action.jsonl
+            /home/nuri5/yuna_ws/counterfactual_pilot/results/run_R2_action_action.csv
+            /home/nuri5/yuna_ws/counterfactual_pilot/results/run_R2_action_action.args.json

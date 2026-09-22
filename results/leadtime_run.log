@@ -1,0 +1,54 @@
+run 20260918_135728: 80 frames x 3 conditions x 1 variants = 400 API calls  model=gemma4
+
+--- direct / canonical ---
+  [10/80] succ_p01_s01_lead20_t0043.png                  truth=SUCCESS -> FAILURE       X
+  [20/80] succ_p02_s02_lead10_t0046.png                  truth=SUCCESS -> SUCCESS       O
+  [30/80] succ_p03_s03_lead05_t0045.png                  truth=SUCCESS -> SUCCESS       O
+  [40/80] succ_p04_s04_lead01_t0036.png                  truth=SUCCESS -> SUCCESS       O
+  [50/80] succ_p06_s06_lead20_t0016.png                  truth=SUCCESS -> SUCCESS       O
+  [60/80] succ_p07_s07_lead10_t0011.png                  truth=SUCCESS -> SUCCESS       O
+  [70/80] succ_p08_s08_lead05_t0015.png                  truth=SUCCESS -> FAILURE       X
+  [80/80] succ_p09_s09_lead01_t0016.png                  truth=SUCCESS -> SUCCESS       O
+
+--- twostage_nothink / canonical ---
+  [10/80] succ_p01_s01_lead20_t0043.png                  truth=SUCCESS -> FAILURE       X
+  [20/80] succ_p02_s02_lead10_t0046.png                  truth=SUCCESS -> SUCCESS       O
+  [30/80] succ_p03_s03_lead05_t0045.png                  truth=SUCCESS -> SUCCESS       O
+  [40/80] succ_p04_s04_lead01_t0036.png                  truth=SUCCESS -> FAILURE       X
+  [50/80] succ_p06_s06_lead20_t0016.png                  truth=SUCCESS -> FAILURE       X
+  [60/80] succ_p07_s07_lead10_t0011.png                  truth=SUCCESS -> SUCCESS       O
+  [70/80] succ_p08_s08_lead05_t0015.png                  truth=SUCCESS -> FAILURE       X
+  [80/80] succ_p09_s09_lead01_t0016.png                  truth=SUCCESS -> FAILURE       X
+
+--- twostage_think / canonical ---
+  [10/80] succ_p01_s01_lead20_t0043.png                  truth=SUCCESS -> SUCCESS       O
+  [20/80] succ_p02_s02_lead10_t0046.png                  truth=SUCCESS -> SUCCESS       O
+  [30/80] succ_p03_s03_lead05_t0045.png                  truth=SUCCESS -> SUCCESS       O
+  [40/80] succ_p04_s04_lead01_t0036.png                  truth=SUCCESS -> SUCCESS       O
+  [50/80] succ_p06_s06_lead20_t0016.png                  truth=SUCCESS -> SUCCESS       O
+  [60/80] succ_p07_s07_lead10_t0011.png                  truth=SUCCESS -> SUCCESS       O
+  [70/80] succ_p08_s08_lead05_t0015.png                  truth=SUCCESS -> SUCCESS       O
+  [80/80] succ_p09_s09_lead01_t0016.png                  truth=SUCCESS -> SUCCESS       O
+
+=== overall (FAILURE is the positive class) ===
+condition/variant                      acc    recall       FPR   bad    tok      s  answers
+direct/canonical                       59%       42%       25%     0      0    0.2  {'SUCCESS': 53, 'FAILURE': 27}
+twostage_nothink/canonical             46%       45%       52%     0      2    0.1  {'SUCCESS': 41, 'FAILURE': 39}
+twostage_think/canonical               66%       32%        0%     0    225    4.5  {'SUCCESS': 67, 'FAILURE': 13}
+
+=== accuracy by steps remaining to failure (t-20: 10F+10S / t-10: 10F+10S / t-5: 10F+10S / t-1: 10F+10S) ===
+condition/variant                             t-20              t-10               t-5               t-1
+direct/canonical                     50% r30% f30%     50% r40% f40%     55% r40% f30%      80% r60% f0%
+twostage_nothink/canonical           40% r30% f50%     50% r50% f50%     50% r40% f40%     45% r60% f70%
+twostage_think/canonical              60% r20% f0%      65% r30% f0%      70% r40% f0%      70% r40% f0%
+  (acc = accuracy on that cell, r = failure recall, f = false-positive rate)
+
+=== failure recall by injected fault (failure frames only, all lead times) ===
+condition/variant                       close_too_high  gripper_closed_early  lateral_offset_y_neg  lateral_offset_y_pos
+direct/canonical                                  0/12                  2/12                   8/8                   7/8
+twostage_nothink/canonical                        0/12                  3/12                   8/8                   7/8
+twostage_think/canonical                          0/12                  0/12                   6/8                   7/8
+
+results -> /home/nuri5/yuna_ws/counterfactual_pilot/results/leadtime_20260918_135728.jsonl
+            /home/nuri5/yuna_ws/counterfactual_pilot/results/leadtime_20260918_135728.csv
+            /home/nuri5/yuna_ws/counterfactual_pilot/results/leadtime_20260918_135728.metrics.json

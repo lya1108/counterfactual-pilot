@@ -1,0 +1,53 @@
+run_id=R2_mirror  task=action  images_dir=images_r2_mirror  found=10  metadata_rows=10
+model=gemma4  base_url=http://localhost:18007/v1  structured=True  mock=False  choices=['MOVE_LEFT', 'MOVE_RIGHT', 'MOVE_FORWARD', 'MOVE_BACKWARD', 'MOVE_UP', 'MOVE_DOWN', 'OPEN_GRIPPER', 'CLOSE_GRIPPER']
+prompt variants: ['canonical', 'labels_reversed', 'labels_shuffled', 'labels_omitted', 'paraphrase']  ->  50 calls
+  [1/10] ep00_lateral_offset_y_pos_t0047_mirror.p MOVE_RIGHT     agree=1.00= ['MOVE_RIGHT', 'MOVE_RIGHT', 'MOVE_RIGHT', 'MOVE_RIGHT', 'MOVE_RIGHT']
+  [2/10] ep01_lateral_offset_y_pos_t0071_mirror.p MOVE_RIGHT     agree=1.00= ['MOVE_RIGHT', 'MOVE_RIGHT', 'MOVE_RIGHT', 'MOVE_RIGHT', 'MOVE_RIGHT']
+  [3/10] ep02_lateral_offset_y_neg_t0062_mirror.p MOVE_LEFT      agree=1.00= ['MOVE_LEFT', 'MOVE_LEFT', 'MOVE_LEFT', 'MOVE_LEFT', 'MOVE_LEFT']
+  [4/10] ep03_lateral_offset_y_neg_t0053_mirror.p MOVE_LEFT      agree=1.00= ['MOVE_LEFT', 'MOVE_LEFT', 'MOVE_LEFT', 'MOVE_LEFT', 'MOVE_LEFT']
+  [5/10] ep04_close_too_high_t0034_mirror.png     MOVE_DOWN      agree=1.00= ['MOVE_DOWN', 'MOVE_DOWN', 'MOVE_DOWN', 'MOVE_DOWN', 'MOVE_DOWN']
+  [6/10] ep05_close_too_high_t0035_mirror.png     MOVE_DOWN      agree=1.00= ['MOVE_DOWN', 'MOVE_DOWN', 'MOVE_DOWN', 'MOVE_DOWN', 'MOVE_DOWN']
+  [7/10] ep06_close_too_high_t0034_mirror.png     MOVE_FORWARD   agree=1.00= ['MOVE_FORWARD', 'MOVE_FORWARD', 'MOVE_FORWARD', 'MOVE_FORWARD', 'MOVE_FORWARD']
+  [8/10] ep07_gripper_closed_early_t0029_mirror.p CLOSE_GRIPPER  agree=1.00= ['CLOSE_GRIPPER', 'CLOSE_GRIPPER', 'CLOSE_GRIPPER', 'CLOSE_GRIPPER', 'CLOSE_GRIPPER']
+  [9/10] ep08_gripper_closed_early_t0030_mirror.p CLOSE_GRIPPER  agree=1.00= ['CLOSE_GRIPPER', 'CLOSE_GRIPPER', 'CLOSE_GRIPPER', 'CLOSE_GRIPPER', 'CLOSE_GRIPPER']
+  [10/10] ep09_gripper_closed_early_t0029_mirror.p CLOSE_GRIPPER  agree=1.00= ['CLOSE_GRIPPER', 'CLOSE_GRIPPER', 'CLOSE_GRIPPER', 'CLOSE_GRIPPER', 'CLOSE_GRIPPER']
+
+--- action distribution ---
+  CLOSE_GRIPPER  15/50  ###############
+  MOVE_RIGHT     10/50  ##########
+  MOVE_LEFT      10/50  ##########
+  MOVE_DOWN      10/50  ##########
+  MOVE_FORWARD    5/50  #####
+distinct valid answers  : 5 of 8  (1 = always the same answer)
+invalid / error         : 0/50 (0%)
+echoed original action  : 0/50  (high = not proposing an alternative)
+
+--- prompt robustness over 5 variants ---
+mean agreement          : 1.00  (1.00 = every phrasing gave the same answer)
+unanimous images        : 10/10
+  ep00_lateral_offset_y_pos_t0047_mirror.png   MOVE_RIGHT
+  ep01_lateral_offset_y_pos_t0071_mirror.png   MOVE_RIGHT
+  ep02_lateral_offset_y_neg_t0062_mirror.png   MOVE_LEFT
+  ep03_lateral_offset_y_neg_t0053_mirror.png   MOVE_LEFT
+  ep04_close_too_high_t0034_mirror.png         MOVE_DOWN
+  ep05_close_too_high_t0035_mirror.png         MOVE_DOWN
+  ep06_close_too_high_t0034_mirror.png         MOVE_FORWARD
+  ep07_gripper_closed_early_t0029_mirror.png   CLOSE_GRIPPER
+  ep08_gripper_closed_early_t0030_mirror.png   CLOSE_GRIPPER
+  ep09_gripper_closed_early_t0029_mirror.png   CLOSE_GRIPPER
+per-variant distribution (an outlier row means that phrasing drives the answer):
+  canonical        {'MOVE_RIGHT': 2, 'MOVE_LEFT': 2, 'MOVE_DOWN': 2, 'MOVE_FORWARD': 1, 'CLOSE_GRIPPER': 3}
+  labels_omitted   {'MOVE_RIGHT': 2, 'MOVE_LEFT': 2, 'MOVE_DOWN': 2, 'MOVE_FORWARD': 1, 'CLOSE_GRIPPER': 3}
+  labels_reversed  {'MOVE_RIGHT': 2, 'MOVE_LEFT': 2, 'MOVE_DOWN': 2, 'MOVE_FORWARD': 1, 'CLOSE_GRIPPER': 3}
+  labels_shuffled  {'MOVE_RIGHT': 2, 'MOVE_LEFT': 2, 'MOVE_DOWN': 2, 'MOVE_FORWARD': 1, 'CLOSE_GRIPPER': 3}
+  paraphrase       {'MOVE_RIGHT': 2, 'MOVE_LEFT': 2, 'MOVE_DOWN': 2, 'MOVE_FORWARD': 1, 'CLOSE_GRIPPER': 3}
+
+--- modal choice by failure_type (does the image change the answer?) ---
+  close_too_high           {'MOVE_DOWN': 2, 'MOVE_FORWARD': 1}   [reference: MOVE_DOWN]
+  gripper_closed_early     {'CLOSE_GRIPPER': 3}   [reference: OPEN_GRIPPER]
+  lateral_offset_y_neg     {'MOVE_LEFT': 2}   [reference: MOVE_LEFT]
+  lateral_offset_y_pos     {'MOVE_RIGHT': 2}   [reference: MOVE_RIGHT]
+
+results -> /home/nuri5/yuna_ws/counterfactual_pilot/results/run_R2_mirror_action.jsonl
+            /home/nuri5/yuna_ws/counterfactual_pilot/results/run_R2_mirror_action.csv
+            /home/nuri5/yuna_ws/counterfactual_pilot/results/run_R2_mirror_action.args.json

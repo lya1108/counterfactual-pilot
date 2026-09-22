@@ -1,0 +1,41 @@
+run_id=ROB_gripper  task=gripper_state  images_dir=/home/nuri5/yuna_ws/counterfactual_pilot/images  found=10  metadata_rows=10
+model=gemma4  base_url=http://localhost:18007/v1  structured=True  mock=False  choices=['OPEN', 'CLOSED']
+prompt variants: ['canonical', 'swapped', 'paraphrase']  ->  30 calls
+  [1/10] ep00_lateral_offset_y_pos_t0044.png      OPEN           agree=0.67  ['OPEN', 'OPEN', 'CLOSED']
+  [2/10] ep01_lateral_offset_y_pos_t0043.png      OPEN           agree=0.67  ['OPEN', 'OPEN', 'CLOSED']
+  [3/10] ep02_lateral_offset_y_neg_t0049.png      OPEN           agree=0.67  ['OPEN', 'OPEN', 'CLOSED']
+  [4/10] ep03_lateral_offset_y_neg_t0042.png      OPEN           agree=0.67  ['OPEN', 'OPEN', 'CLOSED']
+  [5/10] ep04_close_too_high_t0035.png            OPEN           agree=0.67  ['OPEN', 'OPEN', 'CLOSED']
+  [6/10] ep05_close_too_high_t0034.png            OPEN           agree=0.67  ['OPEN', 'OPEN', 'CLOSED']
+  [7/10] ep06_close_too_high_t0034.png            OPEN           agree=0.67  ['OPEN', 'OPEN', 'CLOSED']
+  [8/10] ep07_gripper_closed_early_t0030.png      OPEN           agree=0.67  ['OPEN', 'OPEN', 'CLOSED']
+  [9/10] ep08_gripper_closed_early_t0029.png      CLOSED         agree=0.67  ['CLOSED', 'OPEN', 'CLOSED']
+  [10/10] ep09_gripper_closed_early_t0029.png      CLOSED         agree=0.67  ['CLOSED', 'OPEN', 'CLOSED']
+
+--- gripper_state distribution ---
+  OPEN           18/30  ##################
+  CLOSED         12/30  ############
+distinct valid answers  : 2 of 2  (1 = always the same answer)
+invalid / error         : 0/30 (0%)
+correct vs commanded    : 19/30
+  when actually CLOSED: 5/9 correct
+  when actually OPEN  : 14/21 correct
+
+--- prompt robustness over 3 variants ---
+mean agreement          : 0.67  (1.00 = every phrasing gave the same answer)
+unanimous images        : 0/10
+  none
+per-variant distribution (an outlier row means that phrasing drives the answer):
+  canonical        {'OPEN': 8, 'CLOSED': 2}
+  paraphrase       {'CLOSED': 10}
+  swapped          {'OPEN': 10}
+
+--- modal choice by failure_type (does the image change the answer?) ---
+  close_too_high           {'OPEN': 3}   [reference: MOVE_DOWN]
+  gripper_closed_early     {'OPEN': 1, 'CLOSED': 2}   [reference: OPEN_GRIPPER]
+  lateral_offset_y_neg     {'OPEN': 2}   [reference: MOVE_RIGHT]
+  lateral_offset_y_pos     {'OPEN': 2}   [reference: MOVE_LEFT]
+
+results -> /home/nuri5/yuna_ws/counterfactual_pilot/results/run_ROB_gripper_gripper_state.jsonl
+            /home/nuri5/yuna_ws/counterfactual_pilot/results/run_ROB_gripper_gripper_state.csv
+            /home/nuri5/yuna_ws/counterfactual_pilot/results/run_ROB_gripper_gripper_state.args.json

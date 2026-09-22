@@ -1,0 +1,16 @@
+{
+  "images_dir": "images_yneg",
+  "results_dir": "/home/nuri5/yuna_ws/counterfactual_pilot/results",
+  "task": "action",
+  "base_url": "http://localhost:18007/v1",
+  "model": "gemma4",
+  "api_key": "EMPTY",
+  "limit": 10,
+  "temperature": 0.0,
+  "max_tokens": 12,
+  "timeout": 120.0,
+  "robustness": true,
+  "free_form": false,
+  "mock": false,
+  "run_id": "YNEG_orig"
+}

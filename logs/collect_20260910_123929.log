@@ -1,0 +1,14 @@
+  OK   ep00 seed=0 lateral_offset_y_pos: t_commit=144 capture_t=143 orig=MOVE_DOWN      cube_z=0.8204 -> ep00_lateral_offset_y_pos_t0143.png
+  OK   ep01 seed=1 lateral_offset_y_pos: t_commit=143 capture_t=142 orig=OPEN_GRIPPER   cube_z=0.8204 -> ep01_lateral_offset_y_pos_t0142.png
+  OK   ep02 seed=0 lateral_offset_y_neg: t_commit=146 capture_t=145 orig=OPEN_GRIPPER   cube_z=0.8204 -> ep02_lateral_offset_y_neg_t0145.png
+  OK   ep03 seed=1 lateral_offset_y_neg: t_commit=143 capture_t=142 orig=OPEN_GRIPPER   cube_z=0.8204 -> ep03_lateral_offset_y_neg_t0142.png
+  OK   ep04 seed=0 close_too_high: t_commit=35 capture_t=34 orig=OPEN_GRIPPER   cube_z=0.8204 -> ep04_close_too_high_t0034.png
+  OK   ep05 seed=1 close_too_high: t_commit=34 capture_t=33 orig=OPEN_GRIPPER   cube_z=0.8204 -> ep05_close_too_high_t0033.png
+  OK   ep06 seed=2 close_too_high: t_commit=34 capture_t=33 orig=OPEN_GRIPPER   cube_z=0.8204 -> ep06_close_too_high_t0033.png
+  OK   ep07 seed=0 gripper_closed_early: t_commit=30 capture_t=29 orig=MOVE_DOWN      cube_z=0.8204 -> ep07_gripper_closed_early_t0029.png
+  OK   ep08 seed=1 gripper_closed_early: t_commit=29 capture_t=28 orig=MOVE_DOWN      cube_z=0.8204 -> ep08_gripper_closed_early_t0028.png
+  OK   ep09 seed=2 gripper_closed_early: t_commit=29 capture_t=28 orig=MOVE_DOWN      cube_z=0.8204 -> ep09_gripper_closed_early_t0028.png
+
+saved 10 images -> /home/nuri5/yuna_ws/counterfactual_pilot/images
+metadata -> /home/nuri5/yuna_ws/counterfactual_pilot/images/metadata.jsonl
+per failure_type: {'lateral_offset_y_pos': 2, 'lateral_offset_y_neg': 2, 'close_too_high': 3, 'gripper_closed_early': 3}

@@ -1,0 +1,13 @@
+item_id,truth,rep,probe,condition,correct,error,run_id,prompt_version,model_name,answer,raw_answer,think_tokens,think_truncated,latency_s
+too_high_fail,FAILURE,0,text,direct,True,,TEXT2,outcome_v1,gemma4,FAILURE,FAILURE,0,False,0.2
+too_high_ok,SUCCESS,0,text,direct,True,,TEXT2,outcome_v1,gemma4,SUCCESS,SUCCESS,0,False,0.1
+closed_fail,FAILURE,0,text,direct,True,,TEXT2,outcome_v1,gemma4,FAILURE,FAILURE,0,False,0.1
+closed_ok,SUCCESS,0,text,direct,True,,TEXT2,outcome_v1,gemma4,SUCCESS,SUCCESS,0,False,0.1
+lateral_fail,FAILURE,0,text,direct,True,,TEXT2,outcome_v1,gemma4,FAILURE,FAILURE,0,False,0.1
+lateral_ok,SUCCESS,0,text,direct,True,,TEXT2,outcome_v1,gemma4,SUCCESS,SUCCESS,0,False,0.1
+too_high_fail,FAILURE,0,text,twostage_think,True,,TEXT2,outcome_v1,gemma4,FAILURE,FAILURE,203,False,3.6
+too_high_ok,SUCCESS,0,text,twostage_think,True,,TEXT2,outcome_v1,gemma4,SUCCESS,SUCCESS,450,False,7.9
+closed_fail,FAILURE,0,text,twostage_think,True,,TEXT2,outcome_v1,gemma4,FAILURE,FAILURE,222,False,3.9
+closed_ok,SUCCESS,0,text,twostage_think,True,,TEXT2,outcome_v1,gemma4,SUCCESS,SUCCESS,287,False,5.1
+lateral_fail,FAILURE,0,text,twostage_think,True,,TEXT2,outcome_v1,gemma4,FAILURE,FAILURE,326,False,5.7
+lateral_ok,SUCCESS,0,text,twostage_think,True,,TEXT2,outcome_v1,gemma4,SUCCESS,SUCCESS,263,False,4.7

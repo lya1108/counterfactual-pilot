@@ -1,0 +1,55 @@
+  ep00 lateral_offset_y_pos   t= 47  control=fail     recovering actions: none
+       two-action sweep: 1 rescuing sequences; viable first actions: MOVE_LEFT
+  ep01 lateral_offset_y_pos   t= 71  control=fail     recovering actions: none
+       two-action sweep: 0 rescuing sequences; viable first actions: none
+  ep02 lateral_offset_y_neg   t= 62  control=fail     recovering actions: none
+       two-action sweep: 1 rescuing sequences; viable first actions: MOVE_RIGHT
+  ep03 lateral_offset_y_neg   t= 53  control=fail     recovering actions: none
+       two-action sweep: 0 rescuing sequences; viable first actions: none
+  ep04 close_too_high         t= 34  control=fail     recovering actions: MOVE_DOWN
+  ep05 close_too_high         t= 35  control=fail     recovering actions: MOVE_DOWN
+  ep06 close_too_high         t= 34  control=fail     recovering actions: MOVE_DOWN
+  ep07 gripper_closed_early   t= 29  control=fail     recovering actions: none
+       two-action sweep: 2 rescuing sequences; viable first actions: OPEN_GRIPPER
+  ep08 gripper_closed_early   t= 30  control=fail     recovering actions: none
+       two-action sweep: 2 rescuing sequences; viable first actions: OPEN_GRIPPER
+  ep09 gripper_closed_early   t= 29  control=fail     recovering actions: none
+       two-action sweep: 2 rescuing sequences; viable first actions: OPEN_GRIPPER
+
+--- recoverability (1754 rollouts) ---
+  ep00 lateral_offset_y_pos   recovers: (none)                                   ref=MOVE_LEFT
+  ep01 lateral_offset_y_pos   recovers: (none)                                   ref=MOVE_LEFT
+  ep02 lateral_offset_y_neg   recovers: (none)                                   ref=MOVE_RIGHT
+  ep03 lateral_offset_y_neg   recovers: (none)                                   ref=MOVE_RIGHT
+       grasped but did not lift: MOVE_RIGHT
+  ep04 close_too_high         recovers: MOVE_DOWN                                ref=MOVE_DOWN
+  ep05 close_too_high         recovers: MOVE_DOWN                                ref=MOVE_DOWN
+  ep06 close_too_high         recovers: MOVE_DOWN                                ref=MOVE_DOWN
+  ep07 gripper_closed_early   recovers: (none)                                   ref=OPEN_GRIPPER
+  ep08 gripper_closed_early   recovers: (none)                                   ref=OPEN_GRIPPER
+  ep09 gripper_closed_early   recovers: (none)                                   ref=OPEN_GRIPPER
+       grasped but did not lift: OPEN_GRIPPER
+
+frames recoverable by one action : 3/10
+
+--- per action (how many frames it rescues, at any k) ---
+  NO_CHANGE      0/10  
+  MOVE_LEFT      0/10  
+  MOVE_RIGHT     0/10  
+  MOVE_FORWARD   0/10  
+  MOVE_BACKWARD  0/10  
+  MOVE_UP        0/10  
+  MOVE_DOWN      3/10  [4, 5, 6]
+  OPEN_GRIPPER   0/10  
+  CLOSE_GRIPPER  0/10  
+
+--- per k (does the discrete vocabulary need the right magnitude?) ---
+  k=1   steps   rescuing (frame, action) pairs: 0
+  k=2   steps   rescuing (frame, action) pairs: 0
+  k=3   steps   rescuing (frame, action) pairs: 0
+  k=5   steps   rescuing (frame, action) pairs: 3
+  k=10  steps   rescuing (frame, action) pairs: 3
+
+reference_correction actually recovers on 8/10 frames: [0, 2, 4, 5, 6, 7, 8, 9]
+
+results -> /home/nuri5/yuna_ws/counterfactual_pilot/results/oracle_ORACLE2.jsonl

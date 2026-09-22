@@ -1,0 +1,115 @@
+{
+ "overall": {
+  "direct/canonical": {
+   "n": 160,
+   "n_usable": 160,
+   "n_bad": 0,
+   "n_failure": 80,
+   "n_success": 80,
+   "accuracy": 0.6438,
+   "failure_recall": 0.3125,
+   "false_positive_rate": 0.025,
+   "tp": 25,
+   "fn": 55,
+   "fp": 2,
+   "tn": 78,
+   "answer_distribution": {
+    "SUCCESS": 133,
+    "FAILURE": 27
+   },
+   "mean_latency_s": 0.3,
+   "median_think_tokens": 0
+  }
+ },
+ "by_lead_time": {
+  "direct/canonical": {
+   "t-20": {
+    "n": 40,
+    "n_usable": 40,
+    "n_bad": 0,
+    "n_failure": 20,
+    "n_success": 20,
+    "accuracy": 0.5,
+    "failure_recall": 0.0,
+    "false_positive_rate": 0.0,
+    "tp": 0,
+    "fn": 20,
+    "fp": 0,
+    "tn": 20,
+    "answer_distribution": {
+     "SUCCESS": 40
+    }
+   },
+   "t-10": {
+    "n": 40,
+    "n_usable": 40,
+    "n_bad": 0,
+    "n_failure": 20,
+    "n_success": 20,
+    "accuracy": 0.6,
+    "failure_recall": 0.2,
+    "false_positive_rate": 0.0,
+    "tp": 4,
+    "fn": 16,
+    "fp": 0,
+    "tn": 20,
+    "answer_distribution": {
+     "SUCCESS": 36,
+     "FAILURE": 4
+    }
+   },
+   "t-5": {
+    "n": 40,
+    "n_usable": 40,
+    "n_bad": 0,
+    "n_failure": 20,
+    "n_success": 20,
+    "accuracy": 0.675,
+    "failure_recall": 0.4,
+    "false_positive_rate": 0.05,
+    "tp": 8,
+    "fn": 12,
+    "fp": 1,
+    "tn": 19,
+    "answer_distribution": {
+     "SUCCESS": 31,
+     "FAILURE": 9
+    }
+   },
+   "t-1": {
+    "n": 40,
+    "n_usable": 40,
+    "n_bad": 0,
+    "n_failure": 20,
+    "n_success": 20,
+    "accuracy": 0.8,
+    "failure_recall": 0.65,
+    "false_positive_rate": 0.05,
+    "tp": 13,
+    "fn": 7,
+    "fp": 1,
+    "tn": 19,
+    "answer_distribution": {
+     "SUCCESS": 26,
+     "FAILURE": 14
+    }
+   }
+  }
+ },
+ "by_failure_type": {
+  "direct/canonical": {
+   "close_too_high": {
+    "n": 40,
+    "n_usable": 40,
+    "recall_hits": 12,
+    "recall": 0.3
+   },
+   "gripper_closed_early": {
+    "n": 40,
+    "n_usable": 40,
+    "recall_hits": 13,
+    "recall": 0.325
+   }
+  }
+ }
+}

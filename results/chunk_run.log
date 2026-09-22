@@ -1,0 +1,41 @@
+run CHUNK: 80 frames x 2 conditions x 1 variants = 240 API calls  model=gemma4
+
+--- direct / canonical ---
+  [10/80] succ_p01_s01_lead20_t0043.png                  truth=SUCCESS -> SUCCESS       O
+  [20/80] succ_p02_s02_lead10_t0046.png                  truth=SUCCESS -> SUCCESS       O
+  [30/80] succ_p03_s03_lead05_t0045.png                  truth=SUCCESS -> SUCCESS       O
+  [40/80] succ_p04_s04_lead01_t0036.png                  truth=SUCCESS -> SUCCESS       O
+  [50/80] succ_p06_s06_lead20_t0016.png                  truth=SUCCESS -> SUCCESS       O
+  [60/80] succ_p07_s07_lead10_t0011.png                  truth=SUCCESS -> SUCCESS       O
+  [70/80] succ_p08_s08_lead05_t0015.png                  truth=SUCCESS -> SUCCESS       O
+  [80/80] succ_p09_s09_lead01_t0016.png                  truth=SUCCESS -> SUCCESS       O
+
+--- twostage_think / canonical ---
+  [10/80] succ_p01_s01_lead20_t0043.png                  truth=SUCCESS -> SUCCESS       O
+  [20/80] succ_p02_s02_lead10_t0046.png                  truth=SUCCESS -> SUCCESS       O
+  [30/80] succ_p03_s03_lead05_t0045.png                  truth=SUCCESS -> SUCCESS       O
+  [40/80] succ_p04_s04_lead01_t0036.png                  truth=SUCCESS -> SUCCESS       O
+  [50/80] succ_p06_s06_lead20_t0016.png                  truth=SUCCESS -> SUCCESS       O
+  [60/80] succ_p07_s07_lead10_t0011.png                  truth=SUCCESS -> SUCCESS       O
+  [70/80] succ_p08_s08_lead05_t0015.png                  truth=SUCCESS -> SUCCESS       O
+  [80/80] succ_p09_s09_lead01_t0016.png                  truth=SUCCESS -> SUCCESS       O
+
+=== overall (FAILURE is the positive class) ===
+condition/variant                      acc    recall       FPR   bad    tok      s  answers
+direct/canonical                       78%       62%        8%     0      0    0.2  {'SUCCESS': 52, 'FAILURE': 28}
+twostage_think/canonical               71%       45%        2%     0    232    5.2  {'SUCCESS': 61, 'FAILURE': 19}
+
+=== accuracy by steps remaining to failure (t-20: 10F+10S / t-10: 10F+10S / t-5: 10F+10S / t-1: 10F+10S) ===
+condition/variant                             t-20              t-10               t-5               t-1
+direct/canonical                     60% r30% f10%      75% r50% f0%     85% r80% f10%     90% r90% f10%
+twostage_think/canonical              60% r20% f0%      70% r40% f0%      80% r60% f0%     75% r60% f10%
+  (acc = accuracy on that cell, r = failure recall, f = false-positive rate)
+
+=== failure recall by injected fault (failure frames only, all lead times) ===
+condition/variant                       close_too_high  gripper_closed_early  lateral_offset_y_neg  lateral_offset_y_pos
+direct/canonical                                  5/12                  6/12                   6/8                   8/8
+twostage_think/canonical                          3/12                  2/12                   6/8                   7/8
+
+results -> /home/nuri5/yuna_ws/counterfactual_pilot/results/leadtime_CHUNK.jsonl
+            /home/nuri5/yuna_ws/counterfactual_pilot/results/leadtime_CHUNK.csv
+            /home/nuri5/yuna_ws/counterfactual_pilot/results/leadtime_CHUNK.metrics.json

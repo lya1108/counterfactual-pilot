@@ -1,0 +1,110 @@
+{
+ "overall": {
+  "direct/canonical": {
+   "n": 8,
+   "n_usable": 8,
+   "n_bad": 0,
+   "n_failure": 4,
+   "n_success": 4,
+   "accuracy": 0.75,
+   "failure_recall": 0.75,
+   "false_positive_rate": 0.25,
+   "tp": 3,
+   "fn": 1,
+   "fp": 1,
+   "tn": 3,
+   "answer_distribution": {
+    "SUCCESS": 4,
+    "FAILURE": 4
+   },
+   "mean_latency_s": 0.2,
+   "median_think_tokens": 0
+  }
+ },
+ "by_lead_time": {
+  "direct/canonical": {
+   "t-20": {
+    "n": 2,
+    "n_usable": 2,
+    "n_bad": 0,
+    "n_failure": 1,
+    "n_success": 1,
+    "accuracy": 0.0,
+    "failure_recall": 0.0,
+    "false_positive_rate": 1.0,
+    "tp": 0,
+    "fn": 1,
+    "fp": 1,
+    "tn": 0,
+    "answer_distribution": {
+     "SUCCESS": 1,
+     "FAILURE": 1
+    }
+   },
+   "t-10": {
+    "n": 2,
+    "n_usable": 2,
+    "n_bad": 0,
+    "n_failure": 1,
+    "n_success": 1,
+    "accuracy": 1.0,
+    "failure_recall": 1.0,
+    "false_positive_rate": 0.0,
+    "tp": 1,
+    "fn": 0,
+    "fp": 0,
+    "tn": 1,
+    "answer_distribution": {
+     "FAILURE": 1,
+     "SUCCESS": 1
+    }
+   },
+   "t-5": {
+    "n": 2,
+    "n_usable": 2,
+    "n_bad": 0,
+    "n_failure": 1,
+    "n_success": 1,
+    "accuracy": 1.0,
+    "failure_recall": 1.0,
+    "false_positive_rate": 0.0,
+    "tp": 1,
+    "fn": 0,
+    "fp": 0,
+    "tn": 1,
+    "answer_distribution": {
+     "FAILURE": 1,
+     "SUCCESS": 1
+    }
+   },
+   "t-1": {
+    "n": 2,
+    "n_usable": 2,
+    "n_bad": 0,
+    "n_failure": 1,
+    "n_success": 1,
+    "accuracy": 1.0,
+    "failure_recall": 1.0,
+    "false_positive_rate": 0.0,
+    "tp": 1,
+    "fn": 0,
+    "fp": 0,
+    "tn": 1,
+    "answer_distribution": {
+     "FAILURE": 1,
+     "SUCCESS": 1
+    }
+   }
+  }
+ },
+ "by_failure_type": {
+  "direct/canonical": {
+   "lateral_offset_y_pos": {
+    "n": 4,
+    "n_usable": 4,
+    "recall_hits": 3,
+    "recall": 0.75
+   }
+  }
+ }
+}

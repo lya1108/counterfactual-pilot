@@ -1,0 +1,368 @@
+{
+ "overall": {
+  "direct/canonical": {
+   "n": 80,
+   "n_usable": 80,
+   "n_bad": 0,
+   "n_failure": 40,
+   "n_success": 40,
+   "accuracy": 0.5875,
+   "failure_recall": 0.425,
+   "false_positive_rate": 0.25,
+   "tp": 17,
+   "fn": 23,
+   "fp": 10,
+   "tn": 30,
+   "answer_distribution": {
+    "SUCCESS": 53,
+    "FAILURE": 27
+   },
+   "mean_latency_s": 0.2,
+   "median_think_tokens": 0
+  },
+  "twostage_nothink/canonical": {
+   "n": 80,
+   "n_usable": 80,
+   "n_bad": 0,
+   "n_failure": 40,
+   "n_success": 40,
+   "accuracy": 0.4625,
+   "failure_recall": 0.45,
+   "false_positive_rate": 0.525,
+   "tp": 18,
+   "fn": 22,
+   "fp": 21,
+   "tn": 19,
+   "answer_distribution": {
+    "SUCCESS": 41,
+    "FAILURE": 39
+   },
+   "mean_latency_s": 0.1,
+   "median_think_tokens": 2
+  },
+  "twostage_think/canonical": {
+   "n": 80,
+   "n_usable": 80,
+   "n_bad": 0,
+   "n_failure": 40,
+   "n_success": 40,
+   "accuracy": 0.6625,
+   "failure_recall": 0.325,
+   "false_positive_rate": 0.0,
+   "tp": 13,
+   "fn": 27,
+   "fp": 0,
+   "tn": 40,
+   "answer_distribution": {
+    "SUCCESS": 67,
+    "FAILURE": 13
+   },
+   "mean_latency_s": 4.5,
+   "median_think_tokens": 225
+  }
+ },
+ "by_lead_time": {
+  "direct/canonical": {
+   "t-20": {
+    "n": 20,
+    "n_usable": 20,
+    "n_bad": 0,
+    "n_failure": 10,
+    "n_success": 10,
+    "accuracy": 0.5,
+    "failure_recall": 0.3,
+    "false_positive_rate": 0.3,
+    "tp": 3,
+    "fn": 7,
+    "fp": 3,
+    "tn": 7,
+    "answer_distribution": {
+     "SUCCESS": 14,
+     "FAILURE": 6
+    }
+   },
+   "t-10": {
+    "n": 20,
+    "n_usable": 20,
+    "n_bad": 0,
+    "n_failure": 10,
+    "n_success": 10,
+    "accuracy": 0.5,
+    "failure_recall": 0.4,
+    "false_positive_rate": 0.4,
+    "tp": 4,
+    "fn": 6,
+    "fp": 4,
+    "tn": 6,
+    "answer_distribution": {
+     "SUCCESS": 12,
+     "FAILURE": 8
+    }
+   },
+   "t-5": {
+    "n": 20,
+    "n_usable": 20,
+    "n_bad": 0,
+    "n_failure": 10,
+    "n_success": 10,
+    "accuracy": 0.55,
+    "failure_recall": 0.4,
+    "false_positive_rate": 0.3,
+    "tp": 4,
+    "fn": 6,
+    "fp": 3,
+    "tn": 7,
+    "answer_distribution": {
+     "SUCCESS": 13,
+     "FAILURE": 7
+    }
+   },
+   "t-1": {
+    "n": 20,
+    "n_usable": 20,
+    "n_bad": 0,
+    "n_failure": 10,
+    "n_success": 10,
+    "accuracy": 0.8,
+    "failure_recall": 0.6,
+    "false_positive_rate": 0.0,
+    "tp": 6,
+    "fn": 4,
+    "fp": 0,
+    "tn": 10,
+    "answer_distribution": {
+     "SUCCESS": 14,
+     "FAILURE": 6
+    }
+   }
+  },
+  "twostage_nothink/canonical": {
+   "t-20": {
+    "n": 20,
+    "n_usable": 20,
+    "n_bad": 0,
+    "n_failure": 10,
+    "n_success": 10,
+    "accuracy": 0.4,
+    "failure_recall": 0.3,
+    "false_positive_rate": 0.5,
+    "tp": 3,
+    "fn": 7,
+    "fp": 5,
+    "tn": 5,
+    "answer_distribution": {
+     "SUCCESS": 12,
+     "FAILURE": 8
+    }
+   },
+   "t-10": {
+    "n": 20,
+    "n_usable": 20,
+    "n_bad": 0,
+    "n_failure": 10,
+    "n_success": 10,
+    "accuracy": 0.5,
+    "failure_recall": 0.5,
+    "false_positive_rate": 0.5,
+    "tp": 5,
+    "fn": 5,
+    "fp": 5,
+    "tn": 5,
+    "answer_distribution": {
+     "FAILURE": 10,
+     "SUCCESS": 10
+    }
+   },
+   "t-5": {
+    "n": 20,
+    "n_usable": 20,
+    "n_bad": 0,
+    "n_failure": 10,
+    "n_success": 10,
+    "accuracy": 0.5,
+    "failure_recall": 0.4,
+    "false_positive_rate": 0.4,
+    "tp": 4,
+    "fn": 6,
+    "fp": 4,
+    "tn": 6,
+    "answer_distribution": {
+     "SUCCESS": 12,
+     "FAILURE": 8
+    }
+   },
+   "t-1": {
+    "n": 20,
+    "n_usable": 20,
+    "n_bad": 0,
+    "n_failure": 10,
+    "n_success": 10,
+    "accuracy": 0.45,
+    "failure_recall": 0.6,
+    "false_positive_rate": 0.7,
+    "tp": 6,
+    "fn": 4,
+    "fp": 7,
+    "tn": 3,
+    "answer_distribution": {
+     "FAILURE": 13,
+     "SUCCESS": 7
+    }
+   }
+  },
+  "twostage_think/canonical": {
+   "t-20": {
+    "n": 20,
+    "n_usable": 20,
+    "n_bad": 0,
+    "n_failure": 10,
+    "n_success": 10,
+    "accuracy": 0.6,
+    "failure_recall": 0.2,
+    "false_positive_rate": 0.0,
+    "tp": 2,
+    "fn": 8,
+    "fp": 0,
+    "tn": 10,
+    "answer_distribution": {
+     "SUCCESS": 18,
+     "FAILURE": 2
+    }
+   },
+   "t-10": {
+    "n": 20,
+    "n_usable": 20,
+    "n_bad": 0,
+    "n_failure": 10,
+    "n_success": 10,
+    "accuracy": 0.65,
+    "failure_recall": 0.3,
+    "false_positive_rate": 0.0,
+    "tp": 3,
+    "fn": 7,
+    "fp": 0,
+    "tn": 10,
+    "answer_distribution": {
+     "SUCCESS": 17,
+     "FAILURE": 3
+    }
+   },
+   "t-5": {
+    "n": 20,
+    "n_usable": 20,
+    "n_bad": 0,
+    "n_failure": 10,
+    "n_success": 10,
+    "accuracy": 0.7,
+    "failure_recall": 0.4,
+    "false_positive_rate": 0.0,
+    "tp": 4,
+    "fn": 6,
+    "fp": 0,
+    "tn": 10,
+    "answer_distribution": {
+     "SUCCESS": 16,
+     "FAILURE": 4
+    }
+   },
+   "t-1": {
+    "n": 20,
+    "n_usable": 20,
+    "n_bad": 0,
+    "n_failure": 10,
+    "n_success": 10,
+    "accuracy": 0.7,
+    "failure_recall": 0.4,
+    "false_positive_rate": 0.0,
+    "tp": 4,
+    "fn": 6,
+    "fp": 0,
+    "tn": 10,
+    "answer_distribution": {
+     "SUCCESS": 16,
+     "FAILURE": 4
+    }
+   }
+  }
+ },
+ "by_failure_type": {
+  "direct/canonical": {
+   "close_too_high": {
+    "n": 12,
+    "n_usable": 12,
+    "recall_hits": 0,
+    "recall": 0.0
+   },
+   "gripper_closed_early": {
+    "n": 12,
+    "n_usable": 12,
+    "recall_hits": 2,
+    "recall": 0.1667
+   },
+   "lateral_offset_y_neg": {
+    "n": 8,
+    "n_usable": 8,
+    "recall_hits": 8,
+    "recall": 1.0
+   },
+   "lateral_offset_y_pos": {
+    "n": 8,
+    "n_usable": 8,
+    "recall_hits": 7,
+    "recall": 0.875
+   }
+  },
+  "twostage_nothink/canonical": {
+   "close_too_high": {
+    "n": 12,
+    "n_usable": 12,
+    "recall_hits": 0,
+    "recall": 0.0
+   },
+   "gripper_closed_early": {
+    "n": 12,
+    "n_usable": 12,
+    "recall_hits": 3,
+    "recall": 0.25
+   },
+   "lateral_offset_y_neg": {
+    "n": 8,
+    "n_usable": 8,
+    "recall_hits": 8,
+    "recall": 1.0
+   },
+   "lateral_offset_y_pos": {
+    "n": 8,
+    "n_usable": 8,
+    "recall_hits": 7,
+    "recall": 0.875
+   }
+  },
+  "twostage_think/canonical": {
+   "close_too_high": {
+    "n": 12,
+    "n_usable": 12,
+    "recall_hits": 0,
+    "recall": 0.0
+   },
+   "gripper_closed_early": {
+    "n": 12,
+    "n_usable": 12,
+    "recall_hits": 0,
+    "recall": 0.0
+   },
+   "lateral_offset_y_neg": {
+    "n": 8,
+    "n_usable": 8,
+    "recall_hits": 6,
+    "recall": 0.75
+   },
+   "lateral_offset_y_pos": {
+    "n": 8,
+    "n_usable": 8,
+    "recall_hits": 7,
+    "recall": 0.875
+   }
+  }
+ }
+}
