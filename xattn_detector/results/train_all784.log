@@ -1,0 +1,43 @@
+에피소드 784 (실패 470 / 성공 314)   제외 0건 — --include-unverified 로 포함됨
+suffix=suf_mean  device=cuda  seeds=[0, 1, 2, 3, 4, 5, 6, 7]  d=128 heads=4 dropout=0.1 wd=0.01
+
+  logreg_init        params    1,025  test ep-AUROC 0.818±0.029  Brier 0.1843  | train AUROC 0.849  gap +0.031  | 0.015 ms
+  lstm_init          params  590,977  test ep-AUROC 0.827±0.027  Brier 0.1731  | train AUROC 0.887  gap +0.060  | 0.046 ms
+  attnpool_init      params  132,353  test ep-AUROC 0.809±0.039  Brier 0.1844  | train AUROC 0.857  gap +0.048  | 0.038 ms
+  xattn_init         params  181,889  test ep-AUROC 0.819±0.028  Brier 0.1838  | train AUROC 0.849  gap +0.030  | 0.106 ms
+  logreg_task        params    1,025  test ep-AUROC 0.730±0.064  Brier 0.2092  | train AUROC 0.862  gap +0.133  | 0.015 ms
+  lstm_task          params  590,977  test ep-AUROC 0.709±0.086  Brier 0.2271  | train AUROC 0.890  gap +0.181  | 0.045 ms
+  attnpool_task      params  132,353  test ep-AUROC 0.721±0.059  Brier 0.2110  | train AUROC 0.879  gap +0.158  | 0.039 ms
+  xattn_task         params  181,889  test ep-AUROC 0.730±0.065  Brier 0.2094  | train AUROC 0.862  gap +0.132  | 0.106 ms
+
+========================================================================================================
+
+=== init_prefix8   (8시드 평균 ± sd) ===
+  model         params   test ep-AUROC    test Brier       R²  train AUROC     gap     rel     res  ms/call
+  logreg         1,025    0.818±0.029   0.1843±0.009    0.236        0.849  +0.031  0.0198  0.0761    0.015
+  lstm         590,977    0.827±0.027   0.1731±0.013    0.282        0.887  +0.060  0.0159  0.0837    0.046
+  attnpool     132,353    0.809±0.039   0.1844±0.016    0.235        0.857  +0.048  0.0148  0.0700    0.038
+  xattn        181,889    0.819±0.028   0.1838±0.009    0.237        0.849  +0.030  0.0206  0.0777    0.106
+
+=== task_prefix8   (8시드 평균 ± sd) ===
+  model         params   test ep-AUROC    test Brier       R²  train AUROC     gap     rel     res  ms/call
+  logreg         1,025    0.730±0.064   0.2092±0.019    0.118        0.862  +0.133  0.0222  0.0503    0.015
+  lstm         590,977    0.709±0.086   0.2271±0.036    0.042        0.890  +0.181  0.0356  0.0451    0.045
+  attnpool     132,353    0.721±0.059   0.2110±0.017    0.110        0.879  +0.158  0.0251  0.0503    0.039
+  xattn        181,889    0.730±0.065   0.2094±0.020    0.117        0.862  +0.132  0.0223  0.0495    0.106
+
+=== 인용 (safe_detector/results/multiseed.json, 재학습 아님) ===
+  같은 분할·같은 아키텍처이지만 풀배치 60epoch · early stopping 없음 · weight decay 없음 ·
+  토큰이 아니라 pooled act_mean 입력. 위 표와의 차이는 프로토콜 차이이지 발견이 아니다.
+  cell                                ep-AUROC           strat
+  logreg_act_mean_init_prefix8    0.847±0.025    0.834±0.022
+  logreg_act_mean_task_prefix8    0.722±0.068    0.719±0.053
+  lstm_act_mean_init_prefix8      0.811±0.024    0.816±0.021
+  lstm_act_mean_task_prefix8      0.703±0.069    0.712±0.064
+  lstm_vlm_mean_init_prefix8      0.832±0.026    0.830±0.028
+  lstm_vlm_mean_task_prefix8      0.698±0.087    0.689±0.090
+
+  gap = train ep-AUROC − test ep-AUROC.  이전 LSTM은 전체 에피소드에서 train 1.000 / gap +0.30 이었다.
+  ms/call = detector forward 1회(batch 1, 특징은 이미 계산된 상태). π0.5 forward는 포함하지 않는다.
+
+-> /home/nuri5/yuna_ws/xattn_detector/results/xattn_all784.json

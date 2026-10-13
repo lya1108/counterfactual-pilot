@@ -1,0 +1,78 @@
+{
+  "args": {
+    "tokens": "data/tokens_smoke",
+    "seeds": "0",
+    "splits": [
+      "init"
+    ],
+    "models": [
+      "xattn"
+    ],
+    "suffix": "suf_mean",
+    "holdout": 0.3,
+    "val_frac": 0.2,
+    "d": 128,
+    "heads": 4,
+    "dropout": 0.1,
+    "train_down": false,
+    "epochs": 3,
+    "patience": 2,
+    "batch": 8,
+    "lr": 0.001,
+    "weight_decay": 0.01,
+    "include_unverified": false,
+    "time_runs": 200,
+    "tag": "dryxattn"
+  },
+  "n_episodes": 197,
+  "n_dropped": 1,
+  "dropped": [
+    {
+      "suite": "libero_spatial",
+      "task": 2,
+      "init": 17
+    }
+  ],
+  "cells": {
+    "xattn_init": {
+      "n_params": 181889,
+      "n_seeds": 1,
+      "ms_per_call": [
+        0.2774417004548013,
+        NaN
+      ],
+      "test_auroc_ep": [
+        0.6388888888888888,
+        NaN
+      ],
+      "test_auroc_call": [
+        0.6137514467592593,
+        NaN
+      ],
+      "test_brier": [
+        0.23814482762438113,
+        NaN
+      ],
+      "test_r2": [
+        0.04052992481426998,
+        NaN
+      ],
+      "test_reliability": [
+        0.006475573925841611,
+        NaN
+      ],
+      "test_resolution": [
+        0.012732383961915702,
+        NaN
+      ],
+      "train_auroc_ep": [
+        0.786593707250342,
+        NaN
+      ],
+      "train_brier": [
+        0.22421737355434618,
+        NaN
+      ]
+    }
+  }
+}

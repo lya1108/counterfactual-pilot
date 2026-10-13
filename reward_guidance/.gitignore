@@ -1,0 +1,5 @@
+# data/sens, data/grad, data/stagec (18 MB) — 추적하지 않는다.
+# 재생성 명령은 README "재현" 절에 있고, 각각 ~18분 / ~15분 / ~22분 (GPU 필요).
+data/
+
+__pycache__/

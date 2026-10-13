@@ -1,0 +1,256 @@
+---- time_init_full
+episodes 800  failure 470  |  train 560 (fail 329)  test 240 (fail 141)
+feature=time dim=2  model=time  split=init holdout=['1', '17', '4', '5', '7', '8']
+
+AUROC  per-call 0.741   per-episode(max) 0.968
+  by call index (alive S/F):  t0=0.50(99/141)  t1=0.50(99/141)  t2=0.50(99/141)  t3=0.50(99/141)  t4=0.50(99/141)  t5=0.50(99/141)  t6=0.50(99/141)  t7=0.50(96/141)  t8=0.50(84/141)  t9=0.50(75/141)  t10=0.50(70/141)  t11=0.50(63/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_time_init_full.npz
+---- random_init_full
+episodes 800  failure 470  |  train 560 (fail 329)  test 240 (fail 141)
+feature=vlm_mean dim=2048  model=random  split=init holdout=['1', '17', '4', '5', '7', '8']
+
+AUROC  per-call 0.497   per-episode(max) 0.679
+  by call index (alive S/F):  t0=0.47(99/141)  t1=0.52(99/141)  t2=0.45(99/141)  t3=0.56(99/141)  t4=0.51(99/141)  t5=0.53(99/141)  t6=0.47(99/141)  t7=0.49(96/141)  t8=0.46(84/141)  t9=0.51(75/141)  t10=0.52(70/141)  t11=0.54(63/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_random_init_full.npz
+---- logreg_vlm_mean_init_full
+episodes 800  failure 470  |  train 560 (fail 329)  test 240 (fail 141)
+feature=vlm_mean dim=2048  model=logreg  split=init holdout=['1', '17', '4', '5', '7', '8']
+
+AUROC  per-call 0.867   per-episode(max) 0.920
+  by call index (alive S/F):  t0=0.78(99/141)  t1=0.78(99/141)  t2=0.79(99/141)  t3=0.79(99/141)  t4=0.79(99/141)  t5=0.80(99/141)  t6=0.80(99/141)  t7=0.80(96/141)  t8=0.81(84/141)  t9=0.83(75/141)  t10=0.82(70/141)  t11=0.83(63/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_logreg_vlm_mean_init_full.npz
+---- lstm_vlm_mean_init_full
+episodes 800  failure 470  |  train 560 (fail 329)  test 240 (fail 141)
+feature=vlm_mean dim=2048  model=lstm  split=init holdout=['1', '17', '4', '5', '7', '8']
+
+AUROC  per-call 0.829   per-episode(max) 0.866
+  by call index (alive S/F):  t0=0.81(99/141)  t1=0.82(99/141)  t2=0.82(99/141)  t3=0.81(99/141)  t4=0.81(99/141)  t5=0.81(99/141)  t6=0.82(99/141)  t7=0.82(96/141)  t8=0.80(84/141)  t9=0.80(75/141)  t10=0.80(70/141)  t11=0.78(63/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_lstm_vlm_mean_init_full.npz
+---- logreg_act_mean_init_full
+episodes 800  failure 470  |  train 560 (fail 329)  test 240 (fail 141)
+feature=act_mean dim=1024  model=logreg  split=init holdout=['1', '17', '4', '5', '7', '8']
+
+AUROC  per-call 0.882   per-episode(max) 0.955
+  by call index (alive S/F):  t0=0.79(99/141)  t1=0.79(99/141)  t2=0.81(99/141)  t3=0.81(99/141)  t4=0.81(99/141)  t5=0.81(99/141)  t6=0.81(99/141)  t7=0.82(96/141)  t8=0.81(84/141)  t9=0.81(75/141)  t10=0.81(70/141)  t11=0.82(63/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_logreg_act_mean_init_full.npz
+---- lstm_act_mean_init_full
+episodes 800  failure 470  |  train 560 (fail 329)  test 240 (fail 141)
+feature=act_mean dim=1024  model=lstm  split=init holdout=['1', '17', '4', '5', '7', '8']
+
+AUROC  per-call 0.836   per-episode(max) 0.872
+  by call index (alive S/F):  t0=0.83(99/141)  t1=0.83(99/141)  t2=0.83(99/141)  t3=0.83(99/141)  t4=0.83(99/141)  t5=0.81(99/141)  t6=0.81(99/141)  t7=0.80(96/141)  t8=0.78(84/141)  t9=0.78(75/141)  t10=0.77(70/141)  t11=0.78(63/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_lstm_act_mean_init_full.npz
+---- lstm_concat_init_full
+episodes 800  failure 470  |  train 560 (fail 329)  test 240 (fail 141)
+feature=concat dim=6144  model=lstm  split=init holdout=['1', '17', '4', '5', '7', '8']
+
+AUROC  per-call 0.865   per-episode(max) 0.914
+  by call index (alive S/F):  t0=0.80(99/141)  t1=0.81(99/141)  t2=0.82(99/141)  t3=0.82(99/141)  t4=0.83(99/141)  t5=0.83(99/141)  t6=0.84(99/141)  t7=0.83(96/141)  t8=0.83(84/141)  t9=0.82(75/141)  t10=0.82(70/141)  t11=0.81(63/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_lstm_concat_init_full.npz
+---- time_init_prefix8
+prefix of 8 calls: kept 784/800 episodes (dropped 16 shorter than that)
+episodes 784  failure 470  |  train 547 (fail 329)  test 237 (fail 141)
+feature=time dim=2  model=time  split=init holdout=['1', '17', '4', '5', '7', '8']
+
+AUROC  per-call 0.500   per-episode(max) 0.500
+  by call index (alive S/F):  t0=0.50(96/141)  t1=0.50(96/141)  t2=0.50(96/141)  t3=0.50(96/141)  t4=0.50(96/141)  t5=0.50(96/141)  t6=0.50(96/141)  t7=0.50(96/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_time_init_prefix8.npz
+---- random_init_prefix8
+prefix of 8 calls: kept 784/800 episodes (dropped 16 shorter than that)
+episodes 784  failure 470  |  train 547 (fail 329)  test 237 (fail 141)
+feature=vlm_mean dim=2048  model=random  split=init holdout=['1', '17', '4', '5', '7', '8']
+
+AUROC  per-call 0.502   per-episode(max) 0.462
+  by call index (alive S/F):  t0=0.46(96/141)  t1=0.57(96/141)  t2=0.49(96/141)  t3=0.52(96/141)  t4=0.47(96/141)  t5=0.56(96/141)  t6=0.49(96/141)  t7=0.46(96/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_random_init_prefix8.npz
+---- logreg_vlm_mean_init_prefix8
+prefix of 8 calls: kept 784/800 episodes (dropped 16 shorter than that)
+episodes 784  failure 470  |  train 547 (fail 329)  test 237 (fail 141)
+feature=vlm_mean dim=2048  model=logreg  split=init holdout=['1', '17', '4', '5', '7', '8']
+
+AUROC  per-call 0.813   per-episode(max) 0.833
+  by call index (alive S/F):  t0=0.80(96/141)  t1=0.80(96/141)  t2=0.80(96/141)  t3=0.80(96/141)  t4=0.82(96/141)  t5=0.83(96/141)  t6=0.83(96/141)  t7=0.83(96/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_logreg_vlm_mean_init_prefix8.npz
+---- lstm_vlm_mean_init_prefix8
+prefix of 8 calls: kept 784/800 episodes (dropped 16 shorter than that)
+episodes 784  failure 470  |  train 547 (fail 329)  test 237 (fail 141)
+feature=vlm_mean dim=2048  model=lstm  split=init holdout=['1', '17', '4', '5', '7', '8']
+
+AUROC  per-call 0.811   per-episode(max) 0.823
+  by call index (alive S/F):  t0=0.82(96/141)  t1=0.83(96/141)  t2=0.83(96/141)  t3=0.82(96/141)  t4=0.82(96/141)  t5=0.81(96/141)  t6=0.82(96/141)  t7=0.82(96/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_lstm_vlm_mean_init_prefix8.npz
+---- logreg_act_mean_init_prefix8
+prefix of 8 calls: kept 784/800 episodes (dropped 16 shorter than that)
+episodes 784  failure 470  |  train 547 (fail 329)  test 237 (fail 141)
+feature=act_mean dim=1024  model=logreg  split=init holdout=['1', '17', '4', '5', '7', '8']
+
+AUROC  per-call 0.825   per-episode(max) 0.830
+  by call index (alive S/F):  t0=0.83(96/141)  t1=0.83(96/141)  t2=0.82(96/141)  t3=0.81(96/141)  t4=0.82(96/141)  t5=0.83(96/141)  t6=0.83(96/141)  t7=0.84(96/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_logreg_act_mean_init_prefix8.npz
+---- lstm_act_mean_init_prefix8
+prefix of 8 calls: kept 784/800 episodes (dropped 16 shorter than that)
+episodes 784  failure 470  |  train 547 (fail 329)  test 237 (fail 141)
+feature=act_mean dim=1024  model=lstm  split=init holdout=['1', '17', '4', '5', '7', '8']
+
+AUROC  per-call 0.802   per-episode(max) 0.816
+  by call index (alive S/F):  t0=0.83(96/141)  t1=0.83(96/141)  t2=0.83(96/141)  t3=0.82(96/141)  t4=0.82(96/141)  t5=0.81(96/141)  t6=0.81(96/141)  t7=0.80(96/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_lstm_act_mean_init_prefix8.npz
+---- lstm_concat_init_prefix8
+prefix of 8 calls: kept 784/800 episodes (dropped 16 shorter than that)
+episodes 784  failure 470  |  train 547 (fail 329)  test 237 (fail 141)
+feature=concat dim=6144  model=lstm  split=init holdout=['1', '17', '4', '5', '7', '8']
+
+AUROC  per-call 0.826   per-episode(max) 0.823
+  by call index (alive S/F):  t0=0.82(96/141)  t1=0.82(96/141)  t2=0.83(96/141)  t3=0.83(96/141)  t4=0.83(96/141)  t5=0.83(96/141)  t6=0.84(96/141)  t7=0.84(96/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_lstm_concat_init_prefix8.npz
+---- time_task_full
+episodes 800  failure 470  |  train 560 (fail 329)  test 240 (fail 141)
+feature=time dim=2  model=time  split=task holdout=["('libero_10', 5)", "('libero_10', 7)", "('libero_10', 8)", "('libero_goal', 2)", "('libero_goal', 3)", "('libero_goal', 4)", "('libero_goal', 5)", "('libero_goal', 6)", "('libero_object', 9)", "('libero_spatial', 1)", "('libero_spatial', 3)", "('libero_spatial', 9)"]
+
+AUROC  per-call 0.797   per-episode(max) 0.980
+  by call index (alive S/F):  t0=0.50(99/141)  t1=0.50(99/141)  t2=0.50(99/141)  t3=0.50(99/141)  t4=0.50(99/141)  t5=0.50(99/141)  t6=0.50(99/141)  t7=0.50(87/141)  t8=0.50(79/141)  t9=0.50(61/141)  t10=0.50(50/141)  t11=0.50(42/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_time_task_full.npz
+---- random_task_full
+episodes 800  failure 470  |  train 560 (fail 329)  test 240 (fail 141)
+feature=vlm_mean dim=2048  model=random  split=task holdout=["('libero_10', 5)", "('libero_10', 7)", "('libero_10', 8)", "('libero_goal', 2)", "('libero_goal', 3)", "('libero_goal', 4)", "('libero_goal', 5)", "('libero_goal', 6)", "('libero_object', 9)", "('libero_spatial', 1)", "('libero_spatial', 3)", "('libero_spatial', 9)"]
+
+AUROC  per-call 0.499   per-episode(max) 0.716
+  by call index (alive S/F):  t0=0.51(99/141)  t1=0.55(99/141)  t2=0.50(99/141)  t3=0.40(99/141)  t4=0.53(99/141)  t5=0.44(99/141)  t6=0.54(99/141)  t7=0.45(87/141)  t8=0.50(79/141)  t9=0.52(61/141)  t10=0.54(50/141)  t11=0.50(42/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_random_task_full.npz
+---- logreg_vlm_mean_task_full
+episodes 800  failure 470  |  train 560 (fail 329)  test 240 (fail 141)
+feature=vlm_mean dim=2048  model=logreg  split=task holdout=["('libero_10', 5)", "('libero_10', 7)", "('libero_10', 8)", "('libero_goal', 2)", "('libero_goal', 3)", "('libero_goal', 4)", "('libero_goal', 5)", "('libero_goal', 6)", "('libero_object', 9)", "('libero_spatial', 1)", "('libero_spatial', 3)", "('libero_spatial', 9)"]
+
+AUROC  per-call 0.811   per-episode(max) 0.877
+  by call index (alive S/F):  t0=0.76(99/141)  t1=0.74(99/141)  t2=0.73(99/141)  t3=0.73(99/141)  t4=0.72(99/141)  t5=0.73(99/141)  t6=0.75(99/141)  t7=0.75(87/141)  t8=0.77(79/141)  t9=0.77(61/141)  t10=0.72(50/141)  t11=0.72(42/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_logreg_vlm_mean_task_full.npz
+---- lstm_vlm_mean_task_full
+episodes 800  failure 470  |  train 560 (fail 329)  test 240 (fail 141)
+feature=vlm_mean dim=2048  model=lstm  split=task holdout=["('libero_10', 5)", "('libero_10', 7)", "('libero_10', 8)", "('libero_goal', 2)", "('libero_goal', 3)", "('libero_goal', 4)", "('libero_goal', 5)", "('libero_goal', 6)", "('libero_object', 9)", "('libero_spatial', 1)", "('libero_spatial', 3)", "('libero_spatial', 9)"]
+
+AUROC  per-call 0.839   per-episode(max) 0.887
+  by call index (alive S/F):  t0=0.78(99/141)  t1=0.78(99/141)  t2=0.80(99/141)  t3=0.81(99/141)  t4=0.82(99/141)  t5=0.82(99/141)  t6=0.83(99/141)  t7=0.84(87/141)  t8=0.84(79/141)  t9=0.82(61/141)  t10=0.79(50/141)  t11=0.77(42/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_lstm_vlm_mean_task_full.npz
+---- logreg_act_mean_task_full
+episodes 800  failure 470  |  train 560 (fail 329)  test 240 (fail 141)
+feature=act_mean dim=1024  model=logreg  split=task holdout=["('libero_10', 5)", "('libero_10', 7)", "('libero_10', 8)", "('libero_goal', 2)", "('libero_goal', 3)", "('libero_goal', 4)", "('libero_goal', 5)", "('libero_goal', 6)", "('libero_object', 9)", "('libero_spatial', 1)", "('libero_spatial', 3)", "('libero_spatial', 9)"]
+
+AUROC  per-call 0.822   per-episode(max) 0.878
+  by call index (alive S/F):  t0=0.80(99/141)  t1=0.77(99/141)  t2=0.80(99/141)  t3=0.78(99/141)  t4=0.75(99/141)  t5=0.76(99/141)  t6=0.78(99/141)  t7=0.77(87/141)  t8=0.75(79/141)  t9=0.70(61/141)  t10=0.69(50/141)  t11=0.69(42/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_logreg_act_mean_task_full.npz
+---- lstm_act_mean_task_full
+episodes 800  failure 470  |  train 560 (fail 329)  test 240 (fail 141)
+feature=act_mean dim=1024  model=lstm  split=task holdout=["('libero_10', 5)", "('libero_10', 7)", "('libero_10', 8)", "('libero_goal', 2)", "('libero_goal', 3)", "('libero_goal', 4)", "('libero_goal', 5)", "('libero_goal', 6)", "('libero_object', 9)", "('libero_spatial', 1)", "('libero_spatial', 3)", "('libero_spatial', 9)"]
+
+AUROC  per-call 0.802   per-episode(max) 0.906
+  by call index (alive S/F):  t0=0.78(99/141)  t1=0.77(99/141)  t2=0.78(99/141)  t3=0.78(99/141)  t4=0.78(99/141)  t5=0.78(99/141)  t6=0.79(99/141)  t7=0.78(87/141)  t8=0.77(79/141)  t9=0.73(61/141)  t10=0.69(50/141)  t11=0.66(42/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_lstm_act_mean_task_full.npz
+---- lstm_concat_task_full
+episodes 800  failure 470  |  train 560 (fail 329)  test 240 (fail 141)
+feature=concat dim=6144  model=lstm  split=task holdout=["('libero_10', 5)", "('libero_10', 7)", "('libero_10', 8)", "('libero_goal', 2)", "('libero_goal', 3)", "('libero_goal', 4)", "('libero_goal', 5)", "('libero_goal', 6)", "('libero_object', 9)", "('libero_spatial', 1)", "('libero_spatial', 3)", "('libero_spatial', 9)"]
+
+AUROC  per-call 0.838   per-episode(max) 0.893
+  by call index (alive S/F):  t0=0.80(99/141)  t1=0.81(99/141)  t2=0.82(99/141)  t3=0.82(99/141)  t4=0.81(99/141)  t5=0.81(99/141)  t6=0.82(99/141)  t7=0.81(87/141)  t8=0.82(79/141)  t9=0.78(61/141)  t10=0.74(50/141)  t11=0.69(42/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_lstm_concat_task_full.npz
+---- time_task_prefix8
+prefix of 8 calls: kept 784/800 episodes (dropped 16 shorter than that)
+episodes 784  failure 470  |  train 556 (fail 329)  test 228 (fail 141)
+feature=time dim=2  model=time  split=task holdout=["('libero_10', 5)", "('libero_10', 7)", "('libero_10', 8)", "('libero_goal', 2)", "('libero_goal', 3)", "('libero_goal', 4)", "('libero_goal', 5)", "('libero_goal', 6)", "('libero_object', 9)", "('libero_spatial', 1)", "('libero_spatial', 3)", "('libero_spatial', 9)"]
+
+AUROC  per-call 0.500   per-episode(max) 0.500
+  by call index (alive S/F):  t0=0.50(87/141)  t1=0.50(87/141)  t2=0.50(87/141)  t3=0.50(87/141)  t4=0.50(87/141)  t5=0.50(87/141)  t6=0.50(87/141)  t7=0.50(87/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_time_task_prefix8.npz
+---- random_task_prefix8
+prefix of 8 calls: kept 784/800 episodes (dropped 16 shorter than that)
+episodes 784  failure 470  |  train 556 (fail 329)  test 228 (fail 141)
+feature=vlm_mean dim=2048  model=random  split=task holdout=["('libero_10', 5)", "('libero_10', 7)", "('libero_10', 8)", "('libero_goal', 2)", "('libero_goal', 3)", "('libero_goal', 4)", "('libero_goal', 5)", "('libero_goal', 6)", "('libero_object', 9)", "('libero_spatial', 1)", "('libero_spatial', 3)", "('libero_spatial', 9)"]
+
+AUROC  per-call 0.479   per-episode(max) 0.482
+  by call index (alive S/F):  t0=0.43(87/141)  t1=0.50(87/141)  t2=0.49(87/141)  t3=0.50(87/141)  t4=0.45(87/141)  t5=0.51(87/141)  t6=0.51(87/141)  t7=0.47(87/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_random_task_prefix8.npz
+---- logreg_vlm_mean_task_prefix8
+prefix of 8 calls: kept 784/800 episodes (dropped 16 shorter than that)
+episodes 784  failure 470  |  train 556 (fail 329)  test 228 (fail 141)
+feature=vlm_mean dim=2048  model=logreg  split=task holdout=["('libero_10', 5)", "('libero_10', 7)", "('libero_10', 8)", "('libero_goal', 2)", "('libero_goal', 3)", "('libero_goal', 4)", "('libero_goal', 5)", "('libero_goal', 6)", "('libero_object', 9)", "('libero_spatial', 1)", "('libero_spatial', 3)", "('libero_spatial', 9)"]
+
+AUROC  per-call 0.723   per-episode(max) 0.719
+  by call index (alive S/F):  t0=0.76(87/141)  t1=0.71(87/141)  t2=0.73(87/141)  t3=0.72(87/141)  t4=0.72(87/141)  t5=0.73(87/141)  t6=0.73(87/141)  t7=0.70(87/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_logreg_vlm_mean_task_prefix8.npz
+---- lstm_vlm_mean_task_prefix8
+prefix of 8 calls: kept 784/800 episodes (dropped 16 shorter than that)
+episodes 784  failure 470  |  train 556 (fail 329)  test 228 (fail 141)
+feature=vlm_mean dim=2048  model=lstm  split=task holdout=["('libero_10', 5)", "('libero_10', 7)", "('libero_10', 8)", "('libero_goal', 2)", "('libero_goal', 3)", "('libero_goal', 4)", "('libero_goal', 5)", "('libero_goal', 6)", "('libero_object', 9)", "('libero_spatial', 1)", "('libero_spatial', 3)", "('libero_spatial', 9)"]
+
+AUROC  per-call 0.795   per-episode(max) 0.794
+  by call index (alive S/F):  t0=0.77(87/141)  t1=0.78(87/141)  t2=0.79(87/141)  t3=0.79(87/141)  t4=0.80(87/141)  t5=0.80(87/141)  t6=0.81(87/141)  t7=0.81(87/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_lstm_vlm_mean_task_prefix8.npz
+---- logreg_act_mean_task_prefix8
+prefix of 8 calls: kept 784/800 episodes (dropped 16 shorter than that)
+episodes 784  failure 470  |  train 556 (fail 329)  test 228 (fail 141)
+feature=act_mean dim=1024  model=logreg  split=task holdout=["('libero_10', 5)", "('libero_10', 7)", "('libero_10', 8)", "('libero_goal', 2)", "('libero_goal', 3)", "('libero_goal', 4)", "('libero_goal', 5)", "('libero_goal', 6)", "('libero_object', 9)", "('libero_spatial', 1)", "('libero_spatial', 3)", "('libero_spatial', 9)"]
+
+AUROC  per-call 0.727   per-episode(max) 0.699
+  by call index (alive S/F):  t0=0.76(87/141)  t1=0.74(87/141)  t2=0.76(87/141)  t3=0.73(87/141)  t4=0.71(87/141)  t5=0.70(87/141)  t6=0.72(87/141)  t7=0.70(87/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_logreg_act_mean_task_prefix8.npz
+---- lstm_act_mean_task_prefix8
+prefix of 8 calls: kept 784/800 episodes (dropped 16 shorter than that)
+episodes 784  failure 470  |  train 556 (fail 329)  test 228 (fail 141)
+feature=act_mean dim=1024  model=lstm  split=task holdout=["('libero_10', 5)", "('libero_10', 7)", "('libero_10', 8)", "('libero_goal', 2)", "('libero_goal', 3)", "('libero_goal', 4)", "('libero_goal', 5)", "('libero_goal', 6)", "('libero_object', 9)", "('libero_spatial', 1)", "('libero_spatial', 3)", "('libero_spatial', 9)"]
+
+AUROC  per-call 0.731   per-episode(max) 0.758
+  by call index (alive S/F):  t0=0.72(87/141)  t1=0.73(87/141)  t2=0.74(87/141)  t3=0.75(87/141)  t4=0.75(87/141)  t5=0.76(87/141)  t6=0.76(87/141)  t7=0.76(87/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_lstm_act_mean_task_prefix8.npz
+---- lstm_concat_task_prefix8
+prefix of 8 calls: kept 784/800 episodes (dropped 16 shorter than that)
+episodes 784  failure 470  |  train 556 (fail 329)  test 228 (fail 141)
+feature=concat dim=6144  model=lstm  split=task holdout=["('libero_10', 5)", "('libero_10', 7)", "('libero_10', 8)", "('libero_goal', 2)", "('libero_goal', 3)", "('libero_goal', 4)", "('libero_goal', 5)", "('libero_goal', 6)", "('libero_object', 9)", "('libero_spatial', 1)", "('libero_spatial', 3)", "('libero_spatial', 9)"]
+
+AUROC  per-call 0.790   per-episode(max) 0.790
+  by call index (alive S/F):  t0=0.79(87/141)  t1=0.80(87/141)  t2=0.81(87/141)  t3=0.80(87/141)  t4=0.80(87/141)  t5=0.79(87/141)  t6=0.79(87/141)  t7=0.79(87/141)
+scores -> /home/nuri5/yuna_ws/safe_detector/results/scores_lstm_concat_task_prefix8.npz
+
+false-alarm budget 10% of successful episodes
+
+=== init_full ===
+detector                    AUROC    ep  strat strat t0-3  detect   FPR lead(steps)
+random                      0.497 0.679  0.502      0.500     32%   18%         200
+time                        0.741 0.968  0.500      0.500    100%   18%          50
+logreg_act_mean             0.882 0.955  0.881      0.799     89%   18%         250
+logreg_vlm_mean             0.867 0.920  0.863      0.783     82%   16%         270
+lstm_act_mean               0.836 0.872  0.816      0.828     60%   18%         320
+lstm_concat                 0.865 0.914  0.841      0.812     81%   12%         260
+lstm_vlm_mean               0.829 0.866  0.777      0.814     71%   16%         250
+
+=== init_prefix8 ===
+detector                    AUROC    ep  strat strat t0-3  detect   FPR lead(steps)
+random                      0.502 0.462  0.504      0.511     13%   19%         260
+time                        0.500 0.500  0.500      0.500      0%    0%         nan
+logreg_act_mean             0.825 0.830  0.825      0.821     67%   12%         440
+logreg_vlm_mean             0.813 0.833  0.813      0.799     55%    8%         290
+lstm_act_mean               0.802 0.816  0.819      0.828     49%   12%         280
+lstm_concat                 0.826 0.823  0.828      0.824     60%   10%         360
+lstm_vlm_mean               0.811 0.823  0.822      0.825     44%    8%         275
+
+=== task_full ===
+detector                    AUROC    ep  strat strat t0-3  detect   FPR lead(steps)
+random                      0.499 0.716  0.499      0.491     20%   10%         120
+time                        0.797 0.980  0.500      0.500    100%   20%         130
+logreg_act_mean             0.822 0.878  0.811      0.789     47%    6%         390
+logreg_vlm_mean             0.811 0.877  0.750      0.741     53%    4%         240
+lstm_act_mean               0.802 0.906  0.545      0.778     86%   12%         240
+lstm_concat                 0.838 0.893  0.707      0.811     70%    8%         260
+lstm_vlm_mean               0.839 0.887  0.618      0.792     67%    4%         270
+
+=== task_prefix8 ===
+detector                    AUROC    ep  strat strat t0-3  detect   FPR lead(steps)
+random                      0.479 0.482  0.480      0.480      9%    7%         260
+time                        0.500 0.500  0.500      0.500      0%    0%         nan
+logreg_act_mean             0.727 0.699  0.727      0.747     16%    7%         510
+logreg_vlm_mean             0.723 0.719  0.725      0.732     21%    2%         510
+lstm_act_mean               0.731 0.758  0.747      0.736     54%   11%         440
+lstm_concat                 0.790 0.790  0.796      0.802     56%    7%         480
+lstm_vlm_mean               0.795 0.794  0.795      0.782     43%    9%         460
+
+AUROC = per call, every call of a failed episode positive.  ep = per episode, max score.
+strat = AUROC averaged over call indices where both classes are still alive (length carries no signal).
+Compare each row with the `time` row of its block: that is what the latents add over the clock.

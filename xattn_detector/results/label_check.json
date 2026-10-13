@@ -1,0 +1,669 @@
+{
+  "args": {
+    "tokens": "data/tokens",
+    "runs": 2,
+    "control": 20,
+    "seed": 0,
+    "out": "results/label_check.json"
+  },
+  "summary": {
+    "flagged": {
+      "n": 14,
+      "agrees": 14,
+      "self_consistent": 14
+    },
+    "control": {
+      "n": 20,
+      "agrees": 20,
+      "self_consistent": 20
+    }
+  },
+  "episodes": [
+    {
+      "group": "flagged",
+      "suite": "libero_10",
+      "task": 8,
+      "init": 5,
+      "stored_success": false,
+      "replays": [
+        false,
+        false
+      ],
+      "replay_t": [
+        520,
+        520
+      ],
+      "stored_t": 520,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 0.0011337782221217951
+    },
+    {
+      "group": "flagged",
+      "suite": "libero_10",
+      "task": 9,
+      "init": 1,
+      "stored_success": false,
+      "replays": [
+        false,
+        false
+      ],
+      "replay_t": [
+        520,
+        520
+      ],
+      "stored_t": 520,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 0.0020085688410685365
+    },
+    {
+      "group": "flagged",
+      "suite": "libero_goal",
+      "task": 5,
+      "init": 13,
+      "stored_success": false,
+      "replays": [
+        false,
+        false
+      ],
+      "replay_t": [
+        300,
+        300
+      ],
+      "stored_t": 300,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 0.0016157815137871762
+    },
+    {
+      "group": "flagged",
+      "suite": "libero_goal",
+      "task": 9,
+      "init": 1,
+      "stored_success": false,
+      "replays": [
+        false,
+        false
+      ],
+      "replay_t": [
+        300,
+        300
+      ],
+      "stored_t": 300,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 0.001355955516628482
+    },
+    {
+      "group": "flagged",
+      "suite": "libero_goal",
+      "task": 9,
+      "init": 2,
+      "stored_success": false,
+      "replays": [
+        false,
+        false
+      ],
+      "replay_t": [
+        300,
+        300
+      ],
+      "stored_t": 300,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 0.00029964222966971654
+    },
+    {
+      "group": "flagged",
+      "suite": "libero_goal",
+      "task": 9,
+      "init": 6,
+      "stored_success": false,
+      "replays": [
+        false,
+        false
+      ],
+      "replay_t": [
+        300,
+        300
+      ],
+      "stored_t": 300,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 0.00022939157244084019
+    },
+    {
+      "group": "flagged",
+      "suite": "libero_goal",
+      "task": 9,
+      "init": 7,
+      "stored_success": true,
+      "replays": [
+        true,
+        true
+      ],
+      "replay_t": [
+        153,
+        158
+      ],
+      "stored_t": 160,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 0.00028307317284095856
+    },
+    {
+      "group": "flagged",
+      "suite": "libero_goal",
+      "task": 9,
+      "init": 8,
+      "stored_success": false,
+      "replays": [
+        false,
+        false
+      ],
+      "replay_t": [
+        300,
+        300
+      ],
+      "stored_t": 300,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 0.0006541165801738913
+    },
+    {
+      "group": "flagged",
+      "suite": "libero_goal",
+      "task": 9,
+      "init": 10,
+      "stored_success": false,
+      "replays": [
+        false,
+        false
+      ],
+      "replay_t": [
+        300,
+        300
+      ],
+      "stored_t": 300,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 0.0003445060261719757
+    },
+    {
+      "group": "flagged",
+      "suite": "libero_goal",
+      "task": 9,
+      "init": 11,
+      "stored_success": false,
+      "replays": [
+        false,
+        false
+      ],
+      "replay_t": [
+        300,
+        300
+      ],
+      "stored_t": 300,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 0.00028125260772243754
+    },
+    {
+      "group": "flagged",
+      "suite": "libero_goal",
+      "task": 9,
+      "init": 12,
+      "stored_success": false,
+      "replays": [
+        false,
+        false
+      ],
+      "replay_t": [
+        300,
+        300
+      ],
+      "stored_t": 300,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 0.001549193015899536
+    },
+    {
+      "group": "flagged",
+      "suite": "libero_goal",
+      "task": 9,
+      "init": 13,
+      "stored_success": false,
+      "replays": [
+        false,
+        false
+      ],
+      "replay_t": [
+        300,
+        300
+      ],
+      "stored_t": 300,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 0.001310001952135223
+    },
+    {
+      "group": "flagged",
+      "suite": "libero_goal",
+      "task": 9,
+      "init": 19,
+      "stored_success": false,
+      "replays": [
+        false,
+        false
+      ],
+      "replay_t": [
+        300,
+        300
+      ],
+      "stored_t": 300,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 0.00011690540322506493
+    },
+    {
+      "group": "flagged",
+      "suite": "libero_spatial",
+      "task": 2,
+      "init": 17,
+      "stored_success": true,
+      "replays": [
+        true,
+        true
+      ],
+      "replay_t": [
+        85,
+        87
+      ],
+      "stored_t": 87,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 0.018487638310834553
+    },
+    {
+      "group": "control",
+      "suite": "libero_spatial",
+      "task": 6,
+      "init": 4,
+      "stored_success": true,
+      "replays": [
+        true,
+        true
+      ],
+      "replay_t": [
+        101,
+        101
+      ],
+      "stored_t": 101,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 5.714122708333491e-08
+    },
+    {
+      "group": "control",
+      "suite": "libero_goal",
+      "task": 1,
+      "init": 14,
+      "stored_success": true,
+      "replays": [
+        true,
+        true
+      ],
+      "replay_t": [
+        108,
+        108
+      ],
+      "stored_t": 108,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 5.847205875042505e-08
+    },
+    {
+      "group": "control",
+      "suite": "libero_goal",
+      "task": 0,
+      "init": 5,
+      "stored_success": false,
+      "replays": [
+        false,
+        false
+      ],
+      "replay_t": [
+        300,
+        300
+      ],
+      "stored_t": 300,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 5.5722068292851645e-08
+    },
+    {
+      "group": "control",
+      "suite": "libero_spatial",
+      "task": 7,
+      "init": 9,
+      "stored_success": false,
+      "replays": [
+        false,
+        false
+      ],
+      "replay_t": [
+        280,
+        280
+      ],
+      "stored_t": 280,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 5.33033281957529e-08
+    },
+    {
+      "group": "control",
+      "suite": "libero_object",
+      "task": 0,
+      "init": 11,
+      "stored_success": true,
+      "replays": [
+        true,
+        true
+      ],
+      "replay_t": [
+        259,
+        259
+      ],
+      "stored_t": 259,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 6.958060794204357e-09
+    },
+    {
+      "group": "control",
+      "suite": "libero_object",
+      "task": 4,
+      "init": 10,
+      "stored_success": true,
+      "replays": [
+        true,
+        true
+      ],
+      "replay_t": [
+        279,
+        279
+      ],
+      "stored_t": 279,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 1.3318382396931838e-08
+    },
+    {
+      "group": "control",
+      "suite": "libero_object",
+      "task": 2,
+      "init": 17,
+      "stored_success": false,
+      "replays": [
+        false,
+        false
+      ],
+      "replay_t": [
+        280,
+        280
+      ],
+      "stored_t": 280,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 8.349994362610857e-09
+    },
+    {
+      "group": "control",
+      "suite": "libero_spatial",
+      "task": 8,
+      "init": 11,
+      "stored_success": true,
+      "replays": [
+        true,
+        true
+      ],
+      "replay_t": [
+        112,
+        112
+      ],
+      "stored_t": 112,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 5.93422628814011e-08
+    },
+    {
+      "group": "control",
+      "suite": "libero_object",
+      "task": 5,
+      "init": 5,
+      "stored_success": false,
+      "replays": [
+        false,
+        false
+      ],
+      "replay_t": [
+        280,
+        280
+      ],
+      "stored_t": 280,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 7.693996162405625e-09
+    },
+    {
+      "group": "control",
+      "suite": "libero_object",
+      "task": 6,
+      "init": 1,
+      "stored_success": true,
+      "replays": [
+        true,
+        true
+      ],
+      "replay_t": [
+        198,
+        198
+      ],
+      "stored_t": 198,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 1.0524376925502565e-08
+    },
+    {
+      "group": "control",
+      "suite": "libero_10",
+      "task": 6,
+      "init": 13,
+      "stored_success": true,
+      "replays": [
+        true,
+        true
+      ],
+      "replay_t": [
+        290,
+        290
+      ],
+      "stored_t": 290,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 2.882460858888436e-08
+    },
+    {
+      "group": "control",
+      "suite": "libero_spatial",
+      "task": 2,
+      "init": 6,
+      "stored_success": false,
+      "replays": [
+        false,
+        false
+      ],
+      "replay_t": [
+        280,
+        280
+      ],
+      "stored_t": 280,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 5.336433006597474e-08
+    },
+    {
+      "group": "control",
+      "suite": "libero_object",
+      "task": 5,
+      "init": 11,
+      "stored_success": false,
+      "replays": [
+        false,
+        false
+      ],
+      "replay_t": [
+        280,
+        280
+      ],
+      "stored_t": 280,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 1.1559642465464037e-08
+    },
+    {
+      "group": "control",
+      "suite": "libero_10",
+      "task": 0,
+      "init": 12,
+      "stored_success": false,
+      "replays": [
+        false,
+        false
+      ],
+      "replay_t": [
+        520,
+        520
+      ],
+      "stored_t": 520,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 2.8339505409036292e-08
+    },
+    {
+      "group": "control",
+      "suite": "libero_object",
+      "task": 2,
+      "init": 4,
+      "stored_success": true,
+      "replays": [
+        true,
+        true
+      ],
+      "replay_t": [
+        159,
+        159
+      ],
+      "stored_t": 159,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 1.481403338887688e-08
+    },
+    {
+      "group": "control",
+      "suite": "libero_10",
+      "task": 2,
+      "init": 16,
+      "stored_success": false,
+      "replays": [
+        false,
+        false
+      ],
+      "replay_t": [
+        520,
+        520
+      ],
+      "stored_t": 520,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 5.148474135907577e-08
+    },
+    {
+      "group": "control",
+      "suite": "libero_spatial",
+      "task": 3,
+      "init": 7,
+      "stored_success": true,
+      "replays": [
+        true,
+        true
+      ],
+      "replay_t": [
+        85,
+        85
+      ],
+      "stored_t": 85,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 4.5631920686517446e-08
+    },
+    {
+      "group": "control",
+      "suite": "libero_spatial",
+      "task": 9,
+      "init": 12,
+      "stored_success": false,
+      "replays": [
+        false,
+        false
+      ],
+      "replay_t": [
+        280,
+        280
+      ],
+      "stored_t": 280,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 5.923382162542623e-08
+    },
+    {
+      "group": "control",
+      "suite": "libero_object",
+      "task": 9,
+      "init": 5,
+      "stored_success": true,
+      "replays": [
+        true,
+        true
+      ],
+      "replay_t": [
+        152,
+        152
+      ],
+      "stored_t": 152,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 7.987150996147108e-09
+    },
+    {
+      "group": "control",
+      "suite": "libero_10",
+      "task": 1,
+      "init": 10,
+      "stored_success": true,
+      "replays": [
+        true,
+        true
+      ],
+      "replay_t": [
+        308,
+        308
+      ],
+      "stored_t": 308,
+      "agrees_with_stored": true,
+      "self_consistent": true,
+      "d_eef": 2.969838353017451e-08
+    }
+  ]
+}

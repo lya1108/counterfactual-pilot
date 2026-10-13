@@ -1,0 +1,32 @@
+에피소드 200   C1(t)=0 호출 샘플 4994   H=10 고정
+state_hist = state_vector(t, t-5, t-10), 45차원
+guard k: onset 이 (t, t+k] 안인 샘플은 음성으로 바꾸지 않고 평가에서 제외
+
+=== guard k = 0 ===
+  샘플 4994 (제외 0)   양성 353 (7.1%)   양·음 모두 있는 task 20/20
+  feature             macro AUROC        macro AUPRC      하한
+  suf_mean           0.891 ± 0.010       0.525 ± 0.009   0.082
+  vlm_img            0.874 ± 0.006       0.411 ± 0.016   0.082
+  state_hist         0.796 ± 0.009       0.324 ± 0.010   0.082
+  state              0.766 ± 0.007       0.338 ± 0.013   0.082
+  call_index         0.492 ± 0.000       0.086 ± 0.000   0.082
+
+=== guard k = 3 ===
+  샘플 4885 (제외 109)   양성 244 (5.0%)   양·음 모두 있는 task 19/20
+  feature             macro AUROC        macro AUPRC      하한
+  suf_mean           0.888 ± 0.005       0.477 ± 0.011   0.062
+  vlm_img            0.826 ± 0.018       0.309 ± 0.016   0.062
+  state_hist         0.742 ± 0.010       0.243 ± 0.008   0.062
+  state              0.702 ± 0.009       0.210 ± 0.008   0.062
+  call_index         0.533 ± 0.000       0.069 ± 0.000   0.062
+
+=== guard k = 5 ===
+  샘플 4825 (제외 169)   양성 184 (3.8%)   양·음 모두 있는 task 19/20
+  feature             macro AUROC        macro AUPRC      하한
+  suf_mean           0.886 ± 0.006       0.438 ± 0.018   0.049
+  vlm_img            0.818 ± 0.012       0.256 ± 0.015   0.049
+  state_hist         0.740 ± 0.010       0.236 ± 0.005   0.049
+  state              0.711 ± 0.011       0.227 ± 0.013   0.049
+  call_index         0.516 ± 0.000       0.055 ± 0.000   0.049
+
+-> /home/nuri5/yuna_ws/xattn_detector/results/c1_guard_n200.json

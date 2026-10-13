@@ -1,0 +1,110 @@
+{
+  "tau": 0.7540814846754074,
+  "diverge_threshold": 0.001,
+  "episodes": [
+    {
+      "cat": "FN",
+      "name": "libero_10_t2_i31",
+      "onset": 53,
+      "steps_stored": 520,
+      "steps_replay": 520,
+      "same_length": true,
+      "same_outcome": true,
+      "d_max_all": 5.9412307962247723e-08,
+      "d_max_calls": 5.824243398677709e-08,
+      "d_median_all": 2.355743117243847e-08,
+      "diverged": false
+    },
+    {
+      "cat": "FP",
+      "name": "libero_goal_t4_i30",
+      "onset": null,
+      "steps_stored": 68,
+      "steps_replay": 68,
+      "same_length": true,
+      "same_outcome": true,
+      "d_max_all": 5.948792636267797e-08,
+      "d_max_calls": 5.253248991365922e-08,
+      "d_median_all": 2.158782597128095e-08,
+      "diverged": false
+    },
+    {
+      "cat": "TN",
+      "name": "libero_goal_t6_i36",
+      "onset": null,
+      "steps_stored": 95,
+      "steps_replay": 95,
+      "same_length": true,
+      "same_outcome": true,
+      "d_max_all": 5.7022697230735275e-08,
+      "d_max_calls": 4.94768546133173e-08,
+      "d_median_all": 1.9451959598626445e-08,
+      "diverged": false
+    },
+    {
+      "cat": "TN",
+      "name": "libero_goal_t6_i39",
+      "onset": null,
+      "steps_stored": 109,
+      "steps_replay": 109,
+      "same_length": true,
+      "same_outcome": true,
+      "d_max_all": 5.953703485772621e-08,
+      "d_max_calls": 4.8637455840605526e-08,
+      "d_median_all": 2.4313507984707883e-08,
+      "diverged": false
+    },
+    {
+      "cat": "FP",
+      "name": "libero_object_t4_i31",
+      "onset": null,
+      "steps_stored": 123,
+      "steps_replay": 123,
+      "same_length": true,
+      "same_outcome": true,
+      "d_max_all": 1.467879040539799e-08,
+      "d_max_calls": 1.3141351229428722e-08,
+      "d_median_all": 8.205750356982122e-09,
+      "diverged": false
+    },
+    {
+      "cat": "TP",
+      "name": "libero_object_t6_i39",
+      "onset": 57,
+      "steps_stored": 232,
+      "steps_replay": 232,
+      "same_length": true,
+      "same_outcome": true,
+      "d_max_all": 1.486621376001196e-08,
+      "d_max_calls": 1.4757582988966789e-08,
+      "d_median_all": 7.116329206469096e-09,
+      "diverged": false
+    },
+    {
+      "cat": "TP",
+      "name": "libero_spatial_t4_i31",
+      "onset": 113,
+      "steps_stored": 280,
+      "steps_replay": 196,
+      "same_length": false,
+      "same_outcome": false,
+      "d_max_all": 0.3742655046198208,
+      "d_max_calls": 0.22343624282262955,
+      "d_median_all": 0.04587097283774271,
+      "diverged": true
+    },
+    {
+      "cat": "FN",
+      "name": "libero_spatial_t9_i32",
+      "onset": 50,
+      "steps_stored": 280,
+      "steps_replay": 280,
+      "same_length": true,
+      "same_outcome": true,
+      "d_max_all": 5.9546189534742666e-08,
+      "d_max_calls": 5.631787813875633e-08,
+      "d_median_all": 2.9004508794727712e-08,
+      "diverged": false
+    }
+  ]
+}

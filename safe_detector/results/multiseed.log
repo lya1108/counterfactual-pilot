@@ -1,0 +1,82 @@
+seeds [0, 1, 2, 3, 4, 5, 6, 7]  splits ['init', 'task']  conds ['full', 'prefix8']  device cuda
+
+loaded 800 episodes for feature=act_mean dim=1024
+  logreg_act_mean_init_full          ep 0.942 ± 0.023   strat 0.833 ± 0.063   range [0.900, 0.977]
+  lstm_act_mean_init_full            ep 0.846 ± 0.022   strat 0.697 ± 0.094   range [0.812, 0.877]
+  logreg_act_mean_task_full          ep 0.878 ± 0.061   strat 0.709 ± 0.110   range [0.766, 0.943]
+  lstm_act_mean_task_full            ep 0.804 ± 0.082   strat 0.503 ± 0.066   range [0.651, 0.906]
+  logreg_act_mean_init_prefix8       ep 0.847 ± 0.025   strat 0.834 ± 0.022   range [0.801, 0.880]
+  lstm_act_mean_init_prefix8         ep 0.811 ± 0.024   strat 0.816 ± 0.021   range [0.772, 0.839]
+  logreg_act_mean_task_prefix8       ep 0.722 ± 0.068   strat 0.719 ± 0.053   range [0.619, 0.819]
+  lstm_act_mean_task_prefix8         ep 0.703 ± 0.069   strat 0.712 ± 0.064   range [0.598, 0.784]
+
+loaded 800 episodes for feature=concat dim=6144
+  lstm_concat_init_full              ep 0.920 ± 0.024   strat 0.804 ± 0.098   range [0.870, 0.952]
+  lstm_concat_task_full              ep 0.875 ± 0.044   strat 0.641 ± 0.164   range [0.814, 0.947]
+  lstm_concat_init_prefix8           ep 0.832 ± 0.033   strat 0.836 ± 0.029   range [0.770, 0.862]
+  lstm_concat_task_prefix8           ep 0.715 ± 0.087   strat 0.715 ± 0.086   range [0.569, 0.833]
+
+loaded 800 episodes for feature=time dim=2
+  time_time_init_full                ep 0.838 ± 0.210   strat 0.500 ± 0.000   range [0.500, 0.976]
+  random_random_init_full            ep 0.705 ± 0.030   strat 0.499 ± 0.011   range [0.674, 0.753]
+  time_time_task_full                ep 0.845 ± 0.215   strat 0.500 ± 0.000   range [0.500, 0.994]
+  random_random_task_full            ep 0.712 ± 0.045   strat 0.508 ± 0.015   range [0.636, 0.766]
+  time_time_init_prefix8             ep 0.500 ± 0.000   strat 0.500 ± 0.000   range [0.500, 0.500]
+  random_random_init_prefix8         ep 0.504 ± 0.031   strat 0.496 ± 0.012   range [0.462, 0.549]
+  time_time_task_prefix8             ep 0.500 ± 0.000   strat 0.500 ± 0.000   range [0.500, 0.500]
+  random_random_task_prefix8         ep 0.498 ± 0.045   strat 0.492 ± 0.012   range [0.452, 0.570]
+
+loaded 800 episodes for feature=vlm_mean dim=2048
+  logreg_vlm_mean_init_full          ep 0.915 ± 0.023   strat 0.807 ± 0.067   range [0.873, 0.943]
+  lstm_vlm_mean_init_full            ep 0.878 ± 0.035   strat 0.777 ± 0.066   range [0.823, 0.919]
+  logreg_vlm_mean_task_full          ep 0.829 ± 0.060   strat 0.664 ± 0.102   range [0.754, 0.899]
+  lstm_vlm_mean_task_full            ep 0.820 ± 0.063   strat 0.559 ± 0.126   range [0.703, 0.905]
+  logreg_vlm_mean_init_prefix8       ep 0.839 ± 0.025   strat 0.829 ± 0.022   range [0.800, 0.871]
+  lstm_vlm_mean_init_prefix8         ep 0.832 ± 0.026   strat 0.830 ± 0.028   range [0.785, 0.861]
+  logreg_vlm_mean_task_prefix8       ep 0.665 ± 0.070   strat 0.663 ± 0.070   range [0.572, 0.777]
+  lstm_vlm_mean_task_prefix8         ep 0.698 ± 0.087   strat 0.689 ± 0.090   range [0.524, 0.800]
+
+============================================================================================
+mean ± sd over 8 seeds   (each seed redraws the held-out groups AND the model init)
+
+=== init_full ===
+  detector                       ep AUROC            strat      seed spread
+  logreg_act_mean          0.942 ± 0.023   0.833 ± 0.063   0.900 – 0.977
+  lstm_concat              0.920 ± 0.024   0.804 ± 0.098   0.870 – 0.952
+  logreg_vlm_mean          0.915 ± 0.023   0.807 ± 0.067   0.873 – 0.943
+  lstm_vlm_mean            0.878 ± 0.035   0.777 ± 0.066   0.823 – 0.919
+  lstm_act_mean            0.846 ± 0.022   0.697 ± 0.094   0.812 – 0.877
+  time_time                0.838 ± 0.210   0.500 ± 0.000   0.500 – 0.976
+  random_random            0.705 ± 0.030   0.499 ± 0.011   0.674 – 0.753
+
+=== task_full ===
+  detector                       ep AUROC            strat      seed spread
+  logreg_act_mean          0.878 ± 0.061   0.709 ± 0.110   0.766 – 0.943
+  lstm_concat              0.875 ± 0.044   0.641 ± 0.164   0.814 – 0.947
+  time_time                0.845 ± 0.215   0.500 ± 0.000   0.500 – 0.994
+  logreg_vlm_mean          0.829 ± 0.060   0.664 ± 0.102   0.754 – 0.899
+  lstm_vlm_mean            0.820 ± 0.063   0.559 ± 0.126   0.703 – 0.905
+  lstm_act_mean            0.804 ± 0.082   0.503 ± 0.066   0.651 – 0.906
+  random_random            0.712 ± 0.045   0.508 ± 0.015   0.636 – 0.766
+
+=== init_prefix8 ===
+  detector                       ep AUROC            strat      seed spread
+  logreg_act_mean          0.847 ± 0.025   0.834 ± 0.022   0.801 – 0.880
+  logreg_vlm_mean          0.839 ± 0.025   0.829 ± 0.022   0.800 – 0.871
+  lstm_concat              0.832 ± 0.033   0.836 ± 0.029   0.770 – 0.862
+  lstm_vlm_mean            0.832 ± 0.026   0.830 ± 0.028   0.785 – 0.861
+  lstm_act_mean            0.811 ± 0.024   0.816 ± 0.021   0.772 – 0.839
+  random_random            0.504 ± 0.031   0.496 ± 0.012   0.462 – 0.549
+  time_time                0.500 ± 0.000   0.500 ± 0.000   0.500 – 0.500
+
+=== task_prefix8 ===
+  detector                       ep AUROC            strat      seed spread
+  logreg_act_mean          0.722 ± 0.068   0.719 ± 0.053   0.619 – 0.819
+  lstm_concat              0.715 ± 0.087   0.715 ± 0.086   0.569 – 0.833
+  lstm_act_mean            0.703 ± 0.069   0.712 ± 0.064   0.598 – 0.784
+  lstm_vlm_mean            0.698 ± 0.087   0.689 ± 0.090   0.524 – 0.800
+  logreg_vlm_mean          0.665 ± 0.070   0.663 ± 0.070   0.572 – 0.777
+  time_time                0.500 ± 0.000   0.500 ± 0.000   0.500 – 0.500
+  random_random            0.498 ± 0.045   0.492 ± 0.012   0.452 – 0.570
+
+-> /home/nuri5/yuna_ws/safe_detector/results/multiseed.json

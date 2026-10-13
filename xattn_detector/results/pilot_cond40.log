@@ -1,0 +1,130 @@
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: outputs/vla/pi05_libero_finetuned
+✓ Loaded state dict from model.safetensors
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+All keys loaded successfully!
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+Local assets not found. Downloading from HuggingFace Hub...
+Assets already downloaded at /home/nuri5/.cache/libero/assets
+  libero_spatial_t0_i30  F  280 steps  9.5s  23 KB
+  libero_spatial_t0_i31  F  280 steps  9.6s  22 KB
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  libero_spatial_t2_i30  S  86 steps  3.1s  9 KB
+  libero_spatial_t2_i31  S  95 steps  3.4s  10 KB
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  libero_spatial_t4_i30  S  206 steps  7.2s  17 KB
+  libero_spatial_t4_i31  F  280 steps  9.9s  22 KB
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  libero_spatial_t6_i30  S  137 steps  4.7s  13 KB
+  libero_spatial_t6_i31  S  105 steps  3.7s  11 KB
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  libero_spatial_t9_i30  F  280 steps  9.4s  20 KB
+  libero_spatial_t9_i31  F  280 steps  9.5s  21 KB
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  libero_object_t0_i30  S  241 steps  7.9s  18 KB
+  libero_object_t0_i31  F  280 steps  8.8s  20 KB
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  libero_object_t2_i30  F  280 steps  8.7s  22 KB
+  libero_object_t2_i31  F  280 steps  8.7s  20 KB
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  libero_object_t4_i30  S  181 steps  5.8s  19 KB
+  libero_object_t4_i31  S  123 steps  4.0s  14 KB
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  libero_object_t6_i30  S  245 steps  7.7s  22 KB
+  libero_object_t6_i31  F  280 steps  8.7s  24 KB
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  libero_object_t9_i30  F  280 steps  8.6s  29 KB
+  libero_object_t9_i31  F  280 steps  8.6s  24 KB
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  libero_goal_t0_i30  F  300 steps  9.5s  20 KB
+  libero_goal_t0_i31  F  300 steps  9.4s  20 KB
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  libero_goal_t2_i30  S  83 steps  2.8s  8 KB
+  libero_goal_t2_i31  F  300 steps  9.6s  22 KB
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  libero_goal_t4_i30  S  68 steps  2.2s  8 KB
+  libero_goal_t4_i31  F  300 steps  9.5s  31 KB
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  libero_goal_t6_i30  F  300 steps  9.6s  23 KB
+  libero_goal_t6_i31  S  154 steps  5.1s  14 KB
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  libero_goal_t9_i30  F  300 steps  9.4s  17 KB
+  libero_goal_t9_i31  F  300 steps  9.5s  20 KB
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  libero_10_t0_i30  F  520 steps  16.5s  43 KB
+  libero_10_t0_i31  F  520 steps  16.5s  40 KB
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  libero_10_t2_i30  F  520 steps  15.9s  26 KB
+  libero_10_t2_i31  F  520 steps  16.0s  28 KB
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  libero_10_t4_i30  F  520 steps  16.4s  39 KB
+  libero_10_t4_i31  F  520 steps  16.6s  43 KB
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  libero_10_t6_i30  F  520 steps  16.0s  43 KB
+  libero_10_t6_i31  F  520 steps  16.3s  48 KB
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  libero_10_t9_i30  F  520 steps  16.2s  33 KB
+  libero_10_t9_i31  F  520 steps  15.9s  35 KB
+
+=== 비용 ===
+  환경 스텝 12104   시뮬레이션 72.9s   상태 기록 3.9s (5% 추가)
+  스텝당 기록 0.32 ms   에피소드당 저장 23 KB
+  800 에피소드 환산: 저장 18 MB, 기록 시간 +1분
+
+=== 임계값을 정하기 위한 원시 분포 ===
+  opening, 무언가 쥐고 있을 때 (n=2215): [0.0047 0.0058 0.0186 0.0426 0.0806]
+  opening, 쥐지 않았을 때   (n=9889): [0.001  0.0665 0.0788 0.0795 0.0806]
+  joint margin 최소값               : [-4.04000e-02  2.52407e+01  4.44565e+01  5.71451e+01  7.74247e+01]
+  |wrist| deg                       : [  0.7649  21.43    44.3403  73.8479 166.0274]
+  객체 tilt deg                     : [ 0.      0.      0.      0.     90.0008]
+  (백분위 1 / 25 / 50 / 75 / 99)
+
+=== 기본 임계값으로 본 조건 발생 ===
+  episode                        결과   C1   C2   C3   C4   C6   최초
+  libero_spatial_t0_i30           F   45    .    .   44    .   C4@44
+  libero_spatial_t0_i31           F   52    .  151    .  250   C1@52
+  libero_spatial_t2_i30           S    .    .    .    .   80   C6@80
+  libero_spatial_t2_i31           S    .    .    .    .    .   없음
+  libero_spatial_t4_i30           S   67    .    .    .   43   C6@43
+  libero_spatial_t4_i31           F  113    .    .    .   38   C6@38
+  libero_spatial_t6_i30           S   58    .    .    .    .   C1@58
+  libero_spatial_t6_i31           S    .    .    .    .    .   없음
+  libero_spatial_t9_i30           F   52    .    .    .   48   C6@48
+  libero_spatial_t9_i31           F   53    .    .  178  168   C1@53
+  libero_object_t0_i30            S   58    .    .    .    .   C1@58
+  libero_object_t0_i31            F   65    .    .  229    .   C1@65
+  libero_object_t2_i30            F   67    .  104   47    .   C4@47
+  libero_object_t2_i31            F   65    .   97   50    .   C4@50
+  libero_object_t4_i30            S   70    .    .   48    .   C4@48
+  libero_object_t4_i31            S    .    .    .    .    .   없음
+  libero_object_t6_i30            S   55    .  138   49    .   C4@49
+  libero_object_t6_i31            F   61    .    .    .    .   C1@61
+  libero_object_t9_i30            F   58    .   49  255    .   C3@49
+  libero_object_t9_i31            F  259    .   64   48    .   C4@48
+  libero_goal_t0_i30              F    .    .    .    .    .   없음
+  libero_goal_t0_i31              F    .    .    .  266   83   C6@83
+  libero_goal_t2_i30              S    .    .    .    .   79   C6@79
+  libero_goal_t2_i31              F   92    .    .   79    .   C4@79
+  libero_goal_t4_i30              S    .    .    .    .    .   없음
+  libero_goal_t4_i31              F   60    .    .   57   98   C4@57
+  libero_goal_t6_i30              F  140    .    .    .    .   C1@140
+  libero_goal_t6_i31              S    .    .    .    .    .   없음
+  libero_goal_t9_i30              F   74    .    .    .    .   C1@74
+  libero_goal_t9_i31              F    .    .    .    .   98   C6@98
+  libero_10_t0_i30                F  265    .  292  210  293   C4@210
+  libero_10_t0_i31                F  111    .    .   96  305   C4@96
+  libero_10_t2_i30                F   58    .    .    .  309   C1@58
+  libero_10_t2_i31                F   53    .  291    .  257   C1@53
+  libero_10_t4_i30                F    .    .    .    .    .   없음
+  libero_10_t4_i31                F  308    .    .  104    .   C4@104
+  libero_10_t6_i30                F  119    .    .  124    .   C1@119
+  libero_10_t6_i31                F  127    .  395  246    .   C1@127
+  libero_10_t9_i30                F  163    .    .  284   65   C6@65
+  libero_10_t9_i31                F  381    .    .  372    .   C4@372
+
+  조건별 발생 에피소드 수 (총 40): C1=29, C2=0, C3=9, C4=19, C6=15
+
+-> /home/nuri5/yuna_ws/xattn_detector/results/pilot_conditions.json   상태 기록 -> /home/nuri5/yuna_ws/xattn_detector/data/pilot_cond40

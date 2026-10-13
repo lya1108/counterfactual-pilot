@@ -1,0 +1,35 @@
+샘플 4994  양성 353  task 20  H=10, guard=0  — out-of-fold (20회 × 5-fold)
+
+task                       n  pos   neg   rate  suf AUROC  suf AUPRC  vlm_img  st_hist   state   call
+libero_goal/t2           192   22   170  11.5%      0.977      0.891    0.849    0.784   0.730  0.384
+libero_10/t0             491   17   474   3.5%      0.972      0.783    0.951    0.896   0.909  0.495
+libero_goal/t9           257    9   248   3.5%      0.968      0.568    0.948    0.817   0.805  0.492  *
+libero_object/t9         221   27   194  12.2%      0.966      0.802    0.899    0.923   0.876  0.490
+libero_10/t2             374   20   354   5.3%      0.966      0.609    0.918    0.465   0.569  0.668
+libero_object/t2         229   13   216   5.7%      0.964      0.695    0.918    0.896   0.844  0.739
+libero_spatial/t4        200   18   182   9.0%      0.962      0.674    0.894    0.678   0.726  0.448
+libero_spatial/t6        117    6   111   5.1%      0.953      0.531    0.835    0.922   0.859  0.514  *
+libero_goal/t6           158    7   151   4.4%      0.940      0.506    0.919    0.764   0.682  0.466  *
+libero_object/t6         189   39   150  20.6%      0.937      0.827    0.921    0.863   0.789  0.504
+libero_object/t4         183   15   168   8.2%      0.892      0.538    0.913    0.894   0.889  0.540
+libero_spatial/t2         89    2    87   2.2%      0.891      0.159    0.851    0.839   0.563  0.724  *
+libero_spatial/t0        151   28   123  18.5%      0.847      0.570    0.859    0.776   0.712  0.461
+libero_10/t6             460   31   429   6.7%      0.836      0.716    0.880    0.722   0.685  0.568
+libero_10/t4             457   25   432   5.5%      0.834      0.386    0.768    0.503   0.492  0.484
+libero_spatial/t9        158   37   121  23.4%      0.830      0.462    0.876    0.818   0.700  0.480
+libero_10/t9             503    5   498   1.0%      0.821      0.036    0.911    0.813   0.776  0.531  *
+libero_object/t0         191   29   162  15.2%      0.815      0.490    0.923    0.838   0.955  0.502
+libero_goal/t4            84    2    82   2.4%      0.768      0.276    0.555    0.854   0.799  0.265  *
+libero_goal/t0           290    1   289   0.3%      0.765      0.014    0.990    0.976   0.979  0.085  *
+  * = 양성 10개 미만 — AUROC/AUPRC 가 소수 샘플에 좌우되므로 깊게 해석하지 않음
+
+=== 집계 (계산 가능한 task 20/20) ===
+  suf_mean AUROC >0.8     18 task   libero_10/t0, libero_10/t2, libero_10/t4, libero_10/t6, libero_10/t9, libero_goal/t2, libero_goal/t6, libero_goal/t9, libero_object/t0, libero_object/t2, libero_object/t4, libero_object/t6, libero_object/t9, libero_spatial/t0, libero_spatial/t2, libero_spatial/t4, libero_spatial/t6, libero_spatial/t9
+  suf_mean AUROC 0.7–0.8   2 task   libero_goal/t0, libero_goal/t4
+  suf_mean AUROC 0.6–0.7   0 task
+  suf_mean AUROC <=0.6     0 task
+  suf_mean > vlm_img     13/20 task   차이 중앙값 +0.022 (최소 -0.225, 최대 +0.213)
+  suf_mean > state_hist  16/20 task   차이 중앙값 +0.069 (최소 -0.211, 최대 +0.501)
+  양성 10개 미만인 task: 7개  (libero_10/t9, libero_goal/t0, libero_goal/t4, libero_goal/t6, libero_goal/t9, libero_spatial/t2, libero_spatial/t6)
+
+-> /home/nuri5/yuna_ws/xattn_detector/results/c1_pertask_n200.png

@@ -1,0 +1,43 @@
+replay 대상 8개 (사전 선정 그대로, 교체 없음)   τ=0.7541
+
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: outputs/vla/pi05_libero_finetuned
+✓ Loaded state dict from model.safetensors
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+All keys loaded successfully!
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+Local assets not found. Downloading from HuggingFace Hub...
+Assets already downloaded at /home/nuri5/.cache/libero/assets
+  [1/8] FN  libero_10_t2_i31         길이 520/520  결과 일치  |Δeef| 최대 5.94e-08 (호출시점 5.82e-08)  (20s)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [2/8] FP  libero_goal_t4_i30       길이 68/68  결과 일치  |Δeef| 최대 5.95e-08 (호출시점 5.25e-08)  (3s)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [3/8] TN  libero_goal_t6_i36       길이 95/95  결과 일치  |Δeef| 최대 5.70e-08 (호출시점 4.95e-08)  (5s)
+  [4/8] TN  libero_goal_t6_i39       길이 109/109  결과 일치  |Δeef| 최대 5.95e-08 (호출시점 4.86e-08)  (5s)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [5/8] FP  libero_object_t4_i31     길이 123/123  결과 일치  |Δeef| 최대 1.47e-08 (호출시점 1.31e-08)  (6s)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [6/8] TP  libero_object_t6_i39     길이 232/232  결과 일치  |Δeef| 최대 1.49e-08 (호출시점 1.48e-08)  (10s)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [7/8] TP  libero_spatial_t4_i31    길이 196/280  결과 불일치  |Δeef| 최대 3.74e-01 (호출시점 2.23e-01)   ** DIVERGED  (9s)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [8/8] FN  libero_spatial_t9_i32    길이 280/280  결과 일치  |Δeef| 최대 5.95e-08 (호출시점 5.63e-08)  (12s)
+
+=== 저장된 trajectory 와의 일치 ===
+  cat  episode                         길이    결과    |Δeef| 최대        호출시점         판정
+  FN   libero_10_t2_i31         520/520     일치     5.94e-08    5.82e-08         OK
+  FP   libero_goal_t4_i30       68/68      일치     5.95e-08    5.25e-08         OK
+  TN   libero_goal_t6_i36       95/95      일치     5.70e-08    4.95e-08         OK
+  TN   libero_goal_t6_i39       109/109     일치     5.95e-08    4.86e-08         OK
+  FP   libero_object_t4_i31     123/123     일치     1.47e-08    1.31e-08         OK
+  TP   libero_object_t6_i39     232/232     일치     1.49e-08    1.48e-08         OK
+  TP   libero_spatial_t4_i31    196/280    불일치     3.74e-01    2.23e-01   DIVERGED
+  FN   libero_spatial_t9_i32    280/280     일치     5.95e-08    5.63e-08         OK
+
+  기준 0.001 m 초과 = divergence.  7/8 일치, 1 건 divergence
+
+-> /home/nuri5/yuna_ws/xattn_detector/results/replay/*.mp4   패널 /home/nuri5/yuna_ws/xattn_detector/results/replay/panel_*.png   프레임 /home/nuri5/yuna_ws/xattn_detector/results/replay/frames/
+-> /home/nuri5/yuna_ws/xattn_detector/results/replay_check.json

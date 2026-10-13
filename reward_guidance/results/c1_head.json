@@ -1,0 +1,18 @@
+{
+  "macro_heldout": 0.8942024930705857,
+  "pooled_heldout": 0.855368825165511,
+  "per_task": {
+    "libero_spatial/t9": 0.8300201027473755,
+    "libero_object/t0": 0.8395061728395061,
+    "libero_object/t6": 0.9297435897435897,
+    "libero_goal/t2": 0.9775401069518717
+  },
+  "eval_groups": [
+    "libero_spatial/t9",
+    "libero_object/t6",
+    "libero_object/t0",
+    "libero_goal/t2"
+  ],
+  "n_train": 4264,
+  "n_pos_train": 226
+}

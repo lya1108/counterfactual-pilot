@@ -1,0 +1,72 @@
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: outputs/vla/pi05_libero_finetuned
+✓ Loaded state dict from model.safetensors
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+All keys loaded successfully!
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+Local assets not found. Downloading from HuggingFace Hub...
+Assets already downloaded at /home/nuri5/.cache/libero/assets
+  [1] libero_spatial_t0_i30 F steps=280 calls=28 onset={'C1_grasp_empty_close': 45, 'C4_object_tipped': 44} earliest=C4@44 (12s)
+  [2] libero_spatial_t0_i31 F steps=280 calls=28 onset={'C1_grasp_empty_close': 52, 'C3_wrong_object_grasp': 151, 'C6_joint_limit': 250} earliest=C1@52 (22s)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [3] libero_spatial_t2_i30 S steps=86 calls=9 onset={'C6_joint_limit': 80} earliest=C6@80 (27s)
+  [4] libero_spatial_t2_i31 S steps=95 calls=10 onset={} earliest=없음 (31s)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [5] libero_spatial_t4_i30 S steps=206 calls=21 onset={'C1_grasp_empty_close': 67, 'C6_joint_limit': 43} earliest=C6@43 (40s)
+  [6] libero_spatial_t4_i31 F steps=280 calls=28 onset={'C1_grasp_empty_close': 113, 'C6_joint_limit': 38} earliest=C6@38 (51s)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [7] libero_spatial_t6_i30 S steps=137 calls=14 onset={'C1_grasp_empty_close': 58} earliest=C1@58 (57s)
+  [8] libero_spatial_t6_i31 S steps=105 calls=11 onset={} earliest=없음 (62s)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [9] libero_spatial_t9_i30 F steps=280 calls=28 onset={'C1_grasp_empty_close': 52, 'C6_joint_limit': 48} earliest=C6@48 (73s)
+  [10] libero_spatial_t9_i31 F steps=280 calls=28 onset={'C1_grasp_empty_close': 53, 'C4_object_tipped': 178, 'C6_joint_limit': 168} earliest=C1@53 (83s)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [11] libero_object_t0_i30 S steps=241 calls=25 onset={'C1_grasp_empty_close': 58} earliest=C1@58 (93s)
+  [12] libero_object_t0_i31 F steps=280 calls=28 onset={'C1_grasp_empty_close': 65, 'C4_object_tipped': 229} earliest=C1@65 (103s)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [13] libero_object_t2_i30 F steps=280 calls=28 onset={'C1_grasp_empty_close': 67, 'C3_wrong_object_grasp': 104, 'C4_object_tipped': 47} earliest=C4@47 (113s)
+  [14] libero_object_t2_i31 F steps=280 calls=28 onset={'C1_grasp_empty_close': 65, 'C3_wrong_object_grasp': 97, 'C4_object_tipped': 50} earliest=C4@50 (123s)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [15] libero_object_t4_i30 S steps=181 calls=19 onset={'C1_grasp_empty_close': 70, 'C4_object_tipped': 48} earliest=C4@48 (131s)
+  [16] libero_object_t4_i31 S steps=123 calls=13 onset={} earliest=없음 (135s)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [17] libero_object_t6_i30 S steps=245 calls=25 onset={'C1_grasp_empty_close': 55, 'C3_wrong_object_grasp': 138, 'C4_object_tipped': 49} earliest=C4@49 (145s)
+  [18] libero_object_t6_i31 F steps=280 calls=28 onset={'C1_grasp_empty_close': 61} earliest=C1@61 (154s)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [19] libero_object_t9_i30 F steps=280 calls=28 onset={'C1_grasp_empty_close': 58, 'C3_wrong_object_grasp': 49, 'C4_object_tipped': 255} earliest=C3@49 (165s)
+  [20] libero_object_t9_i31 F steps=280 calls=28 onset={'C1_grasp_empty_close': 259, 'C3_wrong_object_grasp': 64, 'C4_object_tipped': 48} earliest=C4@48 (175s)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [21] libero_goal_t0_i30 F steps=300 calls=30 onset={} earliest=없음 (186s)
+  [22] libero_goal_t0_i31 F steps=300 calls=30 onset={'C4_object_tipped': 266, 'C6_joint_limit': 83} earliest=C6@83 (196s)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [23] libero_goal_t2_i30 S steps=83 calls=9 onset={'C6_joint_limit': 79} earliest=C6@79 (200s)
+  [24] libero_goal_t2_i31 F steps=300 calls=30 onset={'C1_grasp_empty_close': 92, 'C4_object_tipped': 79} earliest=C4@79 (210s)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [25] libero_goal_t4_i30 S steps=68 calls=7 onset={} earliest=없음 (214s)
+  [26] libero_goal_t4_i31 F steps=300 calls=30 onset={'C1_grasp_empty_close': 60, 'C4_object_tipped': 57, 'C6_joint_limit': 98} earliest=C4@57 (224s)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [27] libero_goal_t6_i30 F steps=300 calls=30 onset={'C1_grasp_empty_close': 140} earliest=C1@140 (236s)
+  [28] libero_goal_t6_i31 S steps=154 calls=16 onset={} earliest=없음 (241s)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [29] libero_goal_t9_i30 F steps=300 calls=30 onset={'C1_grasp_empty_close': 74, 'C6_joint_limit': 291} earliest=C1@74 (252s)
+  [30] libero_goal_t9_i31 F steps=300 calls=30 onset={'C6_joint_limit': 99} earliest=C6@99 (262s)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [31] libero_10_t0_i30 F steps=520 calls=52 onset={'C1_grasp_empty_close': 265, 'C3_wrong_object_grasp': 292, 'C4_object_tipped': 210, 'C6_joint_limit': 293} earliest=C4@210 (281s)
+  [32] libero_10_t0_i31 F steps=520 calls=52 onset={'C1_grasp_empty_close': 111, 'C4_object_tipped': 96, 'C6_joint_limit': 305} earliest=C4@96 (298s)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [33] libero_10_t2_i30 F steps=520 calls=52 onset={'C1_grasp_empty_close': 58, 'C6_joint_limit': 309} earliest=C1@58 (316s)
+  [34] libero_10_t2_i31 F steps=520 calls=52 onset={'C1_grasp_empty_close': 53, 'C3_wrong_object_grasp': 291, 'C6_joint_limit': 257} earliest=C1@53 (332s)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [35] libero_10_t4_i30 F steps=520 calls=52 onset={} earliest=없음 (351s)
+  [36] libero_10_t4_i31 F steps=520 calls=52 onset={'C1_grasp_empty_close': 308, 'C4_object_tipped': 104} earliest=C4@104 (369s)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [37] libero_10_t6_i30 F steps=520 calls=52 onset={'C1_grasp_empty_close': 119, 'C4_object_tipped': 124} earliest=C1@119 (387s)
+  [38] libero_10_t6_i31 F steps=520 calls=52 onset={'C1_grasp_empty_close': 127, 'C3_wrong_object_grasp': 395, 'C4_object_tipped': 246} earliest=C1@127 (404s)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [39] libero_10_t9_i30 F steps=520 calls=52 onset={'C1_grasp_empty_close': 163, 'C4_object_tipped': 284, 'C6_joint_limit': 65} earliest=C6@65 (423s)
+  [40] libero_10_t9_i31 F steps=520 calls=52 onset={'C1_grasp_empty_close': 381, 'C4_object_tipped': 372} earliest=C4@372 (440s)
+
+40 에피소드 -> /home/nuri5/yuna_ws/xattn_detector/data/cond40   프레임 -> /home/nuri5/yuna_ws/xattn_detector/data/cond40/frames

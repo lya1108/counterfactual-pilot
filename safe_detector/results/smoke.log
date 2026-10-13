@@ -1,0 +1,22 @@
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: outputs/vla/pi05_libero_finetuned
+✓ Loaded state dict from model.safetensors
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+All keys loaded successfully!
+ckpt=outputs/vla/pi05_libero_finetuned  K=10 chunk=50 action_dim=32
+image_features=['observation.images.image', 'observation.images.image2', 'observation.images.empty_camera_0']  -> batch_for fills 2 of them
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+Local assets not found. Downloading from HuggingFace Hub...
+Assets already downloaded at /home/nuri5/.cache/libero/assets
+  latent vlm_mean  shape=(2048,) dtype=float32 |v|=36.4
+  latent vlm_last  shape=(2048,) dtype=float32 |v|=64.3
+  latent act_last  shape=(1024,) dtype=float32 |v|=6.2
+  latent act_mean  shape=(1024,) dtype=float32 |v|=3.7
+[upright] task 0 init 0  success=False  t=280  calls=28  (10s)  | pick up the black bowl between the plate and the ramekin and place it on the plate
+[upright] task 0 init 1  success=False  t=280  calls=28  (9s)  | pick up the black bowl between the plate and the ramekin and place it on the plate
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[rot180] task 0 init 0  success=True  t=75  calls=8  (3s)  | pick up the black bowl between the plate and the ramekin and place it on the plate
+[rot180] task 0 init 1  success=True  t=77  calls=8  (3s)  | pick up the black bowl between the plate and the ramekin and place it on the plate

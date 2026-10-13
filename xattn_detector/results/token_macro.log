@@ -1,0 +1,12 @@
+버퍼와 동일한 해시 분할   train 454  val 120  test 196 (미학습 task 10개, 실패 78)
+입력 — suf (8, 50, 1024)   pre (8, 181, 2048)
+
+  model           params       macro(미학습)         pooled     Brier  train macro
+  logreg           1,025     0.498±0.024   0.591±0.023    0.2323        0.568
+  attnpool       132,353     0.462±0.026   0.592±0.038    0.2402        0.615
+  xattn          181,889     0.501±0.027   0.606±0.035    0.2360        0.529
+  vlm_logreg       2,049     0.467±0.021   0.547±0.031    0.2776        0.565
+
+-> /home/nuri5/yuna_ws/xattn_detector/results/token_macro_main.json
+  macro(미학습) = 해시 분할로 통째로 빠진 task들에서, task별 AUROC의 평균.
+  vlm_logreg 는 action expert 입력이 전혀 없으므로 VLM latent 단독 성능이다.

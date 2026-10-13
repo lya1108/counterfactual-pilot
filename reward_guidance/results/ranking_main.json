@@ -1,0 +1,1430 @@
+{
+ "n_calls": 841,
+ "n_cand": 6728,
+ "n_pos": 892,
+ "n_all_safe": 702,
+ "n_mixed": 50,
+ "n_all_risky": 89,
+ "n_pairs": 546,
+ "n_episodes_with_mixed": 31,
+ "boot": 2000,
+ "stat": {
+  "현재 C1 head (frozen)": {
+   "auc": [
+    0.7817556117864541,
+    0.6951267581829449,
+    0.8566478543827537
+   ],
+   "auc_state": [
+    0.7840882152334296,
+    0.6876167582417582,
+    0.8654336726641413
+   ],
+   "sel": [
+    0.11524482855409289,
+    0.09459420493157518,
+    0.13922556471633923
+   ],
+   "sel_mixed": [
+    0.16138676905757854,
+    0.06896551724137931,
+    0.26
+   ]
+  },
+  "그리퍼 명령 평균": {
+   "auc": [
+    0.7931991131090306,
+    0.7045366746939595,
+    0.8735427769684229
+   ],
+   "auc_state": [
+    0.7915966927058773,
+    0.7021153414195868,
+    0.8710522034900916
+   ],
+   "sel": [
+    0.11415960356242776,
+    0.0932179901537074,
+    0.13768156396191292
+   ],
+   "sel_mixed": [
+    0.14367855855246794,
+    0.057692307692307696,
+    0.2449075856757797
+   ]
+  },
+  "그리퍼 닫힘 명령 비율": {
+   "auc": [
+    0.7849250449705802,
+    0.7102433886590074,
+    0.855178113758125
+   ],
+   "auc_state": [
+    0.7852281517626304,
+    0.710590587797619,
+    0.8539408225574713
+   ],
+   "sel": [
+    0.11530725359965638,
+    0.09350057012542759,
+    0.13936856769204525
+   ],
+   "sel_mixed": [
+    0.16227827235949838,
+    0.06976744186046512,
+    0.2708333333333333
+   ]
+  },
+  "무작위": {
+   "auc": [
+    0.5216677865713609,
+    0.4431135048431218,
+    0.6098640935509693
+   ],
+   "auc_state": [
+    0.525531635462285,
+    0.44052189900153604,
+    0.6135246000174854
+   ],
+   "sel": [
+    0.12813636603926312,
+    0.10452920290994562,
+    0.15402596084854722
+   ],
+   "sel_mixed": [
+    0.37633594289154676,
+    0.23404255319148937,
+    0.5306448111159356
+   ]
+  },
+  "오라클": {
+   "auc": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "auc_state": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "sel": [
+    0.10568186074040896,
+    0.08450456549378334,
+    0.1299195162195117
+   ],
+   "sel_mixed": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "Ranking raw [과제]": {
+   "auc": [
+    0.7157055820806855,
+    0.6528301886792452,
+    0.7787493652933658
+   ],
+   "auc_state": [
+    0.7309420374546906,
+    0.6708793995859214,
+    0.7905177426739926
+   ],
+   "sel": [
+    0.11749397914500445,
+    0.09610822376501311,
+    0.1423318296643811
+   ],
+   "sel_mixed": [
+    0.19756972758662225,
+    0.10908102766798418,
+    0.288135593220339
+   ]
+  },
+  "Ranking pca [과제]": {
+   "auc": [
+    0.721633830498846,
+    0.6261666735588454,
+    0.8112124156190004
+   ],
+   "auc_state": [
+    0.7162744566133737,
+    0.6192525089141937,
+    0.8100996879999123
+   ],
+   "sel": [
+    0.11650613422903544,
+    0.09523379749011518,
+    0.14083492003046452
+   ],
+   "sel_mixed": [
+    0.1813224890151554,
+    0.09433962264150944,
+    0.27277183600712984
+   ]
+  },
+  "Ranking resid [과제]": {
+   "auc": [
+    0.5355324512697457,
+    0.4560721144173967,
+    0.6153880866425993
+   ],
+   "auc_state": [
+    0.531325894562101,
+    0.4610506735588972,
+    0.6011758714821899
+   ],
+   "sel": [
+    0.12476568756861328,
+    0.10312393497375774,
+    0.14994258951053838
+   ],
+   "sel_mixed": [
+    0.3199757311718689,
+    0.1951219512195122,
+    0.45
+   ]
+  },
+  "Ranking raw [에피소드]": {
+   "auc": [
+    0.756821783069356,
+    0.6828063324873769,
+    0.8274129112256364
+   ],
+   "auc_state": [
+    0.7653374831302244,
+    0.6965795068027212,
+    0.8365340029761906
+   ],
+   "sel": [
+    0.11520078547321108,
+    0.09353938431750236,
+    0.13908170914542728
+   ],
+   "sel_mixed": [
+    0.15904715572998948,
+    0.075,
+    0.25
+   ]
+  },
+  "Ranking pca [에피소드]": {
+   "auc": [
+    0.7700957865817497,
+    0.6982542405981476,
+    0.8369308330727907
+   ],
+   "auc_state": [
+    0.7674451008405532,
+    0.6927973558471007,
+    0.8387215063582251
+   ],
+   "sel": [
+    0.11524572080839698,
+    0.09269887318326774,
+    0.14043759769516043
+   ],
+   "sel_mixed": [
+    0.16058831566546974,
+    0.07272727272727272,
+    0.2553191489361702
+   ]
+  },
+  "Ranking resid [에피소드]": {
+   "auc": [
+    0.5862118892447845,
+    0.5020691607186808,
+    0.6643260282374588
+   ],
+   "auc_state": [
+    0.5911830964427056,
+    0.5184517195767196,
+    0.6562937752917374
+   ],
+   "sel": [
+    0.12587788921384735,
+    0.10211087956309285,
+    0.15293110314615688
+   ],
+   "sel_mixed": [
+    0.3399234963326402,
+    0.21310603418207183,
+    0.4706159822419532
+   ]
+  }
+ },
+ "deltas": {
+  "현재 C1 head (frozen)": {
+   "auc": [
+    -0.011443501322576387,
+    -0.10398763787179052,
+    0.0840144278606964
+   ],
+   "sel": [
+    0.001085224991665115,
+    -0.0048724046287992795,
+    0.0073170731707317
+   ]
+  },
+  "그리퍼 닫힘 명령 비율": {
+   "auc": [
+    -0.00827406813845037,
+    -0.038931375922913264,
+    0.02527504105090314
+   ],
+   "sel": [
+    0.001147650037228612,
+    -0.003671970624234994,
+    0.006478165532188683
+   ]
+  },
+  "Ranking raw [과제]": {
+   "auc": [
+    -0.07749353102834503,
+    -0.154514274348727,
+    0.009792242497743535
+   ],
+   "sel": [
+    0.0033343755825766745,
+    -0.003645533888510212,
+    0.011097753116865332
+   ]
+  },
+  "Ranking pca [과제]": {
+   "auc": [
+    -0.0715652826101844,
+    -0.15228294707713594,
+    0.01031892607089698
+   ],
+   "sel": [
+    0.002346530666607655,
+    -0.0037469839955455884,
+    0.009480085183783427
+   ]
+  },
+  "Ranking resid [과제]": {
+   "auc": [
+    -0.25766666183928477,
+    -0.36659286566193205,
+    -0.13995934906129717
+   ],
+   "sel": [
+    0.010606084006185512,
+    0.0,
+    0.0213573061268337
+   ]
+  },
+  "Ranking raw [에피소드]": {
+   "auc": [
+    -0.03637733003967445,
+    -0.10351406642620155,
+    0.03440379303541478
+   ],
+   "sel": [
+    0.0010411819107833066,
+    -0.005917159763313598,
+    0.008246215229514494
+   ]
+  },
+  "Ranking pca [에피소드]": {
+   "auc": [
+    -0.0231033265272808,
+    -0.0998675506637489,
+    0.057604223107569685
+   ],
+   "sel": [
+    0.0010861172459692163,
+    -0.005875960301975486,
+    0.008158984706881901
+   ]
+  },
+  "Ranking resid [에피소드]": {
+   "auc": [
+    -0.20698722386424592,
+    -0.3066233343880745,
+    -0.10033163265306122
+   ],
+   "sel": [
+    0.011718285651419582,
+    0.0012194750601586418,
+    0.022361383745458797
+   ]
+  }
+ },
+ "folds": {
+  "Ranking raw [과제]": [
+   {
+    "fold": "libero_goal/t2",
+    "n_test": 230,
+    "n_test_mixed": 13,
+    "n_train_pairs": 401,
+    "alpha": 100.0,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t0",
+    "n_test": 211,
+    "n_test_mixed": 13,
+    "n_train_pairs": 390,
+    "alpha": 31.622776601683793,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t6",
+    "n_test": 199,
+    "n_test_mixed": 14,
+    "n_train_pairs": 422,
+    "alpha": 316.2277660168379,
+    "k": null
+   },
+   {
+    "fold": "libero_spatial/t9",
+    "n_test": 201,
+    "n_test_mixed": 10,
+    "n_train_pairs": 425,
+    "alpha": 31.622776601683793,
+    "k": null
+   }
+  ],
+  "Ranking pca [과제]": [
+   {
+    "fold": "libero_goal/t2",
+    "n_test": 230,
+    "n_test_mixed": 13,
+    "n_train_pairs": 401,
+    "alpha": 0.1,
+    "k": 5
+   },
+   {
+    "fold": "libero_object/t0",
+    "n_test": 211,
+    "n_test_mixed": 13,
+    "n_train_pairs": 390,
+    "alpha": 3.1622776601683795,
+    "k": 20
+   },
+   {
+    "fold": "libero_object/t6",
+    "n_test": 199,
+    "n_test_mixed": 14,
+    "n_train_pairs": 422,
+    "alpha": 1000.0,
+    "k": 40
+   },
+   {
+    "fold": "libero_spatial/t9",
+    "n_test": 201,
+    "n_test_mixed": 10,
+    "n_train_pairs": 425,
+    "alpha": 3162.2776601683795,
+    "k": 5
+   }
+  ],
+  "Ranking resid [과제]": [
+   {
+    "fold": "libero_goal/t2",
+    "n_test": 230,
+    "n_test_mixed": 13,
+    "n_train_pairs": 401,
+    "alpha": 316.2277660168379,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t0",
+    "n_test": 211,
+    "n_test_mixed": 13,
+    "n_train_pairs": 390,
+    "alpha": 0.1,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t6",
+    "n_test": 199,
+    "n_test_mixed": 14,
+    "n_train_pairs": 422,
+    "alpha": 100.0,
+    "k": null
+   },
+   {
+    "fold": "libero_spatial/t9",
+    "n_test": 201,
+    "n_test_mixed": 10,
+    "n_train_pairs": 425,
+    "alpha": 31.622776601683793,
+    "k": null
+   }
+  ],
+  "Ranking raw [에피소드]": [
+   {
+    "fold": "libero_goal/t2/i30",
+    "n_test": 26,
+    "n_test_mixed": 2,
+    "n_train_pairs": 532,
+    "alpha": 100.0,
+    "k": null
+   },
+   {
+    "fold": "libero_goal/t2/i31",
+    "n_test": 18,
+    "n_test_mixed": 2,
+    "n_train_pairs": 527,
+    "alpha": 3.1622776601683795,
+    "k": null
+   },
+   {
+    "fold": "libero_goal/t2/i32",
+    "n_test": 28,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 1000.0,
+    "k": null
+   },
+   {
+    "fold": "libero_goal/t2/i33",
+    "n_test": 27,
+    "n_test_mixed": 1,
+    "n_train_pairs": 539,
+    "alpha": 0.1,
+    "k": null
+   },
+   {
+    "fold": "libero_goal/t2/i34",
+    "n_test": 27,
+    "n_test_mixed": 1,
+    "n_train_pairs": 534,
+    "alpha": 10000.0,
+    "k": null
+   },
+   {
+    "fold": "libero_goal/t2/i35",
+    "n_test": 10,
+    "n_test_mixed": 2,
+    "n_train_pairs": 515,
+    "alpha": 316.2277660168379,
+    "k": null
+   },
+   {
+    "fold": "libero_goal/t2/i36",
+    "n_test": 23,
+    "n_test_mixed": 1,
+    "n_train_pairs": 530,
+    "alpha": 1000.0,
+    "k": null
+   },
+   {
+    "fold": "libero_goal/t2/i37",
+    "n_test": 27,
+    "n_test_mixed": 1,
+    "n_train_pairs": 539,
+    "alpha": 1000.0,
+    "k": null
+   },
+   {
+    "fold": "libero_goal/t2/i38",
+    "n_test": 19,
+    "n_test_mixed": 3,
+    "n_train_pairs": 507,
+    "alpha": 1000.0,
+    "k": null
+   },
+   {
+    "fold": "libero_goal/t2/i39",
+    "n_test": 25,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 3162.2776601683795,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t0/i30",
+    "n_test": 24,
+    "n_test_mixed": 1,
+    "n_train_pairs": 539,
+    "alpha": 100.0,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t0/i31",
+    "n_test": 20,
+    "n_test_mixed": 1,
+    "n_train_pairs": 539,
+    "alpha": 3162.2776601683795,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t0/i32",
+    "n_test": 17,
+    "n_test_mixed": 1,
+    "n_train_pairs": 531,
+    "alpha": 100.0,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t0/i33",
+    "n_test": 25,
+    "n_test_mixed": 1,
+    "n_train_pairs": 534,
+    "alpha": 10000.0,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t0/i34",
+    "n_test": 24,
+    "n_test_mixed": 2,
+    "n_train_pairs": 514,
+    "alpha": 3162.2776601683795,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t0/i35",
+    "n_test": 18,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 3162.2776601683795,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t0/i36",
+    "n_test": 19,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 3162.2776601683795,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t0/i37",
+    "n_test": 20,
+    "n_test_mixed": 1,
+    "n_train_pairs": 531,
+    "alpha": 3162.2776601683795,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t0/i38",
+    "n_test": 25,
+    "n_test_mixed": 2,
+    "n_train_pairs": 527,
+    "alpha": 10000.0,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t0/i39",
+    "n_test": 19,
+    "n_test_mixed": 4,
+    "n_train_pairs": 497,
+    "alpha": 316.2277660168379,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t6/i30",
+    "n_test": 21,
+    "n_test_mixed": 1,
+    "n_train_pairs": 539,
+    "alpha": 316.2277660168379,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t6/i31",
+    "n_test": 26,
+    "n_test_mixed": 2,
+    "n_train_pairs": 527,
+    "alpha": 10000.0,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t6/i32",
+    "n_test": 17,
+    "n_test_mixed": 3,
+    "n_train_pairs": 517,
+    "alpha": 10000.0,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t6/i33",
+    "n_test": 16,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 100.0,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t6/i34",
+    "n_test": 17,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 100.0,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t6/i35",
+    "n_test": 18,
+    "n_test_mixed": 1,
+    "n_train_pairs": 531,
+    "alpha": 1.0,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t6/i36",
+    "n_test": 17,
+    "n_test_mixed": 2,
+    "n_train_pairs": 532,
+    "alpha": 0.1,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t6/i37",
+    "n_test": 21,
+    "n_test_mixed": 3,
+    "n_train_pairs": 520,
+    "alpha": 0.31622776601683794,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t6/i38",
+    "n_test": 22,
+    "n_test_mixed": 2,
+    "n_train_pairs": 532,
+    "alpha": 316.2277660168379,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t6/i39",
+    "n_test": 24,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 10000.0,
+    "k": null
+   },
+   {
+    "fold": "libero_spatial/t9/i30",
+    "n_test": 18,
+    "n_test_mixed": 2,
+    "n_train_pairs": 524,
+    "alpha": 10.0,
+    "k": null
+   },
+   {
+    "fold": "libero_spatial/t9/i31",
+    "n_test": 22,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 10000.0,
+    "k": null
+   },
+   {
+    "fold": "libero_spatial/t9/i32",
+    "n_test": 16,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 10000.0,
+    "k": null
+   },
+   {
+    "fold": "libero_spatial/t9/i33",
+    "n_test": 18,
+    "n_test_mixed": 1,
+    "n_train_pairs": 531,
+    "alpha": 31.622776601683793,
+    "k": null
+   },
+   {
+    "fold": "libero_spatial/t9/i34",
+    "n_test": 25,
+    "n_test_mixed": 1,
+    "n_train_pairs": 530,
+    "alpha": 316.2277660168379,
+    "k": null
+   },
+   {
+    "fold": "libero_spatial/t9/i35",
+    "n_test": 12,
+    "n_test_mixed": 1,
+    "n_train_pairs": 531,
+    "alpha": 3162.2776601683795,
+    "k": null
+   },
+   {
+    "fold": "libero_spatial/t9/i36",
+    "n_test": 23,
+    "n_test_mixed": 2,
+    "n_train_pairs": 523,
+    "alpha": 10000.0,
+    "k": null
+   },
+   {
+    "fold": "libero_spatial/t9/i37",
+    "n_test": 25,
+    "n_test_mixed": 1,
+    "n_train_pairs": 530,
+    "alpha": 3162.2776601683795,
+    "k": null
+   },
+   {
+    "fold": "libero_spatial/t9/i38",
+    "n_test": 27,
+    "n_test_mixed": 1,
+    "n_train_pairs": 539,
+    "alpha": 3162.2776601683795,
+    "k": null
+   },
+   {
+    "fold": "libero_spatial/t9/i39",
+    "n_test": 15,
+    "n_test_mixed": 1,
+    "n_train_pairs": 539,
+    "alpha": 3162.2776601683795,
+    "k": null
+   }
+  ],
+  "Ranking pca [에피소드]": [
+   {
+    "fold": "libero_goal/t2/i30",
+    "n_test": 26,
+    "n_test_mixed": 2,
+    "n_train_pairs": 532,
+    "alpha": 0.1,
+    "k": 5
+   },
+   {
+    "fold": "libero_goal/t2/i31",
+    "n_test": 18,
+    "n_test_mixed": 2,
+    "n_train_pairs": 527,
+    "alpha": 1.0,
+    "k": 5
+   },
+   {
+    "fold": "libero_goal/t2/i32",
+    "n_test": 28,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 10.0,
+    "k": 10
+   },
+   {
+    "fold": "libero_goal/t2/i33",
+    "n_test": 27,
+    "n_test_mixed": 1,
+    "n_train_pairs": 539,
+    "alpha": 1000.0,
+    "k": 5
+   },
+   {
+    "fold": "libero_goal/t2/i34",
+    "n_test": 27,
+    "n_test_mixed": 1,
+    "n_train_pairs": 534,
+    "alpha": 3.1622776601683795,
+    "k": 5
+   },
+   {
+    "fold": "libero_goal/t2/i35",
+    "n_test": 10,
+    "n_test_mixed": 2,
+    "n_train_pairs": 515,
+    "alpha": 100.0,
+    "k": 5
+   },
+   {
+    "fold": "libero_goal/t2/i36",
+    "n_test": 23,
+    "n_test_mixed": 1,
+    "n_train_pairs": 530,
+    "alpha": 0.1,
+    "k": 5
+   },
+   {
+    "fold": "libero_goal/t2/i37",
+    "n_test": 27,
+    "n_test_mixed": 1,
+    "n_train_pairs": 539,
+    "alpha": 100.0,
+    "k": 5
+   },
+   {
+    "fold": "libero_goal/t2/i38",
+    "n_test": 19,
+    "n_test_mixed": 3,
+    "n_train_pairs": 507,
+    "alpha": 316.2277660168379,
+    "k": 5
+   },
+   {
+    "fold": "libero_goal/t2/i39",
+    "n_test": 25,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 0.1,
+    "k": 5
+   },
+   {
+    "fold": "libero_object/t0/i30",
+    "n_test": 24,
+    "n_test_mixed": 1,
+    "n_train_pairs": 539,
+    "alpha": 1000.0,
+    "k": 5
+   },
+   {
+    "fold": "libero_object/t0/i31",
+    "n_test": 20,
+    "n_test_mixed": 1,
+    "n_train_pairs": 539,
+    "alpha": 100.0,
+    "k": 10
+   },
+   {
+    "fold": "libero_object/t0/i32",
+    "n_test": 17,
+    "n_test_mixed": 1,
+    "n_train_pairs": 531,
+    "alpha": 0.1,
+    "k": 10
+   },
+   {
+    "fold": "libero_object/t0/i33",
+    "n_test": 25,
+    "n_test_mixed": 1,
+    "n_train_pairs": 534,
+    "alpha": 0.1,
+    "k": 5
+   },
+   {
+    "fold": "libero_object/t0/i34",
+    "n_test": 24,
+    "n_test_mixed": 2,
+    "n_train_pairs": 514,
+    "alpha": 0.1,
+    "k": 5
+   },
+   {
+    "fold": "libero_object/t0/i35",
+    "n_test": 18,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 0.1,
+    "k": 5
+   },
+   {
+    "fold": "libero_object/t0/i36",
+    "n_test": 19,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 1000.0,
+    "k": 10
+   },
+   {
+    "fold": "libero_object/t0/i37",
+    "n_test": 20,
+    "n_test_mixed": 1,
+    "n_train_pairs": 531,
+    "alpha": 0.1,
+    "k": 5
+   },
+   {
+    "fold": "libero_object/t0/i38",
+    "n_test": 25,
+    "n_test_mixed": 2,
+    "n_train_pairs": 527,
+    "alpha": 1000.0,
+    "k": 10
+   },
+   {
+    "fold": "libero_object/t0/i39",
+    "n_test": 19,
+    "n_test_mixed": 4,
+    "n_train_pairs": 497,
+    "alpha": 100.0,
+    "k": 5
+   },
+   {
+    "fold": "libero_object/t6/i30",
+    "n_test": 21,
+    "n_test_mixed": 1,
+    "n_train_pairs": 539,
+    "alpha": 3162.2776601683795,
+    "k": 5
+   },
+   {
+    "fold": "libero_object/t6/i31",
+    "n_test": 26,
+    "n_test_mixed": 2,
+    "n_train_pairs": 527,
+    "alpha": 3162.2776601683795,
+    "k": 5
+   },
+   {
+    "fold": "libero_object/t6/i32",
+    "n_test": 17,
+    "n_test_mixed": 3,
+    "n_train_pairs": 517,
+    "alpha": 1000.0,
+    "k": 5
+   },
+   {
+    "fold": "libero_object/t6/i33",
+    "n_test": 16,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 3162.2776601683795,
+    "k": 5
+   },
+   {
+    "fold": "libero_object/t6/i34",
+    "n_test": 17,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 3162.2776601683795,
+    "k": 5
+   },
+   {
+    "fold": "libero_object/t6/i35",
+    "n_test": 18,
+    "n_test_mixed": 1,
+    "n_train_pairs": 531,
+    "alpha": 1000.0,
+    "k": 5
+   },
+   {
+    "fold": "libero_object/t6/i36",
+    "n_test": 17,
+    "n_test_mixed": 2,
+    "n_train_pairs": 532,
+    "alpha": 3162.2776601683795,
+    "k": 5
+   },
+   {
+    "fold": "libero_object/t6/i37",
+    "n_test": 21,
+    "n_test_mixed": 3,
+    "n_train_pairs": 520,
+    "alpha": 10000.0,
+    "k": 5
+   },
+   {
+    "fold": "libero_object/t6/i38",
+    "n_test": 22,
+    "n_test_mixed": 2,
+    "n_train_pairs": 532,
+    "alpha": 10000.0,
+    "k": 5
+   },
+   {
+    "fold": "libero_object/t6/i39",
+    "n_test": 24,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 10000.0,
+    "k": 5
+   },
+   {
+    "fold": "libero_spatial/t9/i30",
+    "n_test": 18,
+    "n_test_mixed": 2,
+    "n_train_pairs": 524,
+    "alpha": 3162.2776601683795,
+    "k": 5
+   },
+   {
+    "fold": "libero_spatial/t9/i31",
+    "n_test": 22,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 1000.0,
+    "k": 10
+   },
+   {
+    "fold": "libero_spatial/t9/i32",
+    "n_test": 16,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 0.1,
+    "k": 5
+   },
+   {
+    "fold": "libero_spatial/t9/i33",
+    "n_test": 18,
+    "n_test_mixed": 1,
+    "n_train_pairs": 531,
+    "alpha": 316.2277660168379,
+    "k": 5
+   },
+   {
+    "fold": "libero_spatial/t9/i34",
+    "n_test": 25,
+    "n_test_mixed": 1,
+    "n_train_pairs": 530,
+    "alpha": 31.622776601683793,
+    "k": 5
+   },
+   {
+    "fold": "libero_spatial/t9/i35",
+    "n_test": 12,
+    "n_test_mixed": 1,
+    "n_train_pairs": 531,
+    "alpha": 10000.0,
+    "k": 5
+   },
+   {
+    "fold": "libero_spatial/t9/i36",
+    "n_test": 23,
+    "n_test_mixed": 2,
+    "n_train_pairs": 523,
+    "alpha": 3162.2776601683795,
+    "k": 5
+   },
+   {
+    "fold": "libero_spatial/t9/i37",
+    "n_test": 25,
+    "n_test_mixed": 1,
+    "n_train_pairs": 530,
+    "alpha": 3162.2776601683795,
+    "k": 5
+   },
+   {
+    "fold": "libero_spatial/t9/i38",
+    "n_test": 27,
+    "n_test_mixed": 1,
+    "n_train_pairs": 539,
+    "alpha": 3162.2776601683795,
+    "k": 5
+   },
+   {
+    "fold": "libero_spatial/t9/i39",
+    "n_test": 15,
+    "n_test_mixed": 1,
+    "n_train_pairs": 539,
+    "alpha": 0.1,
+    "k": 5
+   }
+  ],
+  "Ranking resid [에피소드]": [
+   {
+    "fold": "libero_goal/t2/i30",
+    "n_test": 26,
+    "n_test_mixed": 2,
+    "n_train_pairs": 532,
+    "alpha": 31.622776601683793,
+    "k": null
+   },
+   {
+    "fold": "libero_goal/t2/i31",
+    "n_test": 18,
+    "n_test_mixed": 2,
+    "n_train_pairs": 527,
+    "alpha": 0.1,
+    "k": null
+   },
+   {
+    "fold": "libero_goal/t2/i32",
+    "n_test": 28,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 316.2277660168379,
+    "k": null
+   },
+   {
+    "fold": "libero_goal/t2/i33",
+    "n_test": 27,
+    "n_test_mixed": 1,
+    "n_train_pairs": 539,
+    "alpha": 31.622776601683793,
+    "k": null
+   },
+   {
+    "fold": "libero_goal/t2/i34",
+    "n_test": 27,
+    "n_test_mixed": 1,
+    "n_train_pairs": 534,
+    "alpha": 10.0,
+    "k": null
+   },
+   {
+    "fold": "libero_goal/t2/i35",
+    "n_test": 10,
+    "n_test_mixed": 2,
+    "n_train_pairs": 515,
+    "alpha": 0.1,
+    "k": null
+   },
+   {
+    "fold": "libero_goal/t2/i36",
+    "n_test": 23,
+    "n_test_mixed": 1,
+    "n_train_pairs": 530,
+    "alpha": 100.0,
+    "k": null
+   },
+   {
+    "fold": "libero_goal/t2/i37",
+    "n_test": 27,
+    "n_test_mixed": 1,
+    "n_train_pairs": 539,
+    "alpha": 10.0,
+    "k": null
+   },
+   {
+    "fold": "libero_goal/t2/i38",
+    "n_test": 19,
+    "n_test_mixed": 3,
+    "n_train_pairs": 507,
+    "alpha": 0.1,
+    "k": null
+   },
+   {
+    "fold": "libero_goal/t2/i39",
+    "n_test": 25,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 100.0,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t0/i30",
+    "n_test": 24,
+    "n_test_mixed": 1,
+    "n_train_pairs": 539,
+    "alpha": 31.622776601683793,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t0/i31",
+    "n_test": 20,
+    "n_test_mixed": 1,
+    "n_train_pairs": 539,
+    "alpha": 10.0,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t0/i32",
+    "n_test": 17,
+    "n_test_mixed": 1,
+    "n_train_pairs": 531,
+    "alpha": 100.0,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t0/i33",
+    "n_test": 25,
+    "n_test_mixed": 1,
+    "n_train_pairs": 534,
+    "alpha": 10.0,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t0/i34",
+    "n_test": 24,
+    "n_test_mixed": 2,
+    "n_train_pairs": 514,
+    "alpha": 100.0,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t0/i35",
+    "n_test": 18,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 316.2277660168379,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t0/i36",
+    "n_test": 19,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 100.0,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t0/i37",
+    "n_test": 20,
+    "n_test_mixed": 1,
+    "n_train_pairs": 531,
+    "alpha": 100.0,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t0/i38",
+    "n_test": 25,
+    "n_test_mixed": 2,
+    "n_train_pairs": 527,
+    "alpha": 10.0,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t0/i39",
+    "n_test": 19,
+    "n_test_mixed": 4,
+    "n_train_pairs": 497,
+    "alpha": 100.0,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t6/i30",
+    "n_test": 21,
+    "n_test_mixed": 1,
+    "n_train_pairs": 539,
+    "alpha": 316.2277660168379,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t6/i31",
+    "n_test": 26,
+    "n_test_mixed": 2,
+    "n_train_pairs": 527,
+    "alpha": 3.1622776601683795,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t6/i32",
+    "n_test": 17,
+    "n_test_mixed": 3,
+    "n_train_pairs": 517,
+    "alpha": 1000.0,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t6/i33",
+    "n_test": 16,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 0.31622776601683794,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t6/i34",
+    "n_test": 17,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 0.31622776601683794,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t6/i35",
+    "n_test": 18,
+    "n_test_mixed": 1,
+    "n_train_pairs": 531,
+    "alpha": 0.1,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t6/i36",
+    "n_test": 17,
+    "n_test_mixed": 2,
+    "n_train_pairs": 532,
+    "alpha": 0.1,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t6/i37",
+    "n_test": 21,
+    "n_test_mixed": 3,
+    "n_train_pairs": 520,
+    "alpha": 0.31622776601683794,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t6/i38",
+    "n_test": 22,
+    "n_test_mixed": 2,
+    "n_train_pairs": 532,
+    "alpha": 1000.0,
+    "k": null
+   },
+   {
+    "fold": "libero_object/t6/i39",
+    "n_test": 24,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 0.31622776601683794,
+    "k": null
+   },
+   {
+    "fold": "libero_spatial/t9/i30",
+    "n_test": 18,
+    "n_test_mixed": 2,
+    "n_train_pairs": 524,
+    "alpha": 0.1,
+    "k": null
+   },
+   {
+    "fold": "libero_spatial/t9/i31",
+    "n_test": 22,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 1000.0,
+    "k": null
+   },
+   {
+    "fold": "libero_spatial/t9/i32",
+    "n_test": 16,
+    "n_test_mixed": 0,
+    "n_train_pairs": 546,
+    "alpha": 1000.0,
+    "k": null
+   },
+   {
+    "fold": "libero_spatial/t9/i33",
+    "n_test": 18,
+    "n_test_mixed": 1,
+    "n_train_pairs": 531,
+    "alpha": 31.622776601683793,
+    "k": null
+   },
+   {
+    "fold": "libero_spatial/t9/i34",
+    "n_test": 25,
+    "n_test_mixed": 1,
+    "n_train_pairs": 530,
+    "alpha": 10.0,
+    "k": null
+   },
+   {
+    "fold": "libero_spatial/t9/i35",
+    "n_test": 12,
+    "n_test_mixed": 1,
+    "n_train_pairs": 531,
+    "alpha": 1.0,
+    "k": null
+   },
+   {
+    "fold": "libero_spatial/t9/i36",
+    "n_test": 23,
+    "n_test_mixed": 2,
+    "n_train_pairs": 523,
+    "alpha": 1000.0,
+    "k": null
+   },
+   {
+    "fold": "libero_spatial/t9/i37",
+    "n_test": 25,
+    "n_test_mixed": 1,
+    "n_train_pairs": 530,
+    "alpha": 1000.0,
+    "k": null
+   },
+   {
+    "fold": "libero_spatial/t9/i38",
+    "n_test": 27,
+    "n_test_mixed": 1,
+    "n_train_pairs": 539,
+    "alpha": 0.31622776601683794,
+    "k": null
+   },
+   {
+    "fold": "libero_spatial/t9/i39",
+    "n_test": 15,
+    "n_test_mixed": 1,
+    "n_train_pairs": 539,
+    "alpha": 0.31622776601683794,
+    "k": null
+   }
+  ]
+ },
+ "insample": {
+  "raw": 1.0,
+  "pca": 0.8681318681318682,
+  "resid": 1.0
+ },
+ "nonconverged": 0,
+ "n_fits": 11751
+}

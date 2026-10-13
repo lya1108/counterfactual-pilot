@@ -1,0 +1,82 @@
+총 784 · 불일치 14 · 대조군 20 (일치 에피소드에서 무작위)
+각 2회 전체 재생 — 예상 17분
+
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: outputs/vla/pi05_libero_finetuned
+✓ Loaded state dict from model.safetensors
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+All keys loaded successfully!
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+Local assets not found. Downloading from HuggingFace Hub...
+Assets already downloaded at /home/nuri5/.cache/libero/assets
+  [flagged] libero_10 t8 i5  저장=False  재생=[False, False]  OK   (d_eef=1.1e-03)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [flagged] libero_10 t9 i1  저장=False  재생=[False, False]  OK   (d_eef=2.0e-03)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [flagged] libero_goal t5 i13  저장=False  재생=[False, False]  OK   (d_eef=1.6e-03)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [flagged] libero_goal t9 i1  저장=False  재생=[False, False]  OK   (d_eef=1.4e-03)
+  [flagged] libero_goal t9 i2  저장=False  재생=[False, False]  OK   (d_eef=3.0e-04)
+  [flagged] libero_goal t9 i6  저장=False  재생=[False, False]  OK   (d_eef=2.3e-04)
+  [flagged] libero_goal t9 i7  저장=True  재생=[True, True]  OK   (d_eef=2.8e-04)
+  [flagged] libero_goal t9 i8  저장=False  재생=[False, False]  OK   (d_eef=6.5e-04)
+  [flagged] libero_goal t9 i10  저장=False  재생=[False, False]  OK   (d_eef=3.4e-04)
+  [flagged] libero_goal t9 i11  저장=False  재생=[False, False]  OK   (d_eef=2.8e-04)
+  [flagged] libero_goal t9 i12  저장=False  재생=[False, False]  OK   (d_eef=1.5e-03)
+  [flagged] libero_goal t9 i13  저장=False  재생=[False, False]  OK   (d_eef=1.3e-03)
+  [flagged] libero_goal t9 i19  저장=False  재생=[False, False]  OK   (d_eef=1.2e-04)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [flagged] libero_spatial t2 i17  저장=True  재생=[True, True]  OK   (d_eef=1.8e-02)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [control] libero_spatial t6 i4  저장=True  재생=[True, True]  OK   (d_eef=5.7e-08)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [control] libero_goal t1 i14  저장=True  재생=[True, True]  OK   (d_eef=5.8e-08)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [control] libero_goal t0 i5  저장=False  재생=[False, False]  OK   (d_eef=5.6e-08)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [control] libero_spatial t7 i9  저장=False  재생=[False, False]  OK   (d_eef=5.3e-08)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [control] libero_object t0 i11  저장=True  재생=[True, True]  OK   (d_eef=7.0e-09)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [control] libero_object t4 i10  저장=True  재생=[True, True]  OK   (d_eef=1.3e-08)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [control] libero_object t2 i17  저장=False  재생=[False, False]  OK   (d_eef=8.3e-09)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [control] libero_spatial t8 i11  저장=True  재생=[True, True]  OK   (d_eef=5.9e-08)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [control] libero_object t5 i5  저장=False  재생=[False, False]  OK   (d_eef=7.7e-09)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [control] libero_object t6 i1  저장=True  재생=[True, True]  OK   (d_eef=1.1e-08)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [control] libero_10 t6 i13  저장=True  재생=[True, True]  OK   (d_eef=2.9e-08)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [control] libero_spatial t2 i6  저장=False  재생=[False, False]  OK   (d_eef=5.3e-08)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [control] libero_object t5 i11  저장=False  재생=[False, False]  OK   (d_eef=1.2e-08)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [control] libero_10 t0 i12  저장=False  재생=[False, False]  OK   (d_eef=2.8e-08)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [control] libero_object t2 i4  저장=True  재생=[True, True]  OK   (d_eef=1.5e-08)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [control] libero_10 t2 i16  저장=False  재생=[False, False]  OK   (d_eef=5.1e-08)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [control] libero_spatial t3 i7  저장=True  재생=[True, True]  OK   (d_eef=4.6e-08)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [control] libero_spatial t9 i12  저장=False  재생=[False, False]  OK   (d_eef=5.9e-08)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [control] libero_object t9 i5  저장=True  재생=[True, True]  OK   (d_eef=8.0e-09)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [control] libero_10 t1 i10  저장=True  재생=[True, True]  OK   (d_eef=3.0e-08)
+
+========================================================================
+664초
+  flagged  n= 14   저장 라벨과 일치 14/14   재생끼리 일관 14/14
+  control  n= 20   저장 라벨과 일치 20/20   재생끼리 일관 20/20
+
+  해석: 대조군도 비슷하게 흔들리면 라벨 불안정은 플래그와 무관한 벤치마크 특성이고,
+        플래그 그룹만 흔들리면 플래그가 실제로 신뢰할 수 없는 라벨을 골라낸 것이다.
+
+-> /home/nuri5/yuna_ws/xattn_detector/results/label_check.json

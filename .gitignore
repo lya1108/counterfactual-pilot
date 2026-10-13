@@ -1,12 +1,16 @@
-# 저장소 뿌리는 ~/yuna_ws 이지만, 추적하는 것은 아래 두 폴더뿐이다.
-# 두 폴더는 반드시 형제로 있어야 한다 — failure_prediction 의 스크립트가
+# 저장소 뿌리는 ~/yuna 이지만, 추적하는 것은 아래 다섯 폴더뿐이다.
+# 다섯 폴더는 반드시 형제로 있어야 한다 — failure_prediction 의 스크립트가
 # parent.parent / "counterfactual_pilot" 로 1·2단계 도구를 import 하고,
-# README 본문 링크도 ../counterfactual_pilot/README.md 이기 때문이다.
-# 그래서 한 저장소에 함께 둔다.
+# reward_guidance 는 ../safe_detector/train_detector.py 와 ../xattn_detector/conditions.py 를
+# sys.path 로 끌어다 쓴다. README 본문 링크도 상대경로다. 그래서 한 저장소에 함께 둔다.
 /*
 !/.gitignore
+!/README.md
 !/counterfactual_pilot/
 !/failure_prediction/
+!/safe_detector/
+!/xattn_detector/
+!/reward_guidance/
 
 # 제외되는 것: Dreamerv3_study(별도 git 저장소, 3.3G), new_project, counterfactual_task,
 # data, models, results, videos, 2026-08 BC/world-model 스크립트, stack0.mp4, 스크린샷.

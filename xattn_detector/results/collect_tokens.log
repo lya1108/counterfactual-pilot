@@ -1,0 +1,84 @@
+784 에피소드가 8호출 이상 · 남은 작업 586 · pool=2
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: outputs/vla/pi05_libero_finetuned
+✓ Loaded state dict from model.safetensors
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+All keys loaded successfully!
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+Local assets not found. Downloading from HuggingFace Hub...
+Assets already downloaded at /home/nuri5/.cache/libero/assets
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[25/586] libero_10 t1 i4 S  d_eef=1.35e-08  (1.5분 경과, 남은 35분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[50/586] libero_10 t2 i9 F  d_eef=3.93e-08  (3.0분 경과, 남은 32분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[75/586] libero_10 t3 i14 F  d_eef=5.88e-08  (4.4분 경과, 남은 30분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[100/586] libero_10 t4 i19 F  d_eef=2.91e-08  (6.0분 경과, 남은 29분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[125/586] libero_10 t6 i4 F  d_eef=2.17e-08  (7.4분 경과, 남은 27분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[150/586] libero_10 t7 i9 F  d_eef=2.84e-08  (8.9분 경과, 남은 26분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[166/586] libero_10 t8 i5 F  d_eef=1.13e-03  (9.8분 경과, 남은 25분)   ** 재현 불일치 d_eef=1.13e-03 d_step=0
+[175/586] libero_10 t8 i14 F  d_eef=3.76e-08  (10.3분 경과, 남은 24분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[182/586] libero_10 t9 i1 F  d_eef=2.01e-03  (10.8분 경과, 남은 24분)   ** 재현 불일치 d_eef=2.01e-03 d_step=0
+[200/586] libero_10 t9 i19 F  d_eef=5.96e-08  (11.8분 경과, 남은 23분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[225/586] libero_goal t1 i4 S  d_eef=4.07e-08  (13.4분 경과, 남은 21분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[250/586] libero_goal t2 i9 F  d_eef=5.38e-08  (14.9분 경과, 남은 20분)
+[251/586] libero_goal t2 i10 F  d_eef=2.32e-04  (15.0분 경과, 남은 20분)   ** 재현 불일치 d_eef=2.32e-04 d_step=0
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[275/586] libero_goal t3 i14 F  d_eef=5.93e-08  (16.4분 경과, 남은 19분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[300/586] libero_goal t5 i11 S  d_eef=5.09e-08  (18.0분 경과, 남은 17분)
+[302/586] libero_goal t5 i13 F  d_eef=1.62e-03  (18.1분 경과, 남은 17분)   ** 재현 불일치 d_eef=1.62e-03 d_step=0
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[325/586] libero_goal t6 i16 S  d_eef=4.96e-08  (19.5분 경과, 남은 16분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[350/586] libero_goal t8 i1 F  d_eef=5.04e-08  (21.1분 경과, 남은 14분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[367/586] libero_goal t9 i0 F  d_eef=3.04e-04  (22.1분 경과, 남은 13분)   ** 재현 불일치 d_eef=3.04e-04 d_step=0
+[368/586] libero_goal t9 i1 F  d_eef=6.18e-04  (22.2분 경과, 남은 13분)   ** 재현 불일치 d_eef=6.18e-04 d_step=0
+[369/586] libero_goal t9 i2 F  d_eef=3.00e-04  (22.2분 경과, 남은 13분)   ** 재현 불일치 d_eef=3.00e-04 d_step=0
+[370/586] libero_goal t9 i3 F  d_eef=4.24e-04  (22.3분 경과, 남은 13분)   ** 재현 불일치 d_eef=4.24e-04 d_step=0
+[373/586] libero_goal t9 i6 F  d_eef=2.65e-04  (22.5분 경과, 남은 13분)   ** 재현 불일치 d_eef=2.65e-04 d_step=0
+[374/586] libero_goal t9 i7 S  d_eef=2.83e-04  (22.5분 경과, 남은 13분)   ** 재현 불일치 d_eef=2.83e-04 d_step=0
+[375/586] libero_goal t9 i8 F  d_eef=7.88e-04  (22.6분 경과, 남은 13분)   ** 재현 불일치 d_eef=7.88e-04 d_step=0
+[377/586] libero_goal t9 i10 F  d_eef=8.39e-04  (22.7분 경과, 남은 13분)   ** 재현 불일치 d_eef=8.39e-04 d_step=0
+[378/586] libero_goal t9 i11 F  d_eef=5.51e-04  (22.8분 경과, 남은 13분)   ** 재현 불일치 d_eef=5.51e-04 d_step=0
+[379/586] libero_goal t9 i12 F  d_eef=1.01e-03  (22.8분 경과, 남은 12분)   ** 재현 불일치 d_eef=1.01e-03 d_step=0
+[380/586] libero_goal t9 i13 F  d_eef=1.26e-02  (22.9분 경과, 남은 12분)   ** 재현 불일치 d_eef=1.26e-02 d_step=0
+[381/586] libero_goal t9 i14 F  d_eef=5.65e-04  (22.9분 경과, 남은 12분)   ** 재현 불일치 d_eef=5.65e-04 d_step=0
+[382/586] libero_goal t9 i15 F  d_eef=1.15e-04  (23.0분 경과, 남은 12분)   ** 재현 불일치 d_eef=1.15e-04 d_step=0
+[386/586] libero_goal t9 i19 F  d_eef=1.17e-04  (23.2분 경과, 남은 12분)   ** 재현 불일치 d_eef=1.17e-04 d_step=0
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[400/586] libero_object t0 i13 S  d_eef=1.12e-08  (24.0분 경과, 남은 11분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[425/586] libero_object t1 i18 F  d_eef=7.34e-09  (25.5분 경과, 남은 10분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[450/586] libero_object t3 i3 F  d_eef=1.23e-08  (26.9분 경과, 남은 8분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[475/586] libero_object t4 i8 F  d_eef=1.43e-08  (28.4분 경과, 남은 7분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[500/586] libero_object t5 i13 F  d_eef=8.98e-09  (29.8분 경과, 남은 5분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[525/586] libero_object t6 i18 S  d_eef=1.19e-08  (31.2분 경과, 남은 4분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[550/586] libero_object t8 i3 S  d_eef=1.35e-08  (32.7분 경과, 남은 2분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[575/586] libero_object t9 i8 F  d_eef=7.41e-09  (34.1분 경과, 남은 1분)
+
+재현 일치 568 / 불일치 18   (0.0001 m 허용)
+저장 4.30 GB -> /home/nuri5/yuna_ws/xattn_detector/data/tokens

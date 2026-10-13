@@ -1,0 +1,38 @@
+에피소드 200   샘플 4994   양성 353 (7.1%)   양·음 모두 있는 task 20/20   H=10, guard=0
+state_hist = state_vector(t, t-5, t-10), 3개 시점 × 15차원
+
+  feature          차원        macro AUROC        macro AUPRC      하한
+  suf_mean       1024       0.891 ± 0.010       0.525 ± 0.009   0.082
+  vlm_all        4096       0.858 ± 0.013       0.398 ± 0.022   0.082
+  vlm_img        2048       0.874 ± 0.006       0.411 ± 0.016   0.082
+  vlm_lang       2048       0.772 ± 0.010       0.286 ± 0.013   0.082
+  state_hist       45       0.796 ± 0.009       0.324 ± 0.010   0.082
+  state            15       0.766 ± 0.007       0.338 ± 0.013   0.082
+  opening           1       0.551 ± 0.057       0.188 ± 0.022   0.082
+  call_index        2       0.492 ± 0.000       0.086 ± 0.000   0.082
+  random            4       0.524 ± 0.010       0.132 ± 0.009   0.082
+
+=== task 별 AUROC (마지막 분할 기준) ===
+  task                       양성률     suf_mean      vlm_all   state_hist        state
+  libero_goal/t2          11.5%        0.979        0.852        0.790        0.741
+  libero_10/t0             3.5%        0.971        0.945        0.896        0.903
+  libero_object/t9        12.2%        0.966        0.855        0.926        0.887
+  libero_object/t2         5.7%        0.963        0.783        0.895        0.840
+  libero_goal/t9           3.5%        0.962        0.913        0.841        0.820
+  libero_10/t2             5.3%        0.961        0.911        0.491        0.592
+  libero_spatial/t6        5.1%        0.955        0.841        0.929        0.889
+  libero_spatial/t4        9.0%        0.949        0.882        0.706        0.731
+  libero_object/t6        20.6%        0.940        0.918        0.855        0.787
+  libero_goal/t6           4.4%        0.934        0.803        0.767        0.694
+  libero_object/t4         8.2%        0.891        0.902        0.902        0.883
+  libero_spatial/t2        2.2%        0.885        0.885        0.816        0.563
+  libero_10/t4             5.5%        0.846        0.761        0.495        0.490
+  libero_spatial/t0       18.5%        0.841        0.851        0.783        0.711
+  libero_10/t6             6.7%        0.839        0.858        0.700        0.683
+  libero_spatial/t9       23.4%        0.824        0.818        0.764        0.679
+  libero_object/t0        15.2%        0.811        0.882        0.835        0.957
+  libero_10/t9             1.0%        0.808        0.926        0.825        0.781
+  libero_goal/t0           0.3%        0.789        0.997        0.976        0.976
+  libero_goal/t4           2.4%        0.744        0.537        0.841        0.793
+
+-> /home/nuri5/yuna_ws/xattn_detector/results/c1_features_n200.json

@@ -1,0 +1,5 @@
+# 원시 롤아웃 데이터 241 MB — 추적하지 않는다. run_collect.sh 로 재생성한다.
+# results/ 의 npz 는 out-of-fold 점수(3.2 MB)라 calibration·leadtime 재분석의 근거이므로 추적한다.
+data/
+
+__pycache__/

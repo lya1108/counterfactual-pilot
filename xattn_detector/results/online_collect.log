@@ -1,0 +1,293 @@
+detector: base (val AUROC 0.7350) — 추론 전용
+수집 대상 234개 (train split task만, 중복 제외)
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: outputs/vla/pi05_libero_finetuned
+✓ Loaded state dict from model.safetensors
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+All keys loaded successfully!
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+Local assets not found. Downloading from HuggingFace Hub...
+Assets already downloaded at /home/nuri5/.cache/libero/assets
+[1/234] libero_spatial t0 i22  S  calls=9  split=train  (0.1분, 남은 19분)
+[2/234] libero_spatial t0 i23  S  calls=8  split=train  (0.1분, 남은 16분)
+[3/234] libero_spatial t0 i24  S  calls=7  split=train  (0.2분, 남은 14분)
+[4/234] libero_spatial t0 i25  S  calls=19  split=train  (0.3분, 남은 17분)
+[5/234] libero_spatial t0 i26  S  calls=12  split=train  (0.4분, 남은 17분)
+[6/234] libero_spatial t0 i27  S  calls=8  split=train  (0.4분, 남은 17분)
+[7/234] libero_spatial t0 i28  S  calls=7  split=train  (0.5분, 남은 16분)
+[8/234] libero_spatial t0 i29  F  calls=28  split=train  (0.7분, 남은 18분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[9/234] libero_spatial t2 i22  S  calls=10  split=train  (0.7분, 남은 18분)
+[10/234] libero_spatial t2 i23  S  calls=10  split=train  (0.8분, 남은 18분)
+[11/234] libero_spatial t2 i24  S  calls=10  split=train  (0.9분, 남은 18분)
+[12/234] libero_spatial t2 i25  S  calls=13  split=train  (0.9분, 남은 18분)
+[13/234] libero_spatial t2 i26  S  calls=10  split=train  (1.0분, 남은 17분)
+[14/234] libero_spatial t2 i27  S  calls=9  split=train  (1.1분, 남은 17분)
+[15/234] libero_spatial t2 i28  S  calls=14  split=train  (1.2분, 남은 17분)
+[16/234] libero_spatial t2 i29  S  calls=9  split=train  (1.2분, 남은 17분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[17/234] libero_spatial t4 i22  S  calls=25  split=train  (1.4분, 남은 18분)
+[18/234] libero_spatial t4 i23  S  calls=15  split=train  (1.5분, 남은 18분)
+[19/234] libero_spatial t4 i24  S  calls=16  split=train  (1.6분, 남은 18분)
+[20/234] libero_spatial t4 i25  S  calls=22  split=train  (1.7분, 남은 18분)
+[21/234] libero_spatial t4 i26  F  calls=28  split=train  (1.9분, 남은 19분)
+[22/234] libero_spatial t4 i27  S  calls=15  split=train  (2.0분, 남은 19분)
+[23/234] libero_spatial t4 i28  S  calls=25  split=train  (2.1분, 남은 20분)
+[24/234] libero_spatial t4 i29  S  calls=24  split=train  (2.3분, 남은 20분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[25/234] libero_spatial t5 i20  S  calls=18  split=train  (2.4분, 남은 20분)
+[26/234] libero_spatial t5 i21  F  calls=28  split=train  (2.6분, 남은 21분)
+[27/234] libero_spatial t5 i22  F  calls=28  split=train  (2.7분, 남은 21분)
+[28/234] libero_spatial t5 i23  F  calls=28  split=train  (2.9분, 남은 21분)
+[29/234] libero_spatial t5 i24  F  calls=28  split=train  (3.1분, 남은 22분)
+[30/234] libero_spatial t5 i25  F  calls=28  split=train  (3.3분, 남은 22분)
+[31/234] libero_spatial t5 i26  S  calls=17  split=train  (3.4분, 남은 22분)
+[32/234] libero_spatial t5 i27  F  calls=28  split=train  (3.5분, 남은 22분)
+[33/234] libero_spatial t5 i28  F  calls=28  split=train  (3.7분, 남은 23분)
+[34/234] libero_spatial t5 i29  S  calls=14  split=train  (3.8분, 남은 22분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[35/234] libero_object t0 i20  S  calls=21  split=train  (3.9분, 남은 22분)
+[36/234] libero_object t0 i21  S  calls=23  split=train  (4.1분, 남은 22분)
+[37/234] libero_object t0 i22  F  calls=28  split=train  (4.2분, 남은 23분)
+[38/234] libero_object t0 i23  S  calls=16  split=train  (4.3분, 남은 22분)
+[39/234] libero_object t0 i24  S  calls=23  split=train  (4.5분, 남은 22분)
+[40/234] libero_object t0 i25  F  calls=28  split=train  (4.6분, 남은 22분)
+[41/234] libero_object t0 i26  F  calls=28  split=train  (4.8분, 남은 22분)
+[42/234] libero_object t0 i27  S  calls=20  split=train  (4.9분, 남은 22분)
+[43/234] libero_object t0 i28  S  calls=23  split=train  (5.0분, 남은 22분)
+[44/234] libero_object t0 i29  S  calls=23  split=train  (5.2분, 남은 22분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[45/234] libero_object t1 i20  F  calls=28  split=train  (5.3분, 남은 22분)
+[46/234] libero_object t1 i21  F  calls=28  split=train  (5.5분, 남은 22분)
+[47/234] libero_object t1 i22  F  calls=28  split=train  (5.6분, 남은 22분)
+[48/234] libero_object t1 i23  F  calls=28  split=train  (5.8분, 남은 22분)
+[49/234] libero_object t1 i24  S  calls=23  split=train  (5.9분, 남은 22분)
+[50/234] libero_object t1 i25  F  calls=28  split=train  (6.1분, 남은 22분)
+[51/234] libero_object t1 i26  F  calls=28  split=train  (6.2분, 남은 22분)
+[52/234] libero_object t1 i27  F  calls=28  split=train  (6.4분, 남은 22분)
+[53/234] libero_object t1 i28  S  calls=20  split=train  (6.5분, 남은 22분)
+[54/234] libero_object t1 i29  F  calls=28  split=train  (6.7분, 남은 22분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[55/234] libero_object t2 i20  F  calls=28  split=train  (6.9분, 남은 22분)
+[56/234] libero_object t2 i21  F  calls=28  split=train  (7.0분, 남은 22분)
+[57/234] libero_object t2 i22  F  calls=28  split=train  (7.2분, 남은 22분)
+[58/234] libero_object t2 i23  F  calls=28  split=train  (7.3분, 남은 22분)
+[59/234] libero_object t2 i24  F  calls=28  split=train  (7.5분, 남은 22분)
+[60/234] libero_object t2 i25  F  calls=28  split=train  (7.6분, 남은 22분)
+[61/234] libero_object t2 i26  S  calls=19  split=train  (7.7분, 남은 22분)
+[62/234] libero_object t2 i27  F  calls=28  split=train  (7.9분, 남은 22분)
+[63/234] libero_object t2 i28  F  calls=28  split=train  (8.1분, 남은 22분)
+[64/234] libero_object t2 i29  F  calls=28  split=train  (8.2분, 남은 22분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[65/234] libero_object t3 i20  S  calls=23  split=train  (8.4분, 남은 22분)
+[66/234] libero_object t3 i21  F  calls=28  split=train  (8.5분, 남은 22분)
+[67/234] libero_object t3 i22  F  calls=28  split=train  (8.7분, 남은 22분)
+[68/234] libero_object t3 i23  F  calls=28  split=train  (8.8분, 남은 22분)
+[69/234] libero_object t3 i24  F  calls=28  split=train  (9.0분, 남은 21분)
+[70/234] libero_object t3 i25  F  calls=28  split=train  (9.1분, 남은 21분)
+[71/234] libero_object t3 i26  S  calls=17  split=train  (9.2분, 남은 21분)
+[72/234] libero_object t3 i27  F  calls=28  split=train  (9.4분, 남은 21분)
+[73/234] libero_object t3 i28  F  calls=28  split=train  (9.5분, 남은 21분)
+[74/234] libero_object t3 i29  F  calls=28  split=train  (9.7분, 남은 21분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[75/234] libero_object t4 i20  F  calls=28  split=train  (9.9분, 남은 21분)
+[76/234] libero_object t4 i21  F  calls=28  split=train  (10.0분, 남은 21분)
+[77/234] libero_object t4 i22  F  calls=28  split=train  (10.2분, 남은 21분)
+[78/234] libero_object t4 i23  S  calls=27  split=train  (10.3분, 남은 21분)
+[79/234] libero_object t4 i24  F  calls=28  split=train  (10.5분, 남은 21분)
+[80/234] libero_object t4 i25  S  calls=13  split=train  (10.6분, 남은 20분)
+[81/234] libero_object t4 i26  S  calls=28  split=train  (10.7분, 남은 20분)
+[82/234] libero_object t4 i27  S  calls=13  split=train  (10.8분, 남은 20분)
+[83/234] libero_object t4 i28  S  calls=21  split=train  (10.9분, 남은 20분)
+[84/234] libero_object t4 i29  F  calls=28  split=train  (11.1분, 남은 20분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[85/234] libero_object t5 i20  F  calls=28  split=train  (11.2분, 남은 20분)
+[86/234] libero_object t5 i21  F  calls=28  split=train  (11.4분, 남은 20분)
+[87/234] libero_object t5 i22  S  calls=18  split=train  (11.5분, 남은 19분)
+[88/234] libero_object t5 i23  F  calls=28  split=train  (11.7분, 남은 19분)
+[89/234] libero_object t5 i24  S  calls=15  split=train  (11.7분, 남은 19분)
+[90/234] libero_object t5 i25  F  calls=28  split=train  (11.9분, 남은 19분)
+[91/234] libero_object t5 i26  S  calls=20  split=train  (12.0분, 남은 19분)
+[92/234] libero_object t5 i27  F  calls=28  split=train  (12.2분, 남은 19분)
+[93/234] libero_object t5 i28  S  calls=27  split=train  (12.3분, 남은 19분)
+[94/234] libero_object t5 i29  F  calls=28  split=train  (12.5분, 남은 19분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[95/234] libero_object t6 i20  F  calls=28  split=train  (12.7분, 남은 19분)
+[96/234] libero_object t6 i21  S  calls=24  split=train  (12.8분, 남은 18분)
+[97/234] libero_object t6 i22  S  calls=18  split=train  (12.9분, 남은 18분)
+[98/234] libero_object t6 i23  S  calls=21  split=train  (13.0분, 남은 18분)
+[99/234] libero_object t6 i24  S  calls=20  split=train  (13.1분, 남은 18분)
+[100/234] libero_object t6 i25  S  calls=27  split=train  (13.3분, 남은 18분)
+[101/234] libero_object t6 i26  S  calls=20  split=train  (13.4분, 남은 18분)
+[102/234] libero_object t6 i27  S  calls=19  split=train  (13.5분, 남은 17분)
+[103/234] libero_object t6 i28  S  calls=18  split=train  (13.6분, 남은 17분)
+[104/234] libero_object t6 i29  S  calls=20  split=train  (13.7분, 남은 17분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[105/234] libero_object t9 i20  F  calls=28  split=train  (13.9분, 남은 17분)
+[106/234] libero_object t9 i21  F  calls=28  split=train  (14.0분, 남은 17분)
+[107/234] libero_object t9 i22  F  calls=28  split=train  (14.2분, 남은 17분)
+[108/234] libero_object t9 i23  F  calls=28  split=train  (14.4분, 남은 17분)
+[109/234] libero_object t9 i24  F  calls=28  split=train  (14.5분, 남은 17분)
+[110/234] libero_object t9 i25  F  calls=28  split=train  (14.7분, 남은 17분)
+[111/234] libero_object t9 i26  F  calls=28  split=train  (14.8분, 남은 16분)
+[112/234] libero_object t9 i27  F  calls=28  split=train  (15.0분, 남은 16분)
+[113/234] libero_object t9 i28  F  calls=28  split=train  (15.1분, 남은 16분)
+[114/234] libero_object t9 i29  S  calls=19  split=train  (15.2분, 남은 16분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[115/234] libero_goal t0 i20  F  calls=30  split=train  (15.4분, 남은 16분)
+[116/234] libero_goal t0 i21  F  calls=30  split=train  (15.6분, 남은 16분)
+[117/234] libero_goal t0 i22  F  calls=30  split=train  (15.8분, 남은 16분)
+[118/234] libero_goal t0 i23  F  calls=30  split=train  (15.9분, 남은 16분)
+[119/234] libero_goal t0 i24  F  calls=30  split=train  (16.1분, 남은 16분)
+[120/234] libero_goal t0 i25  F  calls=30  split=train  (16.3분, 남은 15분)
+[121/234] libero_goal t0 i26  F  calls=30  split=train  (16.4분, 남은 15분)
+[122/234] libero_goal t0 i27  F  calls=30  split=train  (16.6분, 남은 15분)
+[123/234] libero_goal t0 i28  F  calls=30  split=train  (16.8분, 남은 15분)
+[124/234] libero_goal t0 i29  S  calls=13  split=train  (16.8분, 남은 15분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[125/234] libero_goal t3 i20  F  calls=30  split=train  (17.0분, 남은 15분)
+[126/234] libero_goal t3 i21  F  calls=30  split=train  (17.2분, 남은 15분)
+[127/234] libero_goal t3 i22  F  calls=30  split=train  (17.4분, 남은 15분)
+[128/234] libero_goal t3 i23  F  calls=30  split=train  (17.5분, 남은 15분)
+[129/234] libero_goal t3 i24  F  calls=30  split=train  (17.7분, 남은 14분)
+[130/234] libero_goal t3 i25  F  calls=30  split=train  (17.9분, 남은 14분)
+[131/234] libero_goal t3 i26  F  calls=30  split=train  (18.1분, 남은 14분)
+[132/234] libero_goal t3 i27  F  calls=30  split=train  (18.2분, 남은 14분)
+[133/234] libero_goal t3 i28  S  calls=21  split=train  (18.3분, 남은 14분)
+[134/234] libero_goal t3 i29  F  calls=30  split=train  (18.5분, 남은 14분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[135/234] libero_goal t4 i20  S  calls=8  split=train  (18.6분, 남은 14분)
+[136/234] libero_goal t4 i21  S  calls=7  split=train  (18.6분, 남은 13분)
+[137/234] libero_goal t4 i22  S  calls=8  split=train  (18.7분, 남은 13분)
+[138/234] libero_goal t4 i23  S  calls=7  split=train  (18.7분, 남은 13분)
+[139/234] libero_goal t4 i24  F  calls=30  split=train  (18.9분, 남은 13분)
+[140/234] libero_goal t4 i25  S  calls=8  split=train  (18.9분, 남은 13분)
+[141/234] libero_goal t4 i26  F  calls=30  split=train  (19.1분, 남은 13분)
+[142/234] libero_goal t4 i27  S  calls=7  split=train  (19.1분, 남은 12분)
+[143/234] libero_goal t4 i28  S  calls=16  split=train  (19.2분, 남은 12분)
+[144/234] libero_goal t4 i29  S  calls=7  split=train  (19.3분, 남은 12분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[145/234] libero_goal t5 i20  S  calls=27  split=train  (19.4분, 남은 12분)
+[146/234] libero_goal t5 i21  S  calls=12  split=train  (19.5분, 남은 12분)
+[147/234] libero_goal t5 i22  S  calls=14  split=train  (19.6분, 남은 12분)
+[148/234] libero_goal t5 i23  F  calls=30  split=train  (19.8분, 남은 11분)
+[149/234] libero_goal t5 i24  S  calls=10  split=train  (19.8분, 남은 11분)
+[150/234] libero_goal t5 i25  S  calls=15  split=train  (19.9분, 남은 11분)
+[151/234] libero_goal t5 i26  S  calls=25  split=train  (20.1분, 남은 11분)
+[152/234] libero_goal t5 i27  S  calls=11  split=train  (20.1분, 남은 11분)
+[153/234] libero_goal t5 i28  S  calls=13  split=train  (20.2분, 남은 11분)
+[154/234] libero_goal t5 i29  S  calls=15  split=train  (20.3분, 남은 11분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[155/234] libero_goal t7 i20  F  calls=30  split=train  (20.5분, 남은 10분)
+[156/234] libero_goal t7 i21  F  calls=30  split=train  (20.6분, 남은 10분)
+[157/234] libero_goal t7 i22  F  calls=30  split=train  (20.8분, 남은 10분)
+[158/234] libero_goal t7 i23  F  calls=30  split=train  (21.0분, 남은 10분)
+[159/234] libero_goal t7 i24  F  calls=30  split=train  (21.1분, 남은 10분)
+[160/234] libero_goal t7 i25  F  calls=30  split=train  (21.3분, 남은 10분)
+[161/234] libero_goal t7 i26  F  calls=30  split=train  (21.5분, 남은 10분)
+[162/234] libero_goal t7 i27  F  calls=30  split=train  (21.6분, 남은 10분)
+[163/234] libero_goal t7 i28  F  calls=30  split=train  (21.8분, 남은 9분)
+[164/234] libero_goal t7 i29  S  calls=8  split=train  (21.9분, 남은 9분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[165/234] libero_goal t9 i20  F  calls=30  split=train  (22.0분, 남은 9분)
+[166/234] libero_goal t9 i21  F  calls=30  split=train  (22.2분, 남은 9분)
+[167/234] libero_goal t9 i22  F  calls=30  split=train  (22.4분, 남은 9분)
+[168/234] libero_goal t9 i23  F  calls=30  split=train  (22.5분, 남은 9분)
+[169/234] libero_goal t9 i24  F  calls=30  split=train  (22.7분, 남은 9분)
+[170/234] libero_goal t9 i25  F  calls=30  split=train  (22.9분, 남은 9분)
+[171/234] libero_goal t9 i26  F  calls=30  split=train  (23.0분, 남은 8분)
+[172/234] libero_goal t9 i27  F  calls=30  split=train  (23.2분, 남은 8분)
+[173/234] libero_goal t9 i28  F  calls=30  split=train  (23.3분, 남은 8분)
+[174/234] libero_goal t9 i29  F  calls=30  split=train  (23.5분, 남은 8분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[175/234] libero_10 t1 i20  F  calls=52  split=train  (23.8분, 남은 8분)
+[176/234] libero_10 t1 i21  S  calls=27  split=train  (24.0분, 남은 8분)
+[177/234] libero_10 t1 i22  F  calls=52  split=train  (24.3분, 남은 8분)
+[178/234] libero_10 t1 i23  S  calls=30  split=train  (24.4분, 남은 8분)
+[179/234] libero_10 t1 i24  F  calls=52  split=train  (24.7분, 남은 8분)
+[180/234] libero_10 t1 i25  F  calls=52  split=train  (25.0분, 남은 7분)
+[181/234] libero_10 t1 i26  S  calls=51  split=train  (25.3분, 남은 7분)
+[182/234] libero_10 t1 i27  S  calls=50  split=train  (25.6분, 남은 7분)
+[183/234] libero_10 t1 i28  S  calls=29  split=train  (25.7분, 남은 7분)
+[184/234] libero_10 t1 i29  S  calls=32  split=train  (25.9분, 남은 7분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[185/234] libero_10 t3 i20  S  calls=22  split=train  (26.0분, 남은 7분)
+[186/234] libero_10 t3 i21  F  calls=52  split=train  (26.3분, 남은 7분)
+[187/234] libero_10 t3 i22  F  calls=52  split=train  (26.6분, 남은 7분)
+[188/234] libero_10 t3 i23  S  calls=19  split=train  (26.7분, 남은 7분)
+[189/234] libero_10 t3 i24  S  calls=26  split=train  (26.8분, 남은 6분)
+[190/234] libero_10 t3 i25  F  calls=52  split=train  (27.1분, 남은 6분)
+[191/234] libero_10 t3 i26  F  calls=52  split=train  (27.4분, 남은 6분)
+[192/234] libero_10 t3 i27  F  calls=52  split=train  (27.6분, 남은 6분)
+[193/234] libero_10 t3 i28  F  calls=52  split=train  (27.9분, 남은 6분)
+[194/234] libero_10 t3 i29  F  calls=52  split=train  (28.2분, 남은 6분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[195/234] libero_10 t4 i20  F  calls=52  split=train  (28.5분, 남은 6분)
+[196/234] libero_10 t4 i21  F  calls=52  split=train  (28.8분, 남은 6분)
+[197/234] libero_10 t4 i22  F  calls=52  split=train  (29.1분, 남은 5분)
+[198/234] libero_10 t4 i23  F  calls=52  split=train  (29.4분, 남은 5분)
+[199/234] libero_10 t4 i24  F  calls=52  split=train  (29.6분, 남은 5분)
+[200/234] libero_10 t4 i25  F  calls=52  split=train  (29.9분, 남은 5분)
+[201/234] libero_10 t4 i26  F  calls=52  split=train  (30.2분, 남은 5분)
+[202/234] libero_10 t4 i27  F  calls=52  split=train  (30.5분, 남은 5분)
+[203/234] libero_10 t4 i28  F  calls=52  split=train  (30.8분, 남은 5분)
+[204/234] libero_10 t4 i29  F  calls=52  split=train  (31.1분, 남은 5분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[205/234] libero_10 t6 i20  F  calls=52  split=train  (31.4분, 남은 4분)
+[206/234] libero_10 t6 i21  S  calls=30  split=train  (31.5분, 남은 4분)
+[207/234] libero_10 t6 i22  F  calls=52  split=train  (31.8분, 남은 4분)
+[208/234] libero_10 t6 i23  F  calls=52  split=train  (32.1분, 남은 4분)
+[209/234] libero_10 t6 i24  F  calls=52  split=train  (32.4분, 남은 4분)
+[210/234] libero_10 t6 i25  F  calls=52  split=train  (32.7분, 남은 4분)
+[211/234] libero_10 t6 i26  F  calls=52  split=train  (33.0분, 남은 4분)
+[212/234] libero_10 t6 i27  F  calls=52  split=train  (33.2분, 남은 3분)
+[213/234] libero_10 t6 i28  F  calls=52  split=train  (33.5분, 남은 3분)
+[214/234] libero_10 t6 i29  F  calls=52  split=train  (33.8분, 남은 3분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[215/234] libero_10 t7 i20  S  calls=28  split=train  (34.0분, 남은 3분)
+[216/234] libero_10 t7 i21  F  calls=52  split=train  (34.3분, 남은 3분)
+[217/234] libero_10 t7 i22  F  calls=52  split=train  (34.5분, 남은 3분)
+[218/234] libero_10 t7 i23  F  calls=52  split=train  (34.8분, 남은 3분)
+[219/234] libero_10 t7 i24  F  calls=52  split=train  (35.1분, 남은 2분)
+[220/234] libero_10 t7 i25  F  calls=52  split=train  (35.4분, 남은 2분)
+[221/234] libero_10 t7 i26  F  calls=52  split=train  (35.7분, 남은 2분)
+[222/234] libero_10 t7 i27  F  calls=52  split=train  (35.9분, 남은 2분)
+[223/234] libero_10 t7 i28  F  calls=52  split=train  (36.2분, 남은 2분)
+[224/234] libero_10 t7 i29  S  calls=34  split=train  (36.4분, 남은 2분)
+[info] using task orders [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[225/234] libero_10 t8 i20  F  calls=52  split=train  (36.7분, 남은 1분)
+[226/234] libero_10 t8 i21  F  calls=52  split=train  (37.0분, 남은 1분)
+[227/234] libero_10 t8 i22  F  calls=52  split=train  (37.2분, 남은 1분)
+[228/234] libero_10 t8 i23  F  calls=52  split=train  (37.5분, 남은 1분)
+[229/234] libero_10 t8 i24  F  calls=52  split=train  (37.8분, 남은 1분)
+[230/234] libero_10 t8 i25  F  calls=52  split=train  (38.1분, 남은 1분)
+[231/234] libero_10 t8 i26  F  calls=52  split=train  (38.3분, 남은 0분)
+[232/234] libero_10 t8 i27  F  calls=52  split=train  (38.6분, 남은 0분)
+[233/234] libero_10 t8 i28  F  calls=52  split=train  (38.9분, 남은 0분)
+[234/234] libero_10 t8 i29  F  calls=52  split=train  (39.2분, 남은 0분)
+{
+  "n": 1010,
+  "bytes": 32943560,
+  "capacity": 8589934592,
+  "train": {
+    "n": 694,
+    "fail": 450,
+    "succ": 244,
+    "tasks": 24
+  },
+  "val": {
+    "n": 120,
+    "fail": 76,
+    "succ": 44,
+    "tasks": 6
+  },
+  "test": {
+    "n": 196,
+    "fail": 78,
+    "succ": 118,
+    "tasks": 10
+  }
+}

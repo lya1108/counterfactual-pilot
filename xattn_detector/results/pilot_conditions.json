@@ -1,0 +1,415 @@
+{
+  "n_episodes": 40,
+  "n_steps": 12104,
+  "log_ms_per_step": 0.3187223648441917,
+  "kb_per_episode": 23.489453125,
+  "counts": {
+    "C1_grasp_empty_close": 29,
+    "C2_drop": 0,
+    "C3_wrong_object_grasp": 9,
+    "C4_object_tipped": 19,
+    "C6_joint_limit": 15
+  },
+  "episodes": [
+    {
+      "name": "libero_spatial_t0_i30",
+      "suite": "libero_spatial",
+      "task": 0,
+      "init": 30,
+      "success": false,
+      "n_steps": 280,
+      "sec": 9.5,
+      "bytes": 23282
+    },
+    {
+      "name": "libero_spatial_t0_i31",
+      "suite": "libero_spatial",
+      "task": 0,
+      "init": 31,
+      "success": false,
+      "n_steps": 280,
+      "sec": 9.6,
+      "bytes": 22778
+    },
+    {
+      "name": "libero_spatial_t2_i30",
+      "suite": "libero_spatial",
+      "task": 2,
+      "init": 30,
+      "success": true,
+      "n_steps": 86,
+      "sec": 3.1,
+      "bytes": 8913
+    },
+    {
+      "name": "libero_spatial_t2_i31",
+      "suite": "libero_spatial",
+      "task": 2,
+      "init": 31,
+      "success": true,
+      "n_steps": 95,
+      "sec": 3.4,
+      "bytes": 10623
+    },
+    {
+      "name": "libero_spatial_t4_i30",
+      "suite": "libero_spatial",
+      "task": 4,
+      "init": 30,
+      "success": true,
+      "n_steps": 206,
+      "sec": 7.2,
+      "bytes": 17560
+    },
+    {
+      "name": "libero_spatial_t4_i31",
+      "suite": "libero_spatial",
+      "task": 4,
+      "init": 31,
+      "success": false,
+      "n_steps": 280,
+      "sec": 9.9,
+      "bytes": 22946
+    },
+    {
+      "name": "libero_spatial_t6_i30",
+      "suite": "libero_spatial",
+      "task": 6,
+      "init": 30,
+      "success": true,
+      "n_steps": 137,
+      "sec": 4.7,
+      "bytes": 12848
+    },
+    {
+      "name": "libero_spatial_t6_i31",
+      "suite": "libero_spatial",
+      "task": 6,
+      "init": 31,
+      "success": true,
+      "n_steps": 105,
+      "sec": 3.7,
+      "bytes": 10958
+    },
+    {
+      "name": "libero_spatial_t9_i30",
+      "suite": "libero_spatial",
+      "task": 9,
+      "init": 30,
+      "success": false,
+      "n_steps": 280,
+      "sec": 9.4,
+      "bytes": 20326
+    },
+    {
+      "name": "libero_spatial_t9_i31",
+      "suite": "libero_spatial",
+      "task": 9,
+      "init": 31,
+      "success": false,
+      "n_steps": 280,
+      "sec": 9.5,
+      "bytes": 21571
+    },
+    {
+      "name": "libero_object_t0_i30",
+      "suite": "libero_object",
+      "task": 0,
+      "init": 30,
+      "success": true,
+      "n_steps": 241,
+      "sec": 7.9,
+      "bytes": 18692
+    },
+    {
+      "name": "libero_object_t0_i31",
+      "suite": "libero_object",
+      "task": 0,
+      "init": 31,
+      "success": false,
+      "n_steps": 280,
+      "sec": 8.8,
+      "bytes": 20418
+    },
+    {
+      "name": "libero_object_t2_i30",
+      "suite": "libero_object",
+      "task": 2,
+      "init": 30,
+      "success": false,
+      "n_steps": 280,
+      "sec": 8.7,
+      "bytes": 22532
+    },
+    {
+      "name": "libero_object_t2_i31",
+      "suite": "libero_object",
+      "task": 2,
+      "init": 31,
+      "success": false,
+      "n_steps": 280,
+      "sec": 8.7,
+      "bytes": 20752
+    },
+    {
+      "name": "libero_object_t4_i30",
+      "suite": "libero_object",
+      "task": 4,
+      "init": 30,
+      "success": true,
+      "n_steps": 181,
+      "sec": 5.8,
+      "bytes": 19050
+    },
+    {
+      "name": "libero_object_t4_i31",
+      "suite": "libero_object",
+      "task": 4,
+      "init": 31,
+      "success": true,
+      "n_steps": 123,
+      "sec": 4.0,
+      "bytes": 14186
+    },
+    {
+      "name": "libero_object_t6_i30",
+      "suite": "libero_object",
+      "task": 6,
+      "init": 30,
+      "success": true,
+      "n_steps": 245,
+      "sec": 7.7,
+      "bytes": 22782
+    },
+    {
+      "name": "libero_object_t6_i31",
+      "suite": "libero_object",
+      "task": 6,
+      "init": 31,
+      "success": false,
+      "n_steps": 280,
+      "sec": 8.7,
+      "bytes": 25015
+    },
+    {
+      "name": "libero_object_t9_i30",
+      "suite": "libero_object",
+      "task": 9,
+      "init": 30,
+      "success": false,
+      "n_steps": 280,
+      "sec": 8.6,
+      "bytes": 29536
+    },
+    {
+      "name": "libero_object_t9_i31",
+      "suite": "libero_object",
+      "task": 9,
+      "init": 31,
+      "success": false,
+      "n_steps": 280,
+      "sec": 8.6,
+      "bytes": 24931
+    },
+    {
+      "name": "libero_goal_t0_i30",
+      "suite": "libero_goal",
+      "task": 0,
+      "init": 30,
+      "success": false,
+      "n_steps": 300,
+      "sec": 9.5,
+      "bytes": 20062
+    },
+    {
+      "name": "libero_goal_t0_i31",
+      "suite": "libero_goal",
+      "task": 0,
+      "init": 31,
+      "success": false,
+      "n_steps": 300,
+      "sec": 9.4,
+      "bytes": 20871
+    },
+    {
+      "name": "libero_goal_t2_i30",
+      "suite": "libero_goal",
+      "task": 2,
+      "init": 30,
+      "success": true,
+      "n_steps": 83,
+      "sec": 2.8,
+      "bytes": 8622
+    },
+    {
+      "name": "libero_goal_t2_i31",
+      "suite": "libero_goal",
+      "task": 2,
+      "init": 31,
+      "success": false,
+      "n_steps": 300,
+      "sec": 9.6,
+      "bytes": 22095
+    },
+    {
+      "name": "libero_goal_t4_i30",
+      "suite": "libero_goal",
+      "task": 4,
+      "init": 30,
+      "success": true,
+      "n_steps": 68,
+      "sec": 2.2,
+      "bytes": 8534
+    },
+    {
+      "name": "libero_goal_t4_i31",
+      "suite": "libero_goal",
+      "task": 4,
+      "init": 31,
+      "success": false,
+      "n_steps": 300,
+      "sec": 9.5,
+      "bytes": 31447
+    },
+    {
+      "name": "libero_goal_t6_i30",
+      "suite": "libero_goal",
+      "task": 6,
+      "init": 30,
+      "success": false,
+      "n_steps": 300,
+      "sec": 9.6,
+      "bytes": 23423
+    },
+    {
+      "name": "libero_goal_t6_i31",
+      "suite": "libero_goal",
+      "task": 6,
+      "init": 31,
+      "success": true,
+      "n_steps": 154,
+      "sec": 5.1,
+      "bytes": 14381
+    },
+    {
+      "name": "libero_goal_t9_i30",
+      "suite": "libero_goal",
+      "task": 9,
+      "init": 30,
+      "success": false,
+      "n_steps": 300,
+      "sec": 9.4,
+      "bytes": 17330
+    },
+    {
+      "name": "libero_goal_t9_i31",
+      "suite": "libero_goal",
+      "task": 9,
+      "init": 31,
+      "success": false,
+      "n_steps": 300,
+      "sec": 9.5,
+      "bytes": 20341
+    },
+    {
+      "name": "libero_10_t0_i30",
+      "suite": "libero_10",
+      "task": 0,
+      "init": 30,
+      "success": false,
+      "n_steps": 520,
+      "sec": 16.5,
+      "bytes": 43796
+    },
+    {
+      "name": "libero_10_t0_i31",
+      "suite": "libero_10",
+      "task": 0,
+      "init": 31,
+      "success": false,
+      "n_steps": 520,
+      "sec": 16.5,
+      "bytes": 40895
+    },
+    {
+      "name": "libero_10_t2_i30",
+      "suite": "libero_10",
+      "task": 2,
+      "init": 30,
+      "success": false,
+      "n_steps": 520,
+      "sec": 15.9,
+      "bytes": 27089
+    },
+    {
+      "name": "libero_10_t2_i31",
+      "suite": "libero_10",
+      "task": 2,
+      "init": 31,
+      "success": false,
+      "n_steps": 520,
+      "sec": 16.0,
+      "bytes": 28350
+    },
+    {
+      "name": "libero_10_t4_i30",
+      "suite": "libero_10",
+      "task": 4,
+      "init": 30,
+      "success": false,
+      "n_steps": 520,
+      "sec": 16.4,
+      "bytes": 39583
+    },
+    {
+      "name": "libero_10_t4_i31",
+      "suite": "libero_10",
+      "task": 4,
+      "init": 31,
+      "success": false,
+      "n_steps": 520,
+      "sec": 16.6,
+      "bytes": 43630
+    },
+    {
+      "name": "libero_10_t6_i30",
+      "suite": "libero_10",
+      "task": 6,
+      "init": 30,
+      "success": false,
+      "n_steps": 520,
+      "sec": 16.0,
+      "bytes": 43610
+    },
+    {
+      "name": "libero_10_t6_i31",
+      "suite": "libero_10",
+      "task": 6,
+      "init": 31,
+      "success": false,
+      "n_steps": 520,
+      "sec": 16.3,
+      "bytes": 49000
+    },
+    {
+      "name": "libero_10_t9_i30",
+      "suite": "libero_10",
+      "task": 9,
+      "init": 30,
+      "success": false,
+      "n_steps": 520,
+      "sec": 16.2,
+      "bytes": 33749
+    },
+    {
+      "name": "libero_10_t9_i31",
+      "suite": "libero_10",
+      "task": 9,
+      "init": 31,
+      "success": false,
+      "n_steps": 520,
+      "sec": 15.9,
+      "bytes": 35621
+    }
+  ]
+}
